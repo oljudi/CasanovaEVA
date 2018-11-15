@@ -1,0 +1,196 @@
+<div class="card col-md-3 mx-auto mt-3">
+    <div class="card-header text-center">
+            <img class="jumbotron-img-top img-fluid" src="https://image.ibb.co/dtvt3L/casanova-renta-de-autos-24.jpg" alt="casanova-renta-de-autos-24">
+        </div>
+</div>
+<br><br>
+<!-- Nav bar para encuesta-->
+
+<!-- Fomularios para encuesta Express-->
+<div class="card col-md-6 mx-auto">
+        <ul class="nav nav-pills mb-3 justify-content-center mt-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">2</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-4-tab" data-toggle="pill" href="#pills-4" role="tab" aria-controls="pills-4" aria-selected="false">4</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-5-tab" data-toggle="pill" href="#pills-5" role="tab" aria-controls="pills-5" aria-selected="false">5</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-6-tab" data-toggle="pill" href="#pills-6" role="tab" aria-controls="pills-6" aria-selected="false">6</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-7-tab" data-toggle="pill" href="#pills-7" role="tab" aria-controls="pills-7" aria-selected="false">7</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-8-tab" data-toggle="pill" href="#pills-8" role="tab" aria-controls="pills-8" aria-selected="false">8</a>
+                </li>
+            </ul>
+        <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab"> <!--Formulario Pregunta 1 -->
+                    <div class="card text-center col-md-6 mx-auto">El tiempo que transcurrió para que lo atendieran fue:</div><br>
+                    <form action="">
+                            <div class="card-deck mx-auto mb-3">
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faTired" class="fa-5x" style="color: red" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faSadTear" class="fa-5x" style="color: orange" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faMeh" class="fa-5x" style="color: rgb(228, 228, 4)" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faGrin" class="fa-5x" style="color: yellowgreen" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faSmileBeam" class="fa-5x" style="color: green" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                            </div>       
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+                        <div class="card text-center col-md-6 mx-auto">Después de realizado el diagnóstico del vehiculo, ¿se le proporcionó la información detallada del trabajo a realizar y el tiempo estimado de entrega?</div><br>
+                        <form action="">
+                                <div class="card-deck mx-auto mb-3">
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faCheckSquare" class="fa-5x" style="color: green" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                    </div>
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faTimesCircle" class="fa-5x" style="color: red" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                    </div>  
+                                </div>       
+                        </form>
+                </div>
+                <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
+                        <div class="card text-center col-md-6 mx-auto">El tiempo que transcurrió para la entrega de su vehiculo fue de:</div><br>
+                        <form action="">
+                                <div class="card-deck mx-auto mb-3">
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faHourglassStart" class="fa-5x" style="color: green" routerLinkActive="active-link" routerLink=""></fa-icon>
+                                        <div class="card-content">0-1 Hrs</div>
+                                    </div>
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faHourglassHalf" class="fa-5x" style="color: yellow" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                        <div class="card-content">1-2 Hrs</div>
+                                    </div>
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faHourglassEnd" class="fa-5x" style="color: red" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                        <div class="card-content">3 o + Hrs</div>
+                                    </div>
+                                </div>       
+                        </form>
+                </div>
+                <div class="tab-pane fade" id="pills-4" role="tabpanel" aria-labelledby="pills-4-tab">
+                        <div class="card text-center col-md-6 mx-auto">¿Como calificaría la imagen de nuestras instalaciones?</div><br>
+                        <form action="">
+                                <div class="card-deck mx-auto mb-3">
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faTired" class="fa-5x" style="color: red" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                    </div>
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faSadTear" class="fa-5x" style="color: orange" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                    </div>
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faMeh" class="fa-5x" style="color: rgb(228, 228, 4)" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                    </div>
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faGrin" class="fa-5x" style="color: yellowgreen" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                    </div>
+                                    <div class="card text-center col-md-2 mx-auto">
+                                        <fa-icon [icon]="faSmileBeam" class="fa-5x" style="color: green" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                    </div>
+                                </div>       
+                        </form>
+                </div>
+                <div class="tab-pane fade" id="pills-5" role="tabpanel" aria-labelledby="pills-5-tab">
+                    <div class="card text-center col-md-6 mx-auto">La atención que recibío de nuestro asesor de servicio fue:</div><br>
+                         <form action="">
+                            <div class="card-deck mx-auto mb-3">
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faTired" class="fa-5x" style="color: red" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faSadTear" class="fa-5x" style="color: orange" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faMeh" class="fa-5x" style="color: rgb(228, 228, 4)" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faGrin" class="fa-5x" style="color: yellowgreen" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                                <div class="card text-center col-md-2 mx-auto">
+                                    <fa-icon [icon]="faSmileBeam" class="fa-5x" style="color: green" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                                </div>
+                            </div>       
+                </form>
+            </div>
+            <div class="tab-pane fade" id="pills-6" role="tabpanel" aria-labelledby="pills-6-tab">
+                <div class="card text-center col-md-6 mx-auto">Considera que la imagen de nuestro asesor de servicio es:</div><br>
+                     <form action="">
+                        <div class="card-deck mx-auto mb-3">
+                            <div class="card text-center col-md-2 mx-auto">
+                                <fa-icon [icon]="faTired" class="fa-5x" style="color: red" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                            </div>
+                            <div class="card text-center col-md-2 mx-auto">
+                                <fa-icon [icon]="faSadTear" class="fa-5x" style="color: orange" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                            </div>
+                            <div class="card text-center col-md-2 mx-auto">
+                                <fa-icon [icon]="faMeh" class="fa-5x" style="color: rgb(228, 228, 4)" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                            </div>
+                            <div class="card text-center col-md-2 mx-auto">
+                                <fa-icon [icon]="faGrin" class="fa-5x" style="color: yellowgreen" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                            </div>
+                            <div class="card text-center col-md-2 mx-auto">
+                                <fa-icon [icon]="faSmileBeam" class="fa-5x" style="color: green" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                            </div>
+                        </div>       
+            </form>
+        </div>
+        <div class="tab-pane fade" id="pills-7" role="tabpanel" aria-labelledby="pills-7-tab">
+            <div class="card text-center col-md-6 mx-auto">Le entregaron su vehiculo:</div><br>
+                 <form action="">
+                    <div class="card-deck mx-auto mb-3">
+                        <div class="card text-center col-md-2 mx-auto">
+                            <fa-icon [icon]="faTired" class="fa-5x" style="color: red" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                            <div class="card-content">Sucio</div>
+                        </div>
+                        <div class="card text-center col-md-2 mx-auto">
+                            <fa-icon [icon]="faSmileBeam" class="fa-5x" style="color: green" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                            <div class="card-content">Limpio</div>
+                        </div>
+                    </div>       
+        </form>
+    </div>
+    <div class="tab-pane fade" id="pills-8" role="tabpanel" aria-labelledby="pills-8-tab">
+        <div class="card text-center col-md-6 mx-auto">La experiencia en general de su visita a Casanova fue?</div><br>
+             <form action="">
+                <div class="card-deck mx-auto mb-3">
+                    <div class="card text-center col-md-2 mx-auto">
+                        <fa-icon [icon]="faTired" class="fa-5x" style="color: red" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                    </div>
+                    <div class="card text-center col-md-2 mx-auto">
+                        <fa-icon [icon]="faSadTear" class="fa-5x" style="color: orange" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                    </div>
+                    <div class="card text-center col-md-2 mx-auto">
+                        <fa-icon [icon]="faMeh" class="fa-5x" style="color: rgb(228, 228, 4)" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                    </div>
+                    <div class="card text-center col-md-2 mx-auto">
+                        <fa-icon [icon]="faGrin" class="fa-5x" style="color: yellowgreen" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                    </div>
+                    <div class="card text-center col-md-2 mx-auto">
+                        <fa-icon [icon]="faSmileBeam" class="fa-5x" style="color: green" routerLinkActive="active-link" routerLink=""> </fa-icon>
+                    </div>
+                </div>       
+    </form>
+</div>
+        </div>
+</div>

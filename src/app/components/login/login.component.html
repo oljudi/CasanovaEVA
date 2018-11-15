@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="row">
+    <div class="col-md-3 mx-auto mt-5">
+    <form>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+                <div class="card-header text-center">
+                    <img class="card-img-top" src="https://image.ibb.co/dtvt3L/casanova-renta-de-autos-24.jpg" alt="casanova-renta-de-autos-24">
+                </div>
+                <form action="get">
+                    <div class="card-header form-group">
+                        <p>Numero de Empleado</p>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><fa-icon [icon]="faAddressCard"></fa-icon></span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        </div>
+                      </div>
+                      <div class="card-header form-group">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><fa-icon [icon]="faKey"></fa-icon></span>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        </div>
+                      </div>
+                    <a class="btn btn-info text-center btn-block" routerLinkActive="active-Link" routerLink="/admin"><fa-icon [icon]="faSignInAlt"></fa-icon><h2>Ingresar</h2></a>
+                </form>
+        </div>
+    </form>
+    </div>
+</div>
+
+
+
