@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +40,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     EncuestaComponent
   ],
   imports: [
+    MatStepperModule, 
+    MatInputModule, 
+    MatButtonModule, 
+    MatAutocompleteModule,
+    MatNativeDateModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -45,7 +53,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule
   ],
+  entryComponents: [ExpressComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
