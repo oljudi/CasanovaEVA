@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule } from '@angular/material';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
+import { AuthService } from './services/auth.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +29,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -51,10 +58,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   entryComponents: [ExpressComponent],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
