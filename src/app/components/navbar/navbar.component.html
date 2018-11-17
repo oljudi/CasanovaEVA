@@ -2,19 +2,19 @@
   <img src="https://image.ibb.co/f9kjuf/EVALogo.png" class="navbar-brand" alt="EVALogo" style="width: 15%;">
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item active" *ngIf="isLogin">
               <a class="nav-link" routerLinkActive="active-link" routerLink="/login">
                 <fa-icon [icon]="faHome" class="fa-2x"></fa-icon>
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isLogin">
               <a class="nav-link" routerLinkActive="active-link" routerLink="/reports">
                 <fa-icon [icon]="faChartLine" class="fa-2x"></fa-icon>
                 <strong> Reportes</strong>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isLogin">
                 <a class="nav-link" routerLinkActive="active-link" routerLink="/home">
                   <fa-icon [icon]="faVoteYea" class="fa-2x"></fa-icon>
                   <strong> Ir a Encuestas</strong>
@@ -22,11 +22,11 @@
               </li>
       </ul>
       <ul class="navbar-nav">
-          <li class="navbar-nav nav-item">
+          <li class="navbar-nav nav-item" *ngIf="!isLogin">
               <a class="nav-link" routerLinkActive="active-Link" routerLink="/login"><fa-icon [icon]="faSignInAlt"></fa-icon> Ingresar</a>
             </li>
-          <li class="navbar-nav nav-item">
-              <a class="nav-link" routerLinkActive="active-Link" routerLink="/login"><fa-icon [icon]="faSignOutAlt"></fa-icon> Salir</a>
+          <li class="navbar-nav nav-item" *ngIf="isLogin">
+              <a class="nav-link" (click)="onClickLogOut()" routerLinkActive="active-Link" routerLink="/login"><fa-icon [icon]="faSignOutAlt"></fa-icon> Salir</a>
             </li>
           <li class="nav-item">
               <a class="nav-link" routerLinkActive="active-link" routerLink="/">Acerca de</a>

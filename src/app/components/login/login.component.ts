@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 import { faSignInAlt, faAddressCard, faKey, faMailBulk } from '@fortawesome/free-solid-svg-icons';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
 

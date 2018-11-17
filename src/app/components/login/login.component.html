@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <img class="card-img-top" src="https://image.ibb.co/f9kjuf/EVALogo.png" alt="casanova-renta-de-autos-24">
                 </div>
-                <form (submit)="onSubmitLogin">
+                <form (submit)="onSubmitLogin()">
                     <div class="card-header form-group text-white">
                         <p>Correo Electronico</p>
                         <div class="input-group mb-3">
@@ -24,7 +24,7 @@
                           <input type="password" name="password" [(ngModel)]="password" [ngModelOptions]="{standalone:true}" class="form-control" placeholder="********">
                         </div>
                       </div>
-                    <a class="btn btn-warning text-center btn-block" type="submit "><fa-icon [icon]="faSignInAlt" class="fa-2x"></fa-icon><h6> Ingresar</h6></a>
+                    <button type="submit" class="btn btn-warning text-center btn-block"><fa-icon [icon]="faSignInAlt" class="fa-2x"></fa-icon><h6> Ingresar</h6></button>
                 </form>
         </div>
     </form>
