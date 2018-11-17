@@ -31,8 +31,8 @@ import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { ReportsComponent } from './components/reports/reports.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { from } from 'rxjs';
-
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -64,10 +64,11 @@ import { from } from 'rxjs';
     FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    FlashMessagesModule
   ],
   entryComponents: [ExpressComponent],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
