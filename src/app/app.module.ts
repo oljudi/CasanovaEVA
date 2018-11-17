@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,9 +28,11 @@ import { TramiteComponent } from './components/tramite/tramite.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { from } from 'rxjs';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { from } from 'rxjs';
     TramiteComponent,
     ThankyouComponent,
     NavbarComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    ReportsComponent
   ],
   imports: [
     MatStepperModule, 
@@ -63,7 +67,7 @@ import { from } from 'rxjs';
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   entryComponents: [ExpressComponent],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
