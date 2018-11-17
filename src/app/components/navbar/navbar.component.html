@@ -1,25 +1,36 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLinkActive="active-link" routerLink="/login"><fa-icon [icon]="faChartLine" style="color: red"> </fa-icon><strong style="color: red"> EVA</strong> Casanova</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarColor02">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2a206f ;">
+  <img src="https://image.ibb.co/f9kjuf/EVALogo.png" class="navbar-brand" alt="EVALogo" style="width: 15%;">
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLinkActive="active-link" routerLink="/login">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active-link" routerLink="/reports">Reportes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active-link" routerLink="/">Acerca de</a>
-        </li>
+          <li class="nav-item active">
+              <a class="nav-link" routerLinkActive="active-link" routerLink="/login">
+                <fa-icon [icon]="faHome" class="fa-2x"></fa-icon>
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active-link" routerLink="/reports">
+                <fa-icon [icon]="faChartLine" class="fa-2x"></fa-icon>
+                <strong> Reportes</strong>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active-link" routerLink="/home">
+                  <fa-icon [icon]="faVoteYea" class="fa-2x"></fa-icon>
+                  <strong> Ir a Encuestas</strong>
+                </a>
+              </li>
       </ul>
-      <ul class="navbar-nav mr-left">
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active-Link" routerLink="/login"><fa-icon [icon]="faSignOutAlt"></fa-icon> Salir</a>
-        </li>
+      <ul class="navbar-nav">
+          <li class="navbar-nav nav-item">
+              <a class="nav-link" routerLinkActive="active-Link" routerLink="/login"><fa-icon [icon]="faSignInAlt"></fa-icon> Ingresar</a>
+            </li>
+          <li class="navbar-nav nav-item">
+              <a class="nav-link" routerLinkActive="active-Link" routerLink="/login"><fa-icon [icon]="faSignOutAlt"></fa-icon> Salir</a>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active-link" routerLink="/">Acerca de</a>
+          </li>
       </ul>
     </div>
-  </nav>
+</nav>
