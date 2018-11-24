@@ -2,10 +2,11 @@
         <img src="https://image.ibb.co/f9kjuf/EVALogo.png" class="navbar-brand" alt="EVALogo" style="width: 15%;">
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active" *ngIf="isLogin">
-                    <a class="nav-link" routerLinkActive="active-link" routerLink="/login">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLinkActive="active-link" routerLink="/home">
                       <fa-icon [icon]="faHome" class="fa-2x"></fa-icon>
                       <span class="sr-only">(current)</span>
+                      Encuesta nueva
                     </a>
                   </li>
                   <li class="nav-item" *ngIf="isLogin">
