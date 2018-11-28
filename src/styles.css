@@ -1,3 +1,20 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.basic-container {
+  padding: 30px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+
 body{
     height:50em; background-size: cover; width: auto;
     background-image: url('https://image.ibb.co/ijqW7A/fondo-EVA2.png');

@@ -1,14 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+
 import { faTired, faSadTear, faGrin, faSmileBeam, faCheckSquare, faTimesCircle, faMeh, faHourglassStart, faHourglassHalf, faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import {EncuestaexInterface} from '../../Models/Encuestaex';
+import {EncuestaService} from '../../services/encuesta.service';
+
+import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-express',
   templateUrl: './express.component.html',
-  styleUrls: ['./express.component.css']
+  styleUrls: ['./express.component.css'],
+  providers: [{
+    provide: MAT_STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
+  }]
 })
+
 export class ExpressComponent implements OnInit {
 
+  isEditable =  false;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -17,9 +28,23 @@ export class ExpressComponent implements OnInit {
   fifthFormGroup: FormGroup;
   sixFormGroup: FormGroup;
   sevenFormGroup: FormGroup;
-
+  eightFormGroup: FormGroup;
+  Encuesta: EncuestaexInterface = {
+    
+    idencuesta: '',
+    pregunta1: '',
+    pregunta2: '',
+    pregunta3: '',
+    pregunta4: '',
+    pregunta5: '',
+    pregunta6: '',
+    pregunta7: '',
+    pregunta8: ''
+    
+  }
   constructor(
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private encuestaService: EncuestaService
   ) { }
 
   ngOnInit() {
@@ -44,6 +69,9 @@ export class ExpressComponent implements OnInit {
     this.sevenFormGroup = this._formBuilder.group({
       sevenFormGroup: ['', Validators.required]
     });
+  }
+  onGuardarEncuesta({value}: {value: EncuestaexInterface}){
+    this.encuestaService.addEncuestaex(value);
   }
 
   faTired = faTired;

@@ -6,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule, MatIconModule, MatFormFieldModule, MatTab, MatTabsModule, MatCheckboxModule } from '@angular/material';
+
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -33,6 +34,9 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { EncuestaService } from './services/encuesta.service';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -51,24 +55,32 @@ import { FlashMessagesService } from 'angular2-flash-messages';
     ReportsComponent
   ],
   imports: [
-    MatStepperModule, 
-    MatInputModule, 
+    MatStepperModule,
+    MatTabsModule,
+    MatCheckboxModule, 
+    MatInputModule,
+    MatIconModule, 
     MatButtonModule, 
     MatAutocompleteModule,
     MatNativeDateModule,
+    MatFormFieldModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FontAwesomeModule,
+    FormsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    FlashMessagesModule
+    FlashMessagesModule,
+    NbThemeModule.forRoot({ name: 'corporate' }),
+    NbLayoutModule,
+    AngularFirestoreModule
   ],
   entryComponents: [ExpressComponent],
-  providers: [AuthService, AuthGuard, FlashMessagesService],
+  providers: [AuthService, AuthGuard, FlashMessagesService,EncuestaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

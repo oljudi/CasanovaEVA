@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@nebular/theme/styles/prebuilt/corporate.css",
               "../CasanovaEva/node_modules/bootswatch/dist/sandstone/bootstrap.css",
               "../CasanovaEva/node_modules/font-awesome/css/font-awesome.css",
               "src/styles.css"
