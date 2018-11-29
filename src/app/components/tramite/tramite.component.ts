@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+
 import { faTired, faSadTear, faGrin, faSmileBeam, faCheckSquare, faTimesCircle, faMeh, faHourglassStart, faHourglassHalf, faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-tramite',
   templateUrl: './tramite.component.html',
-  styleUrls: ['./tramite.component.css']
+  styleUrls: ['./tramite.component.css'],
+  providers: [{
+    provide: MAT_STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
+  }]
 })
 export class TramiteComponent implements OnInit {
 
@@ -56,5 +62,6 @@ export class TramiteComponent implements OnInit {
   faHourglassStart = faHourglassStart;
   faHourglassHalf = faHourglassHalf;
   faHourglassEnd = faHourglassEnd;
+  fa
   
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea } from '@fortawesome/free-solid-svg-icons';
+import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faParachuteBox } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -40,4 +40,5 @@ export class EncuestaComponent implements OnInit {
   faSignInAlt = faSignInAlt;
   faHome = faHome;
   faVoteYea = faVoteYea;
+  faParachuteBox = faParachuteBox;
 }
