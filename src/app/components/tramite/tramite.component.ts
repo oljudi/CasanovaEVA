@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faTired, faSadTear, faGrin, faSmileBeam, faCheckSquare, faTimesCircle, faMeh, faHourglassStart, faHourglassHalf, faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
+import { faTired, faSadTear, faGrin, faSmileBeam, faCheckSquare, faTimesCircle, faMeh, faHourglassStart, faHourglassHalf, faHourglassEnd, faVoteYea } from '@fortawesome/free-solid-svg-icons';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
@@ -62,6 +62,6 @@ export class TramiteComponent implements OnInit {
   faHourglassStart = faHourglassStart;
   faHourglassHalf = faHourglassHalf;
   faHourglassEnd = faHourglassEnd;
-  fa
+  faVoteYea = faVoteYea;
   
 }

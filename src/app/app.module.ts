@@ -37,6 +37,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { EncuestaService } from './services/encuesta.service';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { NavbardownComponent } from './components/navbardown/navbardown.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     ThankyouComponent,
     NavbarComponent,
     EncuestaComponent,
-    ReportsComponent
+    ReportsComponent,
+    NavbardownComponent
   ],
   imports: [
     MatStepperModule,

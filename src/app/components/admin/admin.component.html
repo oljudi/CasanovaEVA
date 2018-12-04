@@ -1,13 +1,15 @@
 <app-navbar></app-navbar>
 
-<!-- Pagina de Beinvenida-->
+<!-- Pagina de Bienvenida-->
 <div class="card col-md-2 mt-3 text-white" style="background-color: #2a206f"><strong><h2>Bienvenid@:</h2></strong></div>
 
+<!-- Resumen Encuestas-->
 <div class="card border-success mt-3 mr-3 ml-3">
         <div class="card-header text-center text-white" style="background-color: #2a206f"><strong><h2>Resumen del Dia</h2></strong></div>
 <div class="row">
     <div class="col-sm-6">
-        <div class="card mt-3 mb-3">
+        <div class="card border-primary mt-3 mb-3">
+            <div class="card-header text-center"><strong>Ultimas Encuestas</strong></div>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
@@ -84,6 +86,7 @@
                                 </div>
                             </div>
                         </div>
+                    <div class="card-footer text-muted text-left"><small>*Calificacion basada a 2 meses</small></div>
                 </div>
             </div>
         </div>
@@ -92,11 +95,13 @@
     <div class="card-footer text-muted text-right">Ultima Actualizacion</div>
 </div>
 
+<!-- Resumen Preguntas-->
 <div class="card border-success mt-3 mr-3 ml-3">
         <div class="card-header text-center text-white" style="background-color: #2a206f"><strong><h2>Resumen Preguntas</h2></strong></div>
 <div class="row">
     <div class="col-sm-6">
-        <div class="card mt-3 mb-3">
+        <div class="card border-primary mt-3 mb-3">
+        <div class="card-header text-center"><strong>Ultimas Encuestas</strong></div>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
@@ -158,48 +163,50 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card mt-3">
-                        <div class="card-header text-center text-white" style="background-color: #2a206f"><strong>Encuestas Contestadas</strong></div>
+                        <div class="card-header text-center text-white" style="background-color: #2a206f"><strong>Resumen Preguntas</strong></div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="card">
-                                    <div class="card-header bg-success text-white"><strong>Encuestas Realizadas</strong></div>
+                                    <div class="card-header bg-success text-white"><strong>Mejor Calificacion</strong></div>
                                     <div class="card-body">
-                                        Contador de Encuestas
+                                        Promedio Mejor Pregunta
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="card">
-                                    <div class="card-header bg-info text-white"><strong>Registros Ingresados</strong></div>
+                                    <div class="card-header bg-danger text-white"><strong>Peor Calificacion</strong></div>
                                     <div class="card-body">
-                                        Contador de Registros
+                                        Promedio Peor Pregunta
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="card-footer text-muted text-left"><small>*Calificacion basada a 2 meses</small></div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="card mt-3 ml-3 mr-3">
-                        <div class="card-header text-center text-white" style="background-color: #2a206f"><strong>Promedio Calificacion Sucursal</strong></div>
+                        <div class="card-header text-center text-white" style="background-color: #2a206f"><strong>Calificacion Servicios</strong></div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="card">
-                                    <div class="card-header bg-warning text-white text-center"><strong>Promedio Actual</strong></div>
+                                    <div class="card-header bg-success text-white text-center"><strong>Mejor Servicio</strong></div>
                                     <div class="card-body">
-                                        Calif Sucursal
+                                        Calif Mejor Servicio
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="card">
-                                    <div class="card-header bg-primary text-white text-center"><strong>Meta Actual</strong></div>
+                                    <div class="card-header bg-danger text-white text-center"><strong>Servicio con problemas</strong></div>
                                     <div class="card-body">
-                                    Promesa Sucursal
+                                        Calif Peor Servicio
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    <div class="card-footer text-muted text-left"><small>*Calificacion basada a 2 meses</small></div>
                 </div>
             </div>
         </div>
