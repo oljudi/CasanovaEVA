@@ -1,97 +1,167 @@
 <app-navbar></app-navbar>
 
-<div class="row mt-3 ml-3 mr-3">
-    <div class="card border-primary col-3 text-center text-white">
-        <div class="nav nav-tabs flex-column text-white mr-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-item nav-link active" data-toggle="pill" href="#v-pills-graficos" role="tab" aria-controls="v-pills-graficos" aria-selected="true"><strong><h5>Graficos</h5></strong></a>
-            <a class="nav-item nav-link" data-toggle="pill" href="#v-pills-encuestas" role="tab" aria-controls="v-pills-encuestas" aria-selected="false"><strong><h5>Encuestas</h5></strong></a>
-            <a class="nav-item nav-link" data-toggle="pill" href="#v-pills-preguntas" role="tab" aria-controls="v-pills-preguntas" aria-selected="false"><strong><h5>Preguntas</h5></strong></a>
-           <a class="nav-item nav-link" data-toggle="pill" href="#v-pills-rastreo" role="tab" aria-controls="v-pills-rastreo" aria-selected="false"><strong><h5>Rastrear Encuestas</h5></strong></a>
+<!-- Pagina de Reportes-->
+<div class="card col-md-2 mt-3 text-white text-center" style="background-color: #2a206f"><strong><h2>SEVS-Reportes</h2></strong></div>
+
+<ul class="nav nav-pills mb-3 justify-content-center flex-column flex-sm-row">
+    <li class="nav-item">
+      <a class="nav-link active text-white mr-2" style="background-color:#2a206f" id="pills-graficas-tab" data-toggle="pill" href="#pills-graficas" role="tab" aria-controls="pills-graficas" aria-selected="true"><h5><strong>Graficas detalladas</strong></h5></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white mr-2" style="background-color:#2a206f" id="pills-encuesta-tab" data-toggle="pill" href="#pills-encuesta" role="tab" aria-controls="pills-encuesta" aria-selected="false"><h5><strong>Reporte Encuesta</strong></h5></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" style="background-color:#2a206f" id="pills-pregunta-tab" data-toggle="pill" href="#pills-pregunta" role="tab" aria-controls="pills-pregunta" aria-selected="false"><h5><strong>Reporte Preguntas</strong></h5></a>
+    </li>
+</ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-graficas" role="tabpanel" aria-labelledby="pills-graficas-tab">
+            <div class="col order-first">
+                <div class="tab-pane fade show active" id="v-pills-graficos" role="tabpanel" aria-labelledby="v-pills-graficos-tab">
+                    <div class="card border-primary mt-3">
+                        <div class="card-header text-center text-white" style="background-color: #F2AE2E"><strong><h3>Calificacion Preguntas Generales</h3></strong></div>
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>El tiempo que trasncurrio para que lo atendieran<br> fue...</strong></small></div>
+                                    <div class="card-body">grafico P1-g</div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>¿Como calificaría la imagen de nuestras instalaciones?</strong></small></div>
+                                    <div class="card-body">grafico P2-g</div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>La atención que recibió de nuestro asesor de servicio fue….</strong></small></div>
+                                    <div class="card-body">grafico P3-g</div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Considera que la imagen de nuestro asesor de servicio es…</strong></small></div>
+                                    <div class="card-body">grafico P4-g</div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Le entregaron su vehículo …<br>_</strong></small></div>
+                                    <div class="card-body">grafico P5-g</div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>La experiencia en general de su visita a Casanova fue…</strong></small></div>
+                                    <div class="card-body">grafico P6-g</div>
+                                </div>
+                            </div>
+                        <div class="card-footer text-right text-white" style="background-color: #F2AE2E">*Basado en las untimas 30 encuestas<br>Ultima Actualizacion</div>
+                    </div>  
+                </div>
+            </div>
+            <div class="col order-last">
+                        <div class="card border-primary mt-3 mb-3">
+                                <div class="card-header text-center text-white" style="background-color: #F2AE2E"><strong><h3>Calificaciones por Servicio</h3></strong></div>
+                                    <div class="card-group">
+                                        <div class="card bg-info">
+                                            <div class="card-header text-white text-center"><strong><h3>Express</h3></strong></div>
+                                            <div class="card-group">
+                                                <div class="card">
+                                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Informacion de servicio adicional...</strong></small></div>
+                                                    <div class="card-body">grafico P1-e</div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Tiempo de entrega...</strong></small></div>
+                                                    <div class="card-body">grafico P2-e</div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="card bg-danger">
+                                            <div class="card-header text-white text-center"><strong><h3>Reparacion</h3></strong></div>
+                                            <div class="card-group">
+                                                <div class="card">
+                                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Informacion de servicio adicional..</strong></small></div>
+                                                    <div class="card-body">grafico P1-r</div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Entrega en tiempo...</strong></small></div>
+                                                    <div class="card-body">grafico P2-r</div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="card bg-success">
+                                            <div class="card-header text-white text-center"><strong><h3>Tramite</h3></strong></div>
+                                            <div class="card-group">
+                                                <div class="card">
+                                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Se informa de cita a verificacion...</strong></small></div>
+                                                    <div class="card-body">grafico P1-r</div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Entrega en tiempo...</strong></small></div>
+                                                    <div class="card-body">grafico P2-r</div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                <div class="card-footer text-right text-white" style="background-color: #F2AE2E">*Basado en las ultimas 30 Encuestas<br>Ultima Actualizacion</div>
+                            </div>  
+            
+            </div>
+    </div>
+    <div class="tab-pane fade" id="pills-encuesta" role="tabpanel" aria-labelledby="pills-encuesta-tab">
+        <div class="">
+            <div class="row">
+                <div class="col order-first table-responsive">
+                    <div class="text-center text-white" style="background-color: #2a206f"><h4><strong> Ultimas encuestas</strong></h4></div>
+                        <table class="table table-hover">
+                                <thead class="thead-dark">
+                                  <tr class="table-secondary">
+                                    <th scope="col"># de Registro</th>
+                                    <th scope="col">Tipo de Servicio</th>
+                                    <th scope="col">Calf. Encuesta</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr class="table-success">
+                                    <th scope="row">Success</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                  </tr>
+                                  <tr class="table-danger">
+                                    <th scope="row">Danger</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                  </tr>
+                                  <tr class="table-info">
+                                    <th scope="row">Info</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                  </tr>
+                                </tbody>
+                              </table> 
+                </div>
+                <div class="col order-last">
+                        <table class="table table-hover">
+                                <thead class="thead-dark">
+                                  <tr class="table-secondary">
+                                    <th scope="col"># de Registro</th>
+                                    <th scope="col">Tipo de Servicio</th>
+                                    <th scope="col">Calf. Encuesta</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr class="table-success">
+                                    <th scope="row">Success</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                  </tr>
+                                  <tr class="table-danger">
+                                    <th scope="row">Danger</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                  </tr>
+                                  <tr class="table-info">
+                                    <th scope="row">Info</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                  </tr>
+                                </tbody>
+                              </table> 
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-9" style="background-color: #2a206f">
-        <div class="tab-content" id="v-pills-tabContent">
-            <!-- Graficos -->
-        <div class="tab-pane fade show active" id="v-pills-graficos" role="tabpanel" aria-labelledby="v-pills-graficos-tab">
-            <div class="card mt-3">
-                <div class="card-header text-center text-white" style="background-color: #F2AE2E"><strong><h3>Calificacion Preguntas Generales</h3></strong></div>
-                    <div class="card-group">
-                        <div class="card">
-                            <div class="card-header text-white" style="background-color: #2a206f"><small><strong>El tiempo que trasncurrio para que lo atendieran fue...</strong></small></div>
-                            <div class="card-body">grafico P1-g</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header text-white" style="background-color: #2a206f"><small><strong>¿Como calificaría la imagen de nuestras instalaciones?</strong></small></div>
-                            <div class="card-body">grafico P2-g</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header text-white" style="background-color: #2a206f"><small><strong>La atención que recibió de nuestro asesor de servicio fue….</strong></small></div>
-                            <div class="card-body">grafico P3-g</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Considera que la imagen de nuestro asesor de servicio es…</strong></small></div>
-                            <div class="card-body">grafico P4-g</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Le entregaron su vehículo…</strong></small></div>
-                            <div class="card-body">grafico P5-g</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header text-white" style="background-color: #2a206f"><small><strong>La experiencia en general de su visita a Casanova fue…</strong></small></div>
-                            <div class="card-body">grafico P6-g</div>
-                        </div>
-                    </div>
-            </div>  
-            <div class="card mt-3 mb-1">
-                    <div class="card-header text-center text-white" style="background-color: #F2AE2E"><strong><h3>Calificaciones por Servicio</h3></strong></div>
-                        <div class="card-group">
-                            <div class="card bg-info">
-                                <div class="card-header text-white text-center"><strong><h3>Express</h3></strong></div>
-                                <div class="card-group">
-                                    <div class="card">
-                                        <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Informacion de servicio adicional...</strong></small></div>
-                                        <div class="card-body">grafico P1-e</div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Tiempo de entrega...</strong></small></div>
-                                        <div class="card-body">grafico P2-e</div>
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="card bg-danger">
-                                <div class="card-header text-white text-center"><strong><h3>Reparacion</h3></strong></div>
-                                <div class="card-group">
-                                    <div class="card">
-                                        <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Informacion de servicio adicional..</strong></small></div>
-                                        <div class="card-body">grafico P1-r</div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Entrega en tiempo...</strong></small></div>
-                                        <div class="card-body">grafico P2-r</div>
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="card bg-success">
-                                <div class="card-header text-white text-center"><strong><h3>Tramite</h3></strong></div>
-                                <div class="card-group">
-                                    <div class="card">
-                                        <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Se informa de cita a verificacion...</strong></small></div>
-                                        <div class="card-body">grafico P1-r</div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header text-white" style="background-color: #2a206f"><small><strong>Entrega en tiempo...</strong></small></div>
-                                        <div class="card-body">grafico P2-r</div>
-                                    </div>
-                                  </div>
-                            </div>
-                        </div>
-                </div>  
+    <div class="tab-pane fade" id="pills-pregunta" role="tabpanel" aria-labelledby="pills-pregunta-tab">...</div>
+  </div>
 
-        </div>
-
-        <div class="tab-pane fade" id="v-pills-encuestas" role="tabpanel" aria-labelledby="v-pills-encuestas-tab">ldbfjsdfdkfcbsjkdbf</div>
-        <div class="tab-pane fade" id="v-pills-preguntas" role="tabpanel" aria-labelledby="v-pills-preguntas-tab">...</div>
-        <div class="tab-pane fade" id="v-pills-rastreo" role="tabpanel" aria-labelledby="v-pills-rastreo-tab">...</div>
-        </div>
-    </div>
-</div>
