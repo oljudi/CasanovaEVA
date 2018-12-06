@@ -22,16 +22,18 @@ constructor(
    }
 
   deleteEncuestaex(Encuestaex: EncuestaexInterface){
-    this.EncuestaexDoc = this.afs.doc('Encuestaexes/${Encuestaex.id}');
+    this.EncuestaexDoc = this.afs.doc('Encuestaexes/' + Encuestaex.idencuesta);
     this.EncuestaexDoc.delete();
   }
    updateEncuestaex(Encuestaex: EncuestaexInterface){
-      this.EncuestaexDoc=this.afs.doc('Encuestaexes/${Encuestaex.id}');
+      this.EncuestaexDoc=this.afs.doc('Encuestaexes/' + Encuestaex.idencuesta);
       this.EncuestaexDoc.update(Encuestaex);
     }
 
   addEncuestaex(Encuestaex: EncuestaexInterface){
-    this.EncuestaexCollection.add(Encuestaex);
+    //this.EncuestaexCollection.add(Encuestaex);
+    this.EncuestaexCollection.doc(Encuestaex.idencuesta).set(Encuestaex);
+    
   }
   getOneEncuestaex(idencuesta: string){
     this.EncuestaexDoc = this.afs.doc<EncuestaexInterface>('Encuestaexes/${idencuesta}');

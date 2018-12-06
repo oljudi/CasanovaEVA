@@ -5,8 +5,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {EncuestaexInterface} from '../../Models/Encuestaex';
 import {EncuestaService} from '../../services/encuesta.service';
+import {Observable} from 'rxjs';
+
+
 
 import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+
 
 @Component({
   selector: 'app-express',
@@ -29,18 +33,21 @@ export class ExpressComponent implements OnInit {
   sixFormGroup: FormGroup;
   sevenFormGroup: FormGroup;
   eightFormGroup: FormGroup;
+  preguntad1:number;
+  model: any = {};
+  
   Encuesta: EncuestaexInterface = {
     
     idencuesta: '',
-    pregunta1: '',
-    pregunta2: '',
-    pregunta3: '',
-    pregunta4: '',
-    pregunta5: '',
-    pregunta6: '',
-    pregunta7: '',
-    pregunta8: ''
-    
+    pregunta1: 0,
+    pregunta2: 0,
+    pregunta3: 0,
+    pregunta4: 0,
+    pregunta5: 0,
+    pregunta6: 0,
+    pregunta7: 0,
+    pregunta8: 0,
+    total:0
   }
   constructor(
     private _formBuilder: FormBuilder,
@@ -48,6 +55,9 @@ export class ExpressComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.model.tipo = 'express'; 
+
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -71,8 +81,20 @@ export class ExpressComponent implements OnInit {
     });
   }
   onGuardarEncuesta({value}: {value: EncuestaexInterface}){
-    this.encuestaService.addEncuestaex(value);
+    this.Encuesta.pregunta1=this.preguntad1;
+    console.log(this.Encuesta.pregunta1);
+    //this.encuestaService.addEncuestaex(value);
+    
   }
+  onChange(){
+    
+    console.log(this.Encuesta.pregunta1 );
+        
+    function sum(a:number , b:number):number{
+      
+      return a - b;
+  }
+}
 
   faTired = faTired;
   faSadTear = faSadTear;
