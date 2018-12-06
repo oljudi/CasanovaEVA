@@ -33,12 +33,14 @@ export class ExpressComponent implements OnInit {
   sixFormGroup: FormGroup;
   sevenFormGroup: FormGroup;
   eightFormGroup: FormGroup;
+  x: number;
+  y: number;
   preguntad1:number;
   model: any = {};
   
   Encuesta: EncuestaexInterface = {
     
-    idencuesta: '',
+    id: '',
     pregunta1: 0,
     pregunta2: 0,
     pregunta3: 0,
@@ -94,6 +96,11 @@ export class ExpressComponent implements OnInit {
       
       return a - b;
   }
+}
+onResultado(x){
+  console.log("funcion ok");
+  x=+x;
+  console.log(x);
 }
 
   faTired = faTired;

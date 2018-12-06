@@ -1,5 +1,5 @@
 export interface EncuestaexInterface{
-    idencuesta?:string;
+    id?:string;
     pregunta1?:number;
     pregunta2?:number;
     pregunta3?:number;

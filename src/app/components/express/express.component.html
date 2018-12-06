@@ -103,7 +103,7 @@
             <div class="text-center"><h2><strong>El tiempo que transcurrió para que lo atendieran fue:</strong></h2></div>
             <form>
             <div class="text-center mt-3">
-                <button id="pregunta1" name="pregunta1" type="button" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext value="1"><fa-icon [icon]="faTired" class="fa-6x" style="color: red"></fa-icon></button>
+                <button id="pregunta1" name="pregunta1" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext value="1" (click)="onResultado(1)"><fa-icon [icon]="faTired" class="fa-6x" style="color: red"></fa-icon></button>
                 <button id="pregunta1" name="pregunta1" type="button" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext value="2"><fa-icon [icon]="faSadTear" class="fa-6x" style="color: orange"></fa-icon></button>
                 <button id="pregunta1" name="pregunta1" type="button" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext value="3"><fa-icon [icon]="faMeh" class="fa-6x" style="color: rgb(206, 206, 12)"></fa-icon></button>
                 <button id="pregunta1" name="pregunta1" type="button" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext value="4"><fa-icon [icon]="faGrin" class="fa-6x" style="color: yellowgreen"></fa-icon></button>
@@ -115,7 +115,7 @@
             <div class="text-center"><h2><strong>Después de realizado el diagnóstico del vehiculo, ¿se le proporcionó la información detallada del trabajo a realizar y el tiempo estimado de entrega?</strong></h2></div>
             <form>
             <div class="text-center mt-3">
-                <button id="pregunta2" name="pregunta2" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext value="10"><fa-icon [icon]="faCheckSquare" class="fa-7x" style="color: green"></fa-icon></button>
+                <button id="pregunta2" name="pregunta2" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext value="10" (click)="onResultado(2)"><fa-icon [icon]="faCheckSquare" class="fa-7x" style="color: green"></fa-icon></button>
                 <button id="pregunta2" name="pregunta2" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext value="5"><fa-icon [icon]="faTimesCircle" class="fa-7x" style="color: red"></fa-icon></button>
             </div>
             </form>
