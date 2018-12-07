@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { faTired, faSadTear, faGrin, faSmileBeam, faCheckSquare, faTimesCircle, faMeh, faHourglassStart, faHourglassHalf, faHourglassEnd, faVoteYea } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {EncuestaexInterface} from '../../Models/Encuestaex';
 import {EncuestaService} from '../../services/encuesta.service';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 
 
 
@@ -21,7 +21,11 @@ import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
   }]
 })
 
+
 export class ExpressComponent implements OnInit {
+  
+  
+
 
   isEditable =  false;
   isLinear = false;
@@ -33,14 +37,26 @@ export class ExpressComponent implements OnInit {
   sixFormGroup: FormGroup;
   sevenFormGroup: FormGroup;
   eightFormGroup: FormGroup;
+  nom:any;
   x: number;
   y: number;
   preguntad1:number;
-  model: any = {};
+  ident: string;
+  idents: string;
+  model: any = {
+    p1:0,
+    p2:0,
+    p3:0,
+    p4:0,
+    p5:0,
+    p6:0,
+    p7:0,
+    p8:0
+  };
   
   Encuesta: EncuestaexInterface = {
     
-    id: '',
+    
     pregunta1: 0,
     pregunta2: 0,
     pregunta3: 0,
@@ -54,11 +70,16 @@ export class ExpressComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private encuestaService: EncuestaService
-  ) { }
+    
+    
+  ) { 
+    this.nom = this.encuestaService.getidEncuestaex();
+    this.ident = this.nom[1];
+  }
 
   ngOnInit() {
-
-    this.model.tipo = 'express'; 
+    
+    
 
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -81,25 +102,68 @@ export class ExpressComponent implements OnInit {
     this.sevenFormGroup = this._formBuilder.group({
       sevenFormGroup: ['', Validators.required]
     });
+
+    
+    
   }
   onGuardarEncuesta({value}: {value: EncuestaexInterface}){
-    this.Encuesta.pregunta1=this.preguntad1;
-    console.log(this.Encuesta.pregunta1);
-    //this.encuestaService.addEncuestaex(value);
+    
+    value.pregunta1 = this.model.p1;
+    value.pregunta2 = this.model.p2;
+    value.pregunta3 = this.model.p3;
+    value.pregunta4 = this.model.p4;
+    value.pregunta5 = this.model.p5;
+    value.pregunta6 = this.model.p6;
+    value.pregunta7 = this.model.p7;
+    value.pregunta8 = this.model.p8;
+    
+    this.encuestaService.updateEncuestaex(value);
     
   }
   onChange(){
     
-    console.log(this.Encuesta.pregunta1 );
+   
         
     function sum(a:number , b:number):number{
       
       return a - b;
   }
+  
 }
-onResultado(x){
-  console.log("funcion ok");
-  x=+x;
+
+p1ex(x){
+  this.model.p1 = x;
+
+  console.log(x);
+  console.log(this.Encuesta.id);
+  console.log(this.nom.id);
+}
+p2ex(x){
+  this.model.p2 = x;
+  console.log(x);
+}
+p3ex(x){
+  this.model.p3 = x;
+  console.log(x);
+}
+p4ex(x){
+  this.model.p4 = x;
+  console.log(x);
+}
+p5ex(x){
+  this.model.p5 = x;
+  console.log(x);
+}
+p6ex(x){
+  this.model.p6 = x;
+  console.log(x);
+}
+p7ex(x){
+  this.model.p7 = x;
+  console.log(x);
+}
+p8ex(x){
+  this.model.p8 = x;
   console.log(x);
 }
 

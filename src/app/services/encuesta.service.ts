@@ -50,7 +50,7 @@ constructor(
     this.P3exCollection.doc(Encuestaex.id).set(Encuestaex);
     this.P4exCollection.doc(Encuestaex.id).set(Encuestaex);
     this.P5exCollection.doc(Encuestaex.id).set(Encuestaex);
-    this.typeCollection.doc(Encuestaex.id).set(Encuestaex);
+    //this.typeCollection.doc(Encuestaex.id).set(Encuestaex);
   }
   getOneEncuestaex(id: string){
     this.EncuestaexDoc = this.afs.doc<EncuestaexInterface>('Encuestaexes/${id}');
@@ -66,6 +66,17 @@ constructor(
   }
   getAllEncuestaex():Observable<EncuestaexInterface[]>{
     this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(action => {
+        const data = action.payload.doc.data() as EncuestaexInterface;
+        data.id = action.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.Encuestaexes;
+  }
+  getidEncuestaex():Observable<EncuestaexInterface[]>{
+    this.Encuestaexes = this.typeCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as EncuestaexInterface;
