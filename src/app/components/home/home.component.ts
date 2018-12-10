@@ -22,16 +22,20 @@ export class HomeComponent implements OnInit {
     public encuestase:EncuestaService,
     public router: Router,
   ) {
-    this.name=this.idenc;
+    
   }
   
 onEncuesta({value}: {value: EncuestaexInterface}){
-      this.router.navigate(['/express']);
+  this.name=this.idenc.toUpperCase();
+      this.router.navigate(['/express/'+this.name]);
     
-    value.id=this.idenc
-   
+    value.id=this.name;
+    
+    
     this.encuestase.addEncuestaex(value);
+    
   }
+  
 
   ngOnInit() {
   }

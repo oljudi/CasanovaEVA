@@ -178,14 +178,14 @@
         </mat-step>
         <mat-step state="thanks" editable="false">
                 <div class="col-md-5 mx-auto mt-5">
-                    <form #formguardar="ngForm" (ngSubmit)="onGuardarEncuesta(formguardar)">
+                    <form #formguardar="ngForm" (ngSubmit)="sum();onGuardarEncuesta(formguardar)">
                         <div class="card mb-3" style="max-width: 20rem;" style="background-color: #2a206f">  
                             <div class="card-header text-center">
                                 <img class="card-img-top" src="https://image.ibb.co/bCk0H0/Casanova-Logo.png" alt="casanova-renta-de-autos-24">
                             </div>
                             <div class="card-header text-center text-white"><h5><strong>¡¡Muchas gracias por tu evaluacion!!</strong></h5></div>
                             <div class="card-body text-center text-white form-group"><h5><strong>¡¡Tu opinion es muy importante para nosotros!!</strong></h5><br><h5><strong>Porfavor regresa el dispositivo a tu asesor mas cercano</strong></h5></div>
-                                <button type="submit" value="Guardar" class="btn btn-warning text-center btn-block" ><fa-icon [icon]="faVoteYea" class="fa-2x"></fa-icon><h4>Nueva Encuesta</h4></button>
+                                <button type="submit" value="Guardar" class="btn btn-warning text-center btn-block"  ><fa-icon [icon]="faVoteYea" class="fa-2x"></fa-icon><h4>Nueva Encuesta</h4></button>
                         </div>
                     </form>
                 </div>
@@ -205,10 +205,6 @@
             <mat-icon>thumb_up</mat-icon>
         </ng-template>
 </mat-horizontal-stepper>
-
-<select name="id" class="form-control " [(ngModel)]="ident" #proveedor="ngModel"  >
-    <option [ngValue]="encuestaService.iden" *ngFor="let encuestaService of nom | async"   >{{encuestaService.iden}}</option>
-</select>
 
 
 

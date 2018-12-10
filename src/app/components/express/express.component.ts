@@ -10,6 +10,9 @@ import {Observable, Subscription} from 'rxjs';
 
 
 import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { Router, ActivatedRoute } from '@angular/router';
+import { formatDate } from '@angular/common';
+
 
 
 @Component({
@@ -37,12 +40,11 @@ export class ExpressComponent implements OnInit {
   sixFormGroup: FormGroup;
   sevenFormGroup: FormGroup;
   eightFormGroup: FormGroup;
-  nom:any;
   x: number;
   y: number;
   preguntad1:number;
   ident: string;
-  idents: string;
+  mod:any = {};
   model: any = {
     p1:0,
     p2:0,
@@ -56,7 +58,7 @@ export class ExpressComponent implements OnInit {
   
   Encuesta: EncuestaexInterface = {
     
-    
+    fecha:'',
     pregunta1: 0,
     pregunta2: 0,
     pregunta3: 0,
@@ -69,12 +71,14 @@ export class ExpressComponent implements OnInit {
   }
   constructor(
     private _formBuilder: FormBuilder,
-    private encuestaService: EncuestaService
+    private encuestaService: EncuestaService,
+    private router: Router,
+    private route: ActivatedRoute
     
     
   ) { 
-    this.nom = this.encuestaService.getidEncuestaex();
-    this.ident = this.nom[1];
+   const today = new Date();
+   this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
   }
 
   ngOnInit() {
@@ -103,11 +107,11 @@ export class ExpressComponent implements OnInit {
       sevenFormGroup: ['', Validators.required]
     });
 
-    
+    this.onChange();
     
   }
   onGuardarEncuesta({value}: {value: EncuestaexInterface}){
-    
+    value.id = this.ident;
     value.pregunta1 = this.model.p1;
     value.pregunta2 = this.model.p2;
     value.pregunta3 = this.model.p3;
@@ -116,27 +120,35 @@ export class ExpressComponent implements OnInit {
     value.pregunta6 = this.model.p6;
     value.pregunta7 = this.model.p7;
     value.pregunta8 = this.model.p8;
-    
+    value.fecha = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
+    value.total= this.y;
+    this.encuestaService.addEcuescont(value);
     this.encuestaService.updateEncuestaex(value);
+    this.encuestaService.updatep1(value); 
+    this.encuestaService.updatep2(value);
+    this.encuestaService.updatep3(value);
+    this.encuestaService.updatep4(value);
+    this.encuestaService.updatep5(value);
+    this.encuestaService.updatep6(value);
+    this.encuestaService.updatep7(value);
+    this.encuestaService.updatep8(value);
+    
+
+    this.router.navigate(['/home']);
+    
     
   }
   onChange(){
     
-   
-        
-    function sum(a:number , b:number):number{
-      
-      return a - b;
+      this.ident=this.route.snapshot.params['id'];
   }
-  
-}
+
+
+
 
 p1ex(x){
   this.model.p1 = x;
 
-  console.log(x);
-  console.log(this.Encuesta.id);
-  console.log(this.nom.id);
 }
 p2ex(x){
   this.model.p2 = x;
@@ -165,6 +177,10 @@ p7ex(x){
 p8ex(x){
   this.model.p8 = x;
   console.log(x);
+}
+sum(){
+
+  this.y =  this.model.p1+this.model.p2+this.model.p3+this.model.p4+this.model.p5+this.model.p6+this.model.p7+this.model.p8;
 }
 
   faTired = faTired;
