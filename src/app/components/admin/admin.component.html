@@ -10,7 +10,7 @@
     <div class="col-sm-6">
         <div class="card border-primary mt-3 mb-3">
             <div class="card-header text-center"><strong>Ultimas Encuestas</strong></div>
-            <form *ngFor="let encuestaex of listadoEncuestaex | async"> 
+            <form *ngFor="let encuestaex of listadoEncuestaex | async"  > 
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
@@ -26,7 +26,7 @@
                         <th scope="row">{{encuestaex.id}}</th>
                         <td>{{encuestaex.fecha}}</td>
                         <td>La Viga</td>
-                        <td>{{encuestaex.total}} / 55</td>
+                        <td itemid="list">{{encuestaex.total}} / 55</td>
                     </tr>
                     </tbody>
                     <tbody>
@@ -91,6 +91,7 @@
                     <div class="card-footer text-muted text-left"><small>*Calificacion basada a 2 meses</small></div>
                 </div>
             </div>
+            <p>{{p1}}</p>
         </div>
     </div>
 </div>
