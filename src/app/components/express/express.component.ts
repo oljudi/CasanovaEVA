@@ -122,16 +122,11 @@ export class ExpressComponent implements OnInit {
     value.pregunta8 = this.model.p8;
     value.fecha = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
     value.total= this.y;
+
+    
     this.encuestaService.addEcuescont(value);
     this.encuestaService.updateEncuestaex(value);
-    this.encuestaService.updatep1(value); 
-    this.encuestaService.updatep2(value);
-    this.encuestaService.updatep3(value);
-    this.encuestaService.updatep4(value);
-    this.encuestaService.updatep5(value);
-    this.encuestaService.updatep6(value);
-    this.encuestaService.updatep7(value);
-    this.encuestaService.updatep8(value);
+ 
     
 
     this.router.navigate(['/home']);

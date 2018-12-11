@@ -5,7 +5,8 @@ import { query } from '@angular/core/src/render3';
 import { last } from '@angular/router/src/utils/collection';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
+import { faTintSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -15,13 +16,15 @@ import { map } from 'rxjs/operators';
 export class AdminComponent implements OnInit {
 
   listadoEncuestaex: any={};
-  list: any={};
-  p1: any;
+  list: Observable<EncuestaexInterface[]>;
+  p1: number[];
   sumas:number;
   sucursals:string;
   contador: number;
   contadorre: number;
-  i:number;
+  invoiceCol: AngularFirestoreCollection<EncuestaexInterface>;
+  conten: Observable<EncuestaexInterface[]>;
+  invoiceArray: EncuestaexInterface[];
   constructor(
     private encuestaex: EncuestaService,
     private afs: AngularFirestore
@@ -32,12 +35,21 @@ export class AdminComponent implements OnInit {
   cont(){
     this.afs.collection('Encuestaexes').valueChanges().subscribe(values => this.contadorre = values.length);
     this.afs.collection('type').valueChanges().subscribe(values => this.contador = values.length);
+    this.list = this.encuestaex.getOneEncuestaex();
     
-    var col = this.afs.collection('Encuestaexes', querys => querys.where('total','>=', 10));
-    col.get().subscribe(snapshot =>{ snapshot.docs.forEach(doc => {this.list[doc.id] =( doc.data())})})
+
+    
+      this.afs.collection('Encuestaexes').doc('VI0001').valueChanges().pipe(take(1)).subscribe(res => {this.arras(res)} );
     
     
-    console.log(this.list);
+    //console.log(this.list);
+    
+}
+
+  arras( x: EncuestaexInterface){
+    
+      console.log(x.total);
+    
     
   }
   ngOnInit() {
