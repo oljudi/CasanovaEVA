@@ -81,7 +81,7 @@ constructor(
     this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
-        const data = action.payload.doc.data().total as EncuestaexInterface;
+        const data = action.payload.doc.id as EncuestaexInterface;
         //data.id = action.payload.doc.id;
         
         

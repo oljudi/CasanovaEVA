@@ -10,7 +10,7 @@
     <div class="col-sm-6">
         <div class="card border-primary mt-3 mb-3">
             <div class="card-header text-center"><strong>Ultimas Encuestas</strong></div>
-            <form *ngFor="let encuestaex of listadoEncuestaex | async"  > 
+            <form> 
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
@@ -22,12 +22,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="table-danger" >
+                    <tr class="table-danger"  *ngFor="let encuestaex of listadoEncuestaex | async"   >
                         <th scope="row">{{encuestaex.id}}</th>
                         <td>{{encuestaex.fecha}}</td>
                         <td>La Viga</td>
                         <td >{{encuestaex.total}} / 55</td>
-                        <td> <button type="checkbox" name="calif" id="calif" > </button></td>
+                        
                     </tr>
                     </tbody>
                     <tbody>
@@ -77,6 +77,7 @@
                                 <div class="card">
                                     <div class="card-header bg-warning text-white text-center"><strong>Promedio Actual</strong></div>
                                     <div class="card-body">
+                                        {{prome}}
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +85,7 @@
                                 <div class="card">
                                     <div class="card-header bg-primary text-white text-center"><strong>Meta Actual</strong></div>
                                     <div class="card-body">
-                                    Promesa Sucursal
+                                    38
                                     </div>
                                 </div>
                             </div>
@@ -120,26 +121,23 @@
                         <th scope="col">P 6</th>
                         <th scope="col">P 7</th>
                         <th scope="col">P 8</th>
-                        <th scope="col">P 9</th>
-                        <th scope="col">P 10</th>
                         <th scope="col">Calif</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="table-danger">
-                        <th scope="row">VI1234 </th>
+                    <tr class="table-danger"  *ngFor="let encuestaex of listadoEncuestaex | async"  >
+                        <th scope="row">{{encuestaex.id}} </th>
                         <td>Express</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
+                        <td>{{encuestaex.pregunta1}}</td>
+                        <td>{{encuestaex.pregunta2}}</td>
+                        <td>{{encuestaex.pregunta3}}</td>
+                        <td>{{encuestaex.pregunta4}}</td>
+                        <td>{{encuestaex.pregunta5}}</td>
+                        <td>{{encuestaex.pregunta6}}</td>
+                        <td>{{encuestaex.pregunta7}}</td>
+                        <td>{{encuestaex.pregunta8}}</td>
+                        <td>{{encuestaex.total}}</td>
+                        
                     </tr>
                     </tbody>
                     <tbody>
@@ -155,8 +153,7 @@
                         <td>10</td>
                         <td>10</td>
                         <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
+                        
                         </tr>
                         </tbody>
                     </table> 
@@ -167,13 +164,13 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card mt-3">
-                        <div class="card-header text-center text-white" style="background-color: #2a206f"><strong>Resumen Preguntas</strong></div>
+                        <div class="card-header text-center text-white" style="background-color: #2a206f"><strong>Resumen </strong></div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-header bg-success text-white"><strong>Mejor Calificacion</strong></div>
                                     <div class="card-body">
-                                        Promedio Mejor Pregunta
+                                        VI0002
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +178,7 @@
                                 <div class="card">
                                     <div class="card-header bg-danger text-white"><strong>Peor Calificacion</strong></div>
                                     <div class="card-body">
-                                        Promedio Peor Pregunta
+                                            VI0002
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +194,7 @@
                                 <div class="card">
                                     <div class="card-header bg-success text-white text-center"><strong>Mejor Servicio</strong></div>
                                     <div class="card-body">
-                                        Calif Mejor Servicio
+                                        55
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +202,7 @@
                                 <div class="card">
                                     <div class="card-header bg-danger text-white text-center"><strong>Servicio con problemas</strong></div>
                                     <div class="card-body">
-                                        Calif Peor Servicio
+                                        15
                                     </div>
                                 </div>
                             </div>
