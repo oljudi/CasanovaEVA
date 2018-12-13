@@ -11,8 +11,8 @@
         <div class="card border-primary mt-3 mb-3">
             <div class="card-header text-center"><strong>Ultimas Encuestas</strong></div>
             <form> 
-            <div class="card-body">
-                <table class="table table-hover">
+            <div class="card-body scroll" style="height: 800px;">
+                <table class="table table-hover text-center">
                     <thead>
                     <tr>
                         <th scope="col"># de Reporte</th>
@@ -21,6 +21,7 @@
                         <th scope="col">Calificacion</th>
                     </tr>
                     </thead>
+
                     <tbody>
                     <tr class="table-danger"  *ngFor="let encuestaex of listadoEncuestaex | async"   >
                         <th scope="row">{{encuestaex.id}}</th>
@@ -29,15 +30,43 @@
                         <td >{{encuestaex.total}} / 55</td>
                         
                     </tr>
-                    </tbody>
-                    <tbody>
                         <tr class="table-success">
                         <th scope="row">VI1234 </th>
                         <td>03/12/18 - 11:49</td>
                         <td>La viga</td>
                         <td>100/100</td>
                         </tr>
-                        </tbody>
+                        <tr class="table-success">
+                            <th scope="row">VI1234 </th>
+                            <td>03/12/18 - 11:49</td>
+                            <td>La viga</td>
+                            <td>100/100</td>
+                            </tr>
+                            <tr class="table-success">
+                                <th scope="row">VI1234 </th>
+                                <td>03/12/18 - 11:49</td>
+                                <td>La viga</td>
+                                <td>100/100</td>
+                                </tr>
+                                <tr class="table-success">
+                                    <th scope="row">VI1234 </th>
+                                    <td>03/12/18 - 11:49</td>
+                                    <td>La viga</td>
+                                    <td>100/100</td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <th scope="row">VI1234 </th>
+                                        <td>03/12/18 - 11:49</td>
+                                        <td>La viga</td>
+                                        <td>100/100</td>
+                                        </tr>
+                                        <tr class="table-success">
+                                            <th scope="row">VI1234 </th>
+                                            <td>03/12/18 - 11:49</td>
+                                            <td>La viga</td>
+                                            <td>100/100</td>
+                                            </tr>
+                    </tbody>
                     </table> 
                 </div>
             </form>
@@ -51,17 +80,23 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="card">
-                                    <div class="card-header bg-success text-white"><strong>Encuestas Realizadas</strong></div>
-                                    <div class="card-body">
-                                        {{contador}}
+                                    <div id="square" class="card-header text-white text-center" style="background-color: #5AC041"><h5><strong>Encuestas Realizadas</strong></h5></div>
+                                    <div class="card-body text-center">
+                                        <span class="fa-layers fa-fw fa-6x">
+                                            <fa-icon [icon]="faVoteYea"></fa-icon>
+                                            <span class="fa-layers-counter" style="background:Tomato; font-size-adjust: inherit;">{{contador}}</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="card">
-                                    <div class="card-header bg-info text-white"><strong>Registros Ingresados</strong></div>
-                                    <div class="card-body">
-                                        {{contadorre}}
+                                    <div class="card-header bg-info text-white text-center"><h5><strong>Registros Ingresados</strong></h5></div>
+                                    <div class="card-body text-center">
+                                        <span class="fa-layers fa-fw fa-6x">
+                                            <fa-icon [icon]="faBoxes"></fa-icon>
+                                                <span class="fa-layers-counter" style="background:Tomato; font-size-adjust: inherit;">{{contadorre}}</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

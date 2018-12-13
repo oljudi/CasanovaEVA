@@ -6,7 +6,7 @@ import { last } from '@angular/router/src/utils/collection';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { faTintSlash } from '@fortawesome/free-solid-svg-icons';
+import { faTintSlash, faArchive, faVoteYea, faBoxes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -14,6 +14,10 @@ import { faTintSlash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  
+  faArchive = faArchive;
+  faBoxes = faBoxes;
+  faVoteYea = faVoteYea;
 
   listadoEncuestaex: any;
   ens: string;
@@ -85,4 +89,6 @@ arrass(x: EncuestaexInterface): number {
      
   }
   
+
+
 }

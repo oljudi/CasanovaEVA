@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   onSubmitLogin(){
     this.authService.loginEmail(this.email, this.password)
     .then( (res) =>{
-      this.flashMensaje.show('Bienvenido a EVA',
+      this.flashMensaje.show('Bienvenido a SEVS',
       {cssClass: 'alert-success', timeout: 4000 });
       this.router.navigate(['/admin']);
     }).catch((err) => {
