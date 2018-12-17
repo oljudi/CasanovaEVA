@@ -6,7 +6,7 @@ import { last } from '@angular/router/src/utils/collection';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { faTintSlash, faArchive, faVoteYea, faBoxes } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faVoteYea, faBoxes, faStar, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -18,6 +18,9 @@ export class AdminComponent implements OnInit {
   faArchive = faArchive;
   faBoxes = faBoxes;
   faVoteYea = faVoteYea;
+  faTrophy = faTrophy;
+  faStar = faStar;
+
 
   listadoEncuestaex: any;
   ens: string;
@@ -25,7 +28,8 @@ export class AdminComponent implements OnInit {
   p1: EncuestaexInterface;
   sumas:number;
   suma:number;
-  prome:number;
+  prome:string;
+  promedios:string;
   sucursals:string;
   contador: number;
   contadorre: number;
@@ -76,10 +80,11 @@ arrass(x: EncuestaexInterface): number {
       
     
   }
-  prom(x: number): number {
+  prom(x: number): string {
     
     
-  this.prome= (this.suma/this.contador);
+  this.prome= (this.suma/this.contador).toFixed(2);
+  
    return this.prome;
   
   }

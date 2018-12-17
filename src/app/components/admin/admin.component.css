@@ -1,4 +1,4 @@
-.scroll {
-    max-height: 100px;
-    overflow-y: auto;
-}
+#scrolltable { margin-top: 20px; height: 200px; overflow: auto; }
+#scrolltable table { border-collapse: collapse; }
+#scrolltable tr:nth-child(even) { background: #EEE; }
+#scrolltable th div { position: absolute; margin-top: -20px; }
