@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule, MatIconModule, MatFormFieldModule, MatTab, MatTabsModule, MatCheckboxModule } from '@angular/material';
 
@@ -38,6 +40,8 @@ import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { EncuestaService } from './services/encuesta.service';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NavbardownComponent } from './components/navbardown/navbardown.component';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,7 @@ import { NavbardownComponent } from './components/navbardown/navbardown.componen
     NavbardownComponent
   ],
   imports: [
+    NgxSpinnerModule,
     MatStepperModule,
     MatTabsModule,
     MatCheckboxModule, 

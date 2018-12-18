@@ -6,7 +6,7 @@ import { last } from '@angular/router/src/utils/collection';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { faArchive, faVoteYea, faBoxes, faStar, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -20,6 +20,8 @@ export class AdminComponent implements OnInit {
   faVoteYea = faVoteYea;
   faTrophy = faTrophy;
   faStar = faStar;
+  faThumbsUp = faThumbsUp;
+  faThumbsDown = faThumbsDown;
 
 
   listadoEncuestaex: any;
