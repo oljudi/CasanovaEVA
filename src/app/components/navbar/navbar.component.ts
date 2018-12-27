@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faArchive, faCarCrash, faPeopleCarry } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '../../services/auth.service';
+import { RegistroInterface } from 'src/app/Models/registro';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -13,23 +16,53 @@ export class NavbarComponent implements OnInit {
   public isLogin: boolean;
   public nombreUsuario: string;
   public emailUsuario: string;
-
+  user: RegistroInterface ={
+    nombre:'',
+    correo:'',
+    admin:false,
+    suadmin:false,
+    id: ''
+  };
+  nomUsuario: any;
   constructor(
+    private afs: AngularFirestore,
     public AuthService: AuthService
   ) { }
 
   ngOnInit() {
-    this.AuthService.getAuth().subscribe( auth =>{
-      if(auth){
+    this.AuthService.getAuth().subscribe( user =>{
+      if(user){
         this.isLogin=true;
-        this.nombreUsuario = auth.displayName;
-        this.emailUsuario = auth.email;
+        this.emailUsuario = user.email;
+       this.nombreusuaro(this.emailUsuario);
+        //console.log(this.nomUsuario);
       } else{
         this.isLogin = false;
       }
     });
-  }
+//    this.nomUsuario =this.nombreusuaro();
 
+
+    
+  }
+  nombreusuaro(x:string){
+    
+    this.afs.collection('Registro').doc(x).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );
+    //this.AuthService.getUser(this.emailUsuario);
+    
+  }
+  arrass(x: RegistroInterface): string {
+    
+     this.nomUsuario= x.nombre;
+    
+    console.log(x.nombre);
+    console.log(this.nomUsuario);
+    
+  
+   return this.nomUsuario;
+  
+  }
+  
   onClickLogOut(){
     this.AuthService.logout();
   }

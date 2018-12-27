@@ -29,11 +29,11 @@ export class RegisterComponent implements OnInit {
   addnewuser(){
     this.authservice.registeruser(this.email,this.pass)
     .then((res)=>{
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/login'])
     }).catch(err=> console.log('err',err.message));
   }
   guardarregistro({value}: {value: RegistroInterface}){
-    let userID  = auth().currentUser!.uid;
+  //  let userID  = auth().currentUser!.uid;
 
     this.suadmin = false;
     this.admin = false;

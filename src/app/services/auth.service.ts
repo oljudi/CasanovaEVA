@@ -36,7 +36,7 @@ export class AuthService {
       this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
       .then( userData => resolve(userData),
       err => reject (err));
-    });
+    }); 
   }
   deleteregistro(registro: RegistroInterface){
     this.registroDoc = this.afs.doc('Registro/' + registro.id);
@@ -65,14 +65,15 @@ export class AuthService {
     return this.afAuth.authState.pipe(map( auth => auth ));
     
   }
-  getid(){
+  getid(): string{
     //return this.afAuth.authState.pipe(map( auth => auth.uid ));
     firebase.auth().onAuthStateChanged((user)=>{
       if (user){
         //return user.uid;
-        return this.id = user.uid;
+        return this.id = user.email;
       }
-    })
+    });
+    return this.id;
     
   }
 
@@ -80,7 +81,7 @@ export class AuthService {
     return this.afAuth.auth.signOut();
   }
   getUser(id: string){
-      this.registroDoc = this.afs.doc<RegistroInterface>('Registro/${id}');
+      this.registroDoc = this.afs.doc<RegistroInterface>('Registro/' + id);
       this.registro = this.registroDoc.snapshotChanges().pipe(map(action =>{
         if(action.payload.exists === false){
           return null;
@@ -91,4 +92,6 @@ export class AuthService {
         }
       }));
     }
+
+
 }
