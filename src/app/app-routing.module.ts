@@ -16,6 +16,7 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { NavbardownComponent } from './components/navbardown/navbardown.component';
 
 import { AuthGuard } from './guards/auth.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'thankyou', component: ThankyouComponent },
   { path: 'tramite', component: TramiteComponent },
   { path: 'type', component: TypeComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'encuesta', component: EncuestaComponent},
   { path: 'reports', component: ReportsComponent},
   { path: 'navbardown', component: NavbardownComponent},

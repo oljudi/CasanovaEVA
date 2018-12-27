@@ -7,6 +7,10 @@ import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/services/auth.service';
+import { RegistroInterface } from 'src/app/Models/registro';
+import { auth } from 'firebase';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-admin',
@@ -37,12 +41,15 @@ export class AdminComponent implements OnInit {
   contadorre: number;
   constructor(
     private encuestaex: EncuestaService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private authservice: AuthService
   ) { 
+    
     this.listadoEncuestaex = this.encuestaex.getAllEncuestaex();
     this.encuestaex.getitem().subscribe(id => this.list = id as Array<string>);
    this.suma=0;
   }
+  user: RegistroInterface;
   cont(){
     this.afs.collection('Encuestaexes').valueChanges().subscribe(values => this.contadorre = values.length);
     this.afs.collection('type').valueChanges().subscribe(values => this.contador = values.length);
@@ -93,8 +100,21 @@ arrass(x: EncuestaexInterface): number {
   ngOnInit() {
     
     this.cont();
-     
+    
+     this.getcurrentuser();
+   
   }
+  getcurrentuser(){
+    var userid = auth().currentUser.uid;
+    
+    this.authservice.getAuth().subscribe(user =>{
+      if(user){
+        this.user.nombre = user.displayName;
+        console.log('USER: ',  user);
+      }
+    })
+  }
+  
   
 
 

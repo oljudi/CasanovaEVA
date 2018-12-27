@@ -42,6 +42,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NavbardownComponent } from './components/navbardown/navbardown.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { from } from 'rxjs';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { from } from 'rxjs';
     NavbarComponent,
     EncuestaComponent,
     ReportsComponent,
-    NavbardownComponent
+    NavbardownComponent,
+    RegisterComponent
   ],
   imports: [
     NgxSpinnerModule,
