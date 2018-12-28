@@ -38,7 +38,7 @@
                                     <th scope="row">{{encuestaex.id}}</th>
                                     <td>{{encuestaex.fecha}}</td>
                                     <td>La Viga</td>
-                                    <td>{{encuestaex.total}} / 55</td>
+                                    <td>{{encuestaex.total}} / 100</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -98,7 +98,7 @@
                                     <div class="card-body text-center">
                                         <span class="fa-layers fa-fw fa-6x">
                                             <fa-icon [icon]="faStar" style="color: #B7963D"></fa-icon>
-                                            <span class="fa-layers-counter text-center" style="background: #92BA3E; font-size-adjust: inherit;">{{prome}}</span>
+                                            <span class="fa-layers-counter text-center" style="background: #92BA3E; font-size-adjust: inherit;"  >{{prome}}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -193,6 +193,21 @@
                                         <td>{{encuestaex.total}}</td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr class="table-info text-center" >
+                                        <th scope="row">Total </th>
+                                        <td>Express</td>
+                                        <td>{{prome1}}</td>
+                                        <td>{{prome2}}</td>
+                                        <td>{{prome3}}</td>
+                                        <td>{{prome4}}</td>
+                                        <td>{{prome5}}</td>
+                                        <td>{{prome6}}</td>
+                                        <td>{{prome7}}</td>
+                                        <td>{{prome8}}</td>
+                                        <td>{{prome}}</td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

@@ -10,7 +10,7 @@ import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDo
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
 import { auth } from 'firebase';
-import { userInfo } from 'os';
+
 
 @Component({
   selector: 'app-admin',
@@ -35,7 +35,34 @@ export class AdminComponent implements OnInit {
   p1: EncuestaexInterface;
   sumas:number;
   suma:number;
+
+  sumas1:number;
+  sumap2:number;
+  sumap3:number;
+  sumap4:number;
+  sumap5:number;
+  sumap6:number;
+  sumap7:number;
+  sumap8:number;
+  
+  suma1:number;
+  suma2:number;
+  suma3:number;
+  suma4:number;
+  suma5:number;
+  suma6:number;
+  suma7:number;
+  suma8:number;
   prome:string;
+  prome1:string;
+  prome2:string;
+  prome3:string;
+  prome4:string;
+  prome5:string;
+  prome6:string;
+  prome7:string;
+  prome8:string;
+  
   promedios:string;
   sucursals:string;
   contador: number;
@@ -68,13 +95,38 @@ export class AdminComponent implements OnInit {
 }
 arrass(x: EncuestaexInterface): number {
     
-  this.sumas = x.total;
-  this.suma = this.sumas + this.suma;
-  console.log(x.total);
-  console.log(this.suma);
-  this.prom(this.suma)
+ this.sumas = x.total;
+ this.suma = this.sumas + this.suma;
 
- return this.suma;
+  this.sumas1 = x.total;
+  this.suma1 = (this.sumas1 + this.suma1);
+
+  this.suma2 = x.pregunta2;
+  this.sumap2 = this.suma2 + this.sumap2;
+
+  this.suma3 = x.pregunta3;
+  this.sumap3 = this.suma3 + this.sumap3;
+
+  this.suma4 = x.pregunta4;
+  this.sumap4 = this.suma4 + this.sumap4;
+
+  this.suma5 = x.pregunta5;
+  this.sumap5 = this.suma5 + this.sumap5;
+
+  this.suma6 = x.pregunta5;
+  this.sumap6 = this.suma6 + this.sumap6;
+
+  this.suma7 = x.pregunta7;
+  this.sumap7 = this.suma7 + this.sumap7;
+
+  this.suma8 = x.pregunta8;
+  this.sumap8 = this.suma8 + this.sumap8;
+
+ // console.log(x.total);
+ // console.log(this.suma);
+  this.prom(this.suma1)
+
+ return this.suma, this.suma1,  this.sumap2, this.sumap3, this.sumap4, this.sumap5, this.sumap6, this.sumap7, this.sumap8;
 
 }
   arras( x: EncuestaexInterface){
@@ -85,17 +137,26 @@ arrass(x: EncuestaexInterface): number {
     }
 
     
-      console.log(this.ens );
+     // console.log(this.ens );
       
       
     
   }
-  prom(x: number): string {
+  prom(x: number) {
     
     
-  this.prome= (this.suma/this.contador).toFixed(2);
-  
-   return this.prome;
+  this.prome  = (this.suma/this.contador).toFixed(2);
+  this.prome1 = (this.suma1/this.contador).toFixed(2);
+  this.prome2 = (this.sumap2/this.contador).toFixed(2);
+  this.prome3 = (this.sumap3/this.contador).toFixed(2);
+  this.prome4 = (this.sumap4/this.contador).toFixed(2);
+  this.prome5 = (this.sumap5/this.contador).toFixed(2);
+  this.prome6 = (this.sumap6/this.contador).toFixed(2);
+  this.prome7 = (this.sumap7/this.contador).toFixed(2);
+  this.prome8 = (this.sumap8/this.contador).toFixed(2);
+
+  console.log(this.prome,this.suma,this.suma1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8 );
+  // return this.prome1,this.prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
   
   }
   public emailUsuario: string;

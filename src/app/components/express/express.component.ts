@@ -110,7 +110,9 @@ export class ExpressComponent implements OnInit {
     this.onChange();
     
   }
+  proms:string;
   onGuardarEncuesta({value}: {value: EncuestaexInterface}){
+    this.proms = this.y.toFixed(2);
     value.id = this.ident;
     value.pregunta1 = this.model.p1;
     value.pregunta2 = this.model.p2;
@@ -121,7 +123,8 @@ export class ExpressComponent implements OnInit {
     value.pregunta7 = this.model.p7;
     value.pregunta8 = this.model.p8;
     value.fecha = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
-    value.total= this.y;
+    value.total = +this.proms;
+    
 
     
     this.encuestaService.addEcuescont(value);
@@ -142,40 +145,40 @@ export class ExpressComponent implements OnInit {
 
 
 p1ex(x){
-  this.model.p1 = x;
+  this.model.p1 = (x*10)/4;
 
 }
 p2ex(x){
-  this.model.p2 = x;
+  this.model.p2 = (x*10)/1;
   console.log(x);
 }
 p3ex(x){
-  this.model.p3 = x;
+  this.model.p3 = (x*10)/2;
   console.log(x);
 }
 p4ex(x){
-  this.model.p4 = x;
+  this.model.p4 = (x*10)/4;
   console.log(x);
 }
 p5ex(x){
-  this.model.p5 = x;
+  this.model.p5 = (x*10)/4;
   console.log(x);
 }
 p6ex(x){
-  this.model.p6 = x;
+  this.model.p6 = (x*10)/4;
   console.log(x);
 }
 p7ex(x){
-  this.model.p7 = x;
+  this.model.p7 = (x*10)/1;
   console.log(x);
 }
 p8ex(x){
-  this.model.p8 = x;
+  this.model.p8 = (x*10)/4;
   console.log(x);
 }
 sum(){
 
-  this.y =  this.model.p1+this.model.p2+this.model.p3+this.model.p4+this.model.p5+this.model.p6+this.model.p7+this.model.p8;
+  this.y =  ((this.model.p1+this.model.p2+this.model.p3+this.model.p4+this.model.p5+this.model.p6+this.model.p7+this.model.p8)*10)/8;
 }
 
   faTired = faTired;
