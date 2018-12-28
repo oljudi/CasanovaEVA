@@ -27,7 +27,8 @@ export class AdminComponent implements OnInit {
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
 
-
+  public isLogin: boolean;
+  
   listadoEncuestaex: any;
   ens: string;
   list: string[];
@@ -97,15 +98,44 @@ arrass(x: EncuestaexInterface): number {
    return this.prome;
   
   }
+  public emailUsuario: string;
   ngOnInit() {
     
     this.cont();
     
-     this.getcurrentuser();
-   
+     //this.getcurrentuser();
+     this.authservice.getAuth().subscribe( user =>{
+      if(user){
+        this.isLogin=true;
+        this.emailUsuario = user.email;
+       this.nombreusuaro(this.emailUsuario);
+        //console.log(this.nomUsuario);
+      } else{
+        this.isLogin = false;
+      }
+    });
   }
+  nombreusuaro(x:string){
+    
+    this.afs.collection('Registro').doc(x).valueChanges().pipe(take(1)).subscribe(res => {this.arrayss(res)} );
+    //this.AuthService.getUser(this.emailUsuario);
+    
+  }
+  nomUsuario: any;
+  arrayss(x: RegistroInterface): string {
+    
+    this.nomUsuario= x.nombre;
+   
+   console.log(x.nombre);
+   console.log(this.nomUsuario);
+   
+ 
+  return this.nomUsuario;
+ 
+ }
+ 
   getcurrentuser(){
-    var userid = auth().currentUser.uid;
+    
     
     this.authservice.getAuth().subscribe(user =>{
       if(user){
