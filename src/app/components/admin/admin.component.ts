@@ -36,7 +36,7 @@ export class AdminComponent implements OnInit {
   sumas:number;
   suma:number;
 
-  sumas1:number;
+  sumaspreg:number;
   sumap2:number;
   sumap3:number;
   sumap4:number;
@@ -45,7 +45,7 @@ export class AdminComponent implements OnInit {
   sumap7:number;
   sumap8:number;
   
-  suma1:number;
+  sumaprom:number;
   suma2:number;
   suma3:number;
   suma4:number;
@@ -76,6 +76,14 @@ export class AdminComponent implements OnInit {
     this.listadoEncuestaex = this.encuestaex.getAllEncuestaex();
     this.encuestaex.getitem().subscribe(id => this.list = id as Array<string>);
    this.suma=0;
+   this.sumaprom=0;
+   this.sumap2=0;
+   this.sumap3=0;
+   this.sumap4=0;
+   this.sumap5=0;
+   this.sumap6=0;
+   this.sumap7=0;
+   this.sumap8=0;
   }
   user: RegistroInterface;
   cont(){
@@ -98,42 +106,130 @@ arrass(x: EncuestaexInterface): number {
  this.sumas = x.total;
  this.suma = this.sumas + this.suma;
 
-  this.sumas1 = x.total;
-  this.suma1 = (this.sumas1 + this.suma1);
+  
+ // console.log(x.total);
+ // console.log(this.suma);
+  this.prom(this.suma)
 
+ return this.suma;
+
+}
+arrass1(x: EncuestaexInterface): number {
+    
+   this.sumaspreg = x.pregunta1;
+   this.sumaprom = this.sumaspreg + this.sumaprom;
+ 
+ 
+  // console.log(x.total);
+  console.log(this.sumaprom);
+  console.log(this.sumaspreg);
+   this.prom1(this.sumaprom)
+ 
+  return  this.sumaprom;
+ }
+ arrass2(x: EncuestaexInterface): number {
+    
+ 
   this.suma2 = x.pregunta2;
   this.sumap2 = this.suma2 + this.sumap2;
 
+ 
+ // console.log(x.total);
+ // console.log(this.suma);
+  this.prom2(this.sumap2)
+
+ return  this.sumap2;
+}
+arrass3(x: EncuestaexInterface): number {
+  
   this.suma3 = x.pregunta3;
   this.sumap3 = this.suma3 + this.sumap3;
 
+ 
+ // console.log(x.total);
+ // console.log(this.suma);
+  this.prom3(this.sumap3)
+
+ return  this.sumap3;
+}
+arrass4(x: EncuestaexInterface): number {
+    
+ 
   this.suma4 = x.pregunta4;
   this.sumap4 = this.suma4 + this.sumap4;
 
-  this.suma5 = x.pregunta5;
-  this.sumap5 = this.suma5 + this.sumap5;
-
-  this.suma6 = x.pregunta5;
-  this.sumap6 = this.suma6 + this.sumap6;
-
-  this.suma7 = x.pregunta7;
-  this.sumap7 = this.suma7 + this.sumap7;
-
-  this.suma8 = x.pregunta8;
-  this.sumap8 = this.suma8 + this.sumap8;
 
  // console.log(x.total);
  // console.log(this.suma);
-  this.prom(this.suma1)
+  this.prom4(this.sumap4)
 
- return this.suma, this.suma1,  this.sumap2, this.sumap3, this.sumap4, this.sumap5, this.sumap6, this.sumap7, this.sumap8;
+ return  this.sumap4;
+}
+arrass5(x: EncuestaexInterface): number {
+    
+ 
+  this.suma5 = x.pregunta5;
+  this.sumap5 = this.suma5 + this.sumap5;
 
+
+ // console.log(x.total);
+ // console.log(this.suma);
+  this.prom5(this.sumap5)
+
+ return  this.sumap5;
+}
+arrass6(x: EncuestaexInterface): number {
+    
+ 
+  this.suma6 = x.pregunta6;
+  this.sumap6 = this.suma6 + this.sumap6;
+
+
+ // console.log(x.total);
+ // console.log(this.suma);
+  this.prom6(this.sumap6)
+
+ return  this.sumap6;
+}
+arrass7(x: EncuestaexInterface): number {
+    
+ 
+  this.suma7 = x.pregunta7;
+  this.sumap7 = this.suma7 + this.sumap7;
+
+
+ // console.log(x.total);
+ // console.log(this.suma);
+  this.prom7(this.sumap7)
+
+ return  this.sumap7;
+}
+arrass8(x: EncuestaexInterface): number {
+    
+ 
+  this.suma8 = x.pregunta8;
+  this.sumap8 = this.suma8 + this.sumap8;
+
+
+ // console.log(x.total);
+ // console.log(this.suma);
+  this.prom8(this.sumap8)
+
+ return  this.sumap8;
 }
   arras( x: EncuestaexInterface){
 
     for(var i=0 ; i<this.contadorre ; i++ ){
       this.ens = this.list[i] as string;
       this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );
+      this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass1(res)} );
+      this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass2(res)} );
+      this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass3(res)} );
+      this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass4(res)} );
+      this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass5(res)} );
+      this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass6(res)} );
+      this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass7(res)} );
+      this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass8(res)} );
     }
 
     
@@ -143,22 +239,53 @@ arrass(x: EncuestaexInterface): number {
     
   }
   prom(x: number) {
-    
-    
   this.prome  = (this.suma/this.contador).toFixed(2);
-  this.prome1 = (this.suma1/this.contador).toFixed(2);
-  this.prome2 = (this.sumap2/this.contador).toFixed(2);
-  this.prome3 = (this.sumap3/this.contador).toFixed(2);
-  this.prome4 = (this.sumap4/this.contador).toFixed(2);
-  this.prome5 = (this.sumap5/this.contador).toFixed(2);
-  this.prome6 = (this.sumap6/this.contador).toFixed(2);
-  this.prome7 = (this.sumap7/this.contador).toFixed(2);
-  this.prome8 = (this.sumap8/this.contador).toFixed(2);
-
-  console.log(this.prome,this.suma,this.suma1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8 );
+   console.log(this.prome );
   // return this.prome1,this.prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
   
   }
+  prom1(x: number) {
+    this.prome1 = (x/this.contador).toFixed(2);
+    console.log(this.prome1, x );
+    // return this.prome1,this.prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+    }
+    prom2(x: number) {
+      this.prome2 = (x/this.contador).toFixed(2);
+      console.log(this.prome2);
+      // return this.prome1,this.prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+      }
+      prom3(x: number) {
+        this.prome3 = (this.sumap3/this.contador).toFixed(2);
+        console.log(this.prome3);
+        // return this.prome1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+        }
+        prom4(x: number) {
+          this.prome4 = (this.sumap4/this.contador).toFixed(2);
+          console.log(this.prome4);
+          // return this.prome1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+          }
+          prom5(x: number) {
+            this.prome5 = (this.sumap5/this.contador).toFixed(2);
+            console.log(this.prome5);
+            // return this.prome1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+            }
+            prom6(x: number) {
+              this.prome6 = (this.sumap6/this.contador).toFixed(2);
+              console.log(this.prome6);
+              // return this.prome1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+              }
+              prom7(x: number) {
+                this.prome7 = (this.sumap7/this.contador).toFixed(2);
+                console.log(this.prome7);
+                // return this.prome1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+                }
+                prom8(x: number) {
+                  this.prome8 = (this.sumap8/this.contador).toFixed(2);
+                  console.log(this.prome8);
+                  this.getpreguntamayor();
+                  // return this.prome1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+                  }
+          
   public emailUsuario: string;
   ngOnInit() {
     
@@ -175,6 +302,7 @@ arrass(x: EncuestaexInterface): number {
         this.isLogin = false;
       }
     });
+   
   }
   nombreusuaro(x:string){
     
@@ -193,6 +321,44 @@ arrass(x: EncuestaexInterface): number {
  
   return this.nomUsuario;
  
+ }
+mejorpreg: number;
+peorpreg:number;
+pr1:number;
+pr2:number;
+pr3:number;
+pr4:number;
+pr5:number;
+pr6:number;
+pr7:number;
+pr8:number;
+
+
+
+getpreguntamayor(){
+this.mejorpreg = 0;
+this.pr1= parseFloat(this.prome1);
+this.pr2= parseFloat(this.prome2);
+this.pr3= parseFloat(this.prome3);
+this.pr4= parseFloat(this.prome4);
+this.pr5= parseFloat(this.prome5);
+this.pr6= parseFloat(this.prome6);
+this.pr7= parseFloat(this.prome7);
+this.pr8= parseFloat(this.prome8);
+
+function comparar(a, b) {
+  return a - b;
+}
+var prt = [this.pr1,this.pr2,this.pr3,this.pr4,this.pr5,this.pr6,this.pr7,this.pr8];
+var prt2 = [this.pr1,this.pr2,this.pr3,this.pr4,this.pr5,this.pr6,this.pr7,this.pr8];
+prt.sort(comparar);   
+this.peorpreg = prt[0];
+this.mejorpreg = prt[7];
+
+
+  console.log(prt);
+
+
  }
  
   getcurrentuser(){
