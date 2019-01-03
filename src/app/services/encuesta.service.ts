@@ -66,6 +66,25 @@ constructor(
     }));
     return this.Encuestaexes;
   }
+  getmayor(){
+    var refs =this.afs.collection<EncuestaexInterface>('type', ref => ref.orderBy('total ', 'desc').limit(1) );
+    this.Encuestaexes = this.EncuestaexCollection.snapshotChanges().pipe(map(actions => {return actions.map(a => {
+      const data = a.payload.doc.data() as EncuestaexInterface;
+      const id = a.payload.doc.id;
+      return { id, ...data };
+    });
+}));
+    
+    /*.snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(action => {
+        const data = action.payload.doc.data() as EncuestaexInterface;
+        data.id = action.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.Encuestaexes;*/
+  }
   getAllEncuestaex():Observable<EncuestaexInterface[]>{
     this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
     .pipe(map(changes => {
