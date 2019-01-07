@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
 import { FirebaseApp } from 'angularfire2';
 import { auth } from 'firebase';
+import { faUser, faEnvelope, faKey, faSignInAlt, faUserCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,12 @@ import { auth } from 'firebase';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  faUser = faUser;
+  faEnvelope = faEnvelope;
+  faKey = faKey;
+  faSignInAlt = faSignInAlt;
+  faUserCog = faUserCog;
 
   constructor(
     private router: Router,

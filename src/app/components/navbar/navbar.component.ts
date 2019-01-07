@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faArchive, faCarCrash, faPeopleCarry } from '@fortawesome/free-solid-svg-icons';
+import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faArchive, faCarCrash, faPeopleCarry, faUserCog } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '../../services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
@@ -12,6 +12,17 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+  faFemale = faFemale;
+  faChartLine = faChartLine;
+  faSignOutAlt = faSignOutAlt;
+  faSignInAlt = faSignInAlt;
+  faHome = faHome;
+  faVoteYea = faVoteYea;
+  faArchive = faArchive;
+  faCarCrash = faCarCrash;
+  faPeopleCarry = faPeopleCarry;
+  faUserCog = faUserCog;
 
   public isLogin: boolean;
   public nombreUsuario: string;
@@ -67,13 +78,4 @@ export class NavbarComponent implements OnInit {
     this.AuthService.logout();
   }
 
-  faFemale = faFemale;
-  faChartLine = faChartLine;
-  faSignOutAlt = faSignOutAlt;
-  faSignInAlt = faSignInAlt;
-  faHome = faHome;
-  faVoteYea = faVoteYea;
-  faArchive = faArchive;
-  faCarCrash = faCarCrash;
-  faPeopleCarry = faPeopleCarry;
 }

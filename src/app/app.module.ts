@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -43,6 +45,7 @@ import { NavbardownComponent } from './components/navbardown/navbardown.componen
 import { NgxSpinnerService } from 'ngx-spinner';
 import { from } from 'rxjs';
 import { RegisterComponent } from './components/register/register.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -60,9 +63,11 @@ import { RegisterComponent } from './components/register/register.component';
     EncuestaComponent,
     ReportsComponent,
     NavbardownComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent
   ],
   imports: [
+    NgxDatatableModule,
     NgxSpinnerModule,
     MatStepperModule,
     MatTabsModule,

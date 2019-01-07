@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import { EncuestaService } from 'src/app/services/encuesta.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { query } from '@angular/core/src/render3';
@@ -27,8 +27,15 @@ export class AdminComponent implements OnInit {
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
 
+  rows1: any;
+  colums: any;
+
+  meta = '80';
+
   public isLogin: boolean;
   
+  listadoEncu: any;
+
   listadoEncuestaex: any;
   ens: string;
   list: string[];
@@ -69,9 +76,12 @@ export class AdminComponent implements OnInit {
   contadorre: number;
   constructor(
     private encuestaex: EncuestaService,
+    private encuestas: EncuestaService,
     private afs: AngularFirestore,
     private authservice: AuthService
   ) { 
+
+    this.listadoEncu = encuestas.getAllEncuestaex();
     
     this.listadoEncuestaex = this.encuestaex.getAllEncuestaex();
     var pruebasva = this.encuestaex.getAllEncuestaex();
@@ -340,6 +350,8 @@ Encuestaexes: Observable<EncuestaexInterface[]>;
   ngOnInit() {
     
     this.cont();
+
+    this.getData1();
     
      //this.getcurrentuser();
      this.authservice.getAuth().subscribe( user =>{
@@ -422,7 +434,13 @@ this.mejorpreg = prt[7];
     })
   }
   
-  
+  getData1(){
+    this.afs.collection('Encuestaexes').valueChanges().subscribe((encuesta) =>{
+      this.rows1 = encuesta ;
+    })
+  }
 
+  metaact(){
+  }
 
 }

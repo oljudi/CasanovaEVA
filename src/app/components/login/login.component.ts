@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
-import { faSignInAlt, faAddressCard, faKey, faMailBulk } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faAddressCard, faKey, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
@@ -16,6 +16,11 @@ import { RegistroInterface } from 'src/app/Models/registro';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  faSignInAlt = faSignInAlt;
+  faAddressCard = faAddressCard;
+  faKey = faKey;
+  faEnvelope = faEnvelope;
 
   public email: string;
   public correo: string;
@@ -59,10 +64,5 @@ user: RegistroInterface ={
       this.router.navigate(['/login']);
     });
   }
-
-  faSignInAlt = faSignInAlt;
-  faAddressCard = faAddressCard;
-  faKey = faKey;
-  faMailBulk = faMailBulk;
 
 }

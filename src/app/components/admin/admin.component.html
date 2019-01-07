@@ -5,44 +5,49 @@
 
 <!-- Resumen Encuestas-->
 <div class="card border-success mt-3 mr-3 ml-3">
-    <div class="card-header text-center text-white" style="background-color: #2a206f"><strong><h2>Resumen del Dia</h2></strong></div>
+    <div class="card-header text-center text-white" style="background-color: #2a206f"><h2><strong>Resumen del Dia</strong></h2></div>
     <div class="row">
         <div class="col-sm-6">
-            <div class="card border-primary mt-3 mb-3">
+            <div class="card border-primary mt-3 ml-3">
                 <div class="card-header text-center">
                     <h5><strong>Ultimas Encuestas</strong></h5>
                 </div>
                 <form>
-                    <div class="card-body">
 
-                        <table class="table table-hover text-center" style="background-color: gray">
-                            <thead>
-                                <tr class="text-white">
-                                    <th scope="col">
-                                        <div># de Reporte</div>
-                                    </th>
-                                    <th scope="col">
-                                        <div>Fecha</div>
-                                    </th>
-                                    <th scope="col">
-                                        <div>Sucursal</div>
-                                    </th>
-                                    <th scope="col">
-                                        <div>Calificacion</div>
-                                    </th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr class="table-info" *ngFor="let encuestaex of listadoEncuestaex | async">
-                                    <th scope="row">{{encuestaex.id}}</th>
-                                    <td>{{encuestaex.fecha}}</td>
-                                    <td>La Viga</td>
-                                    <td>{{encuestaex.total}} / 100</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <div class="card-body text-center">
+                                <ngx-datatable
+                                class="material"
+                                [headerHeight]="35"
+                                [columnMode]="'force'"
+                                [rowHeight]="'auto'"
+                                [footerHeight]="30"
+                                [count]="true"
+                                [limit]="7"
+                                [rows]="rows1"
+                                >
+                                <ngx-datatable-column name="Id">
+                                <ng-template ngx-datatable-cell-template let-value="value">
+                                    {{value}}
+                                </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="fecha">
+                                <ng-template ngx-datatable-cell-template let-value="value">
+                                    {{value}}
+                                </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="Sucursal">
+                                  <ng-template ngx-datatable-cell-template let-value="value">
+                                    La Viga
+                                  </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="total">
+                                <ng-template ngx-datatable-cell-template let-value="value">
+                                    {{value}} / 100
+                                </ng-template>
+                                </ngx-datatable-column>
+                                </ngx-datatable>
+                        </div>
+                        
                 </form>
             </div>
         </div>
@@ -111,7 +116,7 @@
                                     <div class="card-body text-center">
                                         <span class="fa-layers fa-fw fa-6x">
                                             <fa-icon [icon]="faTrophy" style="color: #B7963D"></fa-icon>
-                                                <span class="fa-layers-counter text-center" style="background:green; font-size-adjust: inherit;">38</span>
+                                                <span class="fa-layers-counter text-center" style="background:green; font-size-adjust: inherit;">{{meta}}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -120,7 +125,7 @@
                         <div class="input-group mb-3 mt-3 card-footer">
                             <input type="text" class="form-control" placeholder="Actualizar meta:" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-info" type="btn btn-info" id="button-addon2">Enviar</button>
+                                <button class="btn btn-info" type="btn btn-info" id="button-addon2" (click)="metaact">Enviar</button>
                             </div>
                         </div>
                     </div>
@@ -133,40 +138,21 @@
 </div>
 
 <!-- Resumen Preguntas -->
-
-<ul class="nav nav-pills mb-3 justify-content-center flex-column flex-sm-row mt-3">
-    <li class="nav-item">
-        <a class="nav-link active text-white mr-2" style="background-color:#2a206f" id="pills-graficas-tab" data-toggle="pill" href="#pills-graficas" role="tab" aria-controls="pills-graficas" aria-selected="true">
-            <h5><strong>Express</strong></h5>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-white mr-2" style="background-color:#2a206f" id="pills-encuesta-tab" data-toggle="pill" href="#pills-encuesta" role="tab" aria-controls="pills-encuesta" aria-selected="false">
-            <h5><strong>Tramites</strong></h5>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-white" style="background-color:#2a206f" id="pills-pregunta-tab" data-toggle="pill" href="#pills-pregunta" role="tab" aria-controls="pills-pregunta" aria-selected="false">
-            <h5><strong>Reparacion</strong></h5>
-        </a>
-    </li>
-</ul>
-<div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-graficas" role="tabpanel" aria-labelledby="pills-graficas-tab">
-        <div class="card border-success mt-3 mr-3 ml-3">
-            <div class="card-header text-center text-white" style="background-color: #2a206f"><strong><h2>Resumen Preguntas - Servicio Express</h2></strong></div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card border-primary mt-3 mb-3">
-                        <div class="card-header text-center">
-                            <h5><strong>Ultimas Encuestas</strong></h5>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-hover">
+<div class="card border-success mt-3 mr-3 ml-3">
+        <div class="card-header text-center text-white" style="background-color: #2a206f"><h2><strong>Resumen Servicios</strong></h2></div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card border-primary mt-3 mb-3">
+                    <div class="card-header text-center">
+<!--                      Calificaciones de Servicios                              -->
+                        <h5><strong>Calificaciones Servicios</strong></h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Express -->
+                        <table class="table table-hover"> 
                                 <thead>
                                     <tr class="text-center text-white" style="background-color: gray">
-                                        <th scope="col"># de Reporte</th>
-                                        <th scope="col">Tipo de Servicio</th>
+                                        <th scope="col">Express</th>
                                         <th scope="col">P 1</th>
                                         <th scope="col">P 2</th>
                                         <th scope="col">P 3</th>
@@ -179,24 +165,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="table-info text-center" *ngFor="let encuestaex of listadoEncuestaex | async">
-                                        <th scope="row">{{encuestaex.id}} </th>
-                                        <td>Express</td>
-                                        <td>{{encuestaex.pregunta1}}</td>
-                                        <td>{{encuestaex.pregunta2}}</td>
-                                        <td>{{encuestaex.pregunta3}}</td>
-                                        <td>{{encuestaex.pregunta4}}</td>
-                                        <td>{{encuestaex.pregunta5}}</td>
-                                        <td>{{encuestaex.pregunta6}}</td>
-                                        <td>{{encuestaex.pregunta7}}</td>
-                                        <td>{{encuestaex.pregunta8}}</td>
-                                        <td>{{encuestaex.total}}</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr class="table-info text-center" >
-                                        <th scope="row">Total </th>
-                                        <td>Express</td>
+                                    <tr class="table-info text-center">
+                                        <td></td>
                                         <td>{{prome1}}</td>
                                         <td>{{prome2}}</td>
                                         <td>{{prome3}}</td>
@@ -207,79 +177,187 @@
                                         <td>{{prome8}}</td>
                                         <td>{{prome}}</td>
                                     </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                                </tbody>
+                        </table>
+                        <!-- Reparaciones -->
+                        <table class="table table-hover"> 
+                            <thead>
+                                <tr class="text-center text-white" style="background-color: gray">
+                                    <th scope="col">Reparacion</th>
+                                    <th scope="col">P 1</th>
+                                    <th scope="col">P 2</th>
+                                    <th scope="col">P 3</th>
+                                    <th scope="col">P 4</th>
+                                    <th scope="col">P 5</th>
+                                    <th scope="col">P 6</th>
+                                    <th scope="col">P 7</th>
+                                    <th scope="col">P 8</th>
+                                    <th scope="col">Calif</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-info text-center">
+                                    <td></td>
+                                    <td>{{prome1}}</td>
+                                    <td>{{prome2}}</td>
+                                    <td>{{prome3}}</td>
+                                    <td>{{prome4}}</td>
+                                    <td>{{prome5}}</td>
+                                    <td>{{prome6}}</td>
+                                    <td>{{prome7}}</td>
+                                    <td>{{prome8}}</td>
+                                    <td>{{prome}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Tramites -->
+                        <table class="table table-hover"> 
+                            <thead>
+                                <tr class="text-center text-white" style="background-color: gray">
+                                    <th scope="col">Tramites</th>
+                                    <th scope="col">P 1</th>
+                                    <th scope="col">P 2</th>
+                                    <th scope="col">P 3</th>
+                                    <th scope="col">P 4</th>
+                                    <th scope="col">P 5</th>
+                                    <th scope="col">P 6</th>
+                                    <th scope="col">P 7</th>
+                                    <th scope="col">P 8</th>
+                                    <th scope="col">Calif</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-info text-center">
+                                    <td></td>
+                                    <td>{{prome1}}</td>
+                                    <td>{{prome2}}</td>
+                                    <td>{{prome3}}</td>
+                                    <td>{{prome4}}</td>
+                                    <td>{{prome5}}</td>
+                                    <td>{{prome6}}</td>
+                                    <td>{{prome7}}</td>
+                                    <td>{{prome8}}</td>
+                                    <td>{{prome}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mt-3">
-                                <div class="card-header text-center text-white" style="background-color: #2a206f">
-                                    <h5><strong>Resumen</strong></h5>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header text-white" style="background-color: #5AC041">
-                                                <h5><strong>Mejor Calificación</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                        <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                        <span class="fa-layers-counter" style="background:green; font-size-adjust: inherit;">{{ins}}</span>
-                                                </span>
-                                            </div>
-                                        </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card mt-3">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card text-center">
+                                        <div class="card-header text-center text-white" style="background-color: #2a206f; font-size: 1rem"><strong>Mejores Calificaciones</strong></div>
+                                            <div class="card text-center" style="background-color: #2a206f">
+                                                    <div class="card-header text-white" style="background-color: #5AC041">
+                                                        <strong style="font-size: 1rem; font-size-adjust: initial">Express</strong>
+                                                    </div>
+                                                    <div class="card-header text-center">
+                                                        <span class="fa-layers fa-fw fa-5x">
+                                                                <fa-icon [icon]="faThumbsUp" style="color: green"></fa-icon>
+                                                                <span class="fa-layers-counter" style="background: padding-box; font-size-adjust: inherit;"><strong>{{ins}}</strong></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                        <div class="card-header text-white" style="background-color: #5AC041">
+                                                            <strong style="font-size: 1rem; font-size-adjust: initial">Reparaciones</strong>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <span class="fa-layers fa-fw fa-5x">
+                                                                    <fa-icon [icon]="faThumbsUp"></fa-icon>
+                                                                    <span class="fa-layers-counter" style="background:green; font-size-adjust: inherit;">{{ins}}</span>
+                                                            </span>
+                                                        </div>
+                                                </div>
+                                                <div class="card">
+                                                        <div class="card-header text-white" style="background-color: #5AC041">
+                                                                <strong style="font-size: 1rem; font-size-adjust: initial">Tramites</strong>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <span class="fa-layers fa-fw fa-5x">
+                                                                        <fa-icon [icon]="faThumbsUp"></fa-icon>
+                                                                        <span class="fa-layers-counter" style="background:green; font-size-adjust: inherit;">{{ins}}</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header bg-danger text-white">
-                                                <h5><strong>Peor Calificación</strong></h5>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-header text-center text-white" style="background-color: #2a206f; font-size: 1rem"><strong>Calificaciones Bajas</strong></div>
+                                            <div class="card">
+                                                <div class="card-header bg-danger text-white">
+                                                    <strong style="font-size: 1rem; font-size-adjust: initial">Express</strong>
+                                                </div>
+                                                <div class="card-body text-center">
+                                                    <span class="fa-layers fa-fw fa-5x">
+                                                        <fa-icon [icon]="faThumbsDown" style="color: #f16821"></fa-icon>
+                                                        <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">{{ins2}}</span>
+                                                    </span>
+                                                </div>
                                             </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">{{ins2}}</span>
-                                                </span>
+                                            <div class="card">
+                                                <div class="card-header bg-danger text-white">
+                                                    <strong style="font-size: 1rem; font-size-adjust: initial">Reparaciones</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <span class="fa-layers fa-fw fa-6x">
+                                                      <fa-icon [icon]="faThumbsDown"></fa-icon>
+                                                        <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">{{ins2}}</span>
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="card">
+                                                <div class="card-header bg-danger text-white">
+                                                    <strong style="font-size: 1rem; font-size-adjust: initial">Tramites</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <span class="fa-layers fa-fw fa-6x">
+                                                        <fa-icon [icon]="faThumbsDown"></fa-icon>
+                                                            <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">{{ins2}}</span>
+                                                    </span>
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
+                            </div>
 
-                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="card mt-3 ml-3 mr-3">
-                                <div class="card-header text-center text-white" style="background-color: #2a206f">
-                                    <h5><strong>Encuestas</strong></h5>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header text-white" style=" background-color: #5AC041">
-                                                <h5><strong>Mejor Reporte</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: green; font-size-adjust: inherit;">VI0002</span>
-                                                </span>
-                                            </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card mt-3 ml-3 mr-3">
+                            <div class="card-header text-center text-white" style="background-color: #2a206f">
+                                <h5><strong>Encuestas</strong></h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-header text-white" style=" background-color: #5AC041">
+                                            <h5><strong>Mejor Reporte</strong></h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <span class="fa-layers fa-fw fa-6x">
+                                                <fa-icon [icon]="faThumbsUp"></fa-icon>
+                                                <span class="fa-layers-counter" style="background: green; font-size-adjust: inherit;">VI0002</span>
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header bg-danger text-white">
-                                                <h5><strong>Peor Reporte</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">VI0001</span>
-                                                </span>
-                                            </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-header bg-danger text-white">
+                                            <h5><strong>Peor Reporte</strong></h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <span class="fa-layers fa-fw fa-6x">
+                                                <fa-icon [icon]="faThumbsDown"></fa-icon>
+                                                <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">VI0001</span>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -288,253 +366,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer text-muted text-right">Ultima Actualizacion</div>
         </div>
+        <div class="card-footer text-muted text-right">Ultima Actualizacion</div>
     </div>
-    <div class="tab-pane fade" id="pills-encuesta" role="tabpanel" aria-labelledby="pills-encuesta-tab">
-        <div class="card border-success mt-3 mr-3 ml-3">
-            <div class="card-header text-center text-white" style="background-color: #2a206f"><strong><h2>Resumen Preguntas - Tramites</h2></strong></div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card border-primary mt-3 mb-3">
-                        <div class="card-header text-center">
-                            <h5><strong>Ultimas Encuestas</strong></h5>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr class="text-center text-white" style="background-color: gray">
-                                        <th scope="col"># de Reporte</th>
-                                        <th scope="col">Tipo de Servicio</th>
-                                        <th scope="col">P 1</th>
-                                        <th scope="col">P 2</th>
-                                        <th scope="col">P 3</th>
-                                        <th scope="col">P 4</th>
-                                        <th scope="col">P 5</th>
-                                        <th scope="col">P 6</th>
-                                        <th scope="col">P 7</th>
-                                        <th scope="col">P 8</th>
-                                        <th scope="col">Calif</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="table-info text-center" *ngFor="let encuestaex of listadoEncuestaex | async">
-                                        <th scope="row">{{encuestaex.id}} </th>
-                                        <td>Express</td>
-                                        <td>{{encuestaex.pregunta1}}</td>
-                                        <td>{{encuestaex.pregunta2}}</td>
-                                        <td>{{encuestaex.pregunta3}}</td>
-                                        <td>{{encuestaex.pregunta4}}</td>
-                                        <td>{{encuestaex.pregunta5}}</td>
-                                        <td>{{encuestaex.pregunta6}}</td>
-                                        <td>{{encuestaex.pregunta7}}</td>
-                                        <td>{{encuestaex.pregunta8}}</td>
-                                        <td>{{encuestaex.total}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mt-3">
-                                <div class="card-header text-center text-white" style="background-color: #2a206f">
-                                    <h5><strong>Resumen</strong></h5>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header text-white" style="background-color: #5AC041">
-                                                <h5><strong>Mejor Calificación</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">15</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header bg-danger text-white">
-                                                <h5><strong>Peor Calificación</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">15</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card mt-3 ml-3 mr-3">
-                                <div class="card-header text-center text-white" style="background-color: #2a206f">
-                                    <h5><strong>Encuestas</strong></h5>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header text-white" style="background-color: #5AC041">
-                                                <h5><strong>Mejor Reporte</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: green; font-size-adjust: inherit;">VI0002</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header bg-danger text-white">
-                                                <h5><strong>Peor Reporte</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">VI0001</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer text-muted text-right">Ultima Actualizacion</div>
-        </div>
-    </div>
-    <div class="tab-pane fade" id="pills-pregunta" role="tabpanel" aria-labelledby="pills-pregunta-tab">
-        <div class="card border-success mt-3 mr-3 ml-3">
-            <div class="card-header text-center text-white" style="background-color: #2a206f"><strong><h2>Resumen Preguntas - Reparacion</h2></strong></div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card border-primary mt-3 mb-3">
-                        <div class="card-header text-center">
-                            <h5><strong>Ultimas Encuestas</strong></h5>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr class="text-center text-white" style="background-color: gray">
-                                        <th scope="col"># de Reporte</th>
-                                        <th scope="col">Tipo de Servicio</th>
-                                        <th scope="col">P 1</th>
-                                        <th scope="col">P 2</th>
-                                        <th scope="col">P 3</th>
-                                        <th scope="col">P 4</th>
-                                        <th scope="col">P 5</th>
-                                        <th scope="col">P 6</th>
-                                        <th scope="col">P 7</th>
-                                        <th scope="col">P 8</th>
-                                        <th scope="col">Calif</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="table-info text-center" *ngFor="let encuestaex of listadoEncuestaex | async">
-                                        <th scope="row">{{encuestaex.id}} </th>
-                                        <td>Express</td>
-                                        <td>{{encuestaex.pregunta1}}</td>
-                                        <td>{{encuestaex.pregunta2}}</td>
-                                        <td>{{encuestaex.pregunta3}}</td>
-                                        <td>{{encuestaex.pregunta4}}</td>
-                                        <td>{{encuestaex.pregunta5}}</td>
-                                        <td>{{encuestaex.pregunta6}}</td>
-                                        <td>{{encuestaex.pregunta7}}</td>
-                                        <td>{{encuestaex.pregunta8}}</td>
-                                        <td>{{encuestaex.total}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mt-3">
-                                <div class="card-header text-center text-white" style="background-color: #2a206f">
-                                    <h5><strong>Resumen</strong></h5>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header text-white" style="background-color: #5AC041">
-                                                <h5><strong>Mejor Calificación</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: green; font-size-adjust: inherit;">55</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header bg-danger text-white">
-                                                <h5><strong>Peor Calificación</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">55</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card mt-3 ml-3 mr-3">
-                                <div class="card-header text-center text-white" style="background-color: #2a206f">
-                                    <h5><strong>Encuestas</strong></h5>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header text-white" style="background-color: #5AC041">
-                                                <h5><strong>Mejor Reporte</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: green; font-size-adjust: inherit;">VI0002</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header bg-danger text-white">
-                                                <h5><strong>Peor Reporte</strong></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="fa-layers fa-fw fa-6x">
-                                                    <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                    <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">VI0001</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer text-muted text-right">Ultima Actualizacion</div>
-        </div>
-    </div>
-</div>
+
+
