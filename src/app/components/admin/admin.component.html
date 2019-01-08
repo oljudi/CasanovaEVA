@@ -10,7 +10,7 @@
         <div class="col-sm-6">
             <div class="card border-primary mt-3 ml-3">
                 <div class="card-header text-center">
-                    <h5><strong>Ultimas Encuestas</strong></h5>
+                    <h5><strong>Encuestas</strong></h5>
                 </div>
                 <form>
 
@@ -138,20 +138,20 @@
 </div>
 
 <!-- Resumen Preguntas -->
-<div class="card border-success mt-3 mr-3 ml-3">
+<div class="card border-success mt-3 mr-3 ml-3 mb-5">
         <div class="card-header text-center text-white" style="background-color: #2a206f"><h2><strong>Resumen Servicios</strong></h2></div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="card border-primary mt-3 mb-3">
+                <div class="card mt-3 mb-3 ml-3">
                     <div class="card-header text-center">
-<!--                      Calificaciones de Servicios                              -->
+                    <!--Calificaciones de Servicios-->
                         <h5><strong>Calificaciones Servicios</strong></h5>
                     </div>
                     <div class="card-body">
                         <!-- Express -->
-                        <table class="table table-hover"> 
-                                <thead>
-                                    <tr class="text-center text-white" style="background-color: gray">
+                        <table class="table table-hover table-bordered table-sm"> 
+                                <thead class="thead-dark">
+                                    <tr class="text-center text-white">
                                         <th scope="col">Express</th>
                                         <th scope="col">P 1</th>
                                         <th scope="col">P 2</th>
@@ -165,7 +165,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="table-info text-center">
+                                    <tr class="table-success text-center">
                                         <td></td>
                                         <td>{{prome1}}</td>
                                         <td>{{prome2}}</td>
@@ -180,23 +180,23 @@
                                 </tbody>
                         </table>
                         <!-- Reparaciones -->
-                        <table class="table table-hover"> 
-                            <thead>
-                                <tr class="text-center text-white" style="background-color: gray">
+                        <table class="table table-hover table-bordered table-sm"> 
+                            <thead class="thead-dark">
+                                <tr class="text-center text-white">
                                     <th scope="col">Reparacion</th>
                                     <th scope="col">P 1</th>
-                                    <th scope="col">P 2</th>
                                     <th scope="col">P 3</th>
                                     <th scope="col">P 4</th>
                                     <th scope="col">P 5</th>
                                     <th scope="col">P 6</th>
                                     <th scope="col">P 7</th>
                                     <th scope="col">P 8</th>
+                                    <th scope="col">P 9</th>
                                     <th scope="col">Calif</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="table-info text-center">
+                                <tr class="table-warning text-center">
                                     <td></td>
                                     <td>{{prome1}}</td>
                                     <td>{{prome2}}</td>
@@ -211,18 +211,18 @@
                             </tbody>
                         </table>
                         <!-- Tramites -->
-                        <table class="table table-hover"> 
-                            <thead>
+                        <table class="table table-hover table-bordered table-sm"> 
+                            <thead class="thead-dark">
                                 <tr class="text-center text-white" style="background-color: gray">
                                     <th scope="col">Tramites</th>
                                     <th scope="col">P 1</th>
-                                    <th scope="col">P 2</th>
                                     <th scope="col">P 3</th>
                                     <th scope="col">P 4</th>
                                     <th scope="col">P 5</th>
                                     <th scope="col">P 6</th>
                                     <th scope="col">P 7</th>
                                     <th scope="col">P 8</th>
+                                    <th scope="col">P 9</th>
                                     <th scope="col">Calif</th>
                                 </tr>
                             </thead>
@@ -246,117 +246,119 @@
             </div>
             <div class="col-sm-6">
                 <div class="row">
+                    <!-- Bundle de Califiaciones-->
                     <div class="col-sm-6">
                         <div class="card mt-3">
                             <div class="row">
+                                <!-- Calificaciones Altas -->
                                 <div class="col-sm-6">
                                     <div class="card text-center">
-                                        <div class="card-header text-center text-white" style="background-color: #2a206f; font-size: 1rem"><strong>Mejores Calificaciones</strong></div>
-                                            <div class="card text-center" style="background-color: #2a206f">
-                                                    <div class="card-header text-white" style="background-color: #5AC041">
-                                                        <strong style="font-size: 1rem; font-size-adjust: initial">Express</strong>
-                                                    </div>
-                                                    <div class="card-header text-center">
-                                                        <span class="fa-layers fa-fw fa-5x">
-                                                                <fa-icon [icon]="faThumbsUp" style="color: green"></fa-icon>
-                                                                <span class="fa-layers-counter" style="background: padding-box; font-size-adjust: inherit;"><strong>{{ins}}</strong></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                        <div class="card-header text-white" style="background-color: #5AC041">
-                                                            <strong style="font-size: 1rem; font-size-adjust: initial">Reparaciones</strong>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <span class="fa-layers fa-fw fa-5x">
-                                                                    <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                                    <span class="fa-layers-counter" style="background:green; font-size-adjust: inherit;">{{ins}}</span>
-                                                            </span>
-                                                        </div>
-                                                </div>
-                                                <div class="card">
-                                                        <div class="card-header text-white" style="background-color: #5AC041">
-                                                                <strong style="font-size: 1rem; font-size-adjust: initial">Tramites</strong>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <span class="fa-layers fa-fw fa-5x">
-                                                                        <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                                        <span class="fa-layers-counter" style="background:green; font-size-adjust: inherit;">{{ins}}</span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="card">
-                                        <div class="card-header text-center text-white" style="background-color: #2a206f; font-size: 1rem"><strong>Calificaciones Bajas</strong></div>
-                                            <div class="card">
-                                                <div class="card-header bg-danger text-white">
+                                        <div class="card-header text-center text-white" style="background-color: #2a206f; font-size: 1rem"><strong>Calificaciones Altas</strong></div>
+                                            <div class="card text-center">
+                                                <div class="card-header text-white" style="background-color: #2e5a1c">
                                                     <strong style="font-size: 1rem; font-size-adjust: initial">Express</strong>
                                                 </div>
-                                                <div class="card-body text-center">
+                                                <div class="card-header text-center" style="background-color: #edf0c7">
                                                     <span class="fa-layers fa-fw fa-5x">
-                                                        <fa-icon [icon]="faThumbsDown" style="color: #f16821"></fa-icon>
-                                                        <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">{{ins2}}</span>
+                                                        <fa-icon [icon]="faThumbsUp" style="color: #4e9525"></fa-icon>
+                                                        <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{ins}}</strong></span>
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="card">
-                                                <div class="card-header bg-danger text-white">
+                                            <div class="card text-center">
+                                                <div class="card-header text-white" style="background-color: #2e5a1c">
                                                     <strong style="font-size: 1rem; font-size-adjust: initial">Reparaciones</strong>
                                                 </div>
-                                                <div class="card-body">
-                                                    <span class="fa-layers fa-fw fa-6x">
-                                                      <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                        <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">{{ins2}}</span>
+                                                <div class="card-header text-center" style="background-color: #edf0c7">
+                                                    <span class="fa-layers fa-fw fa-5x">
+                                                        <fa-icon [icon]="faThumbsUp" style="color: #4e9525"></fa-icon>
+                                                        <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{ins}}</strong></span>
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="card">
-                                                <div class="card-header bg-danger text-white">
-                                                    <strong style="font-size: 1rem; font-size-adjust: initial">Tramites</strong>
+                                            <div class="card text-center">
+                                                <div class="card-header text-white" style="background-color: #2e5a1c">
+                                                    <strong style="font-size: 1rem; font-size-adjust: initial">Tramite</strong>
                                                 </div>
-                                                <div class="card-body">
-                                                    <span class="fa-layers fa-fw fa-6x">
-                                                        <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                            <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">{{ins2}}</span>
+                                                <div class="card-header text-center" style="background-color: #edf0c7">
+                                                    <span class="fa-layers fa-fw fa-5x">
+                                                        <fa-icon [icon]="faThumbsUp" style="color: #4e9525"></fa-icon>
+                                                        <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{ins}}</strong></span>
                                                     </span>
                                                 </div>
                                             </div>
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card mt-3 ml-3 mr-3">
-                            <div class="card-header text-center text-white" style="background-color: #2a206f">
-                                <h5><strong>Encuestas</strong></h5>
-                            </div>
-                            <div class="row">
+                                <!-- Calificaciones Bajas -->
                                 <div class="col-sm-6">
                                     <div class="card">
-                                        <div class="card-header text-white" style=" background-color: #5AC041">
-                                            <h5><strong>Mejor Reporte</strong></h5>
+                                        <div class="card-header text-center text-white" style="background-color: #2a206f; font-size: 1rem"><strong>Calificación más baja</strong></div>
+                                        <div class="card text-center">
+                                            <div class="card-header text-white" style="background-color: #f05a28">
+                                                <strong style="font-size: 1rem; font-size-adjust: initial">Express</strong>
+                                            </div>
+                                            <div class="card-header text-center" style="background-color: #edf0c7">
+                                                <span class="fa-layers fa-fw fa-5x">
+                                                    <fa-icon [icon]="faThumbsDown" style="color: #f7931e"></fa-icon>
+                                                    <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{ins2}}</strong></span>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card text-center">
+                                            <div class="card-header text-white" style="background-color: #f05a28">
+                                                <strong style="font-size: 1rem; font-size-adjust: initial">Reparaciones</strong>
+                                            </div>
+                                            <div class="card-header text-center" style="background-color: #edf0c7">
+                                                <span class="fa-layers fa-fw fa-5x">
+                                                    <fa-icon [icon]="faThumbsDown" style="color: #f7931e"></fa-icon>
+                                                    <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{ins2}}</strong></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="card text-center">
+                                            <div class="card-header text-white" style="background-color: #f05a28">
+                                                <strong style="font-size: 1rem; font-size-adjust: initial">Tramites</strong>
+                                            </div>
+                                            <div class="card-header text-center" style="background-color: #edf0c7">
+                                                <span class="fa-layers fa-fw fa-5x">
+                                                    <fa-icon [icon]="faThumbsDown" style="color: #f7931e"></fa-icon>
+                                                    <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{ins2}}</strong></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Reportes -->
+                    <div class="col-sm-6">
+                        <div class="card mt-3 ml-3 mr-3">
+                            <div class="row">
+                                <!-- Mejor Calificado -->
+                                <div class="col-sm-6">
+                                    <div class="card text-center">
+                                        <div class="card-header text-white" style=" background-color: #2e5a1c">
+                                            <strong style="font-size: 1rem; font-size-adjust: initial">Reporte mejor calificado</strong>
+                                        </div>
+                                        <div class="card-body text-center" style="background-color: #edf0c7">
                                             <span class="fa-layers fa-fw fa-6x">
-                                                <fa-icon [icon]="faThumbsUp"></fa-icon>
-                                                <span class="fa-layers-counter" style="background: green; font-size-adjust: inherit;">VI0002</span>
+                                                <fa-icon [icon]="faCar" style="color: #4e9525"></fa-icon>
+                                                <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>VI0002</strong></span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Peor Calificado -->
                                 <div class="col-sm-6">
-                                    <div class="card">
-                                        <div class="card-header bg-danger text-white">
-                                            <h5><strong>Peor Reporte</strong></h5>
+                                    <div class="card text-center">
+                                        <div class="card-header text-white" style="background-color: #f05a28">
+                                            <strong style="font-size: 1rem; font-size-adjust: initial">Reporte peor calificado</strong>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body text-center" style="background-color: #edf0c7">
                                             <span class="fa-layers fa-fw fa-6x">
-                                                <fa-icon [icon]="faThumbsDown"></fa-icon>
-                                                <span class="fa-layers-counter" style="background: red; font-size-adjust: inherit;">VI0001</span>
+                                                <fa-icon [icon]="faCarCrash"  style="color: #f7931e"></fa-icon>
+                                                <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>VI0001</strong></span>
                                             </span>
                                         </div>
                                     </div>

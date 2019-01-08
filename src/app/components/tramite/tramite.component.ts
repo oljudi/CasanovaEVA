@@ -14,7 +14,19 @@ import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
   }]
 })
 export class TramiteComponent implements OnInit {
-
+  
+  faTired = faTired;
+  faSadTear = faSadTear;
+  faGrin = faGrin;
+  faSmileBeam = faSmileBeam;
+  faCheckSquare = faCheckSquare;
+  faTimesCircle = faTimesCircle;
+  faMeh = faMeh;
+  faHourglassStart = faHourglassStart;
+  faHourglassHalf = faHourglassHalf;
+  faHourglassEnd = faHourglassEnd;
+  faVoteYea = faVoteYea;
+  
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -23,6 +35,9 @@ export class TramiteComponent implements OnInit {
   fifthFormGroup: FormGroup;
   sixFormGroup: FormGroup;
   sevenFormGroup: FormGroup;
+
+  public isYes: boolean = true;
+  public isNo: boolean = true;
 
   constructor(
     private _formBuilder: FormBuilder
@@ -52,16 +67,10 @@ export class TramiteComponent implements OnInit {
     });
   }
 
-  faTired = faTired;
-  faSadTear = faSadTear;
-  faGrin = faGrin;
-  faSmileBeam = faSmileBeam;
-  faCheckSquare = faCheckSquare;
-  faTimesCircle = faTimesCircle;
-  faMeh = faMeh;
-  faHourglassStart = faHourglassStart;
-  faHourglassHalf = faHourglassHalf;
-  faHourglassEnd = faHourglassEnd;
-  faVoteYea = faVoteYea;
-  
+  onNo(){
+    this.isYes=false;
+  }
+  onSi(){
+    this.isNo=false;
+  }
 }

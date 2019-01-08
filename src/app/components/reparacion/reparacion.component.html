@@ -112,11 +112,11 @@
             <form>
             <div class="text-center mt-3">
                 <button id="pregunta2" name="pregunta2" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext><fa-icon [icon]="faCheckSquare" class="fa-7x" style="color: green"></fa-icon></button>
-                <button id="pregunta2" name="pregunta2" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext><fa-icon [icon]="faTimesCircle" class="fa-7x" style="color: red"></fa-icon></button>
+                <button id="pregunta2" name="pregunta2" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext (click)="onNo()"><fa-icon [icon]="faTimesCircle" class="fa-7x" style="color: red"></fa-icon></button>
             </div>
             </form>
         </mat-step>
-        <mat-step state="middle" editable="false">
+        <mat-step state="middle" editable="false" *ngIf="isYes">
             <div class="text-center"><h2><strong>Durante la recepción ¿Nuestro asesor le preguntó si su vehículo requería de algún servicio adicional a lo previamente solicitado?</strong></h2></div>
             <div class="text-center mt-3">
                 <button id="pregunta3" name="pregunta3" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext><fa-icon [icon]="faCheckSquare" class="fa-7x" style="color: green"></fa-icon></button>
@@ -126,11 +126,11 @@
         <mat-step state="middle" editable="false">
             <div class="text-center"><h2><strong>¿Se cumplió con la fecha promesa de entrega?</strong></h2></div>
             <div class="text-center mt-3">
-                <button id="pregunta4" name="pregunta4" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext><fa-icon [icon]="faCheckSquare" class="fa-7x" style="color: green"></fa-icon></button>
+                <button id="pregunta4" name="pregunta4" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext (click)="onSi()"><fa-icon [icon]="faCheckSquare" class="fa-7x" style="color: green"></fa-icon></button>
                 <button id="pregunta4" name="pregunta4" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext><fa-icon [icon]="faTimesCircle" class="fa-7x" style="color: red"></fa-icon></button>
             </div>
         </mat-step>
-        <mat-step state="middle" editable="false">
+        <mat-step state="middle" editable="false" *ngIf="isNo">
             <div class="text-center"><h2><strong>¿Se le explicó el motivo?</strong></h2></div>
             <div class="text-center mt-3">
                 <button id="pregunta5" name="pregunta4" class="btn btn-outline-secondary col-md-2" mat-button mat-raised-button matStepperNext><fa-icon [icon]="faCheckSquare" class="fa-7x" style="color: green"></fa-icon></button>

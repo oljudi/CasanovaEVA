@@ -6,7 +6,7 @@ import { last } from '@angular/router/src/utils/collection';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDown, faCar, faCarCrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
 import { auth } from 'firebase';
@@ -26,6 +26,8 @@ export class AdminComponent implements OnInit {
   faStar = faStar;
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
+  faCar = faCar;
+  faCarCrash = faCarCrash;
 
   rows1: any;
   colums: any;

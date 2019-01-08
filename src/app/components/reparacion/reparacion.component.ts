@@ -15,6 +15,20 @@ import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 })
 export class ReparacionComponent implements OnInit {
 
+  faTired = faTired;
+  faSadTear = faSadTear;
+  faGrin = faGrin;
+  faSmileBeam = faSmileBeam;
+  faCheckSquare = faCheckSquare;
+  faTimesCircle = faTimesCircle;
+  faMeh = faMeh;
+  faHourglassStart = faHourglassStart;
+  faHourglassHalf = faHourglassHalf;
+  faHourglassEnd = faHourglassEnd;
+  faVoteYea = faVoteYea;
+
+  value: string;
+
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -23,6 +37,9 @@ export class ReparacionComponent implements OnInit {
   fifthFormGroup: FormGroup;
   sixFormGroup: FormGroup;
   sevenFormGroup: FormGroup;
+
+  public isYes: boolean = true;
+  public isNo: boolean = true;
 
   constructor(
     private _formBuilder: FormBuilder
@@ -52,16 +69,10 @@ export class ReparacionComponent implements OnInit {
     });
   }
 
-  faTired = faTired;
-  faSadTear = faSadTear;
-  faGrin = faGrin;
-  faSmileBeam = faSmileBeam;
-  faCheckSquare = faCheckSquare;
-  faTimesCircle = faTimesCircle;
-  faMeh = faMeh;
-  faHourglassStart = faHourglassStart;
-  faHourglassHalf = faHourglassHalf;
-  faHourglassEnd = faHourglassEnd;
-  faVoteYea = faVoteYea;
-
+  onNo(){
+    this.isYes=false;
+  }
+  onSi(){
+    this.isNo=false;
+  }
 }
