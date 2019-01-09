@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { EncuestaService } from 'src/app/services/encuesta.service';
+
 
 @Component({
   selector: 'app-reports',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportsComponent implements OnInit {
 
-  constructor() { }
+  rows1: any;
+  colums: any;
+
+  constructor(
+    private encuestaex: EncuestaService,
+    private encuestas: EncuestaService,
+    private afs: AngularFirestore,
+  ) { }
 
   ngOnInit() {
+    this.getData1();
+  }
+
+  getData1() {
+    this.afs.collection('Encuestaexes').valueChanges().subscribe((encuesta) => {
+      this.rows1 = encuesta ;
+    });
   }
 
 }

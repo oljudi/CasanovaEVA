@@ -4,8 +4,11 @@
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
 
 body { 
-  font-family: Roboto, Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin: 0;
+  height:50em; background-size: cover; width: auto;
+  background-image: url('https://image.ibb.co/ijqW7A/fondo-EVA2.png');
+  background-position: 50% 30%;
 }
 
 .basic-container {
@@ -17,10 +20,4 @@ body {
   float: right;
 }
 
-
-body{
-    height:50em; background-size: cover; width: auto;
-    background-image: url('https://image.ibb.co/ijqW7A/fondo-EVA2.png');
-    background-position: 50% 30%;
-  }
  

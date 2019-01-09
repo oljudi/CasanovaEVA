@@ -34,6 +34,8 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { RegisterComponent } from './components/register/register.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -44,8 +46,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NavbardownComponent } from './components/navbardown/navbardown.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { from } from 'rxjs';
-import { RegisterComponent } from './components/register/register.component';
-import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
   declarations: [

@@ -24,38 +24,38 @@ export class EncuestaService {
   EncuestaexDoc: AngularFirestoreDocument<EncuestaexInterface>;
   Encuestaexes: Observable<EncuestaexInterface[]>;
   Encuestaex: Observable<EncuestaexInterface>;
-  
+
 
 constructor(
   private afs: AngularFirestore) {
     this.EncuestaexCollection = this.afs.collection('Encuestaexes', ref => ref);
-    
+
     this.typeCollection = this.afs.collection('type', ref => ref);
    }
 
-  deleteEncuestaex(Encuestaex: EncuestaexInterface){
+  deleteEncuestaex(Encuestaex: EncuestaexInterface) {
     this.EncuestaexDoc = this.afs.doc('Encuestaexes/' + Encuestaex.id);
     this.EncuestaexDoc.delete();
   }
-   updateEncuestaex(Encuestaex: EncuestaexInterface){
-      this.EncuestaexDoc=this.afs.doc('Encuestaexes/' + Encuestaex.id);
+   updateEncuestaex(Encuestaex: EncuestaexInterface) {
+      this.EncuestaexDoc = this.afs.doc('Encuestaexes/' + Encuestaex.id);
       this.EncuestaexDoc.update(Encuestaex);
     }
-    
-    
-  addEncuestaex(Encuestaex: EncuestaexInterface){
-    //this.EncuestaexCollection.add(Encuestaex);
+
+
+  addEncuestaex(Encuestaex: EncuestaexInterface) {
+    // this.EncuestaexCollection.add(Encuestaex);
     this.EncuestaexCollection.doc(Encuestaex.id).set(Encuestaex);
-   
-    
+
+
   }
-  addEcuescont(Encuestaex: EncuestaexInterface){
-    //this.EncuestaexCollection.add(Encuestaex);
+  addEcuescont(Encuestaex: EncuestaexInterface) {
+    // this.EncuestaexCollection.add(Encuestaex);
     this.typeCollection.doc(Encuestaex.id).set(Encuestaex);
   }
 
 
-  getOneEncuestaex(){
+  getOneEncuestaex() {
     this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
@@ -66,15 +66,15 @@ constructor(
     }));
     return this.Encuestaexes;
   }
-  getmayor(){
-    var refs =this.afs.collection<EncuestaexInterface>('type', ref => ref.orderBy('total ', 'desc').limit(1) );
+  getmayor() {
+    const refs = this.afs.collection<EncuestaexInterface>('type', ref => ref.orderBy('total ', 'desc').limit(1) );
     this.Encuestaexes = this.EncuestaexCollection.snapshotChanges().pipe(map(actions => {return actions.map(a => {
       const data = a.payload.doc.data() as EncuestaexInterface;
       const id = a.payload.doc.id;
       return { id, ...data };
     });
 }));
-    
+
     /*.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
@@ -85,7 +85,7 @@ constructor(
     }));
     return this.Encuestaexes;*/
   }
-  getAllEncuestaex():Observable<EncuestaexInterface[]>{
+  getAllEncuestaex(): Observable<EncuestaexInterface[]> {
     this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
@@ -96,25 +96,25 @@ constructor(
     }));
     return this.Encuestaexes;
   }
-  getitem():Observable<EncuestaexInterface[]>{
+  getitem(): Observable<EncuestaexInterface[]> {
     this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.id as EncuestaexInterface;
-        //data.id = action.payload.doc.id;
-        
-        
+        // data.id = action.payload.doc.id;
+
+
         return data;
       });
     }));
     return this.Encuestaexes;
   }
-  getiEncuestaex(id:string){
+  getiEncuestaex(id: string) {
     this.EncuestaexDoc = this.afs.doc<EncuestaexInterface>('type/${id}');
-    this.Encuestaex = this.EncuestaexDoc.snapshotChanges().pipe(map(action =>{
-      if(action.payload.exists === false){
+    this.Encuestaex = this.EncuestaexDoc.snapshotChanges().pipe(map(action => {
+      if (action.payload.exists === false) {
         return null;
-      }else{
+      } else {
         const data = action.payload.data().total as EncuestaexInterface;
         data.id = action.payload.id;
         return data;
@@ -122,5 +122,5 @@ constructor(
     }));
     return this.Encuestaex;
   }
-  
+
 }
