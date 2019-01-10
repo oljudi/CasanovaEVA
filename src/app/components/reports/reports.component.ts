@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { EncuestaService } from 'src/app/services/encuesta.service';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -9,6 +10,9 @@ import { EncuestaService } from 'src/app/services/encuesta.service';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
+
+  /* Iconos */
+  faChartLine = faChartLine;
 
   rows1: any;
   colums: any;

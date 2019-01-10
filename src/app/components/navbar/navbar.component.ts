@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// tslint:disable-next-line:max-line-length
 import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faArchive, faCarCrash, faPeopleCarry, faUserCog } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '../../services/auth.service';
@@ -27,55 +28,55 @@ export class NavbarComponent implements OnInit {
   public isLogin: boolean;
   public nombreUsuario: string;
   public emailUsuario: string;
-  user: RegistroInterface ={
-    nombre:'',
-    correo:'',
-    admin:false,
-    suadmin:false,
+  user: RegistroInterface = {
+    nombre: '',
+    correo: '',
+    admin: false,
+    suadmin: false,
     id: ''
   };
   nomUsuario: any;
   constructor(
     private afs: AngularFirestore,
-    public AuthService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.AuthService.getAuth().subscribe( user =>{
-      if(user){
-        this.isLogin=true;
+    this.authService.getAuth().subscribe( user => {
+      if (user) {
+        this.isLogin = true;
         this.emailUsuario = user.email;
        this.nombreusuaro(this.emailUsuario);
-        //console.log(this.nomUsuario);
-      } else{
+        // console.log(this.nomUsuario);
+      } else {
         this.isLogin = false;
       }
     });
 //    this.nomUsuario =this.nombreusuaro();
 
 
-    
+
   }
-  nombreusuaro(x:string){
-    
-    this.afs.collection('Registro').doc(x).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );
-    //this.AuthService.getUser(this.emailUsuario);
-    
+  nombreusuaro(x: string) {
+
+    this.afs.collection('Registro').doc(x).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res); } );
+    // this.AuthService.getUser(this.emailUsuario);
+
   }
   arrass(x: RegistroInterface): string {
-    
-     this.nomUsuario= x.nombre;
-    
+
+     this.nomUsuario = x.nombre;
+
     console.log(x.nombre);
     console.log(this.nomUsuario);
-    
-  
+
+
    return this.nomUsuario;
-  
+
   }
-  
-  onClickLogOut(){
-    this.AuthService.logout();
+
+  onClickLogOut() {
+    this.authService.logout();
   }
 
 }

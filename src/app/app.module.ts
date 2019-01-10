@@ -10,6 +10,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// tslint:disable-next-line:max-line-length
 import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule, MatIconModule, MatFormFieldModule, MatTab, MatTabsModule, MatCheckboxModule } from '@angular/material';
 
 
@@ -26,7 +27,6 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page404/page404.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { TypeComponent } from './components/type/type.component';
 import { ExpressComponent } from './components/express/express.component';
 import { ReparacionComponent } from './components/reparacion/reparacion.component';
 import { TramiteComponent } from './components/tramite/tramite.component';
@@ -46,6 +46,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NavbardownComponent } from './components/navbardown/navbardown.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { from } from 'rxjs';
+import { TallerComponent } from './components/taller/taller.component';
 
 
 @NgModule({
@@ -55,7 +56,6 @@ import { from } from 'rxjs';
     HomeComponent,
     Page404Component,
     AdminComponent,
-    TypeComponent,
     ExpressComponent,
     ReparacionComponent,
     TramiteComponent,
@@ -65,17 +65,18 @@ import { from } from 'rxjs';
     ReportsComponent,
     NavbardownComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    TallerComponent
   ],
   imports: [
     NgxDatatableModule,
     NgxSpinnerModule,
     MatStepperModule,
     MatTabsModule,
-    MatCheckboxModule, 
+    MatCheckboxModule,
     MatInputModule,
-    MatIconModule, 
-    MatButtonModule, 
+    MatIconModule,
+    MatButtonModule,
     MatAutocompleteModule,
     MatNativeDateModule,
     MatFormFieldModule,
@@ -95,7 +96,7 @@ import { from } from 'rxjs';
     AngularFirestoreModule
   ],
   entryComponents: [ExpressComponent],
-  providers: [AuthService, AuthGuard, FlashMessagesService,EncuestaService],
+  providers: [AuthService, AuthGuard, FlashMessagesService, EncuestaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

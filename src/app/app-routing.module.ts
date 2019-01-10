@@ -9,14 +9,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReparacionComponent } from './components/reparacion/reparacion.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { TramiteComponent } from './components/tramite/tramite.component';
-import { TypeComponent } from './components/type/type.component';
 import { Page404Component } from './components/page404/page404.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { NavbardownComponent } from './components/navbardown/navbardown.component';
+import { TallerComponent } from './components/taller/taller.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
+
 
 
 const routes: Routes = [
@@ -29,10 +30,10 @@ const routes: Routes = [
   { path: 'reparacion', component: ReparacionComponent },
   { path: 'thankyou', component: ThankyouComponent },
   { path: 'tramite', component: TramiteComponent },
-  { path: 'type', component: TypeComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'taller', component: TallerComponent, canActivate: [AuthGuard] },
   { path: 'encuesta', component: EncuestaComponent},
-  { path: 'reports', component: ReportsComponent},
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
   { path: 'navbardown', component: NavbardownComponent},
   { path: '**', component: Page404Component }
 ];

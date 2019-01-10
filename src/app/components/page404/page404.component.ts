@@ -8,12 +8,12 @@ import { faExclamationTriangle, faHome, faHouseDamage } from '@fortawesome/free-
 })
 export class Page404Component implements OnInit {
 
+  faExclamationTriangle = faExclamationTriangle;
+  faHome = faHome;
+  faHouseDamage = faHouseDamage;
+
   constructor() { }
 
   ngOnInit() {
   }
-
-  faExclamationTriangle = faExclamationTriangle;
-  faHome = faHome;
-  faHouseDamage = faHouseDamage;
 }

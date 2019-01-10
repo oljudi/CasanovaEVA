@@ -1,0 +1,115 @@
+<!-- NAVBAR admin-->
+<app-navbar></app-navbar>
+
+<!-- Contenido -->
+<div class="card col-md-2 mt-3 ml-1 text-white text-center form-inline" style="background-color: #1a3263"><fa-icon [icon]="faCarCrash" class="fa-2x"></fa-icon><strong><h2>SEVS - Taller</h2></strong></div>
+
+    <!-- Llenado rapido-->
+<div class="card col-md-2 mt-3 ml-1 text-white text-center form-inline" style="background-color: #1a3263"><strong><h2>Llenado rapido</h2></strong></div>
+<div class="card col-md-6 offset-md-3 mt-2">
+    <form>
+        <div class="form-group">
+          <h4><strong>Folio:</strong></h4>
+          <input type="text" class="form-control text-center" style="font-size: 1rem" id="FolioEncuesta" aria-describedby="FolioEncuesta" placeholder="VI1234">
+        </div>
+        <h4><strong>Tipo de Servicio:</strong></h4><br>
+        <div class="text-center">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionExpress" value="option1">
+                <label class="form-check-label" for="OptionExpress" style="font-size: 1rem"><fa-icon [icon]="faShippingFast"></fa-icon><strong> Express</strong></label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionReparacion" value="option2">
+                <label class="form-check-label" for="OptionReparacion" style="font-size: 1rem"><fa-icon [icon]="faCarCrash"></fa-icon><strong> Reparación</strong></label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionTramite" value="option3">
+                <label class="form-check-label" for="OptionTramite" style="font-size: 1rem"><fa-icon [icon]="faNotesMedical"></fa-icon><strong> Tramite</strong></label>
+              </div>
+        </div>
+          <hr>
+        <button type="submit" class="btn btn-primary btn-block mb-2" style="font-size: 1rem"><strong>Ingresar</strong></button>
+      </form>
+</div>
+
+    <!-- Llenado completo -->
+<div class="card col-md-2 mt-3 ml-1 text-white text-center form-inline" style="background-color: #1a3263"><strong><h2>Llenado completo</h2></strong></div>
+<div class="card col-md-6 offset-md-3 mt-2">
+    <form>
+        <div class="form-group mt-3">
+          <h4><strong>Folio:</strong></h4>
+          <input type="text" class="form-control text-center" style="font-size: 1rem" id="FolioEncuesta" aria-describedby="FolioEncuesta" placeholder="VI1234">
+        </div>
+        <h4><strong>Tipo de Servicio:</strong></h4><br>
+        <div class="text-center">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionExpress" value="option1" (click)="Option('express')">
+                <label class="form-check-label" for="OptionExpress" style="font-size: 1rem"><fa-icon [icon]="faShippingFast"></fa-icon><strong> Express</strong></label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionReparacion" value="option2" (click)="Option('reparacion')">
+                <label class="form-check-label" for="OptionReparacion" style="font-size: 1rem"><fa-icon [icon]="faCarCrash"></fa-icon><strong> Reparación</strong></label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionTramite" value="option3" (click)="Option('tramite')">
+                <label class="form-check-label" for="OptionTramite" style="font-size: 1rem"><fa-icon [icon]="faNotesMedical"></fa-icon><strong> Tramite</strong></label>
+              </div>
+        </div>
+<!-- fomrmulario de Servicio -->
+        <h4><strong>Datos del servicio:</strong></h4><hr>
+        <!-- Express -->
+        <div class="card" *ngIf="opt1">
+            <div class="card-header">
+                <h4><fa-icon [icon]="faShippingFast"></fa-icon><strong>Express</strong></h4>
+            </div>
+        </div>
+        <!-- Reparación -->
+        <div class="card" *ngIf="opt2">
+          <div class="card-header">
+              <h4><fa-icon [icon]="faCarCrash"></fa-icon><strong>Reparación</strong></h4>
+          </div>
+        </div>
+        <!-- Tramites -->
+        <div class="card" *ngIf="opt3">
+            <div class="card-header">
+                <h4><fa-icon [icon]="faNotesMedical"></fa-icon><strong>Tramites</strong></h4>
+            </div>
+        </div>
+<!-- Datos del Cliente -->
+        <br>
+        <h4><strong>Datos del cliente:</strong></h4><hr>
+        <form>
+        <div class="form-group">
+          <label for="NombreCliente" style="font-size: 1rem"><strong>Nombre: </strong></label><br>
+          <input type="text" class="form-control text-center" style="font-size: 1rem" id="NombreCliente" aria-describedby="NombreCliente" placeholder="Juan Perez Sanchez">
+          <hr>
+              <div class="form-row">
+                  <div class="col-auto">
+                      <label class="sr-only" for="inlineFormInputGroup">Correo Electronico</label>
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><fa-icon [icon]="faEnvelope"></fa-icon></div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="nombre@correo.com">
+                      </div>
+                    </div>
+                <div class="col-auto">
+                    <label class="sr-only" for="inlineFormInputGroup">Telefono</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><fa-icon [icon]="faMobileAlt"></fa-icon></div>
+                      </div>
+                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="55-1234-5678">
+                    </div>
+                  </div>
+              </div>
+        </div>
+      </form>
+        <hr>
+<!-- Envio formulario Llenado completo-->
+        <button type="submit" class="btn btn-primary btn-block mb-2" style="font-size: 1rem"><strong>Ingresar</strong></button>
+      </form>
+    </div>
+
+<!-- Footer -->
+<app-footer></app-footer>

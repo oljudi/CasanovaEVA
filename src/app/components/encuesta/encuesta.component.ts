@@ -14,26 +14,6 @@ export class EncuestaComponent implements OnInit {
   public nombreUsuario: string;
   public emailUsuario: string;
 
-  constructor(
-    public AuthService: AuthService
-  ) { }
-
-  ngOnInit() {
-    this.AuthService.getAuth().subscribe( auth =>{
-      if(auth){
-        this.isLogin=true;
-        this.nombreUsuario = auth.displayName;
-        this.emailUsuario = auth.email;
-      } else{
-        this.isLogin = false;
-      }
-    });
-  }
-
-  onClickLogOut(){
-    this.AuthService.logout();
-  }
-
   faFemale = faFemale;
   faChartLine = faChartLine;
   faSignOutAlt = faSignOutAlt;
@@ -41,4 +21,24 @@ export class EncuestaComponent implements OnInit {
   faHome = faHome;
   faVoteYea = faVoteYea;
   faParachuteBox = faParachuteBox;
+
+  constructor(
+    public authService: AuthService
+  ) { }
+
+  ngOnInit() {
+    this.authService.getAuth().subscribe( auth => {
+      if (auth) {
+        this.isLogin = true;
+        this.nombreUsuario = auth.displayName;
+        this.emailUsuario = auth.email;
+      } else {
+        this.isLogin = false;
+      }
+    });
+  }
+
+  onClickLogOut() {
+    this.authService.logout();
+  }
 }

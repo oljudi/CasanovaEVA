@@ -25,36 +25,36 @@ export class LoginComponent implements OnInit {
   public email: string;
   public correo: string;
   public password: string;
-  
+
 
   constructor(
     public authService: AuthService,
     public router: Router,
     public flashMensaje: FlashMessagesService
-    
+
   ) { }
-user: RegistroInterface ={
-  nombre:'',
-  correo:'',
-  admin:false,
-  suadmin:false,
+user: RegistroInterface = {
+  nombre: '',
+  correo: '',
+  admin: false,
+  suadmin: false,
   id: ''
 };
   ngOnInit() {
-  
+
     this.authService.getAuth().subscribe(user => {
-      if(user){
-        //this.user = user;
+      if (user) {
+        // this.user = user;
         console.log('User', user.email);
       }
-    })
-    
-   
+    });
+
+
   }
 
-  onSubmitLogin(){
+  onSubmitLogin() {
     this.authService.loginEmail(this.email, this.password)
-    .then( (res) =>{
+    .then( (res) => {
       this.flashMensaje.show('Bienvenido a SEVS',
       {cssClass: 'alert-success', timeout: 4000 });
       this.router.navigate(['/admin']);
