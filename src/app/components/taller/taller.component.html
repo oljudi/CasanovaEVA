@@ -15,16 +15,16 @@
         <h4><strong>Tipo de Servicio:</strong></h4><br>
         <div class="text-center">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionExpress" value="option1">
-                <label class="form-check-label" for="OptionExpress" style="font-size: 1rem"><fa-icon [icon]="faShippingFast"></fa-icon><strong> Express</strong></label>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionExpress1" value="option1">
+                <label class="form-check-label" for="OptionExpress1" style="font-size: 1rem"><fa-icon [icon]="faShippingFast"></fa-icon><strong> Express</strong></label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionReparacion" value="option2">
-                <label class="form-check-label" for="OptionReparacion" style="font-size: 1rem"><fa-icon [icon]="faCarCrash"></fa-icon><strong> Reparación</strong></label>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionReparacion1" value="option2">
+                <label class="form-check-label" for="OptionReparacion1" style="font-size: 1rem"><fa-icon [icon]="faCarCrash"></fa-icon><strong> Reparación</strong></label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionTramite" value="option3">
-                <label class="form-check-label" for="OptionTramite" style="font-size: 1rem"><fa-icon [icon]="faNotesMedical"></fa-icon><strong> Tramite</strong></label>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionTramite1" value="option3">
+                <label class="form-check-label" for="OptionTramite1" style="font-size: 1rem"><fa-icon [icon]="faNotesMedical"></fa-icon><strong> Tramite</strong></label>
               </div>
         </div>
           <hr>
@@ -62,6 +62,150 @@
             <div class="card-header">
                 <h4><fa-icon [icon]="faShippingFast"></fa-icon><strong>Express</strong></h4>
             </div>
+            <div class="card-body text-center">
+              <h5><strong>Vehiculo</strong></h5> <!-- Vehiculo -->
+              <hr>
+              <div class="form-row ">
+                <div class="col-auto mx-auto">
+                  <label class="sr-only" for="inlineFormInputGroup">Placa</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><fa-icon [icon]="faFileInvoice"></fa-icon></div>
+                      </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="PLACA">
+                  </div>
+                  <label class="sr-only" for="inlineFormInputGroup">Vehiculo</label>
+                  <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><fa-icon [icon]="faCar"></fa-icon></div>
+                      </div>
+                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="VEHICULO">
+                    </div>
+                </div>
+                <div class="col-auto mx-auto">
+                    <label class="sr-only" for="inlineFormInputGroup">Marca</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><fa-icon [icon]="faBrand"></fa-icon></div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="MARCA">
+                      </div>
+                      <label class="sr-only" for="inlineFormInputGroup">Combustible</label>
+                      <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text"><fa-icon [icon]="faGas"></fa-icon></div>
+                          </div>
+                          <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="COMBUSTIBLE">
+                        </div>
+                  </div>
+                    <div class="col-auto mx-auto">
+                        <label class="sr-only" for="inlineFormInputGroup">Serie</label>
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text"><fa-icon [icon]="faSerial"></fa-icon></div>
+                          </div>
+                          <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="# SERIE">
+                        </div>
+                        <label class="sr-only" for="inlineFormInputGroup">Kilometraje</label>
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text"><fa-icon [icon]="faKm"></fa-icon></div>
+                          </div>
+                          <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="KILOMETRAJE">
+                        </div>
+
+ 
+                      </div>
+              </div>
+              <h5><strong>Taller</strong></h5>
+              <hr>
+              <div class="form-row ">
+                  <div class="col-auto mx-auto">
+                    <label class="sr-only" for="inlineFormInputGroup">Entrada</label>
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><fa-icon [icon]="faFileInvoice"></fa-icon></div>
+                        </div>
+                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Fecha Entrada">
+                    </div>
+                    <label class="sr-only" for="inlineFormInputGroup">Salida</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><fa-icon [icon]="faCar"></fa-icon></div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Fecha Salida">
+                      </div>
+                  </div>
+                  <div class="col-auto mx-auto">
+                      <p class="" for="inlineFormInputGroup"><strong>Tarjeta de Circulación</strong></p><hr>
+                      <div class="text-center">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionSiTC" value="option1TC">
+                            <label class="form-check-label" for="OptionSiTC" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionNoTC" value="option2TC">
+                            <label class="form-check-label" for="OptionNoTC" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
+                          </div>
+                      </div>
+                      <p class="mt-3" for="inlineFormInputGroup"><strong>Llave</strong></p><hr>
+                      <div class="text-center">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionSiL" value="option1L">
+                            <label class="form-check-label" for="OptionSiL" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionNoL" value="option2L">
+                            <label class="form-check-label" for="OptionNoL" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
+                          </div>
+                      </div>
+                    </div>
+                      <div class="col-auto mx-auto">
+                          <p class="" for="inlineFormInputGroup"><strong>Llanta</strong></p><hr>
+                          <div class="text-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionSiLL" value="option1LL">
+                                <label class="form-check-label" for="OptionSiLL" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionNoLL" value="option2LL">
+                                <label class="form-check-label" for="OptionNoLL" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
+                              </div>
+                          </div>
+                          <p class="mt-3" for="inlineFormInputGroup"><strong>Gato</strong></p><hr>
+                          <div class="text-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionSiGTO" value="option1GTO">
+                                <label class="form-check-label" for="OptionSiGTO" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionNoGTO" value="option2GTO">
+                                <label class="form-check-label" for="OptionNoGTO" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-auto mx-auto">
+                            <p class="" for="inlineFormInputGroup"><strong>Traé orden de servicio</strong></p><hr>
+                            <div class="text-center">
+                              <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionSiSERV" value="option1SERV">
+                                  <label class="form-check-label" for="OptionSiSERV" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OptionNoSERV" value="option2SERV">
+                                  <label class="form-check-label" for="OptionNoSERV" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text"><fa-icon [icon]="faUser"></fa-icon></div>
+                                </div>
+                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Ejecutivo">
+                              </div>
+                          </div>
+                </div>
+            </div>
         </div>
         <!-- Reparación -->
         <div class="card" *ngIf="opt2">
@@ -83,8 +227,8 @@
           <label for="NombreCliente" style="font-size: 1rem"><strong>Nombre: </strong></label><br>
           <input type="text" class="form-control text-center" style="font-size: 1rem" id="NombreCliente" aria-describedby="NombreCliente" placeholder="Juan Perez Sanchez">
           <hr>
-              <div class="form-row">
-                  <div class="col-auto">
+              <div class="form-row ">
+                  <div class="col-auto mx-auto">
                       <label class="sr-only" for="inlineFormInputGroup">Correo Electronico</label>
                       <div class="input-group mb-2">
                         <div class="input-group-prepend">
@@ -93,7 +237,7 @@
                         <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="nombre@correo.com">
                       </div>
                     </div>
-                <div class="col-auto">
+                <div class="col-auto mx-auto">
                     <label class="sr-only" for="inlineFormInputGroup">Telefono</label>
                     <div class="input-group mb-2">
                       <div class="input-group-prepend">

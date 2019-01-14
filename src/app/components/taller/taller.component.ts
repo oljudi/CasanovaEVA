@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faCarCrash, faShippingFast, faNotesMedical, faEnvelope, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+// tslint:disable-next-line:max-line-length
+import { faCarCrash, faShippingFast, faNotesMedical, faEnvelope, faMobileAlt, faFileInvoice, faCarSide, faTachometerAlt, faGasPump, faCarAlt, faCheck, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-taller',
@@ -20,6 +21,16 @@ export class TallerComponent implements OnInit {
   faNotesMedical = faNotesMedical;
   faEnvelope = faEnvelope;
   faMobileAlt = faMobileAlt;
+  faFileInvoice = faFileInvoice;
+  faCar = faCarSide;
+  faSerial = faNotesMedical;
+  faKm = faTachometerAlt;
+  faGas = faGasPump;
+  faBrand = faCarAlt;
+  faYes = faCheck;
+  faNo = faTimes;
+  faUser = faUser;
+
   constructor() { }
 
   ngOnInit() {
