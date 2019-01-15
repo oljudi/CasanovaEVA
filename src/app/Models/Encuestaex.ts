@@ -11,4 +11,5 @@ export interface EncuestaexInterface{
     cont?:number;
     fecha?:string;
     total?:number;
+    tipo?:string;
 }

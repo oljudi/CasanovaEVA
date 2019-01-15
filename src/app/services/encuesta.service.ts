@@ -12,6 +12,8 @@ import {map} from 'rxjs/operators';
 })
 export class EncuestaService {
   EncuestaexCollection: AngularFirestoreCollection<EncuestaexInterface>;
+  EncuestareCollection: AngularFirestoreCollection<EncuestaexInterface>;
+  EncuestatrCollection: AngularFirestoreCollection<EncuestaexInterface>;
   P1exCollection: AngularFirestoreCollection<EncuestaexInterface>;
   P2exCollection: AngularFirestoreCollection<EncuestaexInterface>;
   P3exCollection: AngularFirestoreCollection<EncuestaexInterface>;
@@ -29,7 +31,8 @@ export class EncuestaService {
 constructor(
   private afs: AngularFirestore) {
     this.EncuestaexCollection = this.afs.collection('Encuestaexes', ref => ref);
-
+    this.EncuestareCollection = this.afs.collection('Encuestareps', ref => ref);
+    this.EncuestatrCollection = this.afs.collection('Encuestatram', ref => ref);
     this.typeCollection = this.afs.collection('type', ref => ref);
    }
 
@@ -46,8 +49,14 @@ constructor(
   addEncuestaex(Encuestaex: EncuestaexInterface) {
     // this.EncuestaexCollection.add(Encuestaex);
     this.EncuestaexCollection.doc(Encuestaex.id).set(Encuestaex);
-
-
+  }
+  addEncuestare(Encuestaex: EncuestaexInterface) {
+    // this.EncuestaexCollection.add(Encuestaex);
+    this.EncuestareCollection.doc(Encuestaex.id).set(Encuestaex);
+  }
+  addEncuestatr(Encuestaex: EncuestaexInterface) {
+    // this.EncuestaexCollection.add(Encuestaex);
+    this.EncuestatrCollection.doc(Encuestaex.id).set(Encuestaex);
   }
   addEcuescont(Encuestaex: EncuestaexInterface) {
     // this.EncuestaexCollection.add(Encuestaex);

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
 import { faCarCrash, faShippingFast, faNotesMedical, faEnvelope, faMobileAlt, faFileInvoice, faCarSide, faTachometerAlt, faGasPump, faCarAlt, faCheck, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
+import { EncuestaService } from 'src/app/services/encuesta.service';
 
-@Component({
+@Component({ 
   selector: 'app-taller',
   templateUrl: './taller.component.html',
   styleUrls: ['./taller.component.css']
@@ -14,7 +16,10 @@ export class TallerComponent implements OnInit {
   opt2: boolean;
   opt3: boolean;
   value: string;
-
+  opcion:string;
+  name:string;
+  idenc: string;
+  
   /* Iconos */
   faCarCrash = faCarCrash;
   faShippingFast = faShippingFast;
@@ -31,7 +36,9 @@ export class TallerComponent implements OnInit {
   faNo = faTimes;
   faUser = faUser;
 
-  constructor() { }
+  constructor(
+    public encuestase:EncuestaService
+  ) { }
 
   ngOnInit() {
     this.Option( this.value );
@@ -53,5 +60,23 @@ export class TallerComponent implements OnInit {
       this.opt2 = false;
       this.opt3 = true;
     }
+  }
+   
+  onEncuesta({value}: {value: EncuestaexInterface}){
+  this.name=this.idenc.toUpperCase();
+    value.id=this.name;
+    value.tipo = this.opcion;
+    console.log(value);
+  if(this.opcion == 'express'){
+    this.encuestase.addEncuestaex(value);
+  }
+  if(this.opcion == 'reparacion'){
+    this.encuestase.addEncuestare(value);
+  }
+  if(this.opcion == 'tramite'){
+    this.encuestase.addEncuestatr(value);
+  }
+
+   
   }
 }

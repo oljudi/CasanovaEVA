@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import {EncuestaexInterface} from '../../Models/Encuestaex';
 import {EncuestaService} from '../../services/encuesta.service';
 import {Observable} from 'rxjs';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -14,34 +16,52 @@ import {Observable} from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   name:string;
-
+  tipo:string;
   idenc: string;
-  
+  Encuesta: Observable<EncuestaexInterface>;
+  EncuestasDoc: AngularFirestoreDocument<EncuestaexInterface>;
 
   constructor(
     public encuestase:EncuestaService,
-    public router: Router,
+    private afs: AngularFirestore,
+    public router: Router
   ) {
     
-  }
+  } 
   
 onEncuesta({value}: {value: EncuestaexInterface}){
   this.name=this.idenc.toUpperCase();
-      this.router.navigate(['/express/'+this.name]);
-    
-    value.id=this.name;
-    
-    
-    this.encuestase.addEncuestaex(value);
-    
+  this.afs.firestore.doc('Encuestaexes/'+this.name).get()
+      .then(docSnapshot => {
+        if (docSnapshot.exists == true) {
+          this.afs.collection('Encuestaexes').doc(this.name).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );  
+        }
+        else{
+          this.afs.firestore.doc('Encuestareps/'+this.name).get()
+          .then(docSnapshot => {
+            if (docSnapshot.exists == true) {
+              this.afs.collection('Encuestareps').doc(this.name).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );  
+            }
+            else{
+              this.afs.collection('Encuestatram').doc(this.name).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );  
+            }
+          });
+        }
+      });
+
+  //this.afs.collection('Encuestaexes').doc(this.name).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );  
   }
-  
+  arrass(x: EncuestaexInterface): string {
+    this.tipo= x.tipo;
+   console.log(this.tipo);
+   this.router.navigate(['/'+ this.tipo+'/'+this.name]);
+   //console.log(this.nomUsuario);
+   return this.tipo;
+ }
 
   ngOnInit() {
   }
   
-  encuesta:EncuestaexInterface={id: ''};
-
   faVoteYea = faVoteYea;
 }
 
