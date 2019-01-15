@@ -116,18 +116,20 @@
                                     <div class="card-body text-center">
                                         <span class="fa-layers fa-fw fa-6x">
                                             <fa-icon [icon]="faTrophy" style="color: #B7963D"></fa-icon>
-                                                <span class="fa-layers-counter text-center" style="background:green; font-size-adjust: inherit;">{{meta}}</span>
+                                                <span class="fa-layers-counter text-center" style="background:green; font-size-adjust: inherit;">{{metaassd}}</span>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <form #formGuardar="ngForm" (ngSubmit)="metaact(formGuardar)">
                         <div class="input-group mb-3 mt-3 card-footer">
-                            <input type="text" class="form-control" placeholder="Actualizar meta:" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="number" class="form-control" placeholder="Actualizar meta:" aria-label="Recipient's username" aria-describedby="button-addon2" name="metaasd"  [(ngModel)]="metaasd" #metas="ngModel" >
                             <div class="input-group-append">
-                                <button class="btn btn-info" type="btn btn-info" id="button-addon2" (click)="metaact">Enviar</button>
+                                <button class="btn btn-info" type="submit" id="button-addon2" value="Guardar">Enviar</button>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
                 <p>{{p1}}</p>

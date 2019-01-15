@@ -123,7 +123,8 @@ export class AdminComponent implements OnInit {
   pr6: number;
   pr7: number;
   pr8: number;
-
+  metaasd: number;
+  metaassd: number;
   cont() {
     this.afs.collection('Encuestaexes').valueChanges().subscribe(values => this.contadorre = values.length);
     this.afs.collection('type').valueChanges().subscribe(values => this.contador = values.length);
@@ -371,9 +372,8 @@ arrass9(x: EncuestaexInterface): number {
   ngOnInit() {
 
     this.cont();
-
+    this.metaassd = 80;
     this.getData1();
-
      // this.getcurrentuser();
      this.authservice.getAuth().subscribe( user => {
       if (user) {
@@ -404,7 +404,6 @@ arrass9(x: EncuestaexInterface): number {
   return this.nomUsuario;
 
  }
-
 
 
 getpreguntamayor() {
@@ -450,7 +449,9 @@ this.mejorpreg = prt[7];
     });
   }
 
-  metaact() {
+  metaact(x: number) {
+    this.metaassd = x;
+    console.log(x);
   }
 
 }
