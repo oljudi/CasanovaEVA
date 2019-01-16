@@ -80,7 +80,7 @@
                                     <div class="card-body text-center">
                                         <span class="fa-layers fa-fw fa-6x">
                                             <fa-icon [icon]="faBoxes"></fa-icon>
-                                                <span class="fa-layers-counter" style="background:#fd5f00; font-size-adjust: inherit;">{{contadorre}}</span>
+                                                <span class="fa-layers-counter" style="background:#fd5f00; font-size-adjust: inherit;">{{contadorre + contadorrep + contadortram}}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                                     <div class="card-body text-center">
                                         <span class="fa-layers fa-fw fa-6x">
                                             <fa-icon [icon]="faTrophy" style="color: #B7963D"></fa-icon>
-                                                <span class="fa-layers-counter text-center" style="background:green; font-size-adjust: inherit;">{{metaassd}}</span>
+                                                <span class="fa-layers-counter text-center" style="background:green; font-size-adjust: inherit;">{{metass}}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                         </div>
                         <form #formGuardar="ngForm" (ngSubmit)="metaact(formGuardar)">
                         <div class="input-group mb-3 mt-3 card-footer">
-                            <input type="number" class="form-control" placeholder="Actualizar meta:" aria-label="Recipient's username" aria-describedby="button-addon2" name="metaasd"  [(ngModel)]="metaasd" #metas="ngModel" >
+                            <input type="number" class="form-control" placeholder="Actualizar meta:" aria-label="Recipient's username" aria-describedby="button-addon2" name="meta"  [(ngModel)]="meta" #metas="ngModel" >
                             <div class="input-group-append">
                                 <button class="btn btn-info" type="submit" id="button-addon2" value="Guardar">Enviar</button>
                             </div>
@@ -208,7 +208,7 @@
                                     <td>{{prome6}}</td>
                                     <td>{{prome7}}</td>
                                     <td>{{prome8}}</td>
-                                    <td>{{prome}}</td>
+                                    <td>{{prome10}}</td>
                                 </tr>
                             </tbody>
                         </table>

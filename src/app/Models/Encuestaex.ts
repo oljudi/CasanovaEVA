@@ -12,4 +12,5 @@ export interface EncuestaexInterface{
     fecha?:string;
     total?:number;
     tipo?:string;
+    contestada?:boolean;
 }

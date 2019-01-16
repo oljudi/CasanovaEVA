@@ -122,6 +122,7 @@ export class ExpressComponent implements OnInit {
     value.pregunta6 = this.model.p6;
     value.pregunta7 = this.model.p7;
     value.pregunta8 = this.model.p8;
+    value.contestada = true;
     value.fecha = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
     value.total = +this.proms;
     

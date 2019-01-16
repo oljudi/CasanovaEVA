@@ -4,6 +4,7 @@ import {EncuestaexInterface} from '../Models/Encuestaex';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import { MetaInterface } from '../Models/Meta';
 
 
 
@@ -62,6 +63,11 @@ constructor(
     // this.EncuestaexCollection.add(Encuestaex);
     this.typeCollection.doc(Encuestaex.id).set(Encuestaex);
   }
+  addMeta(Encuestaex: MetaInterface) {
+    var MetaCollection = this.afs.collection('Meta', ref => ref);
+    // this.EncuestaexCollection.add(Encuestaex);
+    MetaCollection.doc('META').set(Encuestaex);
+  }
 
 
   getOneEncuestaex() {
@@ -95,7 +101,7 @@ constructor(
     return this.Encuestaexes;*/
   }
   getAllEncuestaex(): Observable<EncuestaexInterface[]> {
-    this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
+    this.Encuestaexes = this.typeCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as EncuestaexInterface;
@@ -106,7 +112,7 @@ constructor(
     return this.Encuestaexes;
   }
   getitem(): Observable<EncuestaexInterface[]> {
-    this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
+    this.Encuestaexes = this.typeCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.id as EncuestaexInterface;

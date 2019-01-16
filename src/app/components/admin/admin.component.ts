@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
 import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDown, faCar, faCarCrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
+import { MetaInterface } from 'src/app/Models/Meta';
 
 
 @Component({
@@ -33,6 +34,8 @@ export class AdminComponent implements OnInit {
     console.log(pruebasva);
 
    this.suma = 0;
+   this.sumarep = 0;
+   this.sumareps = 0;
    this.sumaprom = 0;
    this.sumap2 = 0;
    this.sumap3 = 0;
@@ -58,7 +61,6 @@ export class AdminComponent implements OnInit {
   rows1: any;
   colums: any;
 
-  meta = '80';
 
   public isLogin: boolean;
 
@@ -89,6 +91,7 @@ export class AdminComponent implements OnInit {
   suma7: number;
   suma8: number;
   prome: string;
+  promerep: string;
   prome1: string;
   prome2: string;
   prome3: string;
@@ -102,6 +105,9 @@ export class AdminComponent implements OnInit {
   sucursals: string;
   contador: number;
   contadorre: number;
+  contadorrep: number;
+  contadorex: number;
+  contadortram: number;
   user: RegistroInterface;
   compas: any;
   ins: number;
@@ -110,7 +116,7 @@ export class AdminComponent implements OnInit {
   list2: any;
   list3: any;
   Encuestaexes: Observable<EncuestaexInterface[]>;
-
+metass:number;
   public emailUsuario: string;
   nomUsuario: any;
   mejorpreg: number;
@@ -123,10 +129,19 @@ export class AdminComponent implements OnInit {
   pr6: number;
   pr7: number;
   pr8: number;
-  metaasd: number;
-  metaassd: number;
+  meta: number;
+  
+
   cont() {
-    this.afs.collection('Encuestaexes').valueChanges().subscribe(values => this.contadorre = values.length);
+
+    
+
+    this.afs.collection('Encuestaexes').valueChanges().subscribe(values => (this.contadorre = values.length) as number);
+   
+    this.afs.collection('Encuestareps').valueChanges().subscribe(values => (this.contadorrep = values.length) as number);
+   
+    this.afs.collection('Encuestatram').valueChanges().subscribe(values => (this.contadortram = values.length) as number);
+   
     this.afs.collection('type').valueChanges().subscribe(values => this.contador = values.length);
 
 
@@ -136,7 +151,7 @@ export class AdminComponent implements OnInit {
    // this.list = this.afs.collection('Encuestaexes').snapshotChanges().pipe(map(action => {return action.map( a => {const idz = a.payload.doc.id; return idz});}));
 
 
-     this.afs.collection('Encuestaexes').doc('VI0001').valueChanges().pipe(take(1)).subscribe(res => {this.arras(res); } );
+     this.afs.collection('type').doc('VI0001').valueChanges().pipe(take(1)).subscribe(res => {this.arras(res); } );
 
      // console.log(this.listadoEncuestaex);
 
@@ -281,15 +296,26 @@ arrass8(x: EncuestaexInterface): number {
 
  return  this.sumap8;
 }
-arrass9(x: EncuestaexInterface): number {
-  this.primev = x;
+sumarep: any;
+sumareps: any;
+arrass10(x: EncuestaexInterface): number {
+  this.sumarep = x.total;
+  this.sumareps = this.sumarep + this.sumareps;
  // console.log(x.total);
-  // console.log(this.primev);
+ // console.log(this.suma);
+  this.prom10(this.sumareps);
+
  return  this.sumap8;
 }
+//arrass9(x: EncuestaexInterface): number {
+ // this.primev = x;
+ // console.log(x.total);
+  // console.log(this.primev);
+ //return  this.sumap8;
+//}
   arras( x: EncuestaexInterface) {
 
-    for (let i = 0 ; i < this.contadorre ; i++ ) {
+    for (let i = 0 ; i < this.contador ; i++ ) {
       this.ens = this.list[i] as string;
       this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res); } );
       this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass1(res); } );
@@ -300,27 +326,21 @@ arrass9(x: EncuestaexInterface): number {
       this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass6(res); } );
       this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass7(res); } );
       this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass8(res); } );
-
-
+      this.afs.collection('Encuestareps').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass10(res); } );
     }
-
-
-    }
-
+  }
+    promrep(x: number) {
+      this.promerep  = (this.suma / this.contador).toFixed(2);
+      // console.log(this.prome );
+      // return this.prome1,this.prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+      }
 
    // this.afs.collection<EncuestaexInterface>('type', ref =>{      return ref.orderBy('total ', 'desc').limit(1);} );
 // this.list3 = this.list2.or;
-
-
-
-
-
-
   prom(x: number) {
   this.prome  = (this.suma / this.contador).toFixed(2);
   // console.log(this.prome );
   // return this.prome1,this.prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
-
   }
   prom1(x: number) {
     this.prome1 = (x / this.contador).toFixed(2);
@@ -369,11 +389,21 @@ arrass9(x: EncuestaexInterface): number {
                   // tslint:disable-next-line:max-line-length
                   // return this.prome1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
                   }
+                  prome10:string;
+                  prom10(x: number) {
+                    this.prome10 = (this.sumareps / this.contadorrep).toFixed(2);
+                    console.log(this.prome10);
+                 //   this.getpreguntamayor();
+                    // tslint:disable-next-line:max-line-length
+                    // return this.prome1,this.prome1,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8prome2,this.prome3,this.prome4,this.prome5,this.prome6,this.prome7,this.prome8;
+                    }
   ngOnInit() {
-
+    
     this.cont();
-    this.metaassd = 80;
+    
     this.getData1();
+   
+    
      // this.getcurrentuser();
      this.authservice.getAuth().subscribe( user => {
       if (user) {
@@ -390,19 +420,18 @@ arrass9(x: EncuestaexInterface): number {
   nombreusuaro(x: string) {
 
     this.afs.collection('Registro').doc(x).valueChanges().pipe(take(1)).subscribe(res => {this.arrayss(res); } );
+    this.afs.collection('Meta').doc('META').valueChanges().pipe(take(1)).subscribe(res => {this.metad(res); } );
     // this.AuthService.getUser(this.emailUsuario);
 
   }
   arrayss(x: RegistroInterface): string {
-
     this.nomUsuario = x.nombre;
-
 //   console.log(x.nombre);
 //   console.log(this.nomUsuario);
-
-
   return this.nomUsuario;
-
+ }
+ metad(x:MetaInterface){
+  this.metass=x.meta;
  }
 
 
@@ -428,7 +457,7 @@ this.mejorpreg = prt[7];
 
 
  // console.log(prt);
-
+ 
 
  }
 
@@ -444,14 +473,16 @@ this.mejorpreg = prt[7];
   }
 
   getData1() {
-    this.afs.collection('Encuestaexes').valueChanges().subscribe((encuesta) => {
+    this.afs.collection('type').valueChanges().subscribe((encuesta) => {
       this.rows1 = encuesta ;
     });
   }
 
-  metaact(x: number) {
-    this.metaassd = x;
-    console.log(x);
+  metaact({value}: {value: MetaInterface}) {
+    value.meta = this.meta;
+    this.encuestaex.addMeta(value);
+    this.metass = this.meta;
+    //window.location.reload();
   }
 
 }

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { faCarCrash, faShippingFast, faNotesMedical, faEnvelope, faMobileAlt, faFileInvoice, faCarSide, faTachometerAlt, faGasPump, faCarAlt, faCheck, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { EncuestaService } from 'src/app/services/encuesta.service';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Component({ 
   selector: 'app-taller',
@@ -19,7 +20,8 @@ export class TallerComponent implements OnInit {
   opcion:string;
   name:string;
   idenc: string;
-  
+  EncuestaDoc: AngularFirestoreDocument<EncuestaexInterface>;
+  EncuestaCollection: AngularFirestoreCollection<EncuestaexInterface>;
   /* Iconos */
   faCarCrash = faCarCrash;
   faShippingFast = faShippingFast;
@@ -37,6 +39,7 @@ export class TallerComponent implements OnInit {
   faUser = faUser;
 
   constructor(
+    private afs: AngularFirestore,
     public encuestase:EncuestaService
   ) { }
 
@@ -67,16 +70,45 @@ export class TallerComponent implements OnInit {
     value.id=this.name;
     value.tipo = this.opcion;
     console.log(value);
-  if(this.opcion == 'express'){
-    this.encuestase.addEncuestaex(value);
-  }
-  if(this.opcion == 'reparacion'){
-    this.encuestase.addEncuestare(value);
-  }
-  if(this.opcion == 'tramite'){
-    this.encuestase.addEncuestatr(value);
-  }
 
-   
+    this.afs.firestore.doc('Encuestaexes/'+this.name).get()
+    .then(docSnapshot => {
+      if (docSnapshot.exists == true) {
+        confirm('Ya existe el registro ' + this.name)
+     //  this.encuestase.addEncuestaex(value);
+      }
+      else{
+        this.afs.firestore.doc('Encuestareps/'+this.name).get()
+        .then(docSnapshot => {
+          if (docSnapshot.exists == true) {
+            confirm('Ya existe el registro ' + this.name)
+          //  this.encuestase.addEncuestare(value);
+          }
+          else{
+            this.afs.firestore.doc('Encuestatram/'+this.name).get()
+            .then(docSnapshot => {
+              if (docSnapshot.exists == true) {
+                confirm('Ya existe el registro ' + this.name)
+              //  this.encuestase.addEncuestare(value);
+              }
+              else{
+                if(this.opcion == 'express'){
+                  this.encuestase.addEncuestaex(value);
+                  confirm('Registro ' + this.name+ ' guardado')
+                }
+                if(this.opcion == 'reparacion'){
+                  this.encuestase.addEncuestare(value);
+                  confirm('Registro ' + this.name+ ' guardado')
+                }
+                if(this.opcion == 'tramite'){
+                  this.encuestase.addEncuestatr(value);
+                  confirm('Registro ' + this.name+ ' guardado')
+                }
+              }
+            });
+          }
+        });
+      }
+    });
   }
 }

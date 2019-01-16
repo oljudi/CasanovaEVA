@@ -53,8 +53,13 @@ onEncuesta({value}: {value: EncuestaexInterface}){
   }
   arrass(x: EncuestaexInterface): string {
     this.tipo= x.tipo;
-   console.log(this.tipo);
-   this.router.navigate(['/'+ this.tipo+'/'+this.name]);
+    if(x.contestada == true){
+      confirm("Encuestada ya calificada, muchas gracias");
+    }
+    else{
+      this.router.navigate(['/'+ this.tipo+'/'+this.name]);
+    }
+   //console.log(this.tipo);
    //console.log(this.nomUsuario);
    return this.tipo;
  }
