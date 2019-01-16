@@ -8,6 +8,7 @@ export interface EncuestaexInterface{
     pregunta6?:number;
     pregunta7?:number;
     pregunta8?:number;
+    pregunta9?:boolean;
     cont?:number;
     fecha?:string;
     total?:number;
