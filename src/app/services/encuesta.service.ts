@@ -49,7 +49,10 @@ constructor(
       this.EncuestaexDoc = this.afs.doc('Encuestareps/' + Encuestaex.id);
       this.EncuestaexDoc.update(Encuestaex);
     }
-
+    updateEncuestatram(Encuestaex: EncuestaexInterface) {
+      this.EncuestaexDoc = this.afs.doc('Encuestatram/' + Encuestaex.id);
+      this.EncuestaexDoc.update(Encuestaex);
+    }
   addEncuestaex(Encuestaex: EncuestaexInterface) {
     // this.EncuestaexCollection.add(Encuestaex);
     this.EncuestaexCollection.doc(Encuestaex.id).set(Encuestaex);

@@ -209,7 +209,7 @@ export class AdminComponent implements OnInit {
   //total
   sumatra: any;
   sumatraps: any;
-  
+  prometras:string;
   //pensar si se agregara un valor no en suma o promedio pero para reflejar cuantas se contestaron con la bandera
   //numero de reparacion
   contadortram: number;
@@ -256,6 +256,7 @@ arras( x: EncuestaexInterface) {
     this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res); } );
     this.afs.collection('Encuestaexes').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass1(res); } );
     this.afs.collection('Encuestareps').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass2(res); } );
+    this.afs.collection('Encuestatram').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass3(res); } );
   }
 }
     //Metodo para acumular sumatoria de todas las encuestas
@@ -370,7 +371,7 @@ arras( x: EncuestaexInterface) {
       this.sumareps = this.sumarep + this.sumareps;
       //this.getcomparador(this.sumarep);
       this.prom2(this.sumareps);
-      return  this.sumaprom, this.sumap2, this.sumap3, this.sumap4 , this.sumap5 , this.sumap6 , this.sumap7, this.sumap8, this.promexesp;
+      return  this.sumarep1, this.sumarep2, this.sumarep3, this.sumarep4 , this.sumarep5 , this.sumarep6 , this.sumarep7, this.sumarep8, this.sumareps;
     }
         prom2(x: number) {
           this.promere1 = (this.sumarep1 / this.contadorrep).toFixed(2);
@@ -387,7 +388,44 @@ arras( x: EncuestaexInterface) {
        }
 
 //----------------------------------------------------------------------------------------------------------
-    
+    arrass3(x: EncuestaexInterface): number {
+      this.sumatra1 = x.pregunta1;
+      this.sumatrap1 = this.sumatra1 + this.sumatrap1;
+      this.sumatra2 = x.pregunta2;
+      this.sumatrap2 = this.sumatra2 + this.sumatrap2;
+      this.sumatra3 = x.pregunta3;
+      this.sumatrap3 = this.sumatra3 + this.sumatrap3;
+      this.sumatra4 = x.pregunta4;
+      this.sumatrap4 = this.sumatra4 + this.sumatrap4;
+      this.sumatra5 = x.pregunta5;
+      this.sumatrap5 = this.sumatra5 + this.sumatrap5;
+      this.sumatra6 = x.pregunta6;
+      this.sumatrap6 = this.sumatra6 + this.sumatrap6;
+      this.sumatra7 = x.pregunta7;
+      this.sumatrap7 = this.sumatra7 + this.sumatrap7;
+      this.sumatra8 = x.pregunta8;
+      this.sumatrap8 = this.sumatra8 + this.sumatrap8;
+      this.sumatra = x.total;
+      this.sumatraps = this.sumatra + this.sumatraps;
+
+      //this.getcomparador(this.sumarep);
+      this.prom3(this.sumareps);
+      return  this.sumatrap1, this.sumatrap2, this.sumatrap3, this.sumatrap4 , this.sumatrap5 , this.sumatrap6 , this.sumatrap7, this.sumatrap8, this.sumatraps;
+    }
+        prom3(x: number) {
+          this.prometra1 = (this.sumatrap1 / this.contadortram).toFixed(2);
+          this.prometra1 = (this.sumatrap2 / this.contadortram).toFixed(2);
+          this.prometra1 = (this.sumatrap3 / this.contadortram).toFixed(2);
+          this.prometra1 = (this.sumatrap4 / this.contadortram).toFixed(2);
+          this.prometra1 = (this.sumatrap5 / this.contadortram).toFixed(2);
+          this.prometra1 = (this.sumatrap6 / this.contadortram).toFixed(2);
+          this.prometra1 = (this.sumatrap7 / this.contadortram).toFixed(2);
+          this.prometra1 = (this.sumatrap8 / this.contadortram).toFixed(2);
+          this.prometras = (this.sumatraps / this.contadortram).toFixed(2);
+          // this.getpreguntamayor();
+          // tslint:disable-next-line:max-line-length
+      }
+
    // this.afs.collection<EncuestaexInterface>('type', ref =>{      return ref.orderBy('total ', 'desc').limit(1);} );
 // this.list3 = this.list2.or;      
   ngOnInit() {
@@ -414,7 +452,7 @@ arras( x: EncuestaexInterface) {
   arrayss(x: RegistroInterface): string {
     this.nomUsuario = x.nombre;
 //   console.log(x.nombre);
-//   console.log(this.nomUsuario);
+//   console.log(this.nomUsuario); 
   return this.nomUsuario;
  }
  metad(x:MetaInterface){

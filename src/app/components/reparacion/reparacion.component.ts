@@ -53,7 +53,10 @@ export class ReparacionComponent implements OnInit {
     p6:0,
     p7:0,
     p8:0,
-    p9:false
+    p9: false,
+    p10: false,
+    p9c:0,
+    p10c:0
   };
   Encuesta: EncuestaexInterface = {
     
@@ -66,7 +69,8 @@ export class ReparacionComponent implements OnInit {
     pregunta6: 0,
     pregunta7: 0,
     pregunta8: 0,
-    pregunta9: false,
+    pregunta9: '',
+    pregunta10: '',
     total:0
   }
 
@@ -80,7 +84,8 @@ export class ReparacionComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     const today = new Date();
-   this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+   
+    this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
    }
 
   ngOnInit() {
@@ -120,6 +125,9 @@ export class ReparacionComponent implements OnInit {
     value.pregunta7 = this.model.p7;
     value.pregunta8 = this.model.p8;
     value.pregunta9 = this.model.p9;
+    value.pregunta10 = this.model.p10;
+    value.pregunta9cont = this.model.p9c;
+    value.pregunta10cont = this.model.p10c;
     value.contestada = true;
     value.fecha = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
     value.total = +this.proms;
@@ -143,6 +151,10 @@ p2ex(x){
 }
 p3ex(x){
   this.model.p3 = (x*10)/1;
+  if(this.model.p3 === 10 ){
+    this.model.p9 = 'N/A';
+    this.model.p9c = 1;
+  }
 }
 p4ex(x){
   this.model.p4 = (x*10)/4;
@@ -159,8 +171,28 @@ p7ex(x){
 p8ex(x){
   this.model.p8 = (x*10)/4;
 }
+
+p10ex(x){
+  if(x === true){
+    this.model.p10 = 'Si';
+    this.model.p10c = 1;
+  }
+  else{
+    this.model.p10 = 'No';
+    this.model.p10c = 0;
+  }
+  console.log(x, this.model.p10);
+}
 p9ex(x){
-  this.model.p9 = x;
+  if(x === false ){
+    this.model.p9 = 'No';
+    this.model.p9c = 0;
+  }
+  else{
+    this.model.p9 = 'Si';
+    this.model.p9c = 1;
+  }
+
 }
 sum(){
 
