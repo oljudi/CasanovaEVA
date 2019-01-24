@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EncuestaService } from 'src/app/services/encuesta.service';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -34,7 +34,7 @@ export class AdminComponent implements OnInit {
     console.log(pruebasva);
 
    this.suma = 0;
-   this.sumarep = 0;
+   //this.sumarep = 0;
    this.sumareps = 0;
    this.sumaprom = 0;
    this.sumap2 = 0;
@@ -51,8 +51,21 @@ export class AdminComponent implements OnInit {
    this.sumarep6 = 0;
    this.sumarep7 = 0;
    this.sumarep8 = 0;
+   this.sumatraps= 0;
+   this.sumatrap1= 0;
+   this.sumatrap2= 0;
+   this.sumatrap3= 0;
+   this.sumatrap4= 0;
+   this.sumatrap5= 0;
+   this.sumatrap6= 0;
+   this.sumatrap7= 0;
+   this.sumatrap8= 0;
    this.ins = 0;
    this.ins2 = 0;
+   this.insre = 0;
+   this.insre2 = 0;
+   this.instra = 0;
+   this.instra2 = 0;
    this.sumap8 = 0;
    this.promexesp=0
   }
@@ -216,8 +229,18 @@ export class AdminComponent implements OnInit {
 //--------------------------------------------------------------------------------------------------------------------
   user: RegistroInterface;
   compas: any;
+//comparadores
   ins: number;
   ins2: number;
+  insre: number;
+  insre2: number;
+  instra: number;
+  instra2: number;
+  instot: number;
+  instot2: number;
+  
+//---------------------------------------------------------
+  
   primev: any;
   list2: any;
   list3: any;
@@ -265,12 +288,44 @@ arras( x: EncuestaexInterface) {
       this.suma = this.sumas + this.suma;
       // console.log(x.total);
       // console.log(this.suma);
+      this.getcomparadortot(this.sumas);
       this.prom(this.suma);
       return this.suma;
     }
+    typeCollection: AngularFirestoreCollection<EncuestaexInterface>;
         //Metodo saca el promedio general
         prom(x: number) {
           this.prome  = (this.suma / this.contador).toFixed(2);
+        }
+        getcomparadortot(x: number) {
+
+       this.typeCollection =  this.afs.collection('type', ref => ref.orderBy('total','asc').limit(1).get()
+       .then(docSnapshot => {
+        if (docSnapshot.exists == true) {
+          this.afs.collection('Encuestaexes').doc(this.name).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );  
+        }
+          
+        /*  this.mejorpreg = 0;
+          this.pr1 = parseFloat(this.prome1);
+          
+          function comparar(a, b) {
+            return a - b;
+          }
+          const prt = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8];
+          const prt2 = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8];
+          prt.sort(comparar);
+          this.peorpreg = prt[0];
+          this.mejorpreg = prt[7];
+          console.log(this.mejorpreg, this.peorpreg);
+          
+      if (this.instot >= x) {
+            this.instot2 = x;
+            return this.instot, this.instot2 ;
+          } else {
+            this.instot = x ;
+            return this.instot, this.instot2;
+          }
+*/
         }
 //----------------------------------------------------------------------------------------------------------------
     arrass1(x: EncuestaexInterface): number {
@@ -309,46 +364,22 @@ arras( x: EncuestaexInterface) {
           this.prome7 = (this.sumap7 / this.contadorre).toFixed(2);
           this.prome8 = (this.sumap8 / this.contadorre).toFixed(2);
           this.promeex = (this.promexesp / this.contadorre).toFixed(2);
-          this.getpreguntamayor();
+          //this.getpreguntamayor();
           // tslint:disable-next-line:max-line-length
         }
-            getpreguntamayor() {
-              this.mejorpreg = 0;
-              this.pr1 = parseFloat(this.prome1);
-              this.pr2 = parseFloat(this.prome2);
-              this.pr3 = parseFloat(this.prome3);
-              this.pr4 = parseFloat(this.prome4);
-              this.pr5 = parseFloat(this.prome5);
-              this.pr6 = parseFloat(this.prome6);
-              this.pr7 = parseFloat(this.prome7);
-              this.pr8 = parseFloat(this.prome8);
-              
-              function comparar(a, b) {
-                return a - b;
-              }
-              const prt = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8];
-              const prt2 = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8];
-              prt.sort(comparar);
-              this.peorpreg = prt[0];
-              this.mejorpreg = prt[7];
-              // console.log(prt);
-              }
+          //  getpreguntamayor() {
+             
         //Metodo par saber calificación mas alta o baja de servicio
         getcomparador(x: number): number {
           if (this.ins >= x) {
-            console.log(this.ins);
             this.ins2 = x;
-            console.log( this.ins2);
-            // tslint:disable-next-line:no-unused-expression
             return this.ins, this.ins2 ;
           } else {
             this.ins = x ;
-            console.log(this.ins);
-            console.log(this.ins2);
-            // tslint:disable-next-line:no-unused-expression
             return this.ins, this.ins2;
           }
         }
+       
 //----------------------------------------------------------------------------------------------------------------
     arrass2(x: EncuestaexInterface): number {
       this.sumare1 = x.pregunta1;
@@ -371,6 +402,7 @@ arras( x: EncuestaexInterface) {
       this.sumareps = this.sumarep + this.sumareps;
       //this.getcomparador(this.sumarep);
       this.prom2(this.sumareps);
+      this.getcomparador2(this.sumarep);
       return  this.sumarep1, this.sumarep2, this.sumarep3, this.sumarep4 , this.sumarep5 , this.sumarep6 , this.sumarep7, this.sumarep8, this.sumareps;
     }
         prom2(x: number) {
@@ -386,6 +418,16 @@ arras( x: EncuestaexInterface) {
           // this.getpreguntamayor();
           // tslint:disable-next-line:max-line-length
        }
+        //Metodo par saber calificación mas alta o baja de servicio
+        getcomparador2(x: number): number {
+          if (this.insre >= x) {
+            this.insre2 = x;
+            return this.insre, this.insre2 ;
+          } else {
+            this.insre = x ;
+            return this.insre, this.insre2;
+          }
+        }
 
 //----------------------------------------------------------------------------------------------------------
     arrass3(x: EncuestaexInterface): number {
@@ -408,22 +450,31 @@ arras( x: EncuestaexInterface) {
       this.sumatra = x.total;
       this.sumatraps = this.sumatra + this.sumatraps;
 
-      //this.getcomparador(this.sumarep);
-      this.prom3(this.sumareps);
+      this.getcomparador3(this.sumatra);
+      this.prom3(this.sumatraps);
       return  this.sumatrap1, this.sumatrap2, this.sumatrap3, this.sumatrap4 , this.sumatrap5 , this.sumatrap6 , this.sumatrap7, this.sumatrap8, this.sumatraps;
     }
         prom3(x: number) {
           this.prometra1 = (this.sumatrap1 / this.contadortram).toFixed(2);
-          this.prometra1 = (this.sumatrap2 / this.contadortram).toFixed(2);
-          this.prometra1 = (this.sumatrap3 / this.contadortram).toFixed(2);
-          this.prometra1 = (this.sumatrap4 / this.contadortram).toFixed(2);
-          this.prometra1 = (this.sumatrap5 / this.contadortram).toFixed(2);
-          this.prometra1 = (this.sumatrap6 / this.contadortram).toFixed(2);
-          this.prometra1 = (this.sumatrap7 / this.contadortram).toFixed(2);
-          this.prometra1 = (this.sumatrap8 / this.contadortram).toFixed(2);
+          this.prometra2 = (this.sumatrap2 / this.contadortram).toFixed(2);
+          this.prometra3 = (this.sumatrap3 / this.contadortram).toFixed(2);
+          this.prometra4 = (this.sumatrap4 / this.contadortram).toFixed(2);
+          this.prometra5 = (this.sumatrap5 / this.contadortram).toFixed(2);
+          this.prometra6 = (this.sumatrap6 / this.contadortram).toFixed(2);
+          this.prometra7 = (this.sumatrap7 / this.contadortram).toFixed(2);
+          this.prometra8 = (this.sumatrap8 / this.contadortram).toFixed(2);
           this.prometras = (this.sumatraps / this.contadortram).toFixed(2);
           // this.getpreguntamayor();
           // tslint:disable-next-line:max-line-length
+      }
+      getcomparador3(x: number): number {
+        if (this.instra >= x) {
+          this.instra2 = x;
+          return this.instra, this.instra2 ;
+        } else {
+          this.instra = x ;
+          return this.instra, this.instra2;
+        }
       }
 
    // this.afs.collection<EncuestaexInterface>('type', ref =>{      return ref.orderBy('total ', 'desc').limit(1);} );
