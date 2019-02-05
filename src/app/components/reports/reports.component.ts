@@ -15,6 +15,9 @@ export class ReportsComponent implements OnInit {
   faChartLine = faChartLine;
 
   rows1: any;
+  rows2: any;
+  rows3: any;
+
   colums: any;
 
   constructor(
@@ -25,6 +28,8 @@ export class ReportsComponent implements OnInit {
 
   ngOnInit() {
     this.getData1();
+    this.getData2();
+    this.getData3();
   }
 
   getData1() {
@@ -32,5 +37,14 @@ export class ReportsComponent implements OnInit {
       this.rows1 = encuesta ;
     });
   }
-
+  getData2() {
+    this.afs.collection('Encuestareps').valueChanges().subscribe((encuesta) => {
+      this.rows2 = encuesta ;
+    });
+  }
+  getData3() {
+    this.afs.collection('Encuestatram').valueChanges().subscribe((encuesta) => {
+      this.rows3 = encuesta ;
+    });
+  }
 }

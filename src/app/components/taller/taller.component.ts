@@ -4,6 +4,7 @@ import { faCarCrash, faShippingFast, faNotesMedical, faEnvelope, faMobileAlt, fa
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { EncuestaService } from 'src/app/services/encuesta.service';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { RegistroCompletoInterface } from 'src/app/Models/Registrocompleto';
 
 @Component({ 
   selector: 'app-taller',
@@ -37,6 +38,44 @@ export class TallerComponent implements OnInit {
   faYes = faCheck;
   faNo = faTimes;
   faUser = faUser;
+/* Datos Llenado completo*/
+placa:string;
+vehiculo:string;
+marca:string;
+combustilbe:string;
+numserie:string;
+kilometraje:number;
+anio:number;
+fechaent:string;
+fechasal:string;
+tarjetac:string;
+llantas:string;
+ordenservicio:string;
+antena:string;
+llantaref:string;
+vestiduras:string;
+controlllave:string;
+gato:string;
+tapetes:string;
+llavetuerc:string;
+taponllanta:string;
+extintor:string;
+kitherram:string;
+segurorueda:string;
+señal:string;
+placas:string;
+tapongas:string;
+radio:string;
+admonflota:string;
+asesor:string;
+solicdiag:string;
+trabajosol:string;
+trabajorea:string;
+nombrecliente:string;
+correocliente:string;
+numerocliente:string;
+cliente:string;
+tipo:string;
 
   constructor(
     private afs: AngularFirestore,
@@ -52,19 +91,37 @@ export class TallerComponent implements OnInit {
       this.opt1 = true;
       this.opt2 = false;
       this.opt3 = false;
+      this.tipo = opt;
     }
     if ( opt === 'reparacion' ) {
       this.opt1 = false;
       this.opt2 = true;
       this.opt3 = false;
+      this.tipo = opt;
     }
     if ( opt === 'tramite' ) {
       this.opt1 = false;
       this.opt2 = false;
       this.opt3 = true;
+      this.tipo = opt;
     }
   }
-   
+  onGuardar({value}: {value: RegistroCompletoInterface}){
+value.tipo=this.tipo;
+value.placa=this.placa;
+value.vehiculo = this.vehiculo;
+value.marca = this.marca;
+value.combustilbe = this.combustilbe;
+value.numserie = this.numserie;
+//value.kilometraje = this.kilometraje;
+value.año = this.anio;
+value.fechaent = this.fechaent;
+value.fechasal = this.fechasal;
+value.tarjetac = this.tarjetac;
+value.antena = this.antena;
+
+    console.log(value);
+  }
   onEncuesta({value}: {value: EncuestaexInterface}){
   this.name=this.idenc.toUpperCase();
     value.id=this.name;

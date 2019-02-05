@@ -3,7 +3,7 @@ import { EncuestaService } from 'src/app/services/encuesta.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 // tslint:disable-next-line:max-line-length
 import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDown, faCar, faCarCrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
@@ -248,8 +248,10 @@ export class AdminComponent implements OnInit {
 metass:number;
   public emailUsuario: string;
   nomUsuario: any;
+
   mejorpreg: number;
   peorpreg: number;
+
   pr1: number;
   pr2: number;
   pr3: number;
@@ -258,6 +260,21 @@ metass:number;
   pr6: number;
   pr7: number;
   pr8: number;
+  pr9: number;
+  pr10: number;
+  pr11: number;
+  pr12: number;
+  pr13: number;
+  pr14: number;
+  pr15: number;
+  pr16: number;
+  pr17: number;
+  pr18: number;
+  pr19: number;
+  pr20: number;
+  pr21: number;
+  pr22: number;
+  pr23: number;
   meta: number;
   
 
@@ -288,8 +305,9 @@ arras( x: EncuestaexInterface) {
       this.suma = this.sumas + this.suma;
       // console.log(x.total);
       // console.log(this.suma);
-      this.getcomparadortot(this.sumas);
+      this.list3 =  this.getcomparadortot(this.sumas);
       this.prom(this.suma);
+
       return this.suma;
     }
     typeCollection: AngularFirestoreCollection<EncuestaexInterface>;
@@ -299,25 +317,58 @@ arras( x: EncuestaexInterface) {
         }
         getcomparadortot(x: number) {
 
-       this.typeCollection =  this.afs.collection('type', ref => ref.orderBy('total','asc').limit(1).get()
-       .then(docSnapshot => {
-        if (docSnapshot.exists == true) {
-          this.afs.collection('Encuestaexes').doc(this.name).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res)} );  
-        }
-          
-        /*  this.mejorpreg = 0;
+      
+          this.mejorpreg = 0;
           this.pr1 = parseFloat(this.prome1);
-          
+          this.pr2 = parseFloat(this.prome2);
+          this.pr3 = parseFloat(this.prome3);
+          this.pr4 = parseFloat(this.prome4);
+          this.pr5 = parseFloat(this.prome5);
+          this.pr6 = parseFloat(this.prome6);
+          this.pr4 = parseFloat(this.prome7);
+          this.pr7 = parseFloat(this.prome8);
+          this.pr8 = parseFloat(this.promere1);
+          this.pr9 = parseFloat(this.promere2);
+          this.pr10 = parseFloat(this.promere3);
+          this.pr11 = parseFloat(this.promere4);
+          this.pr12 = parseFloat(this.promere5);
+          this.pr13 = parseFloat(this.promere6);
+          this.pr14 = parseFloat(this.promere7);
+          this.pr15 = parseFloat(this.promere8);
+          this.pr16 = parseFloat(this.prometra1);
+          this.pr17 = parseFloat(this.prometra2);
+          this.pr18 = parseFloat(this.prometra3);
+          this.pr19 = parseFloat(this.prometra4);
+          this.pr20 = parseFloat(this.prometra5);
+          this.pr21 = parseFloat(this.prometra6);
+          this.pr22 = parseFloat(this.prometra7);
+          this.pr23 = parseFloat(this.prometra8);
+
           function comparar(a, b) {
             return a - b;
           }
-          const prt = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8];
-          const prt2 = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8];
+          const prt = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8, this.pr9,this.pr10, 
+                      this.pr11, this.pr12, this.pr13, this.pr14, this.pr15, this.pr16, this.pr17, this.pr18, this.pr19,this.pr20,
+                      this.pr21, this.pr22, this.pr23];
           prt.sort(comparar);
           this.peorpreg = prt[0];
-          this.mejorpreg = prt[7];
+          this.mejorpreg = prt[22];
           console.log(this.mejorpreg, this.peorpreg);
-          
+
+          this.typeCollection =  this.afs.collection('type');
+          var querys = this.typeCollection.ref.where('total','==',this.mejorpreg).get()
+          .then(snapshot => {
+           snapshot.forEach(doc => {this.casd = doc.id
+             console.log(doc.id);
+           });
+         });
+    console.log(this.casd)
+    //return this.Encuestaexes;
+    
+  
+        }
+        casd: string;
+     /*     
       if (this.instot >= x) {
             this.instot2 = x;
             return this.instot, this.instot2 ;
@@ -325,8 +376,8 @@ arras( x: EncuestaexInterface) {
             this.instot = x ;
             return this.instot, this.instot2;
           }
-*/
-        }
+
+        }*/
 //----------------------------------------------------------------------------------------------------------------
     arrass1(x: EncuestaexInterface): number {
       this.sumaspreg = x.pregunta1;

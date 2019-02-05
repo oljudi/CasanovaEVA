@@ -109,7 +109,7 @@
         <div class="card-header text-center bg-info text-white">
             <h5><strong style="font-size: 1.5rem">Express</strong></h5>
         </div>
-            <div class="card-body text-center">
+            <div class="card-body ">
                 <ngx-datatable
                     class="material"
                     [headerHeight]="35"
@@ -164,7 +164,7 @@
         <div class="card-header text-center bg-danger text-white">
             <h5><strong style="font-size: 1.5rem">Reparaciones</strong></h5>
         </div>
-            <div class="card-body text-center">
+            <div class="card-body ">
                 <ngx-datatable
                     class="material"
                     [headerHeight]="35"
@@ -173,7 +173,7 @@
                     [footerHeight]="30"
                     [count]="true"
                     [limit]="5"
-                    [rows]="rows1"
+                    [rows]="rows2"
                 >
                 <ngx-datatable-column name="fecha">
                     <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
@@ -219,7 +219,7 @@
         <div class="card-header text-center bg-success text-white">
             <h5><strong style="font-size: 1.5rem">Tramites</strong></h5>
         </div>
-        <div class="card-body text-center">
+        <div class="card-body ">
             <ngx-datatable
                 class="material"
                 [headerHeight]="35"
@@ -228,7 +228,7 @@
                 [footerHeight]="30"
                 [count]="true"
                 [limit]="5"
-                [rows]="rows1"
+                [rows]="rows3"
             >
             <ngx-datatable-column name="fecha">
                 <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
