@@ -47,6 +47,8 @@ import { NavbardownComponent } from './components/navbardown/navbardown.componen
 import { NgxSpinnerService } from 'ngx-spinner';
 import { from } from 'rxjs';
 import { TallerComponent } from './components/taller/taller.component';
+import { DashboardtallerComponent } from './components/dashboardtaller/dashboardtaller.component';
+import { DashboardcallcenterComponent } from './components/dashboardcallcenter/dashboardcallcenter.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { TallerComponent } from './components/taller/taller.component';
     NavbardownComponent,
     RegisterComponent,
     FooterComponent,
-    TallerComponent
+    TallerComponent,
+    DashboardtallerComponent,
+    DashboardcallcenterComponent
   ],
   imports: [
     NgxDatatableModule,

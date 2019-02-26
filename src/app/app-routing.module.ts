@@ -15,8 +15,11 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { NavbardownComponent } from './components/navbardown/navbardown.component';
 import { TallerComponent } from './components/taller/taller.component';
 
+
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
+import { DashboardtallerComponent } from './components/dashboardtaller/dashboardtaller.component';
+import { DashboardcallcenterComponent } from './components/dashboardcallcenter/dashboardcallcenter.component';
 
 
 
@@ -34,6 +37,8 @@ const routes: Routes = [
   { path: 'taller', component: TallerComponent, canActivate: [AuthGuard] },
   { path: 'encuesta', component: EncuestaComponent},
   { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
+  { path: 'dashboardt', component: DashboardtallerComponent},
+  { path: 'dashboardcall', component: DashboardcallcenterComponent},
   { path: 'navbardown', component: NavbardownComponent},
   { path: '**', component: Page404Component }
 ];

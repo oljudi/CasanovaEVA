@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
-import { faCarCrash, faShippingFast, faNotesMedical, faEnvelope, faMobileAlt, faFileInvoice, faCarSide, faTachometerAlt, faGasPump, faCarAlt, faCheck, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCarCrash, faShippingFast, faNotesMedical, faEnvelope, faMobileAlt, faFileInvoice, faCarSide, faTachometerAlt, faGasPump, faCarAlt, faCheck, faTimes, faUser, faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { EncuestaService } from 'src/app/services/encuesta.service';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { RegistroCompletoInterface } from 'src/app/Models/Registrocompleto';
 
-@Component({ 
+@Component({
   selector: 'app-taller',
   templateUrl: './taller.component.html',
   styleUrls: ['./taller.component.css']
@@ -18,8 +18,8 @@ export class TallerComponent implements OnInit {
   opt2: boolean;
   opt3: boolean;
   value: string;
-  opcion:string;
-  name:string;
+  opcion: string;
+  name: string;
   idenc: string;
   EncuestaDoc: AngularFirestoreDocument<EncuestaexInterface>;
   EncuestaCollection: AngularFirestoreCollection<EncuestaexInterface>;
@@ -38,48 +38,50 @@ export class TallerComponent implements OnInit {
   faYes = faCheck;
   faNo = faTimes;
   faUser = faUser;
+  faUserCheck = faUserCheck;
+
 /* Datos Llenado completo*/
-placa:string;
-vehiculo:string;
-marca:string;
-combustilbe:string;
-numserie:string;
-kilometraje:number;
-anio:number;
-fechaent:string;
-fechasal:string;
-tarjetac:string;
-llantas:string;
-ordenservicio:string;
-antena:string;
-llantaref:string;
-vestiduras:string;
-controlllave:string;
-gato:string;
-tapetes:string;
-llavetuerc:string;
-taponllanta:string;
-extintor:string;
-kitherram:string;
-segurorueda:string;
-señal:string;
-placas:string;
-tapongas:string;
-radio:string;
-admonflota:string;
-asesor:string;
-solicdiag:string;
-trabajosol:string;
-trabajorea:string;
-nombrecliente:string;
-correocliente:string;
-numerocliente:string;
-cliente:string;
-tipo:string;
+placa: string;
+vehiculo: string;
+marca: string;
+combustilbe: string;
+numserie: string;
+kilometraje: number;
+anio: number;
+fechaent: string;
+fechasal: string;
+tarjetac: string;
+llantas: string;
+ordenservicio: string;
+antena: string;
+llantaref: string;
+vestiduras: string;
+controlllave: string;
+gato: string;
+tapetes: string;
+llavetuerc: string;
+taponllanta: string;
+extintor: string;
+kitherram: string;
+segurorueda: string;
+señal: string;
+placas: string;
+tapongas: string;
+radio: string;
+admonflota: string;
+asesor: string;
+solicdiag: string;
+trabajosol: string;
+trabajorea: string;
+nombrecliente: string;
+correocliente: string;
+numerocliente: string;
+cliente: string;
+tipo: string;
 
   constructor(
     private afs: AngularFirestore,
-    public encuestase:EncuestaService
+    public encuestase: EncuestaService
   ) { }
 
   ngOnInit() {
@@ -106,14 +108,14 @@ tipo:string;
       this.tipo = opt;
     }
   }
-  onGuardar({value}: {value: RegistroCompletoInterface}){
-value.tipo=this.tipo;
-value.placa=this.placa;
+  onGuardar({value}: {value: RegistroCompletoInterface}) {
+value.tipo = this.tipo;
+value.placa = this.placa;
 value.vehiculo = this.vehiculo;
 value.marca = this.marca;
 value.combustilbe = this.combustilbe;
 value.numserie = this.numserie;
-//value.kilometraje = this.kilometraje;
+// value.kilometraje = this.kilometraje;
 value.año = this.anio;
 value.fechaent = this.fechaent;
 value.fechasal = this.fechasal;
@@ -122,44 +124,43 @@ value.antena = this.antena;
 
     console.log(value);
   }
-  onEncuesta({value}: {value: EncuestaexInterface}){
-  this.name=this.idenc.toUpperCase();
-    value.id=this.name;
+  onEncuesta({value}: {value: EncuestaexInterface}) {
+  this.name = this.idenc.toUpperCase();
+    value.id = this.name;
     value.tipo = this.opcion;
     console.log(value);
 
-    this.afs.firestore.doc('Encuestaexes/'+this.name).get()
+    this.afs.firestore.doc('Encuestaexes/' + this.name).get()
     .then(docSnapshot => {
-      if (docSnapshot.exists == true) {
-        confirm('Ya existe el registro ' + this.name)
+      if (docSnapshot.exists === true) {
+        confirm('Ya existe el registro ' + this.name);
      //  this.encuestase.addEncuestaex(value);
-      }
-      else{
-        this.afs.firestore.doc('Encuestareps/'+this.name).get()
+      } else {
+        this.afs.firestore.doc('Encuestareps/' + this.name).get()
+        // tslint:disable-next-line:no-shadowed-variable
         .then(docSnapshot => {
-          if (docSnapshot.exists == true) {
-            confirm('Ya existe el registro ' + this.name)
+          if (docSnapshot.exists === true) {
+            confirm('Ya existe el registro ' + this.name);
           //  this.encuestase.addEncuestare(value);
-          }
-          else{
-            this.afs.firestore.doc('Encuestatram/'+this.name).get()
+          } else {
+            this.afs.firestore.doc('Encuestatram/' + this.name).get()
+            // tslint:disable-next-line:no-shadowed-variable
             .then(docSnapshot => {
-              if (docSnapshot.exists == true) {
-                confirm('Ya existe el registro ' + this.name)
+              if (docSnapshot.exists === true) {
+                confirm('Ya existe el registro ' + this.name);
               //  this.encuestase.addEncuestare(value);
-              }
-              else{
-                if(this.opcion == 'express'){
+              } else {
+                if (this.opcion === 'express') {
                   this.encuestase.addEncuestaex(value);
-                  confirm('Registro ' + this.name+ ' guardado')
+                  confirm('Registro ' + this.name + ' guardado');
                 }
-                if(this.opcion == 'reparacion'){
+                if (this.opcion === 'reparacion') {
                   this.encuestase.addEncuestare(value);
-                  confirm('Registro ' + this.name+ ' guardado')
+                  confirm('Registro ' + this.name + ' guardado');
                 }
-                if(this.opcion == 'tramite'){
+                if (this.opcion === 'tramite') {
                   this.encuestase.addEncuestatr(value);
-                  confirm('Registro ' + this.name+ ' guardado')
+                  confirm('Registro ' + this.name + ' guardado');
                 }
               }
             });
