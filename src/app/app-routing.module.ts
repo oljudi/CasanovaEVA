@@ -37,8 +37,8 @@ const routes: Routes = [
   { path: 'taller', component: TallerComponent, canActivate: [AuthGuard] },
   { path: 'encuesta', component: EncuestaComponent},
   { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
-  { path: 'dashboardt', component: DashboardtallerComponent},
-  { path: 'dashboardcall', component: DashboardcallcenterComponent},
+  { path: 'dashboardt', component: DashboardtallerComponent, canActivate: [AuthGuard]},
+  { path: 'dashboardcall', component: DashboardcallcenterComponent, canActivate: [AuthGuard]},
   { path: 'navbardown', component: NavbardownComponent},
   { path: '**', component: Page404Component }
 ];

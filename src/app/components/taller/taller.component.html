@@ -34,13 +34,9 @@
         </div>
         <hr style="background-color: black">
         <button type="submit" class="btn btn-primary btn-lg btn-block mb-2" style="font-size: 1rem" value="Guardar"><strong>Ingresar</strong></button>
-        <hr style="background-color: black">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-secondary">Consultar Base de Datos</button>
-          <button type="button" class="btn btn-secondary">Dejar comentarios</button>
-        </div>
       </form>
-    </div>
+    </div><br>
+      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" [routerLink]="['/dashboardt']" routerLinkActive="router-link-active" ><strong>Consultar Reportes</strong></button>
   </div>
   <!-- Llenado completo -->
   <div class="col-md-8">
@@ -312,11 +308,11 @@
               <label class="" for="inlineFormInputGroup"><strong>Tarjeta de Circulación</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsTC" id="OptionSiTC" value="si" [(ngModel)]="tarjetac" #tarjetacs="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsTC" id="OptionSiTC" value="Si" [(ngModel)]="tarjetac" #tarjetacs="ngModel">
                     <label class="form-check-label" for="OptionSiTC" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsTC" id="OptionNoTC" value="no" [(ngModel)]="tarjetac" #tarjetacs="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsTC" id="OptionNoTC" value="No" [(ngModel)]="tarjetac" #tarjetacs="ngModel">
                     <label class="form-check-label" for="OptionNoTC" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -325,11 +321,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Antena</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsAnt" id="OptionSiA" value="si" [(ngModel)]="antena" #antenas="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsAnt" id="OptionSiA" value="Si" [(ngModel)]="antena" #antenas="ngModel">
                     <label class="form-check-label" for="OptionSiA" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsAnt" id="OptionNoA" value="no" [(ngModel)]="antena" #antenas="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsAnt" id="OptionNoA" value="No" [(ngModel)]="antena" #antenas="ngModel">
                     <label class="form-check-label" for="OptionNoA" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -338,11 +334,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Control y Llave</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsLL" id="OptionSiLL" value="OptionSiLL" [(ngModel)]="ctrlyll" #ctrlylls="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsLL" id="OptionSiLL" value="Si" [(ngModel)]="ctrlyll" #ctrlylls="ngModel">
                     <label class="form-check-label" for="OptionSiLL" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsLL" id="OptionNoL" value="OptionNoLL" [(ngModel)]="ctrlyll" #ctrlylls="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsLL" id="OptionNoL" value="No" [(ngModel)]="ctrlyll" #ctrlylls="ngModel">
                     <label class="form-check-label" for="OptionNoLL" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -351,11 +347,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Llaves de tuercas</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptionsTRC" id="OptionSiTRC" value="OptionSiTRC" [(ngModel)]="lltrc" #lltrcs="ngModel">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptionsTRC" id="OptionSiTRC" value="Si" [(ngModel)]="lltrc" #lltrcs="ngModel">
                   <label class="form-check-label" for="OptionSiTRC" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptionsTRC" id="OptionNoTRC" value="OptionNoTRC" [(ngModel)]="lltrc" #lltrcs="ngModel">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptionsTRC" id="OptionNoTRC" value="No" [(ngModel)]="lltrc" #lltrcs="ngModel">
                   <label class="form-check-label" for="OptionNoTRC" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                 </div>
               </div>
@@ -364,11 +360,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Kit de Herramientas</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsKitH" id="optionSiKitH" value="optionSiKitH" [(ngModel)]="kitH" #kitHs="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsKitH" id="optionSiKitH" value="Si" [(ngModel)]="kitH" #kitHs="ngModel">
                     <label class="form-check-label" for="optionSiKitH" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsKitH" id="optionNoKitH" value="optionNoKitH" [(ngModel)]="kitH" #kitHs="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsKitH" id="optionNoKitH" value="No" [(ngModel)]="kitH" #kitHs="ngModel">
                     <label class="form-check-label" for="optionNoKitH" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -380,11 +376,11 @@
                 <label class="" for="inlineFormInputGroup"><strong>Llantas</strong></label>
                 <div class="form-group text-center">
                   <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsLLantas" id="OptionSiLLantas" value="OptionSiLLantas" [(ngModel)]="llanta" #llantas="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsLLantas" id="OptionSiLLantas" value="Si" [(ngModel)]="llanta" #llantas="ngModel">
                       <label class="form-check-label" for="OptionSiLLantas" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsLLantas" id="OptionNoLLantas" value="OptionNoLLantas" [(ngModel)]="llanta" #llantas="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsLLantas" id="OptionNoLLantas" value="No" [(ngModel)]="llanta" #llantas="ngModel">
                       <label class="form-check-label" for="OptionNoLLantas" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                     </div>
                 </div>
@@ -393,11 +389,11 @@
                 <label class="mt-3" for="inlineFormInputGroup"><strong>LLanta Refacción</strong></label>
                 <div class="form-group text-center">
                   <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsLLRef" id="OptionSiLLRef" value="OptionSiLLRef" [(ngModel)]="LLRef" #LLRefs="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsLLRef" id="OptionSiLLRef" value="Si" [(ngModel)]="LLRef" #LLRefs="ngModel">
                       <label class="form-check-label" for="OptionSiLLRef" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsLLRef" id="OptionNoLLRef" value="OptionNoLLRef" [(ngModel)]="LLRef" #LLRefs="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsLLRef" id="OptionNoLLRef" value="No" [(ngModel)]="LLRef" #LLRefs="ngModel">
                       <label class="form-check-label" for="OptionNoLLRef" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                     </div>
                 </div>
@@ -406,11 +402,11 @@
                 <label class="mt-3" for="inlineFormInputGroup"><strong>Gato</strong></label>
                 <div class="form-group text-center">
                   <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsGto" id="OptionSiGto" value="OptionSiGto" [(ngModel)]="Gto" #Gtos="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsGto" id="OptionSiGto" value="Si" [(ngModel)]="Gto" #Gtos="ngModel">
                       <label class="form-check-label" for="OptionSiGto" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsGto" id="OptionNoGto" value="OptionNoGto" [(ngModel)]="Gto" #Gtos="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsGto" id="OptionNoGto" value="No" [(ngModel)]="Gto" #Gtos="ngModel">
                       <label class="form-check-label" for="OptionNoGto" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                     </div>
                 </div>
@@ -419,11 +415,11 @@
                 <label class="mt-3" for="inlineFormInputGroup"><strong>Tapon de Llanta</strong></label>
                 <div class="form-group text-center">
                   <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsTpLLnts" id="OptionSiTpLLnts" value="OptionSiTpLLnts" [(ngModel)]="TpLLnt" #TpLLnts="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsTpLLnts" id="OptionSiTpLLnts" value="Si" [(ngModel)]="TpLLnt" #TpLLnts="ngModel">
                       <label class="form-check-label" for="OptionSiTpLLnts" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsTpLLnts" id="OptionNoTpLLnts" value="OptionNoTpLLnts" [(ngModel)]="TpLLnt" #TpLLnts="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsTpLLnts" id="OptionNoTpLLnts" value="No" [(ngModel)]="TpLLnt" #TpLLnts="ngModel">
                       <label class="form-check-label" for="OptionNoTpLLnts" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                     </div>
                 </div>
@@ -432,11 +428,11 @@
                 <label class="mt-3" for="inlineFormInputGroup"><strong>Seguro de ruedas</strong></label>
                 <div class="form-group text-center">
                   <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsSgrRuedas" id="OptionSiSgrRuedas" value="OptionSiSgrRuedas" [(ngModel)]="SgrRuedas" #SgrRueda="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsSgrRuedas" id="OptionSiSgrRuedas" value="Si" [(ngModel)]="SgrRuedas" #SgrRueda="ngModel">
                       <label class="form-check-label" for="OptionSiSgrRuedas" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsSgrRuedas" id="OptionNoSgrRuedas" value="OptionNoSgrRuedas" [(ngModel)]="SgrRuedas" #SgrRueda="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsSgrRuedas" id="OptionNoSgrRuedas" value="No" [(ngModel)]="SgrRuedas" #SgrRueda="ngModel">
                       <label class="form-check-label" for="OptionNoSgrRuedas" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                     </div>
                 </div>
@@ -445,11 +441,11 @@
                 <label class="mt-3" for="inlineFormInputGroup"><strong>Tapón Gasolina</strong></label>
                 <div class="form-group text-center">
                   <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsTpnGas" id="OptionSiTpnGas" value="OptionSiTpnGas" [(ngModel)]="TpnGas" #TpnGaso="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsTpnGas" id="OptionSiTpnGas" value="Si" [(ngModel)]="TpnGas" #TpnGaso="ngModel">
                       <label class="form-check-label" for="OptionSiTpnGas" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptionsTpnGas" id="OptionNoTpnGas" value="OptionNoTpnGas" [(ngModel)]="TpnGas" #TpnGaso="ngModel">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptionsTpnGas" id="OptionNoTpnGas" value="No" [(ngModel)]="TpnGas" #TpnGaso="ngModel">
                       <label class="form-check-label" for="OptionNoTpnGas" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                     </div>
                 </div>
@@ -461,11 +457,11 @@
               <label class="" for="inlineFormInputGroup"><strong>Traé orden de servicio</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsSERV" id="OptionSiSERV" value="OptionSiSERV" [(ngModel)]="SERV" #SERVs="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsSERV" id="OptionSiSERV" value="Si" [(ngModel)]="SERV" #SERVs="ngModel">
                     <label class="form-check-label" for="OptionSiSERV" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsSERV" id="OptionNoSERV" value="OptionNoSERV" [(ngModel)]="SERV" #SERVs="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsSERV" id="OptionNoSERV" value="No" [(ngModel)]="SERV" #SERVs="ngModel">
                     <label class="form-check-label" for="OptionNoSERV" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -474,11 +470,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Vestiduras</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsVST" id="OptionSiVST" value="OptionSiVST" [(ngModel)]="VST" #VSTs="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsVST" id="OptionSiVST" value="Si" [(ngModel)]="VST" #VSTs="ngModel">
                     <label class="form-check-label" for="OptionSiVST" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsVST" id="OptionNoVST" value="OptionNoVST" [(ngModel)]="VST" #VSTs="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsVST" id="OptionNoVST" value="No" [(ngModel)]="VST" #VSTs="ngModel">
                     <label class="form-check-label" for="OptionNoVST" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -487,11 +483,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Tapetes</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsTpts" id="OptionSiTpts" value="OptionSiTpts" [(ngModel)]="Tpts" #Tptse="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsTpts" id="OptionSiTpts" value="Si" [(ngModel)]="Tpts" #Tptse="ngModel">
                     <label class="form-check-label" for="OptionSiTpts" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsTpts" id="OptionNoTpts" value="OptionNoTpts" [(ngModel)]="Tpts" #Tptse="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsTpts" id="OptionNoTpts" value="No" [(ngModel)]="Tpts" #Tptse="ngModel">
                     <label class="form-check-label" for="OptionNoTpts" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -500,11 +496,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Extintor</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsExt" id="OptionSiExt" value="OptionSiExt" [(ngModel)]="Ext" #Exts="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsExt" id="OptionSiExt" value="Si" [(ngModel)]="Ext" #Exts="ngModel">
                     <label class="form-check-label" for="OptionSiExt" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsExt" id="OptionNoExt" value="OptionNoExt" [(ngModel)]="Ext" #Exts="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsExt" id="OptionNoExt" value="No" [(ngModel)]="Ext" #Exts="ngModel">
                     <label class="form-check-label" for="OptionNoExt" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -513,11 +509,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Señales</strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsSNLS" id="OptionSiSNLS" value="OptionSiSNLS" [(ngModel)]="SNLS" #SNLSl="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsSNLS" id="OptionSiSNLS" value="Si" [(ngModel)]="SNLS" #SNLSl="ngModel">
                     <label class="form-check-label" for="OptionSiSNLS" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsSNLS" id="OptionNoSNLS" value="OptionNoSNLS" [(ngModel)]="SNLS" #SNLSl="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsSNLS" id="OptionNoSNLS" value="No" [(ngModel)]="SNLS" #SNLSl="ngModel">
                     <label class="form-check-label" for="OptionNoSNLS" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -526,11 +522,11 @@
               <label class="mt-3" for="inlineFormInputGroup"><strong>Radio </strong></label>
               <div class="form-group text-center">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsRadio" id="OptionSiRadio" value="OptionSiRadio" [(ngModel)]="Radio" #Radios="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsRadio" id="OptionSiRadio" value="Si" [(ngModel)]="Radio" #Radios="ngModel">
                     <label class="form-check-label" for="OptionSiRadio" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptionsRadio" id="OptionNoRadio" value="OptionNoRadio" [(ngModel)]="Radio" #Radios="ngModel">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptionsRadio" id="OptionNoRadio" value="No" [(ngModel)]="Radio" #Radios="ngModel">
                     <label class="form-check-label" for="OptionNoRadio" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
@@ -538,7 +534,15 @@
             </div>
           </div>
         </div>
+    </div><br>
+    <hr style="background-color: #f7b633">
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg" style="background-color: #1a3263; color: #f7b633">Comentarios</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Comentarios" aria-describedby="inputGroup-sizing-lg">
     </div>
+    <hr style="background-color: #f7b633">
     <!-- Envio formulario Llenado completo-->
         <button type="submit" class="btn btn-primary btn-block btn-lg mb-2" style="font-size: 1rem" value="Guardar"><strong>Ingresar</strong></button>
       </form>
