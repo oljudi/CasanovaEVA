@@ -1,0 +1,8 @@
+body { 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    height:50em; background-size: cover; width: auto;
+    background-image: 'assets/footer/1.png';
+   /* background-image: url('https://image.ibb.co/ijqW7A/fondo-EVA2.png');*/
+    background-position: 50% 30%;
+  }

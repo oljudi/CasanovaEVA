@@ -6,17 +6,90 @@
   <div class="col-md-10">
       <div class="card mt-3 ml-1 text-white text-center" style="background-color: #1a3263"><strong><h2>Resumen de Reportes</h2></strong></div>
       <div class="card">
-          <div class="card-body text-center">
+          <div class="card-body">
+              <input
+              type='text'
+              style='padding:8px;margin:15px auto;width:30%;'
+              placeholder='Type to filter the name column...'
+              (keyup)='updateFilter($event)'
+            />
             <ngx-datatable
-              class="material"
+              #myTable
+              class="material expandable"
               [headerHeight]="35"
               [columnMode]="'force'"
               [rowHeight]="'auto'"
               [footerHeight]="30"
+              [scrollbarV]="true"
               [count]="true"
-              [limit]="10"
+              [limit]="25"
               [rows]="rows1"
+              (page)="onPage($event)"
               >
+
+              <!-- Row Detail Template -->
+
+            <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow (toggle)="onDetailToggle($event)">
+              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                <div style="padding-left:35px;">
+                  <div><strong>Datos Vehiculo</strong></div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      PLACAS: {{rows1.vehiculo.placa}}
+                      <br>
+                      Vehiculo: {{rows1.vehiculo.tipo}}
+                      <br>
+                      # de Serie: {{rows1.vehiculo.serie}}
+                      <br>
+                      KM: {{rows1.vehiculo.km}}
+                    </div>
+                    <div class="col-md-3">
+                      ADMIN Flota: {{rows1.administrativo.admin}}
+                      <br>
+                      Asesor: {{rows1.administrativo.asesor}}
+                      <br>
+                    </div>
+                    <div class="col-md-3">
+                      Fecha Entrada: {{rows1.taller.entrada}}
+                      <br>
+                      Fecha Salida: {{rows1.taller.salida}}
+                      <br>
+                      Solicitud de Diagnostico: {{rows1.taller.soldiagnost}}
+                      <br>
+                      Estatus: {{rows1.taller.status}}
+                      <br>
+                      Tecnico: {{rows1.taller.tecnico}}
+                    </div>
+                    <div class="col-md-3">
+                      Cliente: {{rows1.cliente.nombre}}
+                      <br>
+                      Correo electronico: {{rows1.cliente.correo}}
+                      <br>
+                      Telefono: {{rows1.cliente.telefono}}
+                      <br>
+                      {{rows1.cliente.origen}}
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngx-datatable-row-detail>
+
+              <ngx-datatable-column
+              [width]="50"
+              [resizeable]="false"
+              [sortable]="false"
+              [draggable]="false"
+              [canAutoResize]="false">
+              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                <a
+                  href="javascript:void(0)"
+                  [class.datatable-icon-right]="!expanded"
+                  [class.datatable-icon-down]="expanded"
+                  title="Expand/Collapse Row"
+                  (click)="toggleExpandRow(rows1)">
+                </a>
+              </ng-template>
+              </ngx-datatable-column>
               <ngx-datatable-column name="Folio">
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
@@ -61,13 +134,5 @@
       <div class="card-body">
         <button type="button" class="btn btn-primary btn-lg btn-block"><strong>Exportar a Excel</strong></button>
       </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-10">
-    <div class="card mt-3 ml-1 text-white text-center" style="background-color: #1a3263"><strong><h2>Comentarios</h2></strong></div>
-    <div class="card-body">
-
-    </div>
   </div>
 </div>
