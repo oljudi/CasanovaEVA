@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
-import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faArchive, faCarCrash, faPeopleCarry, faUserCog } from '@fortawesome/free-solid-svg-icons';
+import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faArchive, faCarCrash, faPeopleCarry, faUserCog, faHeadset } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '../../services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
   faCarCrash = faCarCrash;
   faPeopleCarry = faPeopleCarry;
   faUserCog = faUserCog;
+  faHeadset = faHeadset;
 
   public isLogin: boolean;
   public nombreUsuario: string;

@@ -1,3 +1,104 @@
-<p>
-  dashboardcallcenter works!
-</p>
+<!-- navbar -->
+<app-navbar></app-navbar>
+<!--Contenido-->
+<div class="card col-md-2 mt-3 ml-1 text-white text-center form-inline" style="background-color: #1a3263"><fa-icon [icon]="faHeadset" class="fa-2x"></fa-icon><strong><h2>SEVS - CallCenter - Seguimiento</h2></strong></div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="card mt-3 ml-1 text-white text-center" style="background-color: #1a3263"><strong><h2>Seguimiento Call Center</h2></strong></div>
+      <div class="card">
+          <div class="card-body">
+              <input
+              type='text'
+              style='padding:8px;margin:15px auto;width:30%;'
+              placeholder='Busqueda...'
+              (keyup)='updateFilter($event)'
+            />
+            <ngx-datatable
+              #myTable
+              class="material expandable"
+              [rows]="rows"
+              [groupRowsBy]="'servicio'"
+              [columnMode]="'force'"
+              [scrollbarH]="true"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="40"
+              [limit]="4"
+              [groupExpansionDefault]="true">
+              >
+              <!-- Group Header Template -->
+              <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader (toggle)="onDetailToggle($event)">
+                  <ng-template let-group="group" let-expanded="expanded" ngx-datatable-group-header-template>
+                    <div style="padding-left:5px;">
+                      <a
+                        href="#"
+                        [class.datatable-icon-right]="!expanded"
+                        [class.datatable-icon-down]="expanded"
+                        title="Expand/Collapse Group"
+                        (click)="toggleExpandGroup(group)">
+                        <b>Age: {{group.value[0].age}}</b>
+                      </a>                          
+                    </div>
+                  </ng-template>
+                </ngx-datatable-group-header>
+
+              <ngx-datatable-column
+              [width]="50"
+              [resizeable]="false"
+              [sortable]="false"
+              [draggable]="false"
+              [canAutoResize]="false">
+              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                <a
+                  href="javascript:void(0)"
+                  [class.datatable-icon-right]="!expanded"
+                  [class.datatable-icon-down]="expanded"
+                  title="Expand/Collapse Row"
+                  (click)="toggleExpandRow(rows1)">
+                </a>
+              </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Folio">
+              <ng-template ngx-datatable-cell-template let-value="value">
+                  {{value}}
+              </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Servicio">
+              <ng-template ngx-datatable-cell-template let-value="value">
+                  {{value}}
+              </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Fecha de Ingreso">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Fecha de Salida">
+              <ng-template ngx-datatable-cell-template let-value="value">
+                  {{value}}
+              </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Solicitud de Diagnostico">
+              <ng-template ngx-datatable-cell-template let-value="value">
+                  {{value}}
+              </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Origen Cliente">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                    {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Cliente">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                    {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<app-footer></app-footer>

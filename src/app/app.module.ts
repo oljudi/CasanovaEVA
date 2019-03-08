@@ -50,6 +50,8 @@ import { TallerComponent } from './components/taller/taller.component';
 import { DashboardtallerComponent } from './components/dashboardtaller/dashboardtaller.component';
 import { DashboardcallcenterComponent } from './components/dashboardcallcenter/dashboardcallcenter.component';
 
+import { ExportAsModule } from 'ngx-export-as';
+
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { DashboardcallcenterComponent } from './components/dashboardcallcenter/d
     MatNativeDateModule,
     MatFormFieldModule,
     BrowserModule,
+    ExportAsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FontAwesomeModule,
@@ -100,7 +103,12 @@ import { DashboardcallcenterComponent } from './components/dashboardcallcenter/d
     AngularFirestoreModule
   ],
   entryComponents: [ExpressComponent],
-  providers: [AuthService, AuthGuard, FlashMessagesService, EncuestaService],
+  providers: [
+              AuthService,
+              AuthGuard,
+              FlashMessagesService,
+              EncuestaService
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

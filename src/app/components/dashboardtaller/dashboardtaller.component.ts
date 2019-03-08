@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { faCarCrash, faSearch, faStickyNote, faPrint } from '@fortawesome/free-solid-svg-icons';
+
+import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
+
+import { faCarCrash, faSearch, faStickyNote, faPrint, faCar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboardtaller',
@@ -15,16 +18,24 @@ export class DashboardtallerComponent implements OnInit {
   faSearch = faSearch;
   faStickyNote = faStickyNote;
   faPrint = faPrint;
+  faCar = faCar;
+
 
   // Variables
   rows1: any[] = [];
   expanded: any = {};
   timeout: any;
+  config: ExportAsConfig = {
+    type: 'pdf',
+    elementId: 'mytable',
+  };
 
 
   @ViewChild('myTable') table: any;
 
-  constructor() { }
+  constructor(
+    private exportAsService: ExportAsService
+  ) { }
 
   ngOnInit() {
   }
@@ -43,5 +54,13 @@ export class DashboardtallerComponent implements OnInit {
   onDetailToggle(event) {
     console.log('Detail Toggled', event);
   }
+  exportAs(type) {
+    this.config.type = type;
+    this.exportAsService.save(this.config, 'myFile');
+    // this.exportAsService.get(this.config).subscribe(content => {
+    //   console.log(content);
+    // });
+  }
+
 
 }
