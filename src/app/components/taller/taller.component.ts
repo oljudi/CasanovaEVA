@@ -41,6 +41,8 @@ export class TallerComponent implements OnInit {
   faUserCheck = faUserCheck;
 
 /* Datos Llenado completo*/
+opcion2:string;
+indenc2:string;
 placa: string;
 vehiculo: string;
 marca: string;
@@ -73,11 +75,12 @@ asesor: string;
 solicdiag: string;
 trabajosol: string;
 trabajorea: string;
-nombrecliente: string;
-correocliente: string;
-numerocliente: string;
+nocliente: string;
+ccliente: string;
+nucliente: string;
 cliente: string;
 tipo: string;
+comentarios: string;
 
   constructor(
     private afs: AngularFirestore,
@@ -113,14 +116,18 @@ value.tipo = this.tipo;
 value.placa = this.placa;
 value.vehiculo = this.vehiculo;
 value.marca = this.marca;
-value.combustilbe = this.combustilbe;
+value.tipo = this.opcion2;
 value.numserie = this.numserie;
 // value.kilometraje = this.kilometraje;
 value.año = this.anio;
 value.fechaent = this.fechaent;
 value.fechasal = this.fechasal;
-value.tarjetac = this.tarjetac;
+
 value.antena = this.antena;
+value.NombreCliente = this.nocliente;
+value.cliente = this.cliente;
+value.NumeroCliente = this.nucliente;
+value.CorreoCliente = this.ccliente;
 
     console.log(value);
   }

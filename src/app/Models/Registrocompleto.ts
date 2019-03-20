@@ -8,7 +8,7 @@ export interface RegistroCompletoInterface{
     año?:number;
     fechaent?:string;
     fechasal?:string;
-    tarjetac?:string;
+    tarjetacirculacion?:string;
     llantas?:string;
     ordenservicio?:string;
     antena?:string;
@@ -31,9 +31,10 @@ export interface RegistroCompletoInterface{
     solicdiag?:string;
     trabajosol?:string;
     trabajorea?:string;
-    nombrecliente?:string;
-    correocliente?:string;
-    numerocliente?:string;
+    NombreCliente?:string;
+    CorreoCliente?:string;
+    NumeroCliente?:string;
     cliente?:string;
     tipo?:string;
+    comentarios?:string;
 }
