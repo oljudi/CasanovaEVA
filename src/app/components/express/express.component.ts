@@ -128,7 +128,7 @@ export class ExpressComponent implements OnInit {
     
 
     
-    this.encuestaService.addEcuescont(value);
+    this.encuestaService.updateType(value);
     this.encuestaService.updateEncuestaex(value);
  
     

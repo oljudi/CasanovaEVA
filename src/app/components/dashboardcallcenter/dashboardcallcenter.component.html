@@ -58,37 +58,37 @@
                 </a>
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Folio">
+              <ngx-datatable-column name="Folio" prop="id">
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Servicio">
+              <ngx-datatable-column name="Servicio" prop="tipo">
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Fecha de Ingreso">
+              <ngx-datatable-column name="Fecha de Ingreso" prop="fechaent">
                 <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Fecha de Salida">
+              <ngx-datatable-column name="Fecha de Salida" prop="fechasal">
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Solicitud de Diagnostico">
+              <ngx-datatable-column name="Solicitud de Diagnostico" prop="Diagnostico">
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Origen Cliente">
+              <ngx-datatable-column name="Cliente">
                 <ng-template ngx-datatable-cell-template let-value="value">
                     {{value}}
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Cliente">
+              <ngx-datatable-column name="Nombre del Cliente" prop="NombreCliente">
                 <ng-template ngx-datatable-cell-template let-value="value">
                     {{value}}
                 </ng-template>

@@ -40,13 +40,15 @@ export class TallerComponent implements OnInit {
   faUser = faUser;
   faUserCheck = faUserCheck;
 
+
 /* Datos Llenado completo*/
+
 opcion2:string;
 indenc2:string;
 placa: string;
 vehiculo: string;
 marca: string;
-combustilbe: string;
+combustible: string;
 numserie: string;
 kilometraje: number;
 anio: number;
@@ -66,21 +68,24 @@ taponllanta: string;
 extintor: string;
 kitherram: string;
 segurorueda: string;
-señal: string;
+senal: string;
 placas: string;
 tapongas: string;
 radio: string;
 admonflota: string;
 asesor: string;
-solicdiag: string;
+solicitud: string;
 trabajosol: string;
 trabajorea: string;
 nocliente: string;
 ccliente: string;
 nucliente: string;
+estatus:string;
 cliente: string;
+tecnico:string;
 tipo: string;
 comentarios: string;
+Diagnostico:string;
 
   constructor(
     private afs: AngularFirestore,
@@ -112,27 +117,89 @@ comentarios: string;
     }
   }
   onGuardar({value}: {value: RegistroCompletoInterface}) {
-value.tipo = this.tipo;
-value.placa = this.placa;
-value.vehiculo = this.vehiculo;
-value.marca = this.marca;
-value.tipo = this.opcion2;
-value.numserie = this.numserie;
-// value.kilometraje = this.kilometraje;
-value.año = this.anio;
-value.fechaent = this.fechaent;
-value.fechasal = this.fechasal;
+//Folio y tipo de servicio
+    value.id = this.indenc2.toLocaleUpperCase();
+    value.tipo = this.opcion2;
+//Datos de Vehiculo
+    value.placa = this.placa;
+    value.vehiculo = this.vehiculo;
+    value.marca = this.marca;
+    value.combustible = this.combustible;
+    value.numserie = this.numserie;
+    value.kilometraje = this.kilometraje;
+    value.anio = this.anio;
+//Cliente
+    value.NombreCliente = this.nocliente;
+    value.CorreoCliente = this.ccliente;
+    value.NumeroCliente = this.nucliente;
+    value.cliente = this.cliente;
+//Administrador
+    value.Administrador = this.admonflota;
+    value.asesor = this.asesor;
+//Taller 1era parte
+    value.fechaent = this.fechaent ;
+    value.fechasal = this.fechasal;
+    value.Diagnostico = this.Diagnostico;
+    value.Solicta = this.solicitud;
+    value.Trabajorealizado = this.trabajorea;
+    value.Estatus = this.estatus;
+    value.Tecnico = this.tecnico;
+//Taller 2da parte
+    value.tarjetacirculacion = this.tarjetac;
+    value.antena= this.antena;
+    value.controlllave = this.controlllave;
+    value.llavetuerc = this.llavetuerc;
+    value.kitherram = this.kitherram;
+    value.llantas = this.llantas;
+    value.llantaref = this.llantaref;
+    value.gato = this.gato;
+    value.taponllanta = this.taponllanta;
+    value.segurorueda = this.segurorueda;
+    value.tapongas = this.tapongas;
+    value.ordenservicio = this.ordenservicio;
+    value.vestiduras = this.vestiduras;
+    value.tapetes = this.tapetes;
+    value.extintor = this.extintor;
+    value.senal = this.senal;
+    value.radio = this.radio;
+    value.comentarios = this.comentarios;
 
-value.antena = this.antena;
-value.NombreCliente = this.nocliente;
-value.cliente = this.cliente;
-value.NumeroCliente = this.nucliente;
-value.CorreoCliente = this.ccliente;
-
-    console.log(value);
+    console.log(value); 
+    var nameid = this.indenc2.toUpperCase();
+    this.afs.firestore.doc('Encuestaexes/' + nameid).get()
+    .then(docSnapshot => {
+      if (docSnapshot.exists === true) {
+        confirm('Registro ' + nameid + ' guardado');
+        value.tipo = 'express';
+       this.encuestase.updateType(value);
+      } else {
+        this.afs.firestore.doc('Encuestareps/' + nameid).get()
+        .then(docSnapshot => {
+          if (docSnapshot.exists === true) {
+            confirm('Registro ' + nameid + ' guardado');
+            value.tipo = 'reparacion';
+            this.encuestase.updateType(value);
+          } else {
+            this.afs.firestore.doc('Encuestatram/' + nameid).get()
+            .then(docSnapshot => {
+              if (docSnapshot.exists === true) {
+                confirm('Registro ' + nameid+ ' guardado');
+                value.tipo = 'tramite';
+                this.encuestase.updateType(value);
+              } else {
+                 confirm('Registro ' + nameid + ' no existe');
+                
+              }
+            });
+          }
+        });
+      }
+    });
+    
   }
   onEncuesta({value}: {value: EncuestaexInterface}) {
   this.name = this.idenc.toUpperCase();
+    value.Folio = this.name;
     value.id = this.name;
     value.tipo = this.opcion;
     console.log(value);
@@ -159,14 +226,17 @@ value.CorreoCliente = this.ccliente;
               } else {
                 if (this.opcion === 'express') {
                   this.encuestase.addEncuestaex(value);
+                  this.encuestase.addEcuescont(value);
                   confirm('Registro ' + this.name + ' guardado');
                 }
                 if (this.opcion === 'reparacion') {
                   this.encuestase.addEncuestare(value);
+                  this.encuestase.addEcuescont(value);
                   confirm('Registro ' + this.name + ' guardado');
                 }
                 if (this.opcion === 'tramite') {
                   this.encuestase.addEncuestatr(value);
+                  this.encuestase.addEcuescont(value);
                   confirm('Registro ' + this.name + ' guardado');
                 }
               }

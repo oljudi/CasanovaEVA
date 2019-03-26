@@ -1,11 +1,21 @@
 export interface RegistroCompletoInterface{
+//Folio y tipo de servicio
+    id?:string;
+    tipo?:string;
+//Datos de Vehiculo
     placa?:string;
     vehiculo?:string;
     marca?:string;
-    combustilbe?:string;
+    combustible?:string;
     numserie?:string;
     kilometraje?:number;
-    año?:number;
+    anio?:number;
+//Cliente
+    NombreCliente?:string;
+    CorreoCliente?:string;
+    NumeroCliente?:string;
+    cliente?:string;
+//Taller
     fechaent?:string;
     fechasal?:string;
     tarjetacirculacion?:string;
@@ -22,19 +32,18 @@ export interface RegistroCompletoInterface{
     extintor?:string;
     kitherram?:string;
     segurorueda?:string;
-    señal?:string;
+    senal?:string;
     placas?:string;
     tapongas?:string;
     radio?:string;
-    admonflota?:string;
+    Administrador?:string;
     asesor?:string;
-    solicdiag?:string;
-    trabajosol?:string;
-    trabajorea?:string;
-    NombreCliente?:string;
-    CorreoCliente?:string;
-    NumeroCliente?:string;
-    cliente?:string;
-    tipo?:string;
+    Diagnostico?:string;
+    Solicta?:string;
+    Estatus?:string;
+    Tecnico?:string;
+    Trabajorealizado?:string;
+    
+    
     comentarios?:string;
 }

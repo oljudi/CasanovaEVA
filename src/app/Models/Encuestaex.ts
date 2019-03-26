@@ -1,5 +1,6 @@
 export interface EncuestaexInterface{
     id?:string;
+    Folio?:string;
     pregunta1?:number;
     pregunta2?:number;
     pregunta3?:number;
