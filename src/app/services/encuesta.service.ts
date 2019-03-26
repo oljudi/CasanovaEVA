@@ -5,6 +5,7 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { MetaInterface } from '../Models/Meta';
+import { RegistroCompletoInterface } from '../Models/Registrocompleto';
 
 
 
@@ -24,6 +25,7 @@ export class EncuestaService {
   P7exCollection: AngularFirestoreCollection<EncuestaexInterface>;
   P8exCollection: AngularFirestoreCollection<EncuestaexInterface>;
   typeCollection: AngularFirestoreCollection<EncuestaexInterface>;
+  typeCollections: AngularFirestoreCollection<EncuestaexInterface>;
   EncuestaexDoc: AngularFirestoreDocument<EncuestaexInterface>;
   Encuestaexes: Observable<EncuestaexInterface[]>;
   Encuestaex: Observable<EncuestaexInterface>;
@@ -35,24 +37,33 @@ constructor(
     this.EncuestareCollection = this.afs.collection('Encuestareps', ref => ref);
     this.EncuestatrCollection = this.afs.collection('Encuestatram', ref => ref);
     this.typeCollection = this.afs.collection('type', ref => ref);
+    
    }
 
   deleteEncuestaex(Encuestaex: EncuestaexInterface) {
     this.EncuestaexDoc = this.afs.doc('Encuestaexes/' + Encuestaex.id);
     this.EncuestaexDoc.delete();
   }
-   updateEncuestaex(Encuestaex: EncuestaexInterface) {
+  //Update registro completo
+    updateType(Encuestaex: RegistroCompletoInterface) {
+      this.EncuestaexDoc = this.afs.doc('type/' + Encuestaex.id);
+      this.EncuestaexDoc.update(Encuestaex);
+    }
+
+//___________________________________________________________________
+   updateEncuestaex(Encuestaex: RegistroCompletoInterface) {
       this.EncuestaexDoc = this.afs.doc('Encuestaexes/' + Encuestaex.id);
       this.EncuestaexDoc.update(Encuestaex);
     }
-    updateEncuestarep(Encuestaex: EncuestaexInterface) {
+    updateEncuestarep(Encuestaex: RegistroCompletoInterface) {
       this.EncuestaexDoc = this.afs.doc('Encuestareps/' + Encuestaex.id);
       this.EncuestaexDoc.update(Encuestaex);
     }
-    updateEncuestatram(Encuestaex: EncuestaexInterface) {
+    updateEncuestatram(Encuestaex: RegistroCompletoInterface) {
       this.EncuestaexDoc = this.afs.doc('Encuestatram/' + Encuestaex.id);
       this.EncuestaexDoc.update(Encuestaex);
     }
+
   addEncuestaex(Encuestaex: EncuestaexInterface) {
     // this.EncuestaexCollection.add(Encuestaex);
     this.EncuestaexCollection.doc(Encuestaex.id).set(Encuestaex);
@@ -108,6 +119,18 @@ constructor(
   }
   getAllEncuestaex(): Observable<EncuestaexInterface[]> {
     this.Encuestaexes = this.typeCollection.snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(action => {
+        const data = action.payload.doc.data() as EncuestaexInterface;
+        data.id = action.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.Encuestaexes;
+  }
+  getAllEncuesta(ide:string, ids:string): Observable<EncuestaexInterface[]> {
+    this.typeCollections = this.afs.collection('type', ref => ref.where("fechaent",">=",ide).where("fechaent","<=",ids));
+    this.Encuestaexes = this.typeCollections.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as EncuestaexInterface;

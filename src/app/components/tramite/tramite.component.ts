@@ -128,7 +128,7 @@ export class TramiteComponent implements OnInit {
     value.fecha = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
     value.total = +this.proms;
     
-    this.encuestaService.addEcuescont(value);
+    this.encuestaService.updateType(value);
     this.encuestaService.updateEncuestatram(value);
     
     this.router.navigate(['/home']);

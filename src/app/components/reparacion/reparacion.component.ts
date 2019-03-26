@@ -132,7 +132,7 @@ export class ReparacionComponent implements OnInit {
     value.fecha = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
     value.total = +this.proms;
     
-    this.encuestaService.addEcuescont(value);
+    this.encuestaService.updateType(value);
     this.encuestaService.updateEncuestarep(value);
     
     this.router.navigate(['/home']);

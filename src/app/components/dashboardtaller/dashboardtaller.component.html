@@ -1,6 +1,7 @@
 <!-- NAVBAR -->
 <app-navbar></app-navbar>
 <!-- Contenido -->
+
 <div class="card col-md-2 mt-3 ml-1 text-white text-center form-inline" style="background-color: #1a3263"><fa-icon [icon]="faCarCrash" class="fa-2x"></fa-icon><strong><h2>SEVS - Taller - Consulta</h2></strong></div>
 <div class="row">
   <div class="col-md-12">
@@ -20,7 +21,7 @@
               [columnMode]="'force'"
               [rowHeight]="'auto'"
               [footerHeight]="30"
-              [scrollbarV]="true"
+              
               [count]="true"
               [limit]="25"
               [rows]="rows1"
@@ -90,37 +91,37 @@
                 </a>
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Folio">
+              <ngx-datatable-column name="Folio" prop="id">
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Servicio">
+              <ngx-datatable-column name="Tipo de Servicio" prop="tipo" >
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Fecha de Ingreso">
+              <ngx-datatable-column name="Fecha de Entrada" prop="fechaent">
                 <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Fecha de Salida">
+              <ngx-datatable-column name="Fecha de Salida" prop="fechasal">
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Solicitud de Diagnostico">
+              <ngx-datatable-column name="Asesor" prop="asesor">
               <ng-template ngx-datatable-cell-template let-value="value">
                   {{value}}
               </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Origen Cliente">
+              <ngx-datatable-column  name="Cliente">
                 <ng-template ngx-datatable-cell-template let-value="value">
                     {{value}}
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Cliente">
+              <ngx-datatable-column name="Nombre del Cliente" prop="NombreCliente">
                 <ng-template ngx-datatable-cell-template let-value="value">
                     {{value}}
                 </ng-template>
@@ -138,7 +139,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <form>
+      <form #formGuardar="ngForm" (ngSubmit)="onBuscar(formGuardar)">
         <div class="row">
             <div class="col-md-2 ml-1">
               <!-- Fecha de Entrada -->
@@ -148,7 +149,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
                   </div>
-                <input type="date" class="form-control text-center" id="inlineFormInputGroup" placeholder="Fecha Entrada" name="fechaent" [(ngModel)]="fechaent" #fechaents="ngModel">
+                <input type="date" class="form-control text-center" id="inputfe" placeholder="Fecha Entrada" name="fechaent" [(ngModel)]="fechaent" #fechaents="ngModel">
                 </div>
               </div>
             </div>
@@ -160,36 +161,47 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
                     </div>
-                    <input type="date" class="form-control text-center" id="inlineFormInputGroup" placeholder="Fecha Salida" name="fechasal" [(ngModel)]="fechasal" #fechasals="ngModel">
+                    <input type="date" class="form-control text-center" id="inputfs" placeholder="Fecha Salida" name="fechasal" [(ngModel)]="fechasal" #fechasals="ngModel">
                   </div>
               </div>
             </div>
             <div class="col-md-2">
-              <button type="submit" class="btn btn-primary btn-block btn-lg mb-2 mt-4" style="font-size: 1rem" value="Guardar"><strong>Generar Reporte</strong></button>
+              <button type="submit" class="btn btn-primary btn-block btn-lg mb-2 mt-4" style="font-size: 1rem" value="Guardar" (click)="myFunction()"><strong>Generar Reporte</strong></button>
             </div>
           </div>
         </form>
       <div class="card-body"><!-- LLenado de la tabla atravez de un for-->
-        <table class="table table-sm table-bordered text-center" id="mytable">
+        <table  class="table table-sm table-bordered text-center" id="mytable5">
           <thead>
             <tr>
               <th scope="col">Folio</th>
               <th scope="col">Tipo de Servicio</th>
+
               <th scope="col">PLACA</th>
               <th scope="col">VEHICULO</th>
-              <th scope="col">AÑO</th>
+              <th scope="col">MARCA</th>
+              <th scope="col">COMBUSTIBLE</th>
               <th scope="col"># SERIE</th>
               <th scope="col">KM</th>
+              <th scope="col">AÑO</th>
+
+              <th scope="col">NOMBRECLIENTE</th>
+              <th scope="col">CORREOCLIENTE</th>
+              <th scope="col">NUMEROCLIENTE</th>
+              <th scope="col">CLIENTE</th>
+              
+
               <th scope="col">ADMIN FLOTA</th>
               <th scope="col">ASESOR</th>
-              <th scope="col">ORDEN DE SERVICIO</th>
+
               <th scope="col">ENTRADA</th>
-              <th scope="col">SALIDA</th>
+              <th scope="col">SALIDA</th>          
               <th scope="col">SOL. DIAG.</th>
               <th scope="col">T. SOLICITADO</th>
               <th scope="col">T. REALIZADO</th>
               <th scope="col">ESTATUS</th>
               <th scope="col">TECNICO</th>
+
               <th scope="col">TARJETA CIRCULACION</th>
               <th scope="col">ANTENA</th>
               <th scope="col">CONTROL Y LLAVE</th>
@@ -201,25 +213,62 @@
               <th scope="col">TAPON LLANTA</th>
               <th scope="col">SEGURO RUEDAS</th>
               <th scope="col">TAPON GASO</th>
+              <th scope="col">ORDEN DE SERVICIO</th>
               <th scope="col">VESTIDURAS</th>
               <th scope="col">TAPETES</th>
               <th scope="col">EXTINTOR</th>
               <th scope="col">SEÑALES</th>
               <th scope="col">RADIO</th>
+              <th scope="col">COMENTARIOS</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+            <tr *ngFor="let controlService of listado | async">
+              <th scope="row">{{controlService.id}}</th>
+              <td>{{controlService.tipo}}</td>
+
+              <td>{{controlService.placa}}</td>
+              <td>{{controlService.vehiculo}}</td>
+              <td>{{controlService.marca}}</td>
+              <td>{{controlService.combustible}}</td>
+              <td>{{controlService.numserie}}</td>
+              <td>{{controlService.kilometraje}}</td>
+              <td>{{controlService.anio}}</td>
+
+              <td>{{controlService.NombreCliente}}</td>
+              <td>{{controlService.CorreoCliente}}</td>
+              <td>{{controlService.NumeroCliente}}</td>
+              <td>{{controlService.cliente}}</td>
+
+              <td>{{controlService.Administrador}}</td>
+              <td>{{controlService.asesor}}</td>
+
+              <td>{{controlService.fechaent}}</td>
+              <td>{{controlService.fechasal}}</td>
+              <td>{{controlService.Diagnostico}}</td>
+              <td>{{controlService.Solicta}}</td>
+              <td>{{controlService.Trabajorealizado}}</td>
+              <td>{{controlService.Estatus}}</td>
+              <td>{{controlService.Tecnico}}</td>
+
+              <td>{{controlService.tarjetacirculacion}}</td>
+              <td>{{controlService.antena}}</td>
+              <td>{{controlService.controlllave}}</td>
+              <td>{{controlService.llavetuerc}}</td>
+              <td>{{controlService.kitherram}}</td>
+              <td>{{controlService.llantas}}</td>
+              <td>{{controlService.llantaref}}</td>
+              <td>{{controlService.gato}}</td>
+              <td>{{controlService.taponllanta}}</td>
+              <td>{{controlService.segurorueda}}</td>
+              <td>{{controlService.tapongas}}</td>
+              <td>{{controlService.ordenservicio}}</td>
+              <td>{{controlService.vestiduras}}</td>
+              <td>{{controlService.tapetes}}</td>
+              <td>{{controlService.extintor}}</td>
+              <td>{{controlService.senal}}</td>
+              <td>{{controlService.radio}}</td>
+              <td>{{controlService.comentarios}}</td>
             </tr>
           </tbody>
         </table>
@@ -228,6 +277,7 @@
     </div>
   </div>
 </div>
+
 <br><br><br>
 <!-- Footer -->
 <app-footer></app-footer>
