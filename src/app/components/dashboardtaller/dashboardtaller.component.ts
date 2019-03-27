@@ -8,9 +8,8 @@ import { faCarCrash, faSearch, faStickyNote, faPrint, faCar } from '@fortawesome
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore} from 'angularfire2/firestore';
 import { EncuestaService } from 'src/app/services/encuesta.service';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { DatatableService } from 'src/app/services/datatable.service';
 
 
@@ -43,8 +42,6 @@ export class DashboardtallerComponent implements OnInit {
   // Variables
   rows1: any[] = [];
 
-  rows2: any[] = [];
-
   dataSource = new MatTableDataSource();
   displayedColumns = ['Fecha Entrada', 'Fecha Salida', 'Folio', 'Placa', 'Servicio', 'Asesor', 'Cliente', 'Numero Cliente'];
 
@@ -71,7 +68,6 @@ export class DashboardtallerComponent implements OnInit {
  ngOnInit() {
     return this._dataService.getDocs().subscribe(res => this.dataSource.data = res );
     this.getData1();
-
   }
 
 
@@ -83,6 +79,7 @@ export class DashboardtallerComponent implements OnInit {
     this.list = this.rows1;
     this.list2 = this.rows1;
   }
+
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
@@ -90,10 +87,10 @@ export class DashboardtallerComponent implements OnInit {
     }, 100);
   }
 
-
   onDetailToggle(event) {
     console.log('Detail Toggled', event);
   }
+
   exportAs(type) {
     this.config.type = type;
     this.exportAsService.save(this.config, 'myFile');
@@ -111,8 +108,6 @@ export class DashboardtallerComponent implements OnInit {
     filter2 = input2.value;
     table = document.getElementById('mytable5');
     tr = table.getElementsByTagName('tr');
-
-    // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName('td')[15];
       if (td) {
