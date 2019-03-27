@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/CasanovaEVa",
+    "public": "dist/CasanovaEva",
     "ignore": [
       "firebase.json",
       "**/.*",

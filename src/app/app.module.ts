@@ -11,11 +11,14 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // tslint:disable-next-line:max-line-length
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule, MatIconModule, MatFormFieldModule, MatTab, MatTabsModule, MatCheckboxModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule, MatIconModule, MatFormFieldModule, MatTabsModule, MatCheckboxModule, MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
 
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 import { environment } from '../environments/environment';
 
 import { AuthService } from './services/auth.service';
@@ -42,13 +45,12 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { EncuestaService } from './services/encuesta.service';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NavbardownComponent } from './components/navbardown/navbardown.component';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { from } from 'rxjs';
 import { TallerComponent } from './components/taller/taller.component';
 import { DashboardtallerComponent } from './components/dashboardtaller/dashboardtaller.component';
 import { DashboardcallcenterComponent } from './components/dashboardcallcenter/dashboardcallcenter.component';
+
+
 
 import { ExportAsModule } from 'ngx-export-as';
 
@@ -79,6 +81,9 @@ import { ExportAsModule } from 'ngx-export-as';
     NgxSpinnerModule,
     MatStepperModule,
     MatTabsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     MatCheckboxModule,
     MatInputModule,
     MatIconModule,
@@ -96,11 +101,12 @@ import { ExportAsModule } from 'ngx-export-as';
     FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
     FlashMessagesModule,
     NbThemeModule.forRoot({ name: 'corporate' }),
-    NbLayoutModule,
-    AngularFirestoreModule
+    NbLayoutModule
   ],
   entryComponents: [ExpressComponent],
   providers: [
