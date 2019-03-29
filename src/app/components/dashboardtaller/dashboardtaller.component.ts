@@ -43,7 +43,7 @@ export class DashboardtallerComponent implements OnInit {
   rows1: any[] = [];
 
   dataSource = new MatTableDataSource();
-  displayedColumns = ['Fecha Entrada', 'Fecha Salida', 'Folio', 'Placa', 'Servicio', 'Asesor', 'Cliente', 'Numero Cliente'];
+  displayedColumns = ['Folio Encuesta', 'Fecha Entrada', 'Fecha Salida', 'Placa', 'Servicio', 'Asesor', 'Cliente'];
 
   expanded: any = {};
   timeout: any;

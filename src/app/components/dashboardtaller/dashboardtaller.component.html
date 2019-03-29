@@ -11,6 +11,11 @@
               <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda...">
           </mat-form-field>
           <mat-table #table [dataSource]="dataSource" matSort>
+          
+            <ng-container matColumnDef="Folio Encuesta">
+              <mat-header-cell *matHeaderCellDef> Folio </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            </ng-container>
 
             <ng-container matColumnDef="Fecha Entrada">
                 <mat-header-cell *matHeaderCellDef> Fecha Entrada </mat-header-cell>
@@ -20,12 +25,7 @@
               <ng-container matColumnDef="Fecha Salida">
                 <mat-header-cell *matHeaderCellDef> Fecha Entrada </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.fechasal}} </mat-cell>
-              </ng-container>
-
-              <ng-container matColumnDef="Folio">
-                <mat-header-cell *matHeaderCellDef> Folio </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-              </ng-container>
+              </ng-container> 
 
               <ng-container matColumnDef="Placa">
                 <mat-header-cell *matHeaderCellDef> Placa </mat-header-cell>
@@ -46,11 +46,6 @@
                 <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{ element.NombreCliente | titlecase }} </mat-cell>
               </ng-container>
-
-              <ng-container matColumnDef="Numero Cliente">
-                <mat-header-cell *matHeaderCellDef> Numero Cliente </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.NumeroCliente}} </mat-cell>
-              </ng-container>
                   
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -58,8 +53,7 @@
           <mat-paginator #paginator
             [length]="dataSource.filteredData.length"
             [pageIndex]="0"
-            [pageSize]="5"
-            [pageSizeOptions]="[5, 10, 25, 100]">
+            [pageSize]="25">
           </mat-paginator>
         </div>
   </div>
