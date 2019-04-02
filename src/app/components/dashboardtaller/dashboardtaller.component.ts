@@ -94,9 +94,6 @@ export class DashboardtallerComponent implements OnInit {
   exportAs(type) {
     this.config.type = type;
     this.exportAsService.save(this.config, 'myFile');
-    // this.exportAsService.get(this.config).subscribe(content => {
-    //   console.log(content);
-    // });
   }
 
   myFunction() {
@@ -112,7 +109,7 @@ export class DashboardtallerComponent implements OnInit {
       td = tr[i].getElementsByTagName('td')[15];
       if (td) {
         txtValue = td.textContent || td.innerText;
-        if (txtValue.indexOf(filter) > -1 || txtValue.indexOf(filter2) > -1 ) {
+        if (txtValue >= filter && txtValue <= filter2 ) {
           tr[i].style.display = '';
         } else {
           tr[i].style.display = 'none';
@@ -127,9 +124,10 @@ export class DashboardtallerComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }
