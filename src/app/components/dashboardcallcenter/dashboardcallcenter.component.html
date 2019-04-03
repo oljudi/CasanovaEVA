@@ -123,12 +123,14 @@
               </div>
             </div>
           </form>
+          <button type="submit" class="btn btn-primary btn-block btn-lg mb-2 mt-4" style="font-size: 1rem" value="Guardar" (click)="myFunction()"><strong>Generar Reporte</strong></button>
     <button class="btn btn-primary btn-block" style="font-size: 1rem" (click)="exportAs('xlsx')"><strong>Exportar Excel</strong></button>
     </div>
   </div>
   <div class="col-md-9">
+      <form #formGuardar="ngForm" (ngSubmit)="coments(formGuardar)">
     <div class="card">
-      <table mat-table #table [dataSource]="dataSource" matSort id="callexport" matSort>
+      <table mat-table #table [dataSource]="dataSource" matSort id="callexport" matSort id="mytable5">
 
         <!--
           <ng-container matColumnDef="Fecha Seguimiento">
@@ -136,7 +138,7 @@
             <td mat-cell *matCellDef="let row"> {{row.fechaSeg}} </td>
           </ng-container>
         -->
-
+<tr>
         <ng-container matColumnDef="Folio Encuesta">
           <th mat-header-cell *matHeaderCellDef> Folio Encuesta </th>
           <td mat-cell *matCellDef="let row"> {{row.id}} </td>
@@ -167,15 +169,28 @@
             <td mat-cell *matCellDef="let row">
               <mat-form-field class="col-md-9" appearance="outline">
                 <mat-label>Comentario</mat-label>
-                <input matInput placeholder="Retroalimentación">
+                <input matInput placeholder="Retroalimentación" (keyup)="myFunction2($event.target.value)" >
               </mat-form-field>
-            </td>
+            </td> 
           </ng-container>
-
+          <ng-container matColumnDef="Aceptar">
+              <th mat-header-cell *matHeaderCellDef> Aceptar </th>
+              <td mat-cell *matCellDef="let row">
+                  <mat-label>Aceptar</mat-label>
+                  <button type="submit" class="btn btn-block text-white" value="Guardar" style="background-color: #005792" (click)="getval(row);"></button>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Revisado">
+                <th mat-header-cell *matHeaderCellDef> Revisado </th>
+                <td mat-cell *matCellDef="let row"> {{row.fechac}} </td>
+              </ng-container>
+            </tr>
         <tr mat-header-row *matHeaderRowDef="displayedColumns2;"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+      
       </table>
     </div>
+    </form>
   </div>
 </div>
 

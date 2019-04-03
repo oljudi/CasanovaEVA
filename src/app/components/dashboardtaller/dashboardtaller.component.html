@@ -93,7 +93,19 @@
               </div>
             </div>
             <div class="col-md-2">
-              <button type="submit" class="btn btn-primary btn-block btn-lg mb-2 mt-4" style="font-size: 1rem" value="Guardar" (click)="myFunction()"><strong>Generar Reporte</strong></button>
+              <!-- Fecha de Salida -->
+                <div class="form-group">
+                    <label><strong>Folio</strong></label><br>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
+                      </div>
+                      <input type="text" class="form-control text-center" id="PLACAS" placeholder="PLACA" (keyup)="myFunction2($event.target.value)">
+                    </div>
+                </div>
+              </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-block btn-lg mb-2 mt-4" style="font-size: 1rem" value="Guardar" (click)="myFunction()"><strong>Generar Reporte</strong></button>
               <button class="btn btn-primary btn-block" style="font-size: 1rem" (click)="exportAs('xlsx')"><strong>Exportar Excel</strong></button>
             </div>
           </div>
@@ -102,10 +114,10 @@
         <table  class="table table-sm table-bordered text-center" id="mytable5">
           <thead>
             <tr>
-              <th scope="col">Folio</th>
-              <th scope="col">Tipo de Servicio</th>
+              <th scope="col">FOLIO</th>
+              <th scope="col">TIPO DE SERVICIO</th>
 
-              <th scope="col" hidden>PLACA</th>
+              <th scope="col" >PLACA</th>
               <th scope="col" hidden>VEHICULO</th>
               <th scope="col" hidden>MARCA</th>
               <th scope="col" hidden>COMBUSTIBLE</th>
@@ -153,9 +165,10 @@
           <tbody>
             <tr *ngFor="let controlService of listado | async">
               <th scope="row">{{controlService.id}}</th>
+              <td hidden>{{controlService.id}}</td>
               <td>{{controlService.tipo}}</td>
 
-              <td hidden>{{controlService.placa}}</td>
+              <td >{{controlService.placa}}</td>
               <td hidden>{{controlService.vehiculo}}</td>
               <td hidden>{{controlService.marca}}</td>
               <td hidden>{{controlService.combustible}}</td>
