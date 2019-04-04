@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faHeadset, faCar } from '@fortawesome/free-solid-svg-icons';
 
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatRadioButton } from '@angular/material';
 
 import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 
@@ -24,8 +24,8 @@ export class DashboardcallcenterComponent implements OnInit {
   // Origen DATA tabla
   dataSource = new MatTableDataSource();
   // tslint:disable-next-line:max-line-length
-  displayedColumns = ['Folio Encuesta', 'Fecha Entrada', 'Fecha Salida', 'Servicio', 'Pregunta 1', 'Pregunta 2', 'Pregunta 3', 'Pregunta 4', 'Pregunta 5', 'Pregunta 6', 'Pregunta 7', 'Pregunta 8', 'Pregunta 9', 'Pregunta 10'];
-  displayedColumns2 = ['Folio Encuesta', 'Nombre Cliente', 'Numero Cliente', 'Correo Cliente', 'Comentario Taller', 'Comentario Llamada', 'Aceptar', 'Revisado'];
+  displayedColumns = ['Folio Encuesta', 'Fecha Entrada', 'Fecha Salida', 'Servicio', 'Pregunta 1', 'Pregunta 2', 'Pregunta 3', 'Pregunta 4', 'Pregunta 5', 'Pregunta 6', 'Pregunta 7', 'Pregunta 8', 'Pregunta 9', 'Pregunta 10', 'Total'];
+  displayedColumns2 = ['Folio Encuesta', 'Nombre Cliente', 'Numero Cliente', 'Correo Cliente', 'Comentario Taller', 'validacion', 'Fecha de seguimiento', 'Comentario Llamada', 'Aceptar'];
   comentarioscall: string;
   id: string;
   config: ExportAsConfig = {
@@ -73,6 +73,7 @@ export class DashboardcallcenterComponent implements OnInit {
   coments({value}: {value: RegistroCompletoInterface}) {
     value.comentarioscall = this.comentarioscall;
     value.id = this.id;
+    value.validacion = 'Ok'
     value.fechac = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
       console.log (value, this.id);
     this.encuestase.updateType(value);
@@ -88,15 +89,13 @@ export class DashboardcallcenterComponent implements OnInit {
     let input, filter, table, tr, td, i, txtValue, input2, filter2;
     input = document.getElementById('inputfe');
     filter = input.value;
-    input2 = document.getElementById('inputfs');
-    filter2 = input2.value;
     table = document.getElementById('mytable5');
     tr = table.getElementsByTagName('tr');
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName('td')[8];
+      td = tr[i].getElementsByTagName('td')[5];
       if (td) {
         txtValue = td.textContent || td.innerText;
-        if (txtValue >= filter && txtValue <= filter2 ) {
+        if (txtValue.indexOf(filter)<-1) {
           tr[i].style.display = '';
         } else {
           tr[i].style.display = 'none';

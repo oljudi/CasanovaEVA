@@ -77,6 +77,11 @@
                 <mat-header-cell *matHeaderCellDef> Pregunta 10 </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{ element.pregunta10 }} </mat-cell>
               </ng-container>
+
+              <ng-container matColumnDef="Total">
+                <mat-header-cell *matHeaderCellDef> Calificacion </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.total }} </mat-cell>
+              </ng-container>
                                  
               <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -90,42 +95,18 @@
   <div class="col-md-3">
     <div class="card">
       <mat-form-field class="col-md-9" appearance="outline">
-        <mat-label>Folio Encuesta</mat-label>
+        <mat-label>Filtrar...</mat-label>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="VI1234">
         <mat-icon matSuffix>assessment</mat-icon>
         <mat-hint>*Ingresa el numero de folio</mat-hint>
       </mat-form-field><br>
-      <form>
-          <div class="row">
-              <div class="col-md-6">
-                <!-- Fecha de Seguimiento Incial -->
-                <div class="form-group">
-                  <label><strong>Fecha Inicial</strong></label><br>
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
-                    </div>
-                  <input type="date" class="form-control text-center" id="inputfe" placeholder="Fecha Entrada" name="fechaent" [(ngModel)]="fechaent" #fechaents="ngModel">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-              <!-- Fecha de Seguimiento Final  -->
-                <div class="form-group">
-                    <label><strong>Fecha Fin</strong></label><br>
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
-                      </div>
-                      <input type="date" class="form-control text-center" id="inputfs" placeholder="Fecha Salida" name="fechasal" [(ngModel)]="fechasal" #fechasals="ngModel">
-                    </div>
-                </div>
-              </div>
-            </div>
-          </form>
-          <button type="submit" class="btn btn-primary btn-block btn-lg mb-2 mt-4" style="font-size: 1rem" value="Guardar" (click)="myFunction()"><strong>Generar Reporte</strong></button>
+      <label>Revisado</label>
+    <input type="radio" value="ok" (click)="applyFilter($event.target.value)" >
+    <label> Sin Revisar</label>
+    <input type="radio" value="falta_validar" (click)="applyFilter($event.target.value)" >
     <button class="btn btn-primary btn-block" style="font-size: 1rem" (click)="exportAs('xlsx')"><strong>Exportar Excel</strong></button>
     </div>
+    
   </div>
   <div class="col-md-9">
       <form #formGuardar="ngForm" (ngSubmit)="coments(formGuardar)">
@@ -163,7 +144,14 @@
           <th mat-header-cell *matHeaderCellDef> Comentario Taller </th>
           <td mat-cell *matCellDef="let row"> {{row.comentarios}} </td>
         </ng-container>
-
+        <ng-container matColumnDef="validacion">
+          <th mat-header-cell *matHeaderCellDef> validacion </th>
+          <td mat-cell *matCellDef="let row"> {{row.validacion}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Fecha de seguimiento">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Revisado </th>
+          <td mat-cell *matCellDef="let row"> {{row.fechac}} </td>
+        </ng-container>
         <ng-container matColumnDef="Comentario Llamada">
             <th mat-header-cell *matHeaderCellDef> Comentario Llamada </th>
             <td mat-cell *matCellDef="let row">
@@ -173,6 +161,7 @@
               </mat-form-field>
             </td> 
           </ng-container>
+         
           <ng-container matColumnDef="Aceptar">
               <th mat-header-cell *matHeaderCellDef> Aceptar </th>
               <td mat-cell *matCellDef="let row">
@@ -180,10 +169,7 @@
                   <button type="submit" class="btn btn-block text-white" value="Guardar" style="background-color: #005792" (click)="getval(row);"></button>
               </td>
             </ng-container>
-            <ng-container matColumnDef="Revisado">
-                <th mat-header-cell *matHeaderCellDef> Revisado </th>
-                <td mat-cell *matCellDef="let row"> {{row.fechac}} </td>
-              </ng-container>
+           
             </tr>
         <tr mat-header-row *matHeaderRowDef="displayedColumns2;"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>

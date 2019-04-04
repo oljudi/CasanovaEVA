@@ -163,7 +163,7 @@ Diagnostico:string;
     value.senal = this.senal;
     value.radio = this.radio;
     value.comentarios = this.comentarios;
-
+    
     console.log(value); 
     var nameid = this.indenc2.toUpperCase();
     this.afs.firestore.doc('Encuestaexes/' + nameid).get()
@@ -202,6 +202,7 @@ Diagnostico:string;
     value.Folio = this.name;
     value.id = this.name;
     value.tipo = this.opcion;
+    value.validacion = 'falta_validar';
     console.log(value);
 
     this.afs.firestore.doc('Encuestaexes/' + this.name).get()

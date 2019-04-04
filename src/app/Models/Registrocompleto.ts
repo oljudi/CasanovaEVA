@@ -49,5 +49,6 @@ export interface RegistroCompletoInterface{
 
     //callcenter
     comentarioscall?:string;
-    fechac:string;
+    fechac?:string;
+    validacion?: string;
 }
