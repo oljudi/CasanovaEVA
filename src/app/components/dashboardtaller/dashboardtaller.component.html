@@ -18,37 +18,37 @@
             </ng-container>
 
             <ng-container matColumnDef="Fecha Entrada">
-                <mat-header-cell *matHeaderCellDef> Fecha Entrada </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.fechaent}} </mat-cell>
-              </ng-container>
+              <mat-header-cell *matHeaderCellDef> Fecha Entrada </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.fechaent}} </mat-cell>
+            </ng-container>
 
-              <ng-container matColumnDef="Fecha Salida">
-                <mat-header-cell *matHeaderCellDef> Fecha Entrada </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.fechasal}} </mat-cell>
-              </ng-container> 
+            <ng-container matColumnDef="Fecha Salida">
+              <mat-header-cell *matHeaderCellDef> Fecha Entrada </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.fechasal}} </mat-cell>
+            </ng-container> 
 
-              <ng-container matColumnDef="Placa">
-                <mat-header-cell *matHeaderCellDef> Placa </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{ element.placa | uppercase }} </mat-cell>
-              </ng-container>
+            <ng-container matColumnDef="Placa">
+              <mat-header-cell *matHeaderCellDef> Placa </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.placa | uppercase }} </mat-cell>
+            </ng-container>
 
-              <ng-container matColumnDef="Servicio">
-                <mat-header-cell *matHeaderCellDef> Servicio </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{ element.tipo | uppercase }} </mat-cell>
-              </ng-container>
+            <ng-container matColumnDef="Servicio">
+              <mat-header-cell *matHeaderCellDef> Servicio </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.tipo | uppercase }} </mat-cell>
+            </ng-container>
 
-              <ng-container matColumnDef="Asesor">
-                <mat-header-cell *matHeaderCellDef> Asesor </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.asesor | titlecase}} </mat-cell>
-              </ng-container>
+            <ng-container matColumnDef="Asesor">
+              <mat-header-cell *matHeaderCellDef> Asesor </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.asesor | titlecase}} </mat-cell>
+            </ng-container>
 
-              <ng-container matColumnDef="Cliente">
-                <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{ element.NombreCliente | titlecase }} </mat-cell>
-              </ng-container>
+            <ng-container matColumnDef="Cliente">
+              <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.NombreCliente | titlecase }} </mat-cell>
+            </ng-container>
                   
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>
           <mat-paginator #paginator
             [length]="dataSource.filteredData.length"

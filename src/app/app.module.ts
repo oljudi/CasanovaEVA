@@ -11,7 +11,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // tslint:disable-next-line:max-line-length
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule, MatIconModule, MatFormFieldModule, MatTabsModule, MatCheckboxModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDatepickerModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatNativeDateModule, MatIconModule, MatFormFieldModule, MatTabsModule, MatCheckboxModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDatepickerModule, MatRadioButton, MatRadioModule } from '@angular/material';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -91,6 +91,8 @@ import { ExportAsModule } from 'ngx-export-as';
     MatAutocompleteModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatButtonModule,
+    MatRadioModule,
     MatFormFieldModule,
     BrowserModule,
     ExportAsModule,

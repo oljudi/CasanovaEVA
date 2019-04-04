@@ -18,14 +18,15 @@ import { formatDate } from '@angular/common';
 })
 export class DashboardcallcenterComponent implements OnInit {
 
-  @ViewChild(MatSort, {}) sort: MatSort;
+  @ViewChild(MatSort, { read: true }) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   // Origen DATA tabla
   dataSource = new MatTableDataSource();
   // tslint:disable-next-line:max-line-length
   displayedColumns = ['Folio Encuesta', 'Fecha Entrada', 'Fecha Salida', 'Servicio', 'Pregunta 1', 'Pregunta 2', 'Pregunta 3', 'Pregunta 4', 'Pregunta 5', 'Pregunta 6', 'Pregunta 7', 'Pregunta 8', 'Pregunta 9', 'Pregunta 10', 'Total'];
-  displayedColumns2 = ['Folio Encuesta', 'Nombre Cliente', 'Numero Cliente', 'Correo Cliente', 'Comentario Taller', 'validacion', 'Fecha de seguimiento', 'Comentario Llamada', 'Aceptar'];
+  // tslint:disable-next-line:max-line-length
+  displayedColumns2 = ['Folio Encuesta','Llamada', 'Fecha de seguimiento', 'Comentario Taller', 'Comentario Llamada', 'Enviar comentarios'];
   comentarioscall: string;
   id: string;
   config: ExportAsConfig = {
@@ -36,22 +37,22 @@ export class DashboardcallcenterComponent implements OnInit {
  // Iconos
   faHeadset = faHeadset;
   faCar = faCar;
-  mod:any = {};
+  mod: any = {};
   constructor(
     private afs: AngularFirestore,
     private exportAsService: ExportAsService,
     private _dataService: DatatableService,
     public encuestase: EncuestaService
-  ) { 
-    
+  ) {
+    this.dataSource.sort = this.sort;
     const today = new Date();
     this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
   }
 
   ngOnInit() {
-    
+
     return this._dataService.getDocs().subscribe(res => this.dataSource.data = res );
-    
+
   }
 
   ngAfterViewInit(): void {
@@ -73,12 +74,12 @@ export class DashboardcallcenterComponent implements OnInit {
   coments({value}: {value: RegistroCompletoInterface}) {
     value.comentarioscall = this.comentarioscall;
     value.id = this.id;
-    value.validacion = 'Ok'
-    value.fechac = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
+    value.validacion = 'Ok';
+    value.fechac = formatDate(new Date(), 'dd/MM/yyyy hh:mm:ss a', 'en');
       console.log (value, this.id);
     this.encuestase.updateType(value);
   }
-  getval(id){
+  getval(id) {
     this.id = id.id;
   }
   myFunction2(filterValue: string) {
@@ -86,7 +87,7 @@ export class DashboardcallcenterComponent implements OnInit {
   }
   myFunction() {
     // Declare variables
-    let input, filter, table, tr, td, i, txtValue, input2, filter2;
+    let input, filter, table, tr, td, i, txtValue;
     input = document.getElementById('inputfe');
     filter = input.value;
     table = document.getElementById('mytable5');
@@ -95,7 +96,7 @@ export class DashboardcallcenterComponent implements OnInit {
       td = tr[i].getElementsByTagName('td')[5];
       if (td) {
         txtValue = td.textContent || td.innerText;
-        if (txtValue.indexOf(filter)<-1) {
+        if (txtValue.indexOf(filter) < -1) {
           tr[i].style.display = '';
         } else {
           tr[i].style.display = 'none';
