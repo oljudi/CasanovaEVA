@@ -45,7 +45,7 @@ user: RegistroInterface = {
     this.authService.getAuth().subscribe(user => {
       if (user) {
         // this.user = user;
-        console.log('User', user.email);
+        //console.log('User', user.email);
       }
     });
 

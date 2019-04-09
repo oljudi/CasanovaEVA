@@ -83,12 +83,12 @@ export class DashboardtallerComponent implements OnInit {
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      console.log('paged!', event);
+      //console.log('paged!', event);
     }, 100);
   }
 
   onDetailToggle(event) {
-    console.log('Detail Toggled', event);
+    //console.log('Detail Toggled', event);
   }
 
   exportAs(type) {
