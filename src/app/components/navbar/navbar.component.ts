@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit {
         this.isLogin = true;
         this.emailUsuario = user.email;
        this.nombreusuaro(this.emailUsuario);
-        // console.log(this.nomUsuario);
+        // //console.log(this.nomUsuario);
       } else {
         this.isLogin = false;
       }
@@ -68,8 +68,8 @@ export class NavbarComponent implements OnInit {
 
      this.nomUsuario = x.nombre;
 
-    console.log(x.nombre);
-    console.log(this.nomUsuario);
+    // console.log(x.nombre);
+    // console.log(this.nomUsuario);
 
 
    return this.nomUsuario;

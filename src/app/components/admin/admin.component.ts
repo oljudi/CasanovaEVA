@@ -31,10 +31,8 @@ export class AdminComponent implements OnInit {
     let pruebasva = this.encuestaex.getAllEncuestaex();
     this.encuestaex.getitem().subscribe(id => this.list = id as Array<string>);
 
-    console.log(pruebasva);
-
    this.suma = 0;
-   //this.sumarep = 0;
+   // this.sumarep = 0;
    this.sumareps = 0;
    this.sumaprom = 0;
    this.sumap2 = 0;
@@ -51,15 +49,15 @@ export class AdminComponent implements OnInit {
    this.sumarep6 = 0;
    this.sumarep7 = 0;
    this.sumarep8 = 0;
-   this.sumatraps= 0;
-   this.sumatrap1= 0;
-   this.sumatrap2= 0;
-   this.sumatrap3= 0;
-   this.sumatrap4= 0;
-   this.sumatrap5= 0;
-   this.sumatrap6= 0;
-   this.sumatrap7= 0;
-   this.sumatrap8= 0;
+   this.sumatraps = 0;
+   this.sumatrap1 = 0;
+   this.sumatrap2 = 0;
+   this.sumatrap3 = 0;
+   this.sumatrap4 = 0;
+   this.sumatrap5 = 0;
+   this.sumatrap6 = 0;
+   this.sumatrap7 = 0;
+   this.sumatrap8 = 0;
    this.ins = 0;
    this.ins2 = 0;
    this.insre = 0;
@@ -67,7 +65,7 @@ export class AdminComponent implements OnInit {
    this.instra = 0;
    this.instra2 = 0;
    this.sumap8 = 0;
-   this.promexesp=0
+   this.promexesp = 0;
   }
 
   faArchive = faArchive;
@@ -94,142 +92,142 @@ export class AdminComponent implements OnInit {
   p1: EncuestaexInterface;
 
 
-//Promedio general de todas las encuestas
+// Promedio general de todas las encuestas
   sumas: number;
   suma: number;
   prome: string;
-  //numero de encuestas
+  // numero de encuestas
   contador: number;
 
 
-//Encuesta Express
-  //1
+// Encuesta Express
+  // 1
   sumaspreg: number;
   sumaprom: number;
   prome1: string;
-  //2
+  // 2
   sumap2: number;
   suma2: number;
   prome2: string;
-  //3
+  // 3
   sumap3: number;
   suma3: number;
   prome3: string;
-  //4
+  // 4
   sumap4: number;
   suma4: number;
   prome4: string;
-  //5
+  // 5
   sumap5: number;
   suma5: number;
   prome5: string;
-  //6
+  // 6
   sumap6: number;
   suma6: number;
   prome6: string;
-  //7
+  // 7
   sumap7: number;
   suma7: number;
   prome7: string;
-  //8
+  // 8
   sumap8: number;
   suma8: number;
   prome8: string;
-  //total
+  // total
   promexes: number;
   promexesp: number;
   promeex: string;
-  //numero de express
+  // numero de express
   contadorre: number;
-//--------------------------------------------------------------------------------------------------------------------
-  //promedios: string;
-  //sucursals: string;
-  
-//Encuesta Reparacion
-  //1
+// --------------------------------------------------------------------------------------------------------------------
+  // promedios: string;
+  // sucursals: string;
+
+// Encuesta Reparacion
+  // 1
   sumarep1: number;
   sumare1: number;
   promere1: string;
-  //2
+  // 2
   sumarep2: number;
   sumare2: number;
   promere2: string;
-  //3
+  // 3
   sumarep3: number;
   sumare3: number;
   promere3: string;
-  //4
+  // 4
   sumarep4: number;
   sumare4: number;
   promere4: string;
-  //5
+  // 5
   sumarep5: number;
   sumare5: number;
   promere5: string;
-  //6
+  // 6
   sumarep6: number;
   sumare6: number;
   promere6: string;
-  //7
+  // 7
   sumarep7: number;
   sumare7: number;
   promere7: string;
-  //8
+  // 8
   sumarep8: number;
   sumare8: number;
   promere8: string;
-  //total
+  // total
   sumarep: any;
   sumareps: any;
   promerep: string;
-  //pensar si se agregara un valor no en suma o promedio pero para reflejar cuantas se contestaron con la bandera
-  //numero de reparacion
+  // pensar si se agregara un valor no en suma o promedio pero para reflejar cuantas se contestaron con la bandera
+  // numero de reparacion
   contadorrep: number;
-//--------------------------------------------------------------------------------------------------------------------
-//Encuesta Tramites
-  //1
+// --------------------------------------------------------------------------------------------------------------------
+// Encuesta Tramites
+  // 1
   sumatrap1: number;
   sumatra1: number;
   prometra1: string;
-  //2
+  // 2
   sumatrap2: number;
   sumatra2: number;
   prometra2: string;
-  //3
+  // 3
   sumatrap3: number;
   sumatra3: number;
   prometra3: string;
-  //4
+  // 4
   sumatrap4: number;
   sumatra4: number;
   prometra4: string;
-  //5
+  // 5
   sumatrap5: number;
   sumatra5: number;
   prometra5: string;
-  //6
+  // 6
   sumatrap6: number;
   sumatra6: number;
   prometra6: string;
-  //7
+  // 7
   sumatrap7: number;
   sumatra7: number;
   prometra7: string;
-  //8
+  // 8
   sumatrap8: number;
   sumatra8: number;
   prometra8: string;
-  //total
+  // total
   sumatra: any;
   sumatraps: any;
-  prometras:string;
-  //pensar si se agregara un valor no en suma o promedio pero para reflejar cuantas se contestaron con la bandera
-  //numero de reparacion
+  prometras: string;
+  // pensar si se agregara un valor no en suma o promedio pero para reflejar cuantas se contestaron con la bandera
+  // numero de reparacion
   contadortram: number;
-//--------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
   user: RegistroInterface;
   compas: any;
-//comparadores
+// comparadores
   ins: number;
   ins2: number;
   insre: number;
@@ -238,14 +236,14 @@ export class AdminComponent implements OnInit {
   instra2: number;
   instot: number;
   instot2: number;
-  
-//---------------------------------------------------------
-  
+
+// ---------------------------------------------------------
+
   primev: any;
   list2: any;
   list3: any;
   Encuestaexes: Observable<EncuestaexInterface[]>;
-metass:number;
+metass: number;
   public emailUsuario: string;
   nomUsuario: any;
 
@@ -276,7 +274,9 @@ metass:number;
   pr22: number;
   pr23: number;
   meta: number;
-  
+    typeCollection: AngularFirestoreCollection<EncuestaexInterface>;
+        casd: string;
+
 
   cont() {
     this.afs.collection('Encuestaexes').valueChanges().subscribe(values => (this.contadorre = values.length) as number);
@@ -288,7 +288,7 @@ metass:number;
    // tslint:disable-next-line:max-line-length
    // this.list = this.afs.collection('Encuestaexes').snapshotChanges().pipe(map(action => {return action.map( a => {const idz = a.payload.doc.id; return idz});}));
     this.afs.collection('type').doc('VI0001').valueChanges().pipe(take(1)).subscribe(res => {this.arras(res); } );
-    // console.log(this.listadoEncuestaex);
+    // //console.log(this.listadoEncuestaex);
 }
 arras( x: EncuestaexInterface) {
   for (let i = 0 ; i < this.contador ; i++ ) {
@@ -299,25 +299,24 @@ arras( x: EncuestaexInterface) {
     this.afs.collection('Encuestatram').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass3(res); } );
   }
 }
-    //Metodo para acumular sumatoria de todas las encuestas
+    // Metodo para acumular sumatoria de todas las encuestas
     arrass(x: EncuestaexInterface): number {
       this.sumas = x.total;
       this.suma = this.sumas + this.suma;
-      // console.log(x.total);
-      // console.log(this.suma);
+      // //console.log(x.total);
+      // //console.log(this.suma);
       this.list3 =  this.getcomparadortot(this.sumas);
       this.prom(this.suma);
 
       return this.suma;
     }
-    typeCollection: AngularFirestoreCollection<EncuestaexInterface>;
-        //Metodo saca el promedio general
+        // Metodo saca el promedio general
         prom(x: number) {
           this.prome  = (this.suma / this.contador).toFixed(2);
         }
         getcomparadortot(x: number) {
 
-      
+
           this.mejorpreg = 0;
           this.pr1 = parseFloat(this.prome1);
           this.pr2 = parseFloat(this.prome2);
@@ -347,28 +346,27 @@ arras( x: EncuestaexInterface) {
           function comparar(a, b) {
             return a - b;
           }
-          const prt = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8, this.pr9,this.pr10, 
-                      this.pr11, this.pr12, this.pr13, this.pr14, this.pr15, this.pr16, this.pr17, this.pr18, this.pr19,this.pr20,
+          const prt = [this.pr1, this.pr2, this.pr3, this.pr4, this.pr5, this.pr6, this.pr7, this.pr8, this.pr9, this.pr10,
+                      this.pr11, this.pr12, this.pr13, this.pr14, this.pr15, this.pr16, this.pr17, this.pr18, this.pr19, this.pr20,
                       this.pr21, this.pr22, this.pr23];
           prt.sort(comparar);
           this.peorpreg = prt[0];
           this.mejorpreg = prt[22];
-          console.log(this.mejorpreg, this.peorpreg);
+          // console.log(this.mejorpreg, this.peorpreg);
 
           this.typeCollection =  this.afs.collection('type');
-          var querys = this.typeCollection.ref.where('total','==',this.mejorpreg).get()
+          const querys = this.typeCollection.ref.where('total', '==', this.mejorpreg).get()
           .then(snapshot => {
-           snapshot.forEach(doc => {this.casd = doc.id
-             console.log(doc.id);
+           snapshot.forEach(doc => {this.casd = doc.id;
+           //  //console.log(doc.id);
            });
          });
-    console.log(this.casd)
-    //return this.Encuestaexes;
-    
-  
+   // //console.log(this.casd)
+    // return this.Encuestaexes;
+
+
         }
-        casd: string;
-     /*     
+     /*
       if (this.instot >= x) {
             this.instot2 = x;
             return this.instot, this.instot2 ;
@@ -378,7 +376,7 @@ arras( x: EncuestaexInterface) {
           }
 
         }*/
-//----------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------
     arrass1(x: EncuestaexInterface): number {
       this.sumaspreg = x.pregunta1;
       this.sumaprom = this.sumaspreg + this.sumaprom;
@@ -397,10 +395,10 @@ arras( x: EncuestaexInterface) {
       this.suma8 = x.pregunta8;
       this.sumap8 = this.suma8 + this.sumap8;
       this.promexes = x.total;
-      this.promexesp = this.promexes + this.promexesp
-      // console.log(x.total);
-    // console.log(this.sumaprom);
-    // console.log(this.sumaspreg);
+      this.promexesp = this.promexes + this.promexesp;
+      // //console.log(x.total);
+    // //console.log(this.sumaprom);
+    // //console.log(this.sumaspreg);
       this.prom1(this.sumaprom);
       this.getcomparador(this.promexes);
       return  this.sumaprom, this.sumap2, this.sumap3, this.sumap4 , this.sumap5 , this.sumap6 , this.sumap7, this.sumap8, this.promexesp;
@@ -415,12 +413,12 @@ arras( x: EncuestaexInterface) {
           this.prome7 = (this.sumap7 / this.contadorre).toFixed(2);
           this.prome8 = (this.sumap8 / this.contadorre).toFixed(2);
           this.promeex = (this.promexesp / this.contadorre).toFixed(2);
-          //this.getpreguntamayor();
+          // this.getpreguntamayor();
           // tslint:disable-next-line:max-line-length
         }
           //  getpreguntamayor() {
-             
-        //Metodo par saber calificación mas alta o baja de servicio
+
+        // Metodo par saber calificación mas alta o baja de servicio
         getcomparador(x: number): number {
           if (this.ins >= x) {
             this.ins2 = x;
@@ -430,8 +428,8 @@ arras( x: EncuestaexInterface) {
             return this.ins, this.ins2;
           }
         }
-       
-//----------------------------------------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------------------------------------
     arrass2(x: EncuestaexInterface): number {
       this.sumare1 = x.pregunta1;
       this.sumarep1 = this.sumare1 + this.sumarep1;
@@ -451,7 +449,7 @@ arras( x: EncuestaexInterface) {
       this.sumarep8 = this.sumare8 + this.sumarep8;
       this.sumarep = x.total;
       this.sumareps = this.sumarep + this.sumareps;
-      //this.getcomparador(this.sumarep);
+      // this.getcomparador(this.sumarep);
       this.prom2(this.sumareps);
       this.getcomparador2(this.sumarep);
       return  this.sumarep1, this.sumarep2, this.sumarep3, this.sumarep4 , this.sumarep5 , this.sumarep6 , this.sumarep7, this.sumarep8, this.sumareps;
@@ -469,7 +467,7 @@ arras( x: EncuestaexInterface) {
           // this.getpreguntamayor();
           // tslint:disable-next-line:max-line-length
        }
-        //Metodo par saber calificación mas alta o baja de servicio
+        // Metodo par saber calificación mas alta o baja de servicio
         getcomparador2(x: number): number {
           if (this.insre >= x) {
             this.insre2 = x;
@@ -480,7 +478,7 @@ arras( x: EncuestaexInterface) {
           }
         }
 
-//----------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------
     arrass3(x: EncuestaexInterface): number {
       this.sumatra1 = x.pregunta1;
       this.sumatrap1 = this.sumatra1 + this.sumatrap1;
@@ -529,9 +527,9 @@ arras( x: EncuestaexInterface) {
       }
 
    // this.afs.collection<EncuestaexInterface>('type', ref =>{      return ref.orderBy('total ', 'desc').limit(1);} );
-// this.list3 = this.list2.or;      
+// this.list3 = this.list2.or;
   ngOnInit() {
-    
+
     this.cont();
     this.getData1();
      this.authservice.getAuth().subscribe( user => {
@@ -539,7 +537,7 @@ arras( x: EncuestaexInterface) {
         this.isLogin = true;
         this.emailUsuario = user.email;
        this.nombreusuaro(this.emailUsuario);
-        // console.log(this.nomUsuario);
+        // //console.log(this.nomUsuario);
       } else {
         this.isLogin = false;
       }
@@ -553,12 +551,12 @@ arras( x: EncuestaexInterface) {
   }
   arrayss(x: RegistroInterface): string {
     this.nomUsuario = x.nombre;
-//   console.log(x.nombre);
-//   console.log(this.nomUsuario); 
+//   //console.log(x.nombre);
+//   //console.log(this.nomUsuario);
   return this.nomUsuario;
  }
- metad(x:MetaInterface){
-  this.metass=x.meta;
+ metad(x: MetaInterface) {
+  this.metass = x.meta;
  }
   getData1() {
     this.afs.collection('type').valueChanges().subscribe((encuesta) => {
@@ -569,7 +567,7 @@ arras( x: EncuestaexInterface) {
     value.meta = this.meta;
     this.encuestaex.addMeta(value);
     this.metass = this.meta;
-    //window.location.reload();
+    // window.location.reload();
   }
 
 }

@@ -26,7 +26,8 @@ export class DashboardcallcenterComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   displayedColumns = ['Folio Encuesta', 'Fecha Entrada', 'Fecha Salida', 'Servicio', 'Pregunta 1', 'Pregunta 2', 'Pregunta 3', 'Pregunta 4', 'Pregunta 5', 'Pregunta 6', 'Pregunta 7', 'Pregunta 8', 'Pregunta 9', 'Pregunta 10', 'Total'];
   // tslint:disable-next-line:max-line-length
-  displayedColumns2 = ['Folio Encuesta','Llamada', 'Fecha de seguimiento', 'Comentario Taller', 'Comentario Llamada', 'Enviar comentarios'];
+  displayedColumns2 = ['Folio Encuesta', 'Nombre Cliente', 'Numero Cliente', 'Correo Cliente', 'Llamada', 'Fecha de seguimiento', 'Comentario Taller', 'Comentario CallCenter'];
+  displayedColumns3 = [ 'Comentario Llamada', 'Enviar comentarios'];
   comentarioscall: string;
   id: string;
   config: ExportAsConfig = {
@@ -76,7 +77,7 @@ export class DashboardcallcenterComponent implements OnInit {
     value.id = this.id;
     value.validacion = 'Ok';
     value.fechac = formatDate(new Date(), 'dd/MM/yyyy hh:mm:ss a', 'en');
-      console.log (value, this.id);
+      //console.log (value, this.id);
     this.encuestase.updateType(value);
   }
   getval(id) {
