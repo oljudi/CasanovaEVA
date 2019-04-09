@@ -7,11 +7,15 @@ import {EncuestaexInterface} from '../../Models/Encuestaex';
 import {EncuestaService} from '../../services/encuesta.service';
 import {Observable, Subscription} from 'rxjs';
 
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Http, Headers, Response, URLSearchParams, RequestOptions, HttpModule } from '@angular/http';
 
+//import {} from 'rxjs';
 
 import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { Router, ActivatedRoute } from '@angular/router';
 import { formatDate } from '@angular/common';
+
 
 
 
@@ -73,7 +77,8 @@ export class ExpressComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private encuestaService: EncuestaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: Http
     
     
   ) { 
@@ -126,7 +131,7 @@ export class ExpressComponent implements OnInit {
     value.fecha = formatDate(new Date(),'dd/MM/yyyy hh:mm:ss a','en');
     value.total = +this.proms;
     
-
+//    this.sendemail();
     
     this.encuestaService.updateType(value);
     this.encuestaService.updateEncuestaex(value);
@@ -141,7 +146,30 @@ export class ExpressComponent implements OnInit {
     
       this.ident=this.route.snapshot.params['id'];
   }
+  sendemail() { 
+    console.log('prueba');
 
+    let url = `https://us-central1-casanovaeva01.cloudfunctions.net/httpEmail`;
+    let params: URLSearchParams = new URLSearchParams();
+    //private _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    let headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+    let options = new RequestOptions({ headers: headers });
+
+    params.set('to', 'darrell.1780@gmail.com');
+    params.set('from', 'jonathan.huerta@sevs.com');
+    params.set('subject', 'test-email');
+    params.set('content', 'Hello World');
+    console.log('enviado');
+    return this.http.post(url, params, options)
+                    .toPromise()
+                    .then( res => {
+                      console.log(res)
+                    })
+                    .catch(err => {
+                      console.log(err)
+                    })
+                    
+  }
 
 
 

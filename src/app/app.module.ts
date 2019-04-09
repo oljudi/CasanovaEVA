@@ -53,6 +53,7 @@ import { DashboardcallcenterComponent } from './components/dashboardcallcenter/d
 
 
 import { ExportAsModule } from 'ngx-export-as';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -100,6 +101,7 @@ import { ExportAsModule } from 'ngx-export-as';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
+    HttpModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -117,6 +119,7 @@ import { ExportAsModule } from 'ngx-export-as';
               AuthGuard,
               FlashMessagesService,
               EncuestaService
+              
             ],
   bootstrap: [AppComponent]
 })

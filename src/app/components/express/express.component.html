@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="card-header text-center text-white"><h5><strong>¡¡Muchas gracias por tu evaluacion!!</strong></h5></div>
                                     <div class="card-body text-center text-white form-group"><h5><strong>¡¡Tu opinion es muy importante para nosotros!!</strong></h5><br><h5><strong>Porfavor regresa el dispositivo a tu asesor mas cercano</strong></h5></div>
-                                        <button type="submit" value="Guardar" class="btn btn-warning text-center btn-block"  ><fa-icon [icon]="faVoteYea" class="fa-2x"></fa-icon><h4>Nueva Encuesta</h4></button>
+                                        <button type="submit" value="Guardar" class="btn btn-warning text-center btn-block" (click)="sendemail()" ><fa-icon [icon]="faVoteYea" class="fa-2x"></fa-icon><h4>Nueva Encuesta</h4></button>
                                 </div>
                             </form>
                         </div>
