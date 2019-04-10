@@ -31,11 +31,23 @@ import { formatDate } from '@angular/common';
 
 
 export class ExpressComponent implements OnInit {
- 
+
   faCar = faCarSide;
   faTruck = faTruck;
   faTruckPickup = faTruckPickup;
   faAmbulance = faAmbulance;
+
+  faTired = faTired;
+  faSadTear = faSadTear;
+  faGrin = faGrin;
+  faSmileBeam = faSmileBeam;
+  faCheckSquare = faCheckSquare;
+  faTimesCircle = faTimesCircle;
+  faMeh = faMeh;
+  faHourglassStart = faHourglassStart;
+  faHourglassHalf = faHourglassHalf;
+  faHourglassEnd = faHourglassEnd;
+  faVoteYea = faVoteYea;
 
   isEditable =  false;
   isLinear = false;
@@ -76,23 +88,23 @@ export class ExpressComponent implements OnInit {
     pregunta8: 0,
     total:0
   }
+
+  public isYes = true;
+  public isNo = true;
+  proms: string;
+
   constructor(
     private _formBuilder: FormBuilder,
     private encuestaService: EncuestaService,
     private router: Router,
     private route: ActivatedRoute,
     private http: Http
-    
-    
-  ) { 
+  ) {
    const today = new Date();
    this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
   }
 
   ngOnInit() {
-
-
-
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -118,6 +130,7 @@ export class ExpressComponent implements OnInit {
     this.onChange();
 
   }
+
   onGuardarEncuesta({value}: {value: EncuestaexInterface}) {
     this.proms = this.y.toFixed(2);
     value.id = this.ident;
@@ -154,7 +167,7 @@ export class ExpressComponent implements OnInit {
     let url = `https://us-central1-casanovaeva01.cloudfunctions.net/httpEmail`;
     let params: URLSearchParams = new URLSearchParams();
     //private _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    let headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+    let headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin':"*" , 'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS'});
     let options = new RequestOptions({ headers: headers });
 
     params.set('to', 'darrell.1780@gmail.com');

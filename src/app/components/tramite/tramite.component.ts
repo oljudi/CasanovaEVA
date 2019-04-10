@@ -116,6 +116,7 @@ export class TramiteComponent implements OnInit {
     });
     this.onChange();
   }
+  
   onGuardarEncuesta({value}: {value: EncuestaexInterface}) {
     this.proms = this.y.toFixed(2);
     value.id = this.ident;
