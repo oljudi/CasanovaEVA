@@ -16,6 +16,7 @@ import { Http, Headers, Response, URLSearchParams, RequestOptions, HttpModule } 
 import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { Router, ActivatedRoute } from '@angular/router';
 import { formatDate } from '@angular/common';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 
@@ -98,7 +99,8 @@ export class ExpressComponent implements OnInit {
     private encuestaService: EncuestaService,
     private router: Router,
     private route: ActivatedRoute,
-    private http: Http
+    private http: Http,
+    private af: AngularFireDatabase
   ) {
    const today = new Date();
    this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
@@ -164,6 +166,17 @@ export class ExpressComponent implements OnInit {
   sendemail() { 
     console.log('prueba');
 
+    
+    const name = 'Jonathan Huerta';
+    const email = 'soporteti@casanovarentacar.mx';
+    const message = 'ALERTA !!!!! HUBO UN PROBLEMA CON EL CLIENTE';
+    const subject = 'no se';
+
+    let formRequest = { name, email, subject, message};
+    this.af.list('/messages').push(formRequest);
+    
+  
+/*
     let url = `https://us-central1-casanovaeva01.cloudfunctions.net/httpEmail`;
     let params: URLSearchParams = new URLSearchParams();
     //private _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -184,7 +197,8 @@ export class ExpressComponent implements OnInit {
                       console.log(err)
                     })
                     
-  }
+                  */
+}
 
 
 
