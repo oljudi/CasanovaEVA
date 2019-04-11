@@ -21,7 +21,18 @@
                             <div class="card-group">
                                 <div class="card">
                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>El tiempo que trasncurrio para que lo atendieran<br> fue...</strong></small></div>
-                                    <div class="card-body" style="background-color: #e8e2db">grafico P1-g</div>
+                                    <div class="card-body" style="background-color: #e8e2db">
+                                        <div style="display: block;">
+                                            <canvas baseChart 
+                                                [data]="pieChartData" 
+                                                [labels]="pieChartLabels" 
+                                                [chartType]="pieChartType"
+                                                [options]="pieChartOptions"
+                                                [plugins]="pieChartPlugins"
+                                                [legend]="pieChartLegend">
+                                            </canvas>
+                                        </div>    
+                                    </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>¿Como calificaría la imagen de nuestras instalaciones?</strong></small></div>

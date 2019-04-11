@@ -51,7 +51,7 @@ import { DashboardtallerComponent } from './components/dashboardtaller/dashboard
 import { DashboardcallcenterComponent } from './components/dashboardcallcenter/dashboardcallcenter.component';
 
 
-
+import { ChartsModule } from 'ng2-charts';
 import { ExportAsModule } from 'ngx-export-as';
 import { HttpModule } from '@angular/http';
 
@@ -78,6 +78,7 @@ import { HttpModule } from '@angular/http';
     DashboardcallcenterComponent
   ],
   imports: [
+    ChartsModule,
     NgxDatatableModule,
     NgxSpinnerModule,
     MatStepperModule,
