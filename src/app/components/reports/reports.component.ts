@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { EncuestaService } from 'src/app/services/encuesta.service';
 import { faChartLine } from '@fortawesome/free-solid-svg-icons';
-import { ChartType, ChartOptions } from 'chart.js';
+import { ChartType, ChartOptions, ChartDataSets } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
 
 @Component({
@@ -16,11 +15,44 @@ export class ReportsComponent implements OnInit {
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
-  public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
-  public pieChartData: SingleDataSet = [300, 500, 100];
   public pieChartType: ChartType = 'pie';
-  public pieChartLegend = true;
+  public pieChartLegend = false;
   public pieChartPlugins = [];
+  public pieChartLabels: Label[] = ['Bueno', ['Mas', 'ó', 'Menos'], 'Regular', 'Malo', 'Muy Malo'];
+
+    // P1
+  public pieChartDataP1: SingleDataSet = [300, 200, 200, 100, 200];
+
+    //P2
+  public pieChartDataP2: SingleDataSet = [500, 100, 100, 100, 200];
+
+    //P3
+  public pieChartDataP3: SingleDataSet = [500, 100, 100, 100, 200];
+
+    //P4
+  public pieChartDataP4: SingleDataSet = [500, 100, 100, 100, 200];
+
+    //P5
+  public pieChartDataP5: SingleDataSet = [500, 100, 100, 100, 200];
+
+    //P2
+  public pieChartDataP6: SingleDataSet = [500, 100, 100, 100, 200];
+
+  // Bar 
+  // para preguntas por servicio si/no
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public barChartLabels: Label[] = ['Si', 'No'];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+  public barChartPlugins = [];
+
+  public barChartData: ChartDataSets[] = [
+    { data: [0, 10], label: 'SI' },
+    { data: [0, 10], label: 'NO' }
+  ];
+
 
   /* Iconos */
   faChartLine = faChartLine;

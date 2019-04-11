@@ -24,7 +24,7 @@
                                     <div class="card-body" style="background-color: #e8e2db">
                                         <div style="display: block;">
                                             <canvas baseChart 
-                                                [data]="pieChartData" 
+                                                [data]="pieChartDataP1" 
                                                 [labels]="pieChartLabels" 
                                                 [chartType]="pieChartType"
                                                 [options]="pieChartOptions"
@@ -36,23 +36,78 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>¿Como calificaría la imagen de nuestras instalaciones?</strong></small></div>
-                                    <div class="card-body" style="background-color: #e8e2db">grafico P2-g</div>
+                                    <div class="card-body" style="background-color: #e8e2db">
+                                        <div style="display: block;">
+                                            <canvas baseChart 
+                                                [data]="pieChartDataP2" 
+                                                [labels]="pieChartLabels" 
+                                                [chartType]="pieChartType"
+                                                [options]="pieChartOptions"
+                                                [plugins]="pieChartPlugins"
+                                                [legend]="pieChartLegend">
+                                            </canvas>
+                                        </div>    
+                                    </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>La atención que recibió de nuestro asesor de servicio fue….</strong></small></div>
-                                    <div class="card-body" style="background-color: #e8e2db">grafico P3-g</div>
+                                    <div class="card-body" style="background-color: #e8e2db">
+                                        <div style="display: block;">
+                                            <canvas baseChart 
+                                                [data]="pieChartDataP3" 
+                                                [labels]="pieChartLabels" 
+                                                [chartType]="pieChartType"
+                                                [options]="pieChartOptions"
+                                                [plugins]="pieChartPlugins"
+                                                [legend]="pieChartLegend">
+                                            </canvas>
+                                        </div>    
+                                    </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Considera que la imagen de nuestro asesor de servicio es…</strong></small></div>
-                                    <div class="card-body" style="background-color: #e8e2db">grafico P4-g</div>
+                                    <div class="card-body" style="background-color: #e8e2db">
+                                        <div style="display: block;">
+                                            <canvas baseChart 
+                                                [data]="pieChartDataP4" 
+                                                [labels]="pieChartLabels" 
+                                                [chartType]="pieChartType"
+                                                [options]="pieChartOptions"
+                                                [plugins]="pieChartPlugins"
+                                                [legend]="pieChartLegend">
+                                            </canvas>
+                                        </div>    
+                                    </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Le entregaron su vehículo …<br>_</strong></small></div>
-                                    <div class="card-body" style="background-color: #e8e2db">grafico P5-g</div>
+                                    <div class="card-body" style="background-color: #e8e2db">
+                                        <div style="display: block;">
+                                            <canvas baseChart 
+                                                [data]="pieChartDataP5" 
+                                                [labels]="pieChartLabels" 
+                                                [chartType]="pieChartType"
+                                                [options]="pieChartOptions"
+                                                [plugins]="pieChartPlugins"
+                                                [legend]="pieChartLegend">
+                                            </canvas>
+                                        </div>    
+                                    </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>La experiencia en general de su visita a Casanova fue…</strong></small></div>
-                                    <div class="card-body" style="background-color: #e8e2db">grafico P6-g</div>
+                                    <div class="card-body" style="background-color: #e8e2db">
+                                        <div style="display: block;">
+                                            <canvas baseChart 
+                                                [data]="pieChartDataP6" 
+                                                [labels]="pieChartLabels" 
+                                                [chartType]="pieChartType"
+                                                [options]="pieChartOptions"
+                                                [plugins]="pieChartPlugins"
+                                                [legend]="pieChartLegend">
+                                            </canvas>
+                                        </div>    
+                                    </div>
                                 </div>
                             </div>
                         <div class="card-footer text-right text-white" style="background-color: #1a3263">*Basado en las ultimas 30 encuestas<br>Ultima Actualizacion</div>
@@ -68,7 +123,18 @@
                                             <div class="card-group">
                                                 <div class="card">
                                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Informacion de servicio adicional...</strong></small></div>
-                                                    <div class="card-body" style="background-color: #e8e2db">grafico P1-e</div>
+                                                    <div class="card-body" style="background-color: #e8e2db">
+                                                        <div style="display: block;">
+                                                            <canvas baseChart 
+                                                                [datasets]="barChartData"
+                                                                [labels]="barChartLabels"
+                                                                [options]="barChartOptions"
+                                                                [plugins]="barChartPlugins"
+                                                                [legend]="barChartLegend"
+                                                                [chartType]="barChartType">
+                                                            </canvas>
+                                                        </div>                                                                  
+                                                    </div>
                                                 </div>
                                                 <div class="card">
                                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Tiempo de entrega...</strong></small></div>
