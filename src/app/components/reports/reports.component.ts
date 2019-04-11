@@ -43,14 +43,14 @@ export class ReportsComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['Si', 'No'];
+  public barChartLabels: Label[] = ['Enero', 'Febrero', 'Marzo', 'Abril'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
 
   public barChartData: ChartDataSets[] = [
-    { data: [0, 10], label: 'SI' },
-    { data: [0, 10], label: 'NO' }
+    { data: [100, 70, 50, 0], label: 'SI' },
+    { data: [50, 40, 45, 0], label: 'NO' }
   ];
 
 
