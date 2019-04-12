@@ -20,7 +20,7 @@
                         <div class="card-header text-center text-white" style="background-color: #1a3263"><strong><h3>Preguntas Generales</h3></strong></div>
                             <div class="card-group">
                                 <div class="card">
-                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>El tiempo que trasncurrio para que lo atendieran<br> fue...</strong></small></div>
+                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>El tiempo que trasncurrio para que lo atendieran fue...</strong></small></div>
                                     <div class="card-body" style="background-color: #e8e2db">
                                         <div style="display: block;">
                                             <canvas baseChart 
@@ -80,12 +80,12 @@
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Le entregaron su vehículo …<br>_</strong></small></div>
+                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Le entregaron su vehículo …</strong></small></div>
                                     <div class="card-body" style="background-color: #e8e2db">
                                         <div style="display: block;">
                                             <canvas baseChart 
                                                 [data]="pieChartDataP5" 
-                                                [labels]="pieChartLabels" 
+                                                [labels]="pieChartLabels5" 
                                                 [chartType]="pieChartType"
                                                 [options]="pieChartOptions"
                                                 [plugins]="pieChartPlugins"
@@ -126,19 +126,30 @@
                                                     <div class="card-body" style="background-color: #e8e2db">
                                                         <div style="display: block;">
                                                             <canvas baseChart 
-                                                                [datasets]="barChartData"
-                                                                [labels]="barChartLabels"
-                                                                [options]="barChartOptions"
-                                                                [plugins]="barChartPlugins"
-                                                                [legend]="barChartLegend"
-                                                                [chartType]="barChartType">
+                                                                [data]="pieChartDataP1_E" 
+                                                                [labels]="pieChartLabelP1_E" 
+                                                                [chartType]="pieChartType"
+                                                                [options]="pieChartOptions"
+                                                                [plugins]="pieChartPlugins"
+                                                                [legend]="pieChartLegend">
                                                             </canvas>
-                                                        </div>                                                                  
+                                                        </div>                                                                
                                                     </div>
                                                 </div>
                                                 <div class="card">
                                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Tiempo de entrega...</strong></small></div>
-                                                    <div class="card-body" style="background-color: #e8e2db">grafico P2-e</div>
+                                                    <div class="card-body" style="background-color: #e8e2db">
+                                                        <div style="display: block;">
+                                                            <canvas baseChart 
+                                                                [data]="pieChartDataP2_E" 
+                                                                [labels]="pieChartLabelP2_E" 
+                                                                [chartType]="pieChartType"
+                                                                [options]="pieChartOptions"
+                                                                [plugins]="pieChartPlugins"
+                                                                [legend]="pieChartLegend">
+                                                            </canvas>
+                                                        </div>     
+                                                    </div>
                                                 </div>
                                               </div>
                                         </div>
@@ -147,11 +158,33 @@
                                             <div class="card-group">
                                                 <div class="card">
                                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Informacion de servicio adicional..</strong></small></div>
-                                                    <div class="card-body" style="background-color: #e8e2db">grafico P1-r</div>
+                                                    <div class="card-body" style="background-color: #e8e2db">
+                                                        <div style="display: block;">
+                                                            <canvas baseChart 
+                                                                [data]="pieChartDataP1_T" 
+                                                                [labels]="pieChartLabelP1_T" 
+                                                                [chartType]="pieChartType"
+                                                                [options]="pieChartOptions"
+                                                                [plugins]="pieChartPlugins"
+                                                                [legend]="pieChartLegend">
+                                                            </canvas>
+                                                        </div>     
+                                                    </div>
                                                 </div>
                                                 <div class="card">
                                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Entrega en tiempo...</strong></small></div>
-                                                    <div class="card-body" style="background-color: #e8e2db">grafico P2-r</div>
+                                                    <div class="card-body" style="background-color: #e8e2db">
+                                                        <div style="display: block;">
+                                                            <canvas baseChart 
+                                                                [data]="pieChartDataP2_R" 
+                                                                [labels]="pieChartLabelP2_R" 
+                                                                [chartType]="pieChartType"
+                                                                [options]="pieChartOptions"
+                                                                [plugins]="pieChartPlugins"
+                                                                [legend]="pieChartLegend">
+                                                            </canvas>
+                                                        </div>   
+                                                    </div>
                                                 </div>
                                               </div>
                                         </div>
@@ -160,11 +193,33 @@
                                             <div class="card-group">
                                                 <div class="card">
                                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Se informa de cita a verificacion...</strong></small></div>
-                                                    <div class="card-body" style="background-color: #e8e2db">grafico P1-r</div>
+                                                    <div class="card-body" style="background-color: #e8e2db">
+                                                        <div style="display: block;">
+                                                            <canvas baseChart 
+                                                                [data]="pieChartDataP1_T" 
+                                                                [labels]="pieChartLabelP1_T" 
+                                                                [chartType]="pieChartType"
+                                                                [options]="pieChartOptions"
+                                                                [plugins]="pieChartPlugins"
+                                                                [legend]="pieChartLegend">
+                                                            </canvas>
+                                                        </div>   
+                                                    </div>
                                                 </div>
                                                 <div class="card">
                                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Entrega en tiempo...</strong></small></div>
-                                                    <div class="card-body" style="background-color: #e8e2db">grafico P2-r</div>
+                                                    <div class="card-body">
+                                                        <div style="display: block;">
+                                                            <canvas baseChart 
+                                                                [data]="pieChartDataP2_T" 
+                                                                [labels]="pieChartLabelP2_T" 
+                                                                [chartType]="pieChartType"
+                                                                [options]="pieChartOptions"
+                                                                [plugins]="pieChartPlugins"
+                                                                [legend]="pieChartLegend">
+                                                            </canvas>
+                                                        </div>  
+                                                    </div>
                                                 </div>
                                               </div>
                                         </div>
