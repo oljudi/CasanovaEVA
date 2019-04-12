@@ -14,13 +14,14 @@ export class ReportsComponent implements OnInit {
   // Pie
   public pieChartOptions: ChartOptions = {
     responsive: true,
-  };
+  }; 
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = false;
   public pieChartPlugins = [];
   public pieChartLabels: Label[] = ['Bueno', ['Mas', 'ó', 'Menos'], 'Regular', 'Malo', 'Muy Malo'];
 
     // P1
+    
   public pieChartDataP1: SingleDataSet = [300, 200, 200, 100, 200];
 
     //P2
@@ -62,6 +63,7 @@ export class ReportsComponent implements OnInit {
   rows3: any;
 
   colums: any;
+  contadorre: number;
 
   constructor(
     private afs: AngularFirestore,
@@ -70,10 +72,121 @@ export class ReportsComponent implements OnInit {
     monkeyPatchChartJsLegend();
    }
 
+   cp1mb:number;
+   cp1b:number;
+   cp1r:number;
+   cp1m:number;
+   cp1mm:number;
+
+   cp2mb:number;
+   cp2b:number;
+   cp2r:number;
+   cp2m:number;
+   cp2mm:number;
+
+   cp3mb:number;
+   cp3b:number;
+   cp3r:number;
+   cp3m:number;
+   cp3mm:number;
+
+   cp4mb:number;
+   cp4b:number;
+   cp4r:number;
+   cp4m:number;
+   cp4mm:number;
+
+   cp5mb:number;
+   cp5b:number;
+   cp5r:number;
+   cp5m:number;
+   cp5mm:number;
+
+   cp6mb:number;
+   cp6b:number;
+   cp6r:number;
+   cp6m:number;
+   cp6mm:number;
+
+   cp7mb:number;
+   cp7b:number;
+   cp7r:number;
+   cp7m:number;
+   cp7mm:number;
+
+   cp8mb:number;
+   cp8b:number;
+   cp8r:number;
+   cp8m:number;
+   cp8mm:number;
+
+   cp9mb:number;
+   cp9mm:number;
+   
+   cp10mb:number;
+   cp10mm:number;
+   
+
+   
   ngOnInit() {
     this.getData1();
     this.getData2();
     this.getData3();
+
+    this.afs.collection('Contadores/Pregunta1/MuyBueno').valueChanges().subscribe(values => (this.cp1mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta1/Bueno').valueChanges().subscribe(values => (this.cp1b = values.length) as number);
+    this.afs.collection('Contadores/Pregunta1/Regular').valueChanges().subscribe(values => (this.cp1r = values.length) as number);
+    this.afs.collection('Contadores/Pregunta1/Malo').valueChanges().subscribe(values => (this.cp1m = values.length) as number);
+    this.afs.collection('Contadores/Pregunta1/MuyMalo').valueChanges().subscribe(values => (this.cp1mm = values.length) as number);
+    
+    this.afs.collection('Contadores/Pregunta2/MuyBueno').valueChanges().subscribe(values => (this.cp2mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta2/Bueno').valueChanges().subscribe(values => (this.cp2b = values.length) as number);
+    this.afs.collection('Contadores/Pregunta2/Regular').valueChanges().subscribe(values => (this.cp2r = values.length) as number);
+    this.afs.collection('Contadores/Pregunta2/Malo').valueChanges().subscribe(values => (this.cp2m = values.length) as number);
+    this.afs.collection('Contadores/Pregunta2/MuyMalo').valueChanges().subscribe(values => (this.cp2mm = values.length) as number);
+
+    this.afs.collection('Contadores/Pregunta3/MuyBueno').valueChanges().subscribe(values => (this.cp3mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta3/Bueno').valueChanges().subscribe(values => (this.cp3b = values.length) as number);
+    this.afs.collection('Contadores/Pregunta3/Regular').valueChanges().subscribe(values => (this.cp3r = values.length) as number);
+    this.afs.collection('Contadores/Pregunta3/Malo').valueChanges().subscribe(values => (this.cp3m = values.length) as number);
+    this.afs.collection('Contadores/Pregunta3/MuyMalo').valueChanges().subscribe(values => (this.cp3mm = values.length) as number);
+
+    this.afs.collection('Contadores/Pregunta4/MuyBueno').valueChanges().subscribe(values => (this.cp4mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta4/Bueno').valueChanges().subscribe(values => (this.cp4b = values.length) as number);
+    this.afs.collection('Contadores/Pregunta4/Regular').valueChanges().subscribe(values => (this.cp4r = values.length) as number);
+    this.afs.collection('Contadores/Pregunta4/Malo').valueChanges().subscribe(values => (this.cp4m = values.length) as number);
+    this.afs.collection('Contadores/Pregunta4/MuyMalo').valueChanges().subscribe(values => (this.cp4mm = values.length) as number);
+
+    this.afs.collection('Contadores/Pregunta5/MuyBueno').valueChanges().subscribe(values => (this.cp5mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta5/Bueno').valueChanges().subscribe(values => (this.cp5b = values.length) as number);
+    this.afs.collection('Contadores/Pregunta5/Regular').valueChanges().subscribe(values => (this.cp5r = values.length) as number);
+    this.afs.collection('Contadores/Pregunta5/Malo').valueChanges().subscribe(values => (this.cp5m = values.length) as number);
+    this.afs.collection('Contadores/Pregunta5/MuyMalo').valueChanges().subscribe(values => (this.cp5mm = values.length) as number);
+    
+    this.afs.collection('Contadores/Pregunta6/MuyBueno').valueChanges().subscribe(values => (this.cp6mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta6/Bueno').valueChanges().subscribe(values => (this.cp6b = values.length) as number);
+    this.afs.collection('Contadores/Pregunta6/Regular').valueChanges().subscribe(values => (this.cp6r = values.length) as number);
+    this.afs.collection('Contadores/Pregunta6/Malo').valueChanges().subscribe(values => (this.cp6m = values.length) as number);
+    this.afs.collection('Contadores/Pregunta6/MuyMalo').valueChanges().subscribe(values => (this.cp6mm = values.length) as number);
+    
+    this.afs.collection('Contadores/Pregunta7/MuyBueno').valueChanges().subscribe(values => (this.cp7mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta7/Bueno').valueChanges().subscribe(values => (this.cp7b = values.length) as number);
+    this.afs.collection('Contadores/Pregunta7/Regular').valueChanges().subscribe(values => (this.cp7r = values.length) as number);
+    this.afs.collection('Contadores/Pregunta7/Malo').valueChanges().subscribe(values => (this.cp7m = values.length) as number);
+    this.afs.collection('Contadores/Pregunta7/MuyMalo').valueChanges().subscribe(values => (this.cp7mm = values.length) as number);
+    
+    this.afs.collection('Contadores/Pregunta8/MuyBueno').valueChanges().subscribe(values => (this.cp8mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta8/Bueno').valueChanges().subscribe(values => (this.cp8b = values.length) as number);
+    this.afs.collection('Contadores/Pregunta8/Regular').valueChanges().subscribe(values => (this.cp8r = values.length) as number);
+    this.afs.collection('Contadores/Pregunta8/Malo').valueChanges().subscribe(values => (this.cp8m = values.length) as number);
+    this.afs.collection('Contadores/Pregunta8/MuyMalo').valueChanges().subscribe(values => (this.cp8mm = values.length) as number);
+    
+    this.afs.collection('Contadores/Pregunta9/Si').valueChanges().subscribe(values => (this.cp9mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta9/No').valueChanges().subscribe(values => (this.cp9mm = values.length) as number);
+    
+    this.afs.collection('Contadores/Pregunta10/Si').valueChanges().subscribe(values => (this.cp10mb = values.length) as number);
+    this.afs.collection('Contadores/Pregunta10/No').valueChanges().subscribe(values => (this.cp10mm = values.length) as number);
+    
   }
 
   getData1() {
