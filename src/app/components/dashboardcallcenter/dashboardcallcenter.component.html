@@ -4,10 +4,11 @@
 <div class="card col-md-2 mt-3 ml-1 text-white text-center form-inline" style="background-color: #1a3263"><fa-icon [icon]="faHeadset" class="fa-2x"></fa-icon><strong><h2>SEVS - CallCenter</h2></strong></div>
 <div class="row">
   <div class="col-md-12">
-      <div class="card mt-3 ml-1 text-white text-center" style="background-color: #1a3263"><strong><h2>Consulta Call Center</h2></strong></div>
+      <div class="card mt-3 ml-1 text-white text-center" style="background-color: #1a3263"><strong><h2>Encuestas</h2></strong></div>
       <div class="mat-elevation-z8">
+            <br>
           <mat-table class="table-container mat-elevation-z8" #table [dataSource]="dataSource" matSort>
-          
+
             <ng-container matColumnDef="Folio Encuesta">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Folio Encuesta </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -19,7 +20,7 @@
               </ng-container>
 
               <ng-container matColumnDef="Fecha Salida">
-                <mat-header-cell *matHeaderCellDef> Fecha Entrada </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef> Fecha Salida </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.fechasal}} </mat-cell>
               </ng-container> 
               
@@ -93,17 +94,35 @@
 <div class="card ml-1 text-white text-center mb-2" style="background-color: #1a3263"><strong><h2>Seguimiento</h2></strong></div>
 <div class="row">
   <div class="col-md-2">
-    <div class="card">
-      <mat-form-field class="col-md-9 mt-3" appearance="outline">
+      <mat-form-field class="ml-3" appearance="outline">
         <mat-label>Filtrar...</mat-label>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="VI1234">
         <mat-icon matSuffix>assessment</mat-icon>
-        <mat-hint>*Ingresa el numero de folio</mat-hint>
-      </mat-form-field><br>
-    <button class="btn btn-primary btn-block" style="font-size: 1rem" (click)="exportAs('xlsx')"><strong>Exportar Excel</strong></button>
+      </mat-form-field>
+  </div>
+  <div class="col-md-2">
+    <div class="form-group">
+        <label><strong>Fecha de Filtrado</strong></label><br>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
+          </div>
+        <input type="date" class="form-control text-center" id="inputfe" placeholder="Fecha Entrada" name="fechaent" [(ngModel)]="fechaent" #fechaents="ngModel">
+        </div>
     </div>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-2">
+    <button type="submit" class="btn btn-primary btn-block btn-lg mb-2 mt-4" style="font-size: 1rem" value="Guardar"
+      (click)="myFunction()"><strong>Generar Reporte</strong></button>
+    <button class="btn btn-primary btn-block" style="font-size: 1rem" (click)="exportAs('xlsx')"><strong>Exportar
+        Excel</strong></button>
+  </div>
+  <div class="col-md-6">
+    </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-9">
     <div class="mat-elevation-z8">
       <table mat-table  class="table-container mat-elevation-z8" #table [dataSource]="dataSource" matSort id="callexport">
         <tr>
@@ -161,28 +180,51 @@
                 <ng-container matColumnDef="Comentario Llamada">
                     <th mat-header-cell *matHeaderCellDef> Comentario Llamada </th>
                     <td mat-cell *matCellDef="let row">
-                      <mat-form-field class="col-md-9" appearance="outline">
-                        <mat-label>Comentario</mat-label>
-                        <input matInput 
-                              placeholder="" 
-                              (keyup)="myFunction2($event.target.value)">
-                      </mat-form-field>
+                        <input class="form-control" matInput placeholder="" (keyup)="myFunction2($event.target.value)">
                     </td> 
                 </ng-container>
                   
-                <ng-container matColumnDef="Enviar comentarios">
-                  <th mat-header-cell *matHeaderCellDef> Enviar </th>
+                <ng-container class="text-center" matColumnDef="Enviar comentarios">
+                  <th mat-header-cell *matHeaderCellDef></th>
                   <td mat-cell *matCellDef="let row">
-                      <button type="submit" class="btn btn-outline-success btn-block" value="Guardar" (click)="getval(row);"> Enviar Comentario</button>
+                      <button type="submit" class="btn btn-outline-primary" value="Guardar" (click)="getval(row);"> Enviar Comentario</button>
                   </td>
                 </ng-container>
               </tr>
-              <tr mat-header-row *matHeaderRowDef="displayedColumns3;"></tr>
+              <tr mat-header-row class="text-center" *matHeaderRowDef="displayedColumns3;"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
             </table>
           </div>
         </form>
   </div>
+  <table  class="table table-sm table-bordered text-center" id="reporteCallCenter">
+      <thead>
+        <tr>
+          <th hidden scope="col">Folio Encuesta</th>
+          <th hidden scope="col">Servicio</th>
+          <th hidden scope="col">Trabajo Realizado</th>
+          <th hidden scope="col">Nombre Cliente</th>
+          <th hidden scope="col">Numero Cliente</th>
+          <th hidden scope="col">Correo Cliente</th>
+          <th hidden scope="col">Fecha LLamada</th>
+          <th hidden scope="col">Comentario Taller</th>
+          <th hidden scope="col">Comentario Call-Center</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let controlService of listado | async">
+          <td hidden>{{controlService.id}}</td>
+          <td hidden>{{controlService.tipo}}</td>
+          <td hidden>{{controlService.Trabajorealizado}}</td>
+          <td hidden>{{controlService.NombreCliente}}</td>
+          <td hidden>{{controlService.NumeroCliente}}</td>
+          <td hidden>{{controlService.CorreoCliente}}</td>
+          <td hidden>{{controlService.fechac}}</td>
+          <td hidden>{{controlService.comentarios}}</td>
+          <td hidden>{{controlService.comentarioscall}}</td>
+        </tr>
+      </tbody>
+    </table>
 </div>
 
 <!-- Footer -->
