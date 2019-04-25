@@ -102,7 +102,14 @@
   </div>
   <div class="col-md-2">
     <div class="form-group">
-        <label><strong>Fecha de Filtrado</strong></label><br>
+        <label><strong>Fecha Inicial</strong></label><br>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
+          </div>
+        <input type="date" class="form-control text-center" id="inputfe" placeholder="Fecha Entrada" name="fechaent" [(ngModel)]="fechaent" #fechaents="ngModel">
+        </div><br>
+        <label><strong>Fecha Final</strong></label><br>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
