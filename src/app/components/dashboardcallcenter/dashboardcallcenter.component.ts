@@ -35,6 +35,12 @@ export class DashboardcallcenterComponent implements OnInit {
     elementId: 'callexport',
   };
 
+//variables
+rows1: any[] = [];
+listado:any;
+list = [];
+list2 = [];
+
  // Iconos
   faHeadset = faHeadset;
   faCar = faCar;
@@ -43,8 +49,10 @@ export class DashboardcallcenterComponent implements OnInit {
     private afs: AngularFirestore,
     private exportAsService: ExportAsService,
     private _dataService: DatatableService,
-    public encuestase: EncuestaService
+    public encuestase: EncuestaService,
+    private controlService: EncuestaService
   ) {
+    this.listado = this.controlService.getAllEncuestaex();
     this.dataSource.sort = this.sort;
     const today = new Date();
     this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
@@ -53,12 +61,21 @@ export class DashboardcallcenterComponent implements OnInit {
   ngOnInit() {
 
     return this._dataService.getDocs().subscribe(res => this.dataSource.data = res );
-
+    this.getData1();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  getData1() {
+    this.afs.collection('type').valueChanges().subscribe((encuesta) => {
+      this.rows1 = encuesta;
+    });
+    this.listado = this.rows1;
+    this.list = this.rows1;
+    this.list2 = this.rows1;
   }
 
   exportAs(type) {
@@ -88,16 +105,18 @@ export class DashboardcallcenterComponent implements OnInit {
   }
   myFunction() {
     // Declare variables
-    let input, filter, table, tr, td, i, txtValue;
+    let input, filter, table, tr, td, i, txtValue, input2, filter2;
     input = document.getElementById('inputfe');
     filter = input.value;
+    input2 = document.getElementById('inputfs');
+    filter2 = input2.value;
     table = document.getElementById('mytable5');
     tr = table.getElementsByTagName('tr');
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName('td')[5];
+      td = tr[i].getElementsByTagName('td')[3];
       if (td) {
         txtValue = td.textContent || td.innerText;
-        if (txtValue.indexOf(filter) < -1) {
+        if (txtValue >= filter && txtValue <= filter2 ) {
           tr[i].style.display = '';
         } else {
           tr[i].style.display = 'none';
