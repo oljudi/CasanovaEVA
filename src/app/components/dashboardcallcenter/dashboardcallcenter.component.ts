@@ -11,15 +11,18 @@ import { EncuestaService } from 'src/app/services/encuesta.service';
 import { RegistroCompletoInterface } from 'src/app/Models/Registrocompleto';
 import { formatDate } from '@angular/common';
 
+
 @Component({
   selector: 'app-dashboardcallcenter',
   templateUrl: './dashboardcallcenter.component.html',
   styleUrls: ['./dashboardcallcenter.component.css']
 })
+
 export class DashboardcallcenterComponent implements OnInit {
 
   @ViewChild(MatSort, { read: true }) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource2: any;
 
   // Origen DATA tabla
   dataSource = new MatTableDataSource();
@@ -32,7 +35,7 @@ export class DashboardcallcenterComponent implements OnInit {
   id: string;
   config: ExportAsConfig = {
     type: 'pdf',
-    elementId: 'callexport',
+    elementId: 'mytable5',
   };
 
 //variables
@@ -57,16 +60,20 @@ list2 = [];
     const today = new Date();
     this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
   }
+  
 
   ngOnInit() {
-
     return this._dataService.getDocs().subscribe(res => this.dataSource.data = res );
     this.getData1();
+
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    const ELEMENT_DATA: RegistroCompletoInterface[] = this.list;
+    this.dataSource2 = ELEMENT_DATA;
+
   }
 
   getData1() {
@@ -105,6 +112,8 @@ list2 = [];
   }
   myFunction() {
     // Declare variables
+    this._dataService.getDocs().subscribe(res => this.dataSource.data = res );
+
     let input, filter, table, tr, td, i, txtValue, input2, filter2;
     input = document.getElementById('inputfe');
     filter = input.value;
@@ -123,5 +132,22 @@ list2 = [];
         }
       }
     }
+   this.dataSource2 = this.dataSource.data;
+    const fromDate = filter;
+    const toDate = filter2;
+    const tempData = <any>this.dataSource2;
+    let selectedItems: RegistroCompletoInterface[] = [];
+    if(fromDate !== '' && toDate !== '') {
+              tempData.forEach((item, index) => {
+            if (item.fechaent >= fromDate && item.fechaent <= toDate) {
+                selectedItems.push(item);
+            }
+        });
+
+        this.dataSource2 = selectedItems;
+        this.dataSource = this.dataSource2;
+    }
+    $('#inputfe').val('').text('update');
+    $('#inputfs').val('').text('update');
   }
 }
