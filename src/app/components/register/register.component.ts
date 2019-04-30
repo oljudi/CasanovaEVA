@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
     public pass: string;
     public nombre: string;
     public admin: boolean;
+    public tipo: string;
     public suadmin: boolean;
 
   ngOnInit() {
@@ -41,11 +42,16 @@ export class RegisterComponent implements OnInit {
   }
   guardarregistro({value}: {value: RegistroInterface}){
   //  let userID  = auth().currentUser!.uid;
-
+    if(this.tipo == 'Administrador'){
+      this.admin = true;
+    }
+    else{
+      this.admin = false;
+    }
     this.suadmin = false;
-    this.admin = false;
     value.id = this.email;
     value.correo = this.email;
+    value.tipo = this.tipo;
     value.nombre = this.nombre;
     value.admin = this.admin;
     value.suadmin = this.suadmin;

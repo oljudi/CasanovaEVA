@@ -34,10 +34,11 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text" style="background-color: #f16821; color: white"><fa-icon [icon]="faUserCog"></fa-icon></span>
                           </div>
-                          <select class="form-control">
-                            <option value="">Selecciona...</option>
-                              <option value="">Administrador</option>
-                              <option value="">Taller</option>
+                          <select class="form-control" name="tipo" [(ngModel)]="tipo" #Tipo="ngModel">
+                            <option>Selecciona...</option>
+                              <option>Administrador</option>
+                              <option>Taller</option>
+                              <option>CallCenter</option>
                           </select>
                         </div>
                       </div>

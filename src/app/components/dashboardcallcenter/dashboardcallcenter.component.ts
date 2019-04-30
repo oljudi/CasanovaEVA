@@ -147,7 +147,7 @@ list2 = [];
         this.dataSource2 = selectedItems;
         this.dataSource = this.dataSource2;
     }
-    $('#inputfe').val('').text('update');
-    $('#inputfs').val('').text('update');
+   // $('#inputfe').val('').text('update');
+   // $('#inputfs').val('').text('update');
   }
 }
