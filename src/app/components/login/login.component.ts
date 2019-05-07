@@ -9,6 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { auth } from 'firebase';
 import { AdminComponent } from '../admin/admin.component';
 import { RegistroInterface } from 'src/app/Models/registro';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-login',
@@ -30,25 +31,20 @@ export class LoginComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public router: Router,
-    public flashMensaje: FlashMessagesService
+    public flashMensaje: FlashMessagesService,
+    public afs: AngularFirestore
 
   ) { }
 user: RegistroInterface = {
+  id: '',
   nombre: '',
   correo: '',
   admin: false,
   suadmin: false,
-  id: ''
+  tipo: ''
 };
-  ngOnInit() {
 
-    this.authService.getAuth().subscribe(user => {
-      if (user) {
-        // this.user = user;
-        //console.log('User', user.email);
-      }
-    });
-
+ngOnInit() {
 
   }
 
@@ -57,11 +53,25 @@ user: RegistroInterface = {
     .then( (res) => {
       this.flashMensaje.show('Bienvenido a SEVS',
       {cssClass: 'alert-success', timeout: 4000 });
-      this.router.navigate(['/admin']);
+      this.onLoginRedirect( this.email );
     }).catch((err) => {
       this.flashMensaje.show(err.message,
       {cssClass: 'alert-danger', timeout: 4000 });
       this.router.navigate(['/login']);
+    });
+  }
+
+  onLoginRedirect( email: string ) {
+    this.afs.collection('Registro').doc( email ).valueChanges().subscribe( data => {
+      this.user.admin = data.admin;
+      this.user.tipo = data.tipo;
+      if( this.user.admin === true ){
+        this.router.navigate(['/admin']);
+      } else if ( this.user.tipo === 'CallCenter'){
+        this.router.navigate(['/dashboardcall']);
+      } else if ( this.user.tipo === 'Taller') {
+        this.router.navigate(['/taller']);
+      }
     });
   }
 

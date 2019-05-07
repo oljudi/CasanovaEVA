@@ -63,8 +63,8 @@ export class AuthService {
 
   getAuth() {
     return this.afAuth.authState.pipe(map( auth => auth ));
-
   }
+  
   getid(): string {
     // return this.afAuth.authState.pipe(map( auth => auth.uid ));
     firebase.auth().onAuthStateChanged((user) => {

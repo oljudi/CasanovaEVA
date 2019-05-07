@@ -29,12 +29,25 @@ export class NavbarComponent implements OnInit {
   public isLogin: boolean;
   public nombreUsuario: string;
   public emailUsuario: string;
+
+  public admin = false;
+  public taller = false;
+  public callcenter = false;
+  public suadmin = false;
+
+
+  // rol: string;
+  userName: string;
+
+  // roles de usuario
+
   user: RegistroInterface = {
+    id: '',
     nombre: '',
     correo: '',
     admin: false,
     suadmin: false,
-    id: ''
+    tipo: ''
   };
   nomUsuario: any;
   constructor(
@@ -47,34 +60,41 @@ export class NavbarComponent implements OnInit {
       if (user) {
         this.isLogin = true;
         this.emailUsuario = user.email;
-       this.nombreusuaro(this.emailUsuario);
-        // //console.log(this.nomUsuario);
+        this.nombreusuaro(this.emailUsuario);
       } else {
         this.isLogin = false;
       }
     });
-//    this.nomUsuario =this.nombreusuaro();
-
-
-
   }
+
   nombreusuaro(x: string) {
-
-    this.afs.collection('Registro').doc(x).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res); } );
+    this.afs.collection('Registro').doc(x).valueChanges().subscribe(res => {
+      if( res.suadmin ){ 
+        this.suadmin = true;
+      }
+      this.user.admin = res.admin; 
+      this.user.nombre = res.nombre;
+      this.user.tipo = res.tipo;
+      this.privilage( this.user.tipo );
+    });
     // this.AuthService.getUser(this.emailUsuario);
-
   }
-  arrass(x: RegistroInterface): string {
 
-     this.nomUsuario = x.nombre;
+  privilage( rol: string ){
+    console.log('Entro a rol: ', rol);
+    if( rol === 'Administrador' ){
+      this.admin = true;
+    } else if ( rol === 'Taller'){
+      this.taller = true;
+    } else if ( rol === 'CallCenter'){
+      this.callcenter = true;
+    }
+  }  
 
-    // console.log(x.nombre);
-    // console.log(this.nomUsuario);
-
-
-   return this.nomUsuario;
-
-  }
+  // arrass(x: RegistroInterface): void {
+  //   this.userName = x.nombre;
+  //   this.rol = x.tipo;
+  // }
 
   onClickLogOut() {
     this.authService.logout();
