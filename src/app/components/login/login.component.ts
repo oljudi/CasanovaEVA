@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 import { faSignInAlt, faAddressCard, faKey, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { FormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { auth } from 'firebase';
-import { AdminComponent } from '../admin/admin.component';
+
 import { RegistroInterface } from 'src/app/Models/registro';
 import { AngularFirestore } from 'angularfire2/firestore';
 
@@ -62,17 +60,18 @@ ngOnInit() {
   }
 
   onLoginRedirect( email: string ) {
-    this.afs.collection('Registro').doc( email ).valueChanges().subscribe( data => {
-      this.user.admin = data.admin;
-      this.user.tipo = data.tipo;
-      if( this.user.admin === true ){
-        this.router.navigate(['/admin']);
-      } else if ( this.user.tipo === 'CallCenter'){
-        this.router.navigate(['/dashboardcall']);
-      } else if ( this.user.tipo === 'Taller') {
-        this.router.navigate(['/taller']);
-      }
-    });
+      this.router.navigate(['/admin']);
+    // this.afs.collection('Registro').doc( email ).valueChanges().subscribe( data => {
+    //   this.user.admin = data.admin;
+    //   this.user.tipo = data.tipo;
+    //   if( this.user.admin === true ){
+    //     this.router.navigate(['/admin']);
+    //   } else if ( this.user.tipo === 'CallCenter'){
+    //     this.router.navigate(['/dashboardcall']);
+    //   } else if ( this.user.tipo === 'Taller') {
+    //     this.router.navigate(['/taller']);
+    //   }
+    // });
   }
 
 }

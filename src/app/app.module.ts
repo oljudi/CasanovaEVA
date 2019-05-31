@@ -54,6 +54,8 @@ import { DashboardcallcenterComponent } from './components/dashboardcallcenter/d
 import { ChartsModule } from 'ng2-charts';
 import { ExportAsModule } from 'ngx-export-as';
 import { HttpModule } from '@angular/http';
+import { AgregatorComponent } from './extras/agregator/agregator.component';
+import { ModeliComponent } from './Modals/modeli/modeli.component';
 
 
 @NgModule({
@@ -75,7 +77,9 @@ import { HttpModule } from '@angular/http';
     FooterComponent,
     TallerComponent,
     DashboardtallerComponent,
-    DashboardcallcenterComponent
+    DashboardcallcenterComponent,
+    AgregatorComponent,
+    ModeliComponent
   ],
   imports: [
     ChartsModule,

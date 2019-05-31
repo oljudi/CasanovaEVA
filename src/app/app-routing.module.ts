@@ -20,12 +20,18 @@ import { AuthGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardtallerComponent } from './components/dashboardtaller/dashboardtaller.component';
 import { DashboardcallcenterComponent } from './components/dashboardcallcenter/dashboardcallcenter.component';
+import { AgregatorComponent } from './extras/agregator/agregator.component';
 
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  { path: 'taller', component: TallerComponent, canActivate: [AuthGuard] },
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
+  { path: 'dashboardt', component: DashboardtallerComponent, canActivate: [AuthGuard]},
+  { path: 'dashboardcall', component: DashboardcallcenterComponent, canActivate: [AuthGuard]},
+  { path: 'agregator', component: AgregatorComponent, canActivate: [AuthGuard]},
   { path: 'express/:id', component: ExpressComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -33,12 +39,8 @@ const routes: Routes = [
   { path: 'reparacion/:id', component: ReparacionComponent },
   { path: 'thankyou', component: ThankyouComponent },
   { path: 'tramite/:id', component: TramiteComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'taller', component: TallerComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'encuesta', component: EncuestaComponent},
-  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
-  { path: 'dashboardt', component: DashboardtallerComponent, canActivate: [AuthGuard]},
-  { path: 'dashboardcall', component: DashboardcallcenterComponent, canActivate: [AuthGuard]},
   { path: 'navbardown', component: NavbardownComponent},
   { path: '**', component: Page404Component }
 ];

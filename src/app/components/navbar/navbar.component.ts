@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { take } from 'rxjs/operators';
+import { LevelaccessService } from 'src/app/services/levelaccess.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,7 +27,12 @@ export class NavbarComponent implements OnInit {
   faUserCog = faUserCog;
   faHeadset = faHeadset;
 
-  public isLogin: boolean;
+  public isLogin = false;
+  public isLoginAdmin = false;
+  public isLoginCallcenter = false;
+  public isLoginSuadmin = false;
+  public isLoginTaller = false;
+
   public nombreUsuario: string;
   public emailUsuario: string;
 
@@ -41,7 +47,7 @@ export class NavbarComponent implements OnInit {
 
   // roles de usuario
 
-  user: RegistroInterface = {
+  usuario: RegistroInterface = {
     id: '',
     nombre: '',
     correo: '',
@@ -51,50 +57,45 @@ export class NavbarComponent implements OnInit {
   };
   nomUsuario: any;
   constructor(
-    private afs: AngularFirestore,
-    public authService: AuthService
+    public authService: AuthService,
+    private lvlaccess: LevelaccessService
   ) { }
 
   ngOnInit() {
     this.authService.getAuth().subscribe( user => {
       if (user) {
         this.isLogin = true;
-        this.emailUsuario = user.email;
-        this.nombreusuaro(this.emailUsuario);
+        this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
+            console.log('usuario desde lvl:', info);
+            if(info.suadmin === true){
+              this.isLoginSuadmin = true;
+              this.isLoginAdmin = false;
+              this.isLoginCallcenter = false;
+              this.isLoginTaller = false;
+            } else if (info.admin === true) {
+              this.isLoginAdmin = true;
+              this.isLoginSuadmin = false;
+              this.isLoginCallcenter = false;
+              this.isLoginTaller = false;
+            } else if (info.tipo === 'CallCenter') {
+              this.isLoginCallcenter = true;
+              this.isLoginAdmin = false;
+              this.isLoginTaller = false;
+              this.isLoginSuadmin = false;
+            } else if (info.tipo === 'Taller') {
+              this.isLoginTaller = true;
+              this.isLoginCallcenter = false;
+              this.isLoginAdmin = false;
+              this.isLoginSuadmin = false;
+            } else {
+              console.log('Erro de sistema: Usuario sin Permisos')
+            }
+        });
       } else {
         this.isLogin = false;
       }
     });
   }
-
-  nombreusuaro(x: string) {
-    this.afs.collection('Registro').doc(x).valueChanges().subscribe(res => {
-      if( res.suadmin ){ 
-        this.suadmin = true;
-      }
-      this.user.admin = res.admin; 
-      this.user.nombre = res.nombre;
-      this.user.tipo = res.tipo;
-      this.privilage( this.user.tipo );
-    });
-    // this.AuthService.getUser(this.emailUsuario);
-  }
-
-  privilage( rol: string ){
-    console.log('Entro a rol: ', rol);
-    if( rol === 'Administrador' ){
-      this.admin = true;
-    } else if ( rol === 'Taller'){
-      this.taller = true;
-    } else if ( rol === 'CallCenter'){
-      this.callcenter = true;
-    }
-  }  
-
-  // arrass(x: RegistroInterface): void {
-  //   this.userName = x.nombre;
-  //   this.rol = x.tipo;
-  // }
 
   onClickLogOut() {
     this.authService.logout();

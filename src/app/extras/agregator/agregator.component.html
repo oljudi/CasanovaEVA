@@ -1,0 +1,290 @@
+<app-navbar></app-navbar>
+<div
+  class="card mt-3 mr-3 ml-3 text-white"
+  style="background-color: #2A206F; font-size: 1rem"
+>
+  <div class="card-body">
+    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+    <strong> SEVS - Nuevos Campos</strong>
+  </div>
+</div>
+<br />
+<div class="col-md-3">
+  <div
+    class="card mt-3 text-white"
+    style="background-color: #2A206F; font-size: 1rem"
+  >
+    <div class="card-body">
+      <i class="fa fa-check" aria-hidden="true"></i>
+      <strong> Agregar nuevos campos </strong>
+    </div>
+  </div>
+</div>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <strong> Administradores de Flota</strong>
+        </div>
+        <div class="card-header">
+          <form (ngSubmit)="nuevoAdminFlota(nuevoAF.value)" [formGroup]="nuevoAF">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="idAdminFlota">ID: </label><br />
+                <input class="form-control" type="text" formControlName="id_AF"/>
+                <br />
+                <label for="nombreAdminFlota">Nombre: </label><br />
+                <input class="form-control" type="text" formControlName="nombre"/>
+              </div>
+              <div class="col-md-6">
+                <label for="ubicacionAdminFlota">Lugar de Trabajo: </label
+                ><br />
+                <select class="form-control" name="ubicacion" id="ubicacionAdminFlota" formControlName="ubicacion">
+                  <option value="La viga">La viga</option>
+                  <option value="Centenario">Centenario</option>
+                </select>
+                <br /><br />
+                <button
+                  type="submit"
+                  [disabled]="!nuevoAF.valid"
+                  class="btn btn-outline-primary btn-block btn-lg"
+                >
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <strong> Mecanicos</strong>
+        </div>
+        <div class="card-header">
+          <form (ngSubmit)="nuevoMecanico(mecanico.value)" [formGroup]="mecanico">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="idMecanico">ID: </label><br />
+                <input class="form-control" type="text" formControlName="id_Mecanico"/>
+                <br />
+                <label for="nombreMecanico">Nombre: </label><br />
+                <input class="form-control" type="text" formControlName="nombre"/>
+              </div>
+              <div class="col-md-6">
+                <label for="ubicacionMecanico">Lugar de Trabajo: </label><br />
+                <select class="form-control" name="ubicacion" id="ubicacionAdminFlota" formControlName="ubicacion">
+                  <option value="La viga">La viga</option>
+                  <option value="Centenario">Centenario</option>
+                  <option value="Tlalnepantla">Tlalnepantla</option>
+                  <option value="Patriotismo">Patriotismo</option>
+                  <option value="Coacalco">Coacalco</option>
+                  <option value="Vallejo">Vallejo</option>
+                  <option value="Chapultepec">Chapultepec</option>
+                </select>
+                <br /><br />
+                <button
+                  type="submit"
+                  [disabled]="!mecanico.valid"
+                  class="btn btn-outline-primary btn-lg btn-block"
+                >
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <strong> Clientes</strong>
+        </div>
+        <div class="card-header">
+          <form (ngSubmit)="nuevoCliente(cliente.value)" [formGroup]="cliente">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="idMecanico">ID: </label><br />
+                <input class="form-control" type="text" formControlName="id_Cliente"/>
+                <br />
+                <label for="nombreMecanico">Nombre: </label><br />
+                <input class="form-control" type="text" formControlName="nombre"/>
+              </div>
+              <div class="col-md-6">
+                <button
+                  type="submit"
+                  [disabled]="!cliente.valid"
+                  class="btn btn-outline-primary btn-lg btn-block "
+                >
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div
+    class="card mt-3 text-white"
+    style="background-color: #2A206F; font-size: 1rem"
+  >
+    <div class="card-body">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <strong> Modificar/Eliminar campos </strong>
+    </div>
+  </div>
+</div>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <strong> Administradores de Flota</strong>
+        </div>
+        <div class="card-header">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="ID"
+              aria-label="IDadminFB"
+              aria-describedby="busquedaADMFLOT"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-primary"
+                type="button"
+                id="busquedaADMFLOT"
+              >
+                Buscar
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="idAdminFlota">ID: </label><br />
+              <input type="text" />
+              <br />
+              <label for="nombreAdminFlota">Nombre: </label><br />
+              <input type="text" />
+            </div>
+            <div class="col-md-6">
+              <label for="ubicacionAdminFlota">Lugar de Trabajo: </label><br />
+              <input type="text" />
+              <br /><br />
+            </div>
+          </div>
+          <br />
+          <div class="col-md-7 mx-auto">
+            <button class="btn btn-success" type="">Modificar</button>
+            <button class="btn btn-danger" type="">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <strong> Mecanicos</strong>
+        </div>
+        <div class="card-header">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="ID"
+              aria-label="IDadminFB"
+              aria-describedby="busquedaADMFLOT"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-primary"
+                type="button"
+                id="busquedaADMFLOT"
+              >
+                Buscar
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="idMecanico">ID: </label><br />
+              <input type="text" />
+              <br />
+              <label for="nombreMecanico">Nombre: </label><br />
+              <input type="text" />
+            </div>
+            <div class="col-md-6">
+              <label for="ubicacionMecanico">Lugar de Trabajo: </label><br />
+              <input type="text" />
+              <br />
+            </div>
+          </div>
+          <br />
+          <div class="col-md-7 mx-auto">
+            <button class="btn btn-success" type="">Modificar</button>
+            <button class="btn btn-danger" type="">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <strong> Clientes</strong>
+        </div>
+        <div class="card-header">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="ID"
+              aria-label="IDadminFB"
+              aria-describedby="busquedaADMFLOT"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-primary"
+                type="button"
+                id="busquedaADMFLOT"
+              >
+                Buscar
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="idMecanico">ID: </label><br />
+              <input type="text" />
+              <br />
+              <label for="nombreMecanico">Nombre: </label><br />
+              <input type="text" />
+            </div>
+            <div class="col-md-6"></div>
+          </div>
+          <br />
+          <div class="col-md-7 mx-auto">
+            <button class="btn btn-success" type="">Modificar</button>
+            <button class="btn btn-danger" type="">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br /><br />
