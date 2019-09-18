@@ -66,7 +66,7 @@ export class NavbarComponent implements OnInit {
       if (user) {
         this.isLogin = true;
         this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
-            console.log('usuario desde lvl:', info);
+//console.log('usuario desde lvl:', info);
             if(info.suadmin === true){
               this.isLoginSuadmin = true;
               this.isLoginAdmin = false;

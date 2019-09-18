@@ -44,6 +44,10 @@ constructor(
     this.EncuestaexDoc = this.afs.doc('Encuestaexes/' + Encuestaex.id);
     this.EncuestaexDoc.delete();
   }
+  deleteType(Encuestaex: EncuestaexInterface) {
+    this.EncuestaexDoc = this.afs.doc('type/' + Encuestaex.id);
+    this.EncuestaexDoc.delete();
+  }
   //Update registro completo
     updateType(Encuestaex: RegistroCompletoInterface) {
       this.EncuestaexDoc = this.afs.doc('type/' + Encuestaex.id);

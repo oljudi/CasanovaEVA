@@ -121,9 +121,9 @@ Diagnostico:string;
     value.id = this.indenc2.toLocaleUpperCase();
     value.tipo = this.opcion2;
 //Datos de Vehiculo
-    value.placa = this.placa;
+    value.placa = this.placa.toLocaleUpperCase();
     value.vehiculo = this.vehiculo;
-    value.marca = this.marca;
+    value.marca = this.marca.toLocaleLowerCase();
     value.combustible = this.combustible;
     value.numserie = this.numserie;
     value.kilometraje = this.kilometraje;
@@ -203,6 +203,7 @@ Diagnostico:string;
     value.id = this.name;
     value.tipo = this.opcion;
     value.validacion = 'falta_validar';
+    value.contestada = false;
     //console.log(value);
 
     this.afs.firestore.doc('Encuestaexes/' + this.name).get()
@@ -226,18 +227,18 @@ Diagnostico:string;
               //  this.encuestase.addEncuestare(value);
               } else {
                 if (this.opcion === 'express') {
-                  this.encuestase.addEncuestaex(value);
                   this.encuestase.addEcuescont(value);
+                  this.encuestase.addEncuestaex(value);
                   confirm('Registro ' + this.name + ' guardado');
                 }
-                if (this.opcion === 'reparacion') {
-                  this.encuestase.addEncuestare(value);
+                if (this.opcion === 'reparacion') { 
                   this.encuestase.addEcuescont(value);
+                  this.encuestase.addEncuestare(value);
                   confirm('Registro ' + this.name + ' guardado');
                 }
                 if (this.opcion === 'tramite') {
-                  this.encuestase.addEncuestatr(value);
                   this.encuestase.addEcuescont(value);
+                  this.encuestase.addEncuestatr(value);
                   confirm('Registro ' + this.name + ' guardado');
                 }
               }
