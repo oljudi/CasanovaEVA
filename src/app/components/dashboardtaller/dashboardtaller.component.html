@@ -46,6 +46,11 @@
               <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{ element.NombreCliente | titlecase }} </mat-cell>
             </ng-container>
+
+            <ng-container matColumnDef="Calificacion">
+              <mat-header-cell *matHeaderCellDef> Calificacion </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.total | titlecase }} </mat-cell>
+            </ng-container>
                   
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

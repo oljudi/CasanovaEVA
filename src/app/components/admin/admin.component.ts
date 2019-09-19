@@ -9,6 +9,7 @@ import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDo
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
 import { MetaInterface } from 'src/app/Models/Meta';
+import { id } from '@swimlane/ngx-datatable/release/utils';
 
 
 @Component({
@@ -27,10 +28,16 @@ export class AdminComponent implements OnInit {
     this.listadoEncu = encuestas.getAllEncuestaex();
 
     this.listadoEncuestaex = this.encuestaex.getAllEncuestaex();
-    // tslint:disable-next-line:prefer-const
     let pruebasva = this.encuestaex.getAllEncuestaex();
+    //get all regis
     this.encuestaex.getitem().subscribe(id => this.list = id as Array<string>);
-
+    //get exes
+    this.encuestaex.getitemex().subscribe(id => this.listex = id as Array<string>);
+    //get rep
+    this.encuestaex.getitemrep().subscribe(id => this.listrep = id as Array<string>);
+    //get tram
+    this.encuestaex.getitemtram().subscribe(id => this.listtra = id as Array<string>);
+    
    this.suma = 0;
    // this.sumarep = 0;
    this.sumareps = 0;
@@ -62,6 +69,9 @@ export class AdminComponent implements OnInit {
    this.ins2 = 0;
    this.insre = 0;
    this.contadorreal = 0;
+   this.contadorexpress = 0;
+   this.contadorreperacion = 0;
+   this.contadortramites = 0;
    this.insre2 = 0; 
    this.instra = 0;
    this.instra2 = 0;
@@ -89,7 +99,13 @@ export class AdminComponent implements OnInit {
 
   listadoEncuestaex: any;
   ens: string;
+  ens1: string;
+  ens2: string;
+  ens3: string;
   list: string[];
+  listex: string[];
+  listrep: string[];
+  listtra: string[];
   p1: EncuestaexInterface;
 minter: MetaInterface;
 
@@ -144,6 +160,7 @@ minter: MetaInterface;
   promeex: string;
   // numero de express
   contadorre: number;
+  contadorexpress: number;
 // --------------------------------------------------------------------------------------------------------------------
   // promedios: string;
   // sucursals: string;
@@ -188,6 +205,7 @@ minter: MetaInterface;
   // pensar si se agregara un valor no en suma o promedio pero para reflejar cuantas se contestaron con la bandera
   // numero de reparacion
   contadorrep: number;
+  contadorreperacion: number;
 // --------------------------------------------------------------------------------------------------------------------
 // Encuesta Tramites
   // 1
@@ -229,6 +247,7 @@ minter: MetaInterface;
   // pensar si se agregara un valor no en suma o promedio pero para reflejar cuantas se contestaron con la bandera
   // numero de reparacion
   contadortram: number;
+  contadortramites: number;
 // --------------------------------------------------------------------------------------------------------------------
   user: RegistroInterface;
   compas: any;
@@ -301,10 +320,20 @@ arras( x: EncuestaexInterface) {
   for (let i = 0 ; i < this.contador ; i++ ) {
     this.ens = this.list[i] as string;
     this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res); } );
-    this.afs.collection('Encuestaexes').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass1(res); } );
-    this.afs.collection('Encuestareps').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass2(res); } );
-    this.afs.collection('Encuestatram').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass3(res); } );
+  } 
+  for (let i = 0 ; i < this.contadorre ; i++ ) {
+    this.ens1 = this.listex[i] as string;
+    this.afs.collection('Encuestaexes').doc(this.ens1).valueChanges().pipe(take(1)).subscribe(res => {this.arrass1(res); } );
+  } 
+  for (let i = 0 ; i < this.contadorrep ; i++ ) {
+    this.ens2 = this.listrep[i] as string;
+    this.afs.collection('Encuestareps').doc(this.ens2).valueChanges().pipe(take(1)).subscribe(res => {this.arrass2(res); } );
+  } 
+  for (let i = 0 ; i < this.contadortram ; i++ ) {
+    this.ens3 = this.listtra[i] as string;
+    this.afs.collection('Encuestatram').doc(this.ens3).valueChanges().pipe(take(1)).subscribe(res => {this.arrass3(res); } );
   }
+
 }
     // Metodo para acumular sumatoria de todas las encuestas
     arrass(x: EncuestaexInterface): number {
@@ -407,7 +436,8 @@ arras( x: EncuestaexInterface) {
       this.sumap8 = this.suma8 + this.sumap8;
       this.promexes = x.total;
       this.promexesp = this.promexes + this.promexesp;
-      // //console.log(x.total);
+      var tem = 1;
+      this.contadorexpress = tem + this.contadorexpress;
     // //console.log(this.sumaprom);
     // //console.log(this.sumaspreg);
       this.prom1(this.sumaprom);
@@ -416,16 +446,16 @@ arras( x: EncuestaexInterface) {
     }
     }
         prom1(x: number) {
-          this.prome1 = (this.sumaprom / this.contadorre).toFixed(2);
-          this.prome2 = (this.sumap2 / this.contadorre).toFixed(2);
-          this.prome3 = (this.sumap3 / this.contadorre).toFixed(2);
-          this.prome4 = (this.sumap4 / this.contadorre).toFixed(2);
-          this.prome5 = (this.sumap5 / this.contadorre).toFixed(2);
-          this.prome6 = (this.sumap6 / this.contadorre).toFixed(2);
-          this.prome7 = (this.sumap7 / this.contadorre).toFixed(2);
-          this.prome8 = (this.sumap8 / this.contadorre).toFixed(2);
-          this.Promedio1 = (this.sumap8 / this.contadorre);
-          this.promeex = (this.promexesp / this.contadorre).toFixed(2);
+          this.prome1 = (this.sumaprom / this.contadorexpress).toFixed(2);
+          this.prome2 = (this.sumap2 / this.contadorexpress).toFixed(2);
+          this.prome3 = (this.sumap3 / this.contadorexpress).toFixed(2);
+          this.prome4 = (this.sumap4 / this.contadorexpress).toFixed(2);
+          this.prome5 = (this.sumap5 / this.contadorexpress).toFixed(2);
+          this.prome6 = (this.sumap6 / this.contadorexpress).toFixed(2);
+          this.prome7 = (this.sumap7 / this.contadorexpress).toFixed(2);
+          this.prome8 = (this.sumap8 / this.contadorexpress).toFixed(2);
+          this.Promedio1 = (this.sumap8 / this.contadorexpress);
+          this.promeex = (this.promexesp / this.contadorexpress).toFixed(2);
          // this.getpreguntamayor();
           // tslint:disable-next-line:max-line-length
         }
@@ -463,6 +493,8 @@ arras( x: EncuestaexInterface) {
       this.sumarep8 = this.sumare8 + this.sumarep8;
       this.sumarep = x.total;
       this.sumareps = this.sumarep + this.sumareps;
+      var tem = 1;
+      this.contadorreperacion = tem + this.contadorreperacion;
       // this.getcomparador(this.sumarep);
       this.prom2(this.sumareps);
       this.getcomparador2(this.sumarep);
@@ -470,16 +502,16 @@ arras( x: EncuestaexInterface) {
     }
   }
         prom2(x: number) {
-          this.promere1 = (this.sumarep1 / this.contadorrep).toFixed(2);
-          this.promere2 = (this.sumarep2 / this.contadorrep).toFixed(2);
-          this.promere3 = (this.sumarep3 / this.contadorrep).toFixed(2);
-          this.promere4 = (this.sumarep4 / this.contadorrep).toFixed(2);
-          this.promere5 = (this.sumarep5 / this.contadorrep).toFixed(2);
-          this.promere6 = (this.sumarep6 / this.contadorrep).toFixed(2);
-          this.promere7 = (this.sumarep7 / this.contadorrep).toFixed(2);
-          this.promere8 = (this.sumarep8 / this.contadorrep).toFixed(2);
-          this.promerep = (this.sumareps / this.contadorrep).toFixed(2);
-          this.Promedio2 = (this.sumareps / this.contadorrep);
+          this.promere1 = (this.sumarep1 / this.contadorreperacion).toFixed(2);
+          this.promere2 = (this.sumarep2 / this.contadorreperacion).toFixed(2);
+          this.promere3 = (this.sumarep3 / this.contadorreperacion).toFixed(2);
+          this.promere4 = (this.sumarep4 / this.contadorreperacion).toFixed(2);
+          this.promere5 = (this.sumarep5 / this.contadorreperacion).toFixed(2);
+          this.promere6 = (this.sumarep6 / this.contadorreperacion).toFixed(2);
+          this.promere7 = (this.sumarep7 / this.contadorreperacion).toFixed(2);
+          this.promere8 = (this.sumarep8 / this.contadorreperacion).toFixed(2);
+          this.promerep = (this.sumareps / this.contadorreperacion).toFixed(2);
+          this.Promedio2 = (this.sumareps / this.contadorreperacion);
       
           // this.getpreguntamayor();
           // tslint:disable-next-line:max-line-length
@@ -516,23 +548,24 @@ arras( x: EncuestaexInterface) {
       this.sumatrap8 = this.sumatra8 + this.sumatrap8;
       this.sumatra = x.total;
       this.sumatraps = this.sumatra + this.sumatraps;
-
+      var tem = 1;
+      this.contadortramites = tem + this.contadortramites;
       this.getcomparador3(this.sumatra);
       this.prom3(this.sumatraps);
       return  this.sumatrap1, this.sumatrap2, this.sumatrap3, this.sumatrap4 , this.sumatrap5 , this.sumatrap6 , this.sumatrap7, this.sumatrap8, this.sumatraps;
     }
   }
         prom3(x: number) {
-          this.prometra1 = (this.sumatrap1 / this.contadortram).toFixed(2);
-          this.prometra2 = (this.sumatrap2 / this.contadortram).toFixed(2);
-          this.prometra3 = (this.sumatrap3 / this.contadortram).toFixed(2);
-          this.prometra4 = (this.sumatrap4 / this.contadortram).toFixed(2);
-          this.prometra5 = (this.sumatrap5 / this.contadortram).toFixed(2);
-          this.prometra6 = (this.sumatrap6 / this.contadortram).toFixed(2);
-          this.prometra7 = (this.sumatrap7 / this.contadortram).toFixed(2);
-          this.prometra8 = (this.sumatrap8 / this.contadortram).toFixed(2);
-          this.prometras = (this.sumatraps / this.contadortram).toFixed(2);
-          this.Promedio3 = (this.sumatraps / this.contadortram);
+          this.prometra1 = (this.sumatrap1 / this.contadortramites).toFixed(2);
+          this.prometra2 = (this.sumatrap2 / this.contadortramites).toFixed(2);
+          this.prometra3 = (this.sumatrap3 / this.contadortramites).toFixed(2);
+          this.prometra4 = (this.sumatrap4 / this.contadortramites).toFixed(2);
+          this.prometra5 = (this.sumatrap5 / this.contadortramites).toFixed(2);
+          this.prometra6 = (this.sumatrap6 / this.contadortramites).toFixed(2);
+          this.prometra7 = (this.sumatrap7 / this.contadortramites).toFixed(2);
+          this.prometra8 = (this.sumatrap8 / this.contadortramites).toFixed(2);
+          this.prometras = (this.sumatraps / this.contadortramites).toFixed(2);
+          this.Promedio3 = (this.sumatraps / this.contadortramites);
         
           // this.getpreguntamayor();
           // tslint:disable-next-line:max-line-length

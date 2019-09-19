@@ -150,8 +150,39 @@ constructor(
       return changes.map(action => {
         const data = action.payload.doc.id as EncuestaexInterface;
         // data.id = action.payload.doc.id;
-
-
+        return data;
+      });
+    }));
+    return this.Encuestaexes;
+  }
+  getitemtram(): Observable<EncuestaexInterface[]> {
+    this.Encuestaexes = this.EncuestatrCollection.snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(action => {
+        const data = action.payload.doc.id as EncuestaexInterface;
+        // data.id = action.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.Encuestaexes;
+  }
+  getitemrep(): Observable<EncuestaexInterface[]> {
+    this.Encuestaexes = this.EncuestareCollection.snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(action => {
+        const data = action.payload.doc.id as EncuestaexInterface;
+        // data.id = action.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.Encuestaexes;
+  }
+  getitemex(): Observable<EncuestaexInterface[]> {
+    this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(action => {
+        const data = action.payload.doc.id as EncuestaexInterface;
+        // data.id = action.payload.doc.id;
         return data;
       });
     }));

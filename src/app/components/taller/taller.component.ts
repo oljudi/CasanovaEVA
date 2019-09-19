@@ -5,6 +5,8 @@ import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { EncuestaService } from 'src/app/services/encuesta.service';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { RegistroCompletoInterface } from 'src/app/Models/Registrocompleto';
+import { resetComponentState, componentRefresh } from '@angular/core/src/render3/instructions';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-taller',
@@ -12,7 +14,6 @@ import { RegistroCompletoInterface } from 'src/app/Models/Registrocompleto';
   styleUrls: ['./taller.component.css']
 })
 export class TallerComponent implements OnInit {
-
   /* Variables de opciones de formulario */
   opt1: boolean;
   opt2: boolean;
@@ -89,8 +90,7 @@ Diagnostico:string;
 
   constructor(
     private afs: AngularFirestore,
-    public encuestase: EncuestaService
-  ) { }
+    public encuestase: EncuestaService) { }
 
   ngOnInit() {
     this.Option( this.value );
@@ -117,6 +117,7 @@ Diagnostico:string;
     }
   }
   onGuardar({value}: {value: RegistroCompletoInterface}) {
+    
 //Folio y tipo de servicio
     value.id = this.indenc2.toLocaleUpperCase();
     value.tipo = this.opcion2;
@@ -248,4 +249,5 @@ Diagnostico:string;
       }
     });
   }
+  
 }
