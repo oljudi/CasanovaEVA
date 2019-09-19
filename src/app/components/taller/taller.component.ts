@@ -103,13 +103,13 @@ Diagnostico:string;
       this.opt3 = false;
       this.tipo = opt;
     }
-    if ( opt === 'reparacion' ) {
+    if ( opt === 'reparación' ) {
       this.opt1 = false;
       this.opt2 = true;
       this.opt3 = false;
       this.tipo = opt;
     }
-    if ( opt === 'tramite' ) {
+    if ( opt === 'trámite' ) {
       this.opt1 = false;
       this.opt2 = false;
       this.opt3 = true;
@@ -119,7 +119,7 @@ Diagnostico:string;
   onGuardar({value}: {value: RegistroCompletoInterface}) {
     
 //Folio y tipo de servicio
-    value.id = this.indenc2.toLocaleUpperCase();
+    value.id =   this.indenc2.toLocaleUpperCase();
     value.tipo = this.opcion2;
 //Datos de Vehiculo
     value.placa = this.placa.toLocaleUpperCase();
@@ -178,14 +178,14 @@ Diagnostico:string;
         .then(docSnapshot => {
           if (docSnapshot.exists === true) {
             confirm('Registro ' + nameid + ' guardado');
-            value.tipo = 'reparacion';
+            value.tipo = 'reparación';
             this.encuestase.updateType(value);
           } else {
             this.afs.firestore.doc('Encuestatram/' + nameid).get()
             .then(docSnapshot => {
               if (docSnapshot.exists === true) {
                 confirm('Registro ' + nameid+ ' guardado');
-                value.tipo = 'tramite';
+                value.tipo = 'trámite';
                 this.encuestase.updateType(value);
               } else {
                  confirm('Registro ' + nameid + ' no existe');
@@ -232,12 +232,12 @@ Diagnostico:string;
                   this.encuestase.addEncuestaex(value);
                   confirm('Registro ' + this.name + ' guardado');
                 }
-                if (this.opcion === 'reparacion') { 
+                if (this.opcion === 'reparación') { 
                   this.encuestase.addEcuescont(value);
                   this.encuestase.addEncuestare(value);
                   confirm('Registro ' + this.name + ' guardado');
                 }
-                if (this.opcion === 'tramite') {
+                if (this.opcion === 'trámite') {
                   this.encuestase.addEcuescont(value);
                   this.encuestase.addEncuestatr(value);
                   confirm('Registro ' + this.name + ' guardado');

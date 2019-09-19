@@ -1,4 +1,8 @@
 {
     "typescript.locale": "es",
-    "files.defaultLanguage": "es"
+    "files.defaultLanguage": "es",
+    "cSpell.language": "es,en",
+    "cSpell.words": [
+        "Coacalco"
+    ]
 }

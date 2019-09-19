@@ -8,7 +8,7 @@
       <div class="card mt-3 ml-1 text-white text-center" style="background-color: #1a3263"><strong><h2>Resumen de Reportes</h2></strong></div>
           <div class="mat-elevation-z8">
           <mat-form-field class="ml-3">
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda...">
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Búsqueda...">
           </mat-form-field>
           <mat-table #table [dataSource]="dataSource" matSort>
           
@@ -23,7 +23,7 @@
             </ng-container>
 
             <ng-container matColumnDef="Fecha Salida">
-              <mat-header-cell *matHeaderCellDef> Fecha Entrada </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> Fecha Salida </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.fechasal}} </mat-cell>
             </ng-container> 
 
@@ -48,8 +48,8 @@
             </ng-container>
 
             <ng-container matColumnDef="Calificacion">
-              <mat-header-cell *matHeaderCellDef> Calificacion </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{ element.total | titlecase }} </mat-cell>
+              <mat-header-cell *matHeaderCellDef> Calificación </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.total }} </mat-cell>
             </ng-container>
                   
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

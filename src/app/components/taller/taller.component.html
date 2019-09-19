@@ -24,12 +24,12 @@
               <label class="form-check-label" for="OptionExpress1" style="font-size: 1rem"><fa-icon [icon]="faShippingFast" class="fa-2x"></fa-icon><strong> Express</strong></label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="tipo" id="OptionReparacion1" [(ngModel)]="opcion" #OptionReparacion1="ngModel" value="reparacion">
+              <input class="form-check-input" type="radio" name="tipo" id="OptionReparacion1" [(ngModel)]="opcion" #OptionReparacion1="ngModel" value="reparación">
               <label class="form-check-label" for="OptionReparacion1" style="font-size: 1rem"><fa-icon [icon]="faCarCrash" class="fa-2x"></fa-icon><strong> Reparación</strong></label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="tipo" id="OptionTramite1" [(ngModel)]="opcion" #OptionTramite1="ngModel" value="tramite">
-              <label class="form-check-label" for="OptionTramite1" style="font-size: 1rem"><fa-icon [icon]="faNotesMedical" class="fa-2x"></fa-icon><strong> Tramite</strong></label>
+              <input class="form-check-input" type="radio" name="tipo" id="OptionTramite1" [(ngModel)]="opcion" #OptionTramite1="ngModel" value="trámite">
+              <label class="form-check-label" for="OptionTramite1" style="font-size: 1rem"><fa-icon [icon]="faNotesMedical" class="fa-2x"></fa-icon><strong> Trámite</strong></label>
             </div>
         </div>
         <hr style="background-color: black">
@@ -186,7 +186,7 @@
                         </div>
                       </div>
                       <div class="col-auto mx-auto">
-                        <label for="inlineFormInputGroup"><strong>Télefono: </strong></label>
+                        <label for="inlineFormInputGroup"><strong>Teléfono: </strong></label>
                         <div class="input-group mb-2">
                           <div class="input-group-prepend">
                             <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faMobileAlt"></fa-icon></div>
@@ -202,7 +202,7 @@
                           </div>
                           <select  class="form-control" placeholder="Cliente" name="cliente" [(ngModel)]="cliente" #Cliente="ngModel" >
                             <option>CFE Integra</option>
-                            <option>CFE VIga</option>
+                            <option>CFE Viga</option>
                             <option>Centenario</option>
                             <option>Patriotismo</option>
                             <option>Coacalco</option>
@@ -286,9 +286,9 @@
                   </select>
                 </div>
               </div>
-              <!-- Tecnico -->
+              <!-- Técnico -->
               <div class="form-group">
-                <label><strong>Tecnico</strong></label><br>                
+                <label><strong>Técnico</strong></label><br>                
                 <div class="input-group mb-2">
                   <div class="input-group-prepend">
                     <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faUser" ></fa-icon></div>
@@ -382,7 +382,7 @@
                 </div>
                 <hr style="background-color: #f7b633">
               <!-- LLanta de Refaccion-->
-                <label class="mt-3" for="inlineFormInputGroup"><strong>LLanta Refacción</strong></label>
+                <label class="mt-3" for="inlineFormInputGroup"><strong>Llanta Refacción</strong></label>
                 <div class="form-group text-center">
                   <div class="form-check form-check-inline">
                       <input class="form-check-input" type="radio" name="refaccion" id="OptionSiLLRef" value="Si" [(ngModel)]="llantaref" #LLRefs="ngModel">
@@ -539,7 +539,7 @@
         <input type="text" class="form-control" aria-label="Comentarios" aria-describedby="inputGroup-sizing-lg" name="Comentarios" id="coment"  [(ngModel)]="comentarios" #comentario="ngModel">
     </div>
     <hr style="background-color: #f7b633">
-    <!-- Envio formulario Llenado completo-->
+    <!-- Envió formulario Llenado completo-->
         <button type="submit" class="btn btn-primary btn-block btn-lg mb-2" style="font-size: 1rem" value="Guardar" ><strong>Ingresar</strong></button>
       </form>
     </div>

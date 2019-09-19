@@ -348,6 +348,7 @@ arras( x: EncuestaexInterface) {
         const contadortemp = 1
         this.contadorreal = contadortemp + this.contadorreal;
         this.prome = (this.suma / this.contadorreal).toFixed(2);
+        console.log(this.suma+'/suma'+this.contadorreal+'/total')
       }
       return this.suma;
     }
