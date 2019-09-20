@@ -17,7 +17,7 @@
             <div class="col order-first">
                 <div class="tab-pane fade show active" id="v-pills-graficos" role="tabpanel" aria-labelledby="v-pills-graficos-tab">
                     <div class="card border-primary mt-3">
-                        <div class="card-header text-center text-white" style="background-color: #1a3263"><strong><h3>Preguntas Generales</h3></strong></div>
+                        <div class="card-header text-center text-white" style="background-color: #1a3263"><strong><h3>Preguntas</h3></strong></div>
                             <div class="card-group">
                                 <div class="card">
                                     <div class="card-header text-white" style="background-color: #fab95b"><small><strong>El tiempo que transcurrió para que lo atendieran fue...</strong></small></div>
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Le entregaron su vehículo …</strong></small></div>
+                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Le entregaron su vehículo…                                          </strong></small></div>
                                     <div class="card-body" style="background-color: #e8e2db">
                                         <div style="display: block;">
                                             <canvas baseChart 
@@ -94,21 +94,7 @@
                                         </div>    
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>La experiencia en general de su visita a Casanova fue…</strong></small></div>
-                                    <div class="card-body" style="background-color: #e8e2db">
-                                        <div style="display: block;">
-                                            <canvas baseChart 
-                                                [data]="pieChartDataP6" 
-                                                [labels]="pieChartLabels" 
-                                                [chartType]="pieChartType"
-                                                [options]="pieChartOptions"
-                                                [plugins]="pieChartPlugins"
-                                                [legend]="pieChartLegend">
-                                            </canvas>
-                                        </div>    
-                                    </div>
-                                </div>
+                                
                             </div>
                         <div class="card-footer text-right text-white" style="background-color: #1a3263">*Basado en las ultimas 30 encuestas<br>Ultima Actualización</div>
                     </div>  
@@ -116,18 +102,29 @@
             </div>
             <div class="col order-last">
                         <div class="card border-primary mt-3 mb-3">
-                                <div class="card-header text-center text-white" style="background-color: #1a3263"><strong><h3>Servicios</h3></strong></div>
                                     <div class="card-group">
-                                        <div class="card bg-info">
-                                            <div class="card-header text-white text-center"><strong><h3>Express</h3></strong></div>
-                                            <div class="card-group">
-                                                <div class="card">
-                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Información de servicio adicional...</strong></small></div>
+                                            <div class="card">
+                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>La experiencia en general de su visita a Casanova fue…</strong></small></div>
                                                     <div class="card-body" style="background-color: #e8e2db">
                                                         <div style="display: block;">
                                                             <canvas baseChart 
-                                                                [data]="pieChartDataP1_E" 
-                                                                [labels]="pieChartLabelP1_E" 
+                                                                [data]="pieChartDataP6" 
+                                                                [labels]="pieChartLabels" 
+                                                                [chartType]="pieChartType"
+                                                                [options]="pieChartOptions"
+                                                                [plugins]="pieChartPlugins"
+                                                                [legend]="pieChartLegend">
+                                                            </canvas>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Información detallada / adicional / cita...</strong></small></div>
+                                                    <div class="card-body" style="background-color: #e8e2db">
+                                                        <div style="display: block;">
+                                                            <canvas baseChart 
+                                                                [data]="pieChartDataP7" 
+                                                                [labels]="pieChartLabelP7" 
                                                                 [chartType]="pieChartType"
                                                                 [options]="pieChartOptions"
                                                                 [plugins]="pieChartPlugins"
@@ -137,12 +134,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="card">
-                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Tiempo de entrega...</strong></small></div>
+                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Tiempo de entrega vehículo...</strong></small></div>
                                                     <div class="card-body" style="background-color: #e8e2db">
                                                         <div style="display: block;">
                                                             <canvas baseChart 
-                                                                [data]="pieChartDataP2_E" 
-                                                                [labels]="pieChartLabelP2_E" 
+                                                                [data]="pieChartDataP8" 
+                                                                [labels]="pieChartLabelP8" 
                                                                 [chartType]="pieChartType"
                                                                 [options]="pieChartOptions"
                                                                 [plugins]="pieChartPlugins"
@@ -151,17 +148,12 @@
                                                         </div>     
                                                     </div>
                                                 </div>
-                                              </div>
-                                        </div>
-                                        <div class="card bg-danger">
-                                            <div class="card-header text-white text-center"><strong><h3>Reparación</h3></strong></div>
-                                            <div class="card-group">
                                                 <div class="card">
-                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Información de servicio adicional..</strong></small></div>
+                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Se explicó el motivo</strong></small></div>
                                                     <div class="card-body" style="background-color: #e8e2db">
                                                         <div style="display: block;">
                                                             <canvas baseChart 
-                                                                [data]="pieChartDataP1_T" 
+                                                                [data]="pieChartDataP1_R" 
                                                                 [labels]="pieChartLabelP1_T" 
                                                                 [chartType]="pieChartType"
                                                                 [options]="pieChartOptions"
@@ -172,7 +164,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card">
-                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Entrega en tiempo...</strong></small></div>
+                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Usted ingresó el vehículo?</strong></small></div>
                                                     <div class="card-body" style="background-color: #e8e2db">
                                                         <div style="display: block;">
                                                             <canvas baseChart 
@@ -186,43 +178,7 @@
                                                         </div>   
                                                     </div>
                                                 </div>
-                                              </div>
-                                        </div>
-                                        <div class="card bg-success">
-                                            <div class="card-header text-white text-center"><strong><h3>Trámite</h3></strong></div>
-                                            <div class="card-group">
-                                                <div class="card">
-                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Se informa de cita a verificación...</strong></small></div>
-                                                    <div class="card-body" style="background-color: #e8e2db">
-                                                        <div style="display: block;">
-                                                            <canvas baseChart 
-                                                                [data]="pieChartDataP1_T" 
-                                                                [labels]="pieChartLabelP1_T" 
-                                                                [chartType]="pieChartType"
-                                                                [options]="pieChartOptions"
-                                                                [plugins]="pieChartPlugins"
-                                                                [legend]="pieChartLegend">
-                                                            </canvas>
-                                                        </div>   
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-header text-white" style="background-color: #fab95b"><small><strong>Entrega en tiempo...</strong></small></div>
-                                                    <div class="card-body">
-                                                        <div style="display: block;">
-                                                            <canvas baseChart 
-                                                                [data]="pieChartDataP2_T" 
-                                                                [labels]="pieChartLabelP2_T" 
-                                                                [chartType]="pieChartType"
-                                                                [options]="pieChartOptions"
-                                                                [plugins]="pieChartPlugins"
-                                                                [legend]="pieChartLegend">
-                                                            </canvas>
-                                                        </div>  
-                                                    </div>
-                                                </div>
-                                              </div>
-                                        </div>
+                                            
                                     </div>
                                 <div class="card-footer text-right text-white" style="background-color: #1a3263">*Basado en las ultimas 30 Encuestas<br>Ultima Actualización</div>
                             </div>  
