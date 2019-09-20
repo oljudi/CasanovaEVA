@@ -271,7 +271,7 @@ sendemail(t:number) {
   const name = 'Jonathan Huerta';
   const email = 'jonathan.huerta@casanovarentacar.mx';
   const message = 'ALERTA !!!!! HUBO UN PROBLEMA CON EL CLIENTE';
-  const subject = 'Validar situacion calificación de encuesta: ' + this.totalnot;
+  const subject = 'Validar situación calificación de encuesta: ' + this.totalnot;
 
   let formRequest = { name, email, subject, message};
   this.af.list('/messages').push(formRequest);
@@ -281,7 +281,7 @@ sendemail(t:number) {
     const name = 'Jonathan Huerta';
     const email = 'jonathan.huerta@casanovarentacar.mx';
     const message = 'Felicidades el servicio fue el mejor';
-    const subject = 'La calificacion del servicio fue: ' + this.totalnot;
+    const subject = 'La calificación del servicio fue: ' + this.totalnot;
 
     let formRequest = { name, email, subject, message};
     this.af.list('/messages').push(formRequest);
@@ -355,10 +355,14 @@ p10ex(x) {
     this.model2.p10 = 1;
   } else {
     this.model.p10 = 'No';
+    this.model.p2 = 10;
+    this.model2.p2 = 1;
+    this.model.p2
     this.model.p10c = 0;
     this.model2.p10 = 0;
   }
-  
+  //pregunta 10 y 2 son juntas
+  //pregunta 3 y 9 son juntas
   // console.log(x, this.model.p10);
 }
 p9ex(x) {
@@ -370,6 +374,8 @@ p9ex(x) {
     this.model.p9 = 'Si';
     this.model.p9c = 1;
     this.model2.p9 = 1;
+    this.model.p3 = 5;
+    this.model2.p3 = 0;
   }
  
 }

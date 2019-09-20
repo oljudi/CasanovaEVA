@@ -314,9 +314,10 @@ minter: MetaInterface;
    // tslint:disable-next-line:max-line-length
    // this.list = this.afs.collection('Encuestaexes').snapshotChanges().pipe(map(action => {return action.map( a => {const idz = a.payload.doc.id; return idz});}));
     this.afs.collection('type').doc('VI0001').valueChanges().pipe(take(1)).subscribe(res => {this.arras(res); } );
-    // //console.log(this.listadoEncuestaex);
+    
 }
 arras( x: EncuestaexInterface) {
+  console.log(this.contadorre);
   for (let i = 0 ; i < this.contador ; i++ ) {
     this.ens = this.list[i] as string;
     this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res); } );
