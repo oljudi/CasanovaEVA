@@ -23,7 +23,7 @@
 <br />
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 reg">
       <div class="card">
         <div class="card-body">
           <i class="fa fa-address-book" aria-hidden="true"></i>
@@ -60,7 +60,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+
+    <div class="col-md-4 reg">
       <div class="card">
         <div class="card-body">
           <i class="fa fa-address-book" aria-hidden="true"></i>
@@ -101,7 +102,52 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    
+  </div>
+  <div class="row">
+ <div class="col-md-4 reg">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <strong> Asesor </strong>
+        </div>
+        <div class="card-header">
+          <form (ngSubmit)="nuevoasesor(asesor.value)" [formGroup]="asesor">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="idasesor">ID: </label><br />
+                <input class="form-control" type="text" formControlName="id_asesor"/>
+                <br />
+                <label for="nombreasesor">Nombre: </label><br />
+                <input class="form-control" type="text" formControlName="nombre"/>
+              </div>
+              <div class="col-md-6">
+                <label for="ubicacionasesor">Lugar de Trabajo: </label><br />
+                <select class="form-control" name="ubicacion" id="ubicacionasesor" formControlName="ubicacion">
+                  <option value="La viga">La viga</option>
+                  <option value="Centenario">Centenario</option>
+                  <option value="Tlalnepantla">Tlalnepantla</option>
+                  <option value="Patriotismo">Patriotismo</option>
+                  <option value="Coacalco">Coacalco</option>
+                  <option value="Vallejo">Vallejo</option>
+                  <option value="Chapultepec">Chapultepec</option>
+                </select>
+                <br /><br />
+                <button
+                  type="submit"
+                  [disabled]="!asesor.valid"
+                  class="btn btn-outline-primary btn-lg btn-block"
+                >
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 reg">
       <div class="card">
         <div class="card-body">
           <i class="fa fa-address-book" aria-hidden="true"></i>
@@ -111,10 +157,10 @@
           <form (ngSubmit)="nuevocliente(cliente.value)" [formGroup]="cliente">
             <div class="row">
               <div class="col-md-6">
-                <label for="idMecanico">ID: </label><br />
+                <label for="idCliente">ID: </label><br />
                 <input class="form-control" type="text" formControlName="id_cliente"/>
                 <br />
-                <label for="nombreMecanico">Nombre: </label><br />
+                <label for="nombreCliente">Nombre: </label><br />
                 <input class="form-control" type="text" formControlName="nombre"/>
               </div>
               <br>
@@ -131,6 +177,7 @@
           </form>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -242,6 +289,37 @@
             </ngx-datatable>
         </div>
     </div>
+         <!-- Tabla encuestas Tramites -->
+         <div class="card border-primary mt-3 ml-3 mr-3">
+            <div class="card-header text-center bg-warning text-white">
+                <h5><strong style="font-size: 1.5rem">Asesores</strong></h5>
+            </div>
+            <div class="card-body ">
+                <ngx-datatable
+                    class="material"
+                    [headerHeight]="35"
+                    [columnMode]="'force'"
+                    [rowHeight]="'auto'"
+                    [footerHeight]="30"
+                    [count]="true"
+                    [limit]="5"
+                    [rows]="rows4"
+                >
+                <ngx-datatable-column name="id">
+                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="nombre">
+                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="ubicacion">
+                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="">
+                  <ng-template ngx-datatable-cell-template let-row="row" let-value="value"><button class="btn btn-danger" type="button"  (click)="eliminaras(row.id)" >Eliminar</button></ng-template>
+              </ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
 </div>
     <!-- </div> -->
 <!-- </div> -->

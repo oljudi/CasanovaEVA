@@ -24,6 +24,12 @@ export class AgregatorComponent implements OnInit {
     ubicacion: new FormControl('', Validators.required)
   });
 
+  public asesor = new FormGroup ({
+    id_asesor: new FormControl('', Validators.required),
+    nombre: new FormControl('', Validators.required),
+    ubicacion: new FormControl('', Validators.required)
+  });
+
   public cliente = new FormGroup ({
     id_cliente: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required)
@@ -32,14 +38,16 @@ export class AgregatorComponent implements OnInit {
   rows1: any;
   rows2: any;
   rows3: any;
+  rows4: any;
 
   constructor(
     private _apolo: ApoloService,
-    private afs: AngularFirestore,
+    private afs: AngularFirestore
   ) { 
     this.iniciaraf();
     this.inciarmecanico();
     this.iniciarcliente();
+    this.inciarasesor();
   }
 
   ngOnInit() {
@@ -47,6 +55,7 @@ export class AgregatorComponent implements OnInit {
     this.getData1();
     this.getData2();
     this.getData3();
+    this.getData4();
   }
 
   iniciaraf() {
@@ -102,6 +111,34 @@ export class AgregatorComponent implements OnInit {
       console.log('UPDATE status');
     }
   }
+
+  inciarasesor(){
+    this.asesor.setValue({
+      id_asesor: '',
+      nombre: '',
+      ubicacion: ''
+    });
+  }
+
+  public nuevoasesor(form) {
+    if(this.status === 1){
+      let data = {
+        id: form.id_asesor,
+        id_asesor: form.id_asesor,
+        nombre: form.nombre,
+        ubicacion: form.ubicacion
+      }
+      this._apolo.addasesor( data ).then(() => {
+        console.log('Asesor creado con éxito!');
+        this.inciarasesor();
+      }, (error) => {
+        console.log('ERROR: ', error);
+      });
+    } else {
+      console.log('UPDATE status');
+    }
+  }
+
   public nuevocliente(form) {
     if(this.status === 1) {
       let data = {
@@ -127,17 +164,16 @@ export class AgregatorComponent implements OnInit {
     });
   }
 eliminarm(x: string){
-  console.log('Sireve? id= '+ x)
-
   this._apolo.deletemecanico(x);
 }
 eliminaraf(x: string){
-  console.log('Sireve? id= '+ x)
   this._apolo.deleteadministrador(x);
 }
 eliminarc(x: string){
-  console.log('Sireve? id= '+ x)
   this._apolo.deletecliente(x);
+}
+eliminaras(x: string){
+  this._apolo.deleteasesor(x);
 }
 
  
@@ -157,6 +193,12 @@ eliminarc(x: string){
     //get coll
         this.afs.collection('Mecanicos').valueChanges().subscribe((encuesta) => {
        this.rows3 = encuesta ;
+     });
+   }
+   getData4() {
+    //get coll
+        this.afs.collection('Asesor').valueChanges().subscribe((encuesta) => {
+       this.rows4 = encuesta ;
      });
    }
 }

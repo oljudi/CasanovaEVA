@@ -3,6 +3,7 @@ import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/fires
 import { AdminFlota } from '../Models/admin-flota';
 import { Mecanico } from '../Models/mecanico';
 import { Cliente } from '../Models/cliente';
+import { asesor } from '../Models/asesor';
 
 @Injectable({
   providedIn: "root"
@@ -11,13 +12,15 @@ export class ApoloService {
   public admFlotaCollection: AngularFirestoreCollection<AdminFlota>;
   public mecanicosCollection: AngularFirestoreCollection<Mecanico>;
   public clientesCollection: AngularFirestoreCollection<Cliente>;
+  public asesorCollection: AngularFirestoreCollection<asesor>;
 
   constructor(private afs: AngularFirestore) {
     this.admFlotaCollection = this.afs.collection("AdministradoresFlota",ref => ref);
     this.mecanicosCollection = this.afs.collection("Mecanicos", ref => ref);
     this.clientesCollection = this.afs.collection("Clientes", ref => ref);
+    this.asesorCollection = this.afs.collection("Asesor", ref => ref);
   }
-
+//-------------------------------------------------------------------------------------------
   addadministrador(data: AdminFlota) {
     return this.admFlotaCollection.doc(data.id_af).set(data);
   }
@@ -27,7 +30,10 @@ export class ApoloService {
   addcliente(data: Cliente) {
     return this.clientesCollection.doc(data.id_cliente).set(data);
   }
-
+  addasesor(data: asesor) {
+    return this.asesorCollection.doc(data.id_asesor).set(data);
+  }
+//-------------------------------------------------------------------------------------------
   updateadministrador(data: AdminFlota) {
     this.admFlotaCollection.doc(data.id_af).update(data);
   }
@@ -37,7 +43,10 @@ export class ApoloService {
   updatecliente(data: Cliente) {
     this.clientesCollection.doc(data.id_cliente).update(data);
   }
-
+  updateasesor(data: asesor) {
+    this.clientesCollection.doc(data.id_asesor).update(data);
+  }
+//-------------------------------------------------------------------------------------------
   deleteadministrador(data: string) {
     this.admFlotaCollection.doc(data).delete();
   }
@@ -45,6 +54,9 @@ export class ApoloService {
     this.mecanicosCollection.doc(data).delete();
   }
   deletecliente(data: string) {
+    this.clientesCollection.doc(data).delete();
+  }
+  deleteasesor(data: string) {
     this.clientesCollection.doc(data).delete();
   }
 

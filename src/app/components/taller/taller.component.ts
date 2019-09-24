@@ -88,6 +88,9 @@ tipo: string;
 comentarios: string;
 Diagnostico:string;
 rows1:any;
+rows2:any;
+rows3:any;
+rows4:any;
 
   constructor(
     private afs: AngularFirestore,
@@ -102,6 +105,15 @@ rows1:any;
         this.afs.collection('Clientes').valueChanges().subscribe((encuesta) => {
        this.rows1 = encuesta ;
      });
+     this.afs.collection('AdministradoresFlota').valueChanges().subscribe((encuesta) => {
+      this.rows2 = encuesta ;
+    });
+    this.afs.collection('Mecanicos').valueChanges().subscribe((encuesta) => {
+      this.rows3 = encuesta ;
+    });
+    this.afs.collection('Asesor').valueChanges().subscribe((encuesta) => {
+      this.rows4 = encuesta ;
+    });
         }
   Option( opt: string ) {
     if ( opt === 'express' ) {
@@ -124,7 +136,7 @@ rows1:any;
     }
   }
   Window(){
-    var iframe = '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="agregator" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
+    var iframe = '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe name="CASANOVA SEVS" src="agregator" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
 
 var win = window.open("CASANOVA SEVS","CASANOVA SEVS","width=800,height=580,toolbar=no,menubar=no,resizable=no");
 win.document.write(iframe);
