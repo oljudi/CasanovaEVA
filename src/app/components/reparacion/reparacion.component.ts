@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { faTired, faSadTear, faGrin, faSmileBeam, faCheckSquare, faTimesCircle, faMeh, faHourglassStart, faHourglassHalf, faHourglassEnd, faVoteYea, faCarSide, faTruck, faTruckPickup, faAmbulance } from '@fortawesome/free-solid-svg-icons';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
 import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
 import { EncuestaService } from 'src/app/services/encuesta.service';
@@ -10,6 +8,7 @@ import {  Router, ActivatedRoute } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Http, Headers, Response, URLSearchParams, RequestOptions, HttpModule } from '@angular/http';
 
 @Component({
   selector: 'app-reparacion',
@@ -27,6 +26,7 @@ export class ReparacionComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private encuestaService: EncuestaService,
     private router: Router,
+    private http: Http,
     private route: ActivatedRoute,
     private afs: AngularFirestore,
     private af: AngularFireDatabase
@@ -287,7 +287,7 @@ sendemail(t:number) {
     this.af.list('/messages').push(formRequest);
     
     }
-/*
+
   let url = `https://us-central1-casanovaeva01.cloudfunctions.net/httpEmail`;
   let params: URLSearchParams = new URLSearchParams();
   //private _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -308,7 +308,7 @@ sendemail(t:number) {
                     console.log(err)
                   })
                   
-                */
+                
 }
 
 p1ex(x) {

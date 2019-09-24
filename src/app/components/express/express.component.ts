@@ -1,26 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-// tslint:disable-next-line:max-line-length
 import { faTired, faSadTear, faGrin, faSmileBeam, faCheckSquare, faTimesCircle, faMeh, faHourglassStart, faHourglassHalf, faHourglassEnd, faVoteYea, faCarSide, faTruck, faTruckPickup, faAmbulance } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import {EncuestaexInterface} from '../../Models/Encuestaex';
 import {EncuestaService} from '../../services/encuesta.service';
 import {Observable, Subscription} from 'rxjs';
-
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Http, Headers, Response, URLSearchParams, RequestOptions, HttpModule } from '@angular/http';
-
-//import {} from 'rxjs';
-
 import { MAT_STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { Router, ActivatedRoute } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-
-
-
 
 @Component({
   selector: 'app-express',
@@ -292,7 +282,7 @@ totalnot:number;
       this.af.list('/messages').push(formRequest);
       
       }
-/*
+
     let url = `https://us-central1-casanovaeva01.cloudfunctions.net/httpEmail`;
     let params: URLSearchParams = new URLSearchParams();
     //private _options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -313,7 +303,7 @@ totalnot:number;
                       console.log(err)
                     })
                     
-                  */
+                  
 }
 
 
