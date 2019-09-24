@@ -87,6 +87,7 @@ tecnico:string;
 tipo: string;
 comentarios: string;
 Diagnostico:string;
+rows1:any;
 
   constructor(
     private afs: AngularFirestore,
@@ -94,8 +95,14 @@ Diagnostico:string;
 
   ngOnInit() {
     this.Option( this.value );
+    this.getData1();
   }
-
+  getData1() {
+    //get coll
+        this.afs.collection('Clientes').valueChanges().subscribe((encuesta) => {
+       this.rows1 = encuesta ;
+     });
+        }
   Option( opt: string ) {
     if ( opt === 'express' ) {
       this.opt1 = true;

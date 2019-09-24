@@ -1,5 +1,6 @@
 export interface Mecanico {
-    id_Mecanico ?: string;
+    id ?: string;
+    id_mecanico ?: string;    
     nombre ?: string;
     ubicacion ?: string;
 }

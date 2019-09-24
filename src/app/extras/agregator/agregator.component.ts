@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApoloService } from 'src/app/services/apolo.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-agregator',
@@ -11,37 +12,46 @@ export class AgregatorComponent implements OnInit {
 
   public status = 1;
 
-  public nuevoAF = new FormGroup ({
-    id_AF: new FormControl('', Validators.required),
+  public nuevoaf = new FormGroup ({
+    id_af: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required),
     ubicacion: new FormControl('', Validators.required)
   });
 
   public mecanico = new FormGroup ({
-    id_Mecanico: new FormControl('', Validators.required),
+    id_mecanico: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required),
     ubicacion: new FormControl('', Validators.required)
   });
 
   public cliente = new FormGroup ({
-    id_Cliente: new FormControl('', Validators.required),
+    id_cliente: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required)
   })
 
+  rows1: any;
+  rows2: any;
+  rows3: any;
+
   constructor(
-    private _apolo: ApoloService
+    private _apolo: ApoloService,
+    private afs: AngularFirestore,
   ) { 
-    this.iniciarAF();
-    this.inciarMecanico();
-    this.iniciarCliente();
+    this.iniciaraf();
+    this.inciarmecanico();
+    this.iniciarcliente();
   }
 
   ngOnInit() {
+    
+    this.getData1();
+    this.getData2();
+    this.getData3();
   }
 
-  iniciarAF() {
-    this.nuevoAF.setValue({
-      id_AF: '',
+  iniciaraf() {
+    this.nuevoaf.setValue({
+      id_af: '',
       nombre: '',
       ubicacion: ''
     });
@@ -50,13 +60,14 @@ export class AgregatorComponent implements OnInit {
   public nuevoAdminFlota(form) {
     if(this.status === 1){
       let data = {
-        id_AF: form.id_AF,
+        id: form.id_af,
+        id_af: form.id_af,
         nombre: form.nombre,
         ubicacion: form.ubicacion
       }
-      this._apolo.addAdministrador( data ).then(() => {
-        console.log('Administrador Flota creado con exito!');
-        this.iniciarAF();
+      this._apolo.addadministrador( data ).then(() => {
+        console.log('Administrador Flota creado con éxito!');
+        this.iniciaraf();
       }, (error) => {
         console.log('ERROR: ', error);
       });
@@ -65,24 +76,42 @@ export class AgregatorComponent implements OnInit {
     }
   }
 
-  inciarMecanico(){
+  inciarmecanico(){
     this.mecanico.setValue({
-      id_Mecanico: '',
+      id_mecanico: '',
       nombre: '',
       ubicacion: ''
     });
   }
 
-  public nuevoMecanico(form) {
+  public nuevomecanico(form) {
     if(this.status === 1){
       let data = {
-        id_Mecanico: form.id_Mecanico,
+        id: form.id_mecanico,
+        id_mecanico: form.id_mecanico,
         nombre: form.nombre,
         ubicacion: form.ubicacion
       }
-      this._apolo.addMecanico( data ).then(() => {
-        console.log('Mecanico creado con exito!');
-        this.inciarMecanico();
+      this._apolo.addmecanico( data ).then(() => {
+        console.log('Mecanico creado con éxito!');
+        this.inciarmecanico();
+      }, (error) => {
+        console.log('ERROR: ', error);
+      });
+    } else {
+      console.log('UPDATE status');
+    }
+  }
+  public nuevocliente(form) {
+    if(this.status === 1) {
+      let data = {
+        id: form.id_cliente,
+        id_cliente: form.id_cliente,
+        nombre: form.nombre
+      }
+      this._apolo.addcliente( data ).then(() => {
+        console.log('Cliente creado con éxito!');
+        this.iniciarcliente();
       }, (error) => {
         console.log('ERROR: ', error);
       });
@@ -91,27 +120,43 @@ export class AgregatorComponent implements OnInit {
     }
   }
 
-  iniciarCliente(){
+  iniciarcliente(){
     this.cliente.setValue({
-      id_Cliente: '',
+      id_cliente: '',
       nombre: ''
     });
   }
+eliminarm(x: string){
+  console.log('Sireve? id= '+ x)
 
-  public nuevoCliente(form) {
-    if(this.status === 1) {
-      let data = {
-        id_Cliente: form.id_Cliente,
-        nombre: form.nombre
-      }
-      this._apolo.addCliente( data ).then(() => {
-        console.log('Cliente creado con exito!');
-        this.iniciarCliente();
-      }, (error) => {
-        console.log('ERROR: ', error);
-      });
-    } else {
-      console.log('UPDATE status');
-    }
-  }
+  this._apolo.deletemecanico(x);
+}
+eliminaraf(x: string){
+  console.log('Sireve? id= '+ x)
+  this._apolo.deleteadministrador(x);
+}
+eliminarc(x: string){
+  console.log('Sireve? id= '+ x)
+  this._apolo.deletecliente(x);
+}
+
+ 
+  getData1() {
+    //get coll
+        this.afs.collection('Clientes').valueChanges().subscribe((encuesta) => {
+       this.rows1 = encuesta ;
+     });
+        }
+   getData2() {
+    //get coll
+        this.afs.collection('AdministradoresFlota').valueChanges().subscribe((encuesta) => {
+       this.rows2 = encuesta ;
+     });
+   }
+   getData3() {
+    //get coll
+        this.afs.collection('Mecanicos').valueChanges().subscribe((encuesta) => {
+       this.rows3 = encuesta ;
+     });
+   }
 }

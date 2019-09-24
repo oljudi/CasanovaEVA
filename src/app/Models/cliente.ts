@@ -1,4 +1,5 @@
 export interface Cliente {
-    id_Cliente ?: string;
+    id ?: string;
+    id_cliente ?: string;
     nombre ?: string;
 }

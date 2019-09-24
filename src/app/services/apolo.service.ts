@@ -18,34 +18,34 @@ export class ApoloService {
     this.clientesCollection = this.afs.collection("Clientes", ref => ref);
   }
 
-  addAdministrador(data: AdminFlota) {
-    return this.admFlotaCollection.doc(data.id_AF).set(data);
+  addadministrador(data: AdminFlota) {
+    return this.admFlotaCollection.doc(data.id_af).set(data);
   }
-  addMecanico(data: Mecanico) {
-    return this.mecanicosCollection.doc(data.id_Mecanico).set(data);
+  addmecanico(data: Mecanico) {
+    return this.mecanicosCollection.doc(data.id_mecanico).set(data);
   }
-  addCliente(data: Cliente) {
-    return this.clientesCollection.doc(data.id_Cliente).set(data);
-  }
-
-  updateAdministrador(data: AdminFlota) {
-    this.admFlotaCollection.doc(data.id_AF).update(data);
-  }
-  updateMecanico(data: Mecanico) {
-    this.mecanicosCollection.doc(data.id_Mecanico).update(data);
-  }
-  updateCliente(data: Cliente) {
-    this.clientesCollection.doc(data.id_Cliente).update(data);
+  addcliente(data: Cliente) {
+    return this.clientesCollection.doc(data.id_cliente).set(data);
   }
 
-  deleteAdministrador(data: AdminFlota) {
-    this.admFlotaCollection.doc(data.id_AF).delete();
+  updateadministrador(data: AdminFlota) {
+    this.admFlotaCollection.doc(data.id_af).update(data);
   }
-  deleteMecanico(data: Mecanico) {
-    this.mecanicosCollection.doc(data.id_Mecanico).delete();
+  updatemecanico(data: Mecanico) {
+    this.mecanicosCollection.doc(data.id_mecanico).update(data);
   }
-  deleteCliente(data: Cliente) {
-    this.clientesCollection.doc(data.id_Cliente).delete();
+  updatecliente(data: Cliente) {
+    this.clientesCollection.doc(data.id_cliente).update(data);
+  }
+
+  deleteadministrador(data: string) {
+    this.admFlotaCollection.doc(data).delete();
+  }
+  deletemecanico(data: string) {
+    this.mecanicosCollection.doc(data).delete();
+  }
+  deletecliente(data: string) {
+    this.clientesCollection.doc(data).delete();
   }
 
 }

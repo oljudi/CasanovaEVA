@@ -241,15 +241,6 @@ export class ReportsComponent implements OnInit {
     this.pieChartDataP2_R = [this.cp10mm,this.cp10mb];
     this.pieChartDataP2_T = [this.cp10mm,this.cp10mb];
 
-    console.log(this.cp2mb+'/'+this.cp2b+'/'+this.cp2r+'/'+this.cp2m+'/'+this.cp2mm);
-    console.log(this.cp3mb+'/'+this.cp3b+'/'+this.cp3r+'/'+this.cp3m+'/'+this.cp3mm);
-    console.log(this.cp4mb+'/'+this.cp4b+'/'+this.cp4r+'/'+this.cp4m+'/'+this.cp4mm);
-    console.log(this.cp5mb+this.cp5mm);
-    console.log(this.cp6mb+'/'+this.cp6b+'/'+this.cp6r+'/'+this.cp6m+'/'+this.cp6mm);
-    console.log(this.cp7mb+'/'+this.cp7b+'/'+this.cp7r+'/'+this.cp7m+'/'+this.cp7mm);
-    console.log(this.cp8mb+'/'+this.cp8r+'/'+this.cp8mm);
-    console.log(this.cp9mb+'/'+this.cp9mm);
-    console.log(this.cp10mb+'/'+this.cp10mm);
 
 
  }

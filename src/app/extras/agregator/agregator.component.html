@@ -30,11 +30,11 @@
           <strong> Administradores de Flota</strong>
         </div>
         <div class="card-header">
-          <form (ngSubmit)="nuevoAdminFlota(nuevoAF.value)" [formGroup]="nuevoAF">
+          <form (ngSubmit)="nuevoAdminFlota(nuevoaf.value)" [formGroup]="nuevoaf">
             <div class="row">
               <div class="col-md-6">
                 <label for="idAdminFlota">ID: </label><br />
-                <input class="form-control" type="text" formControlName="id_AF"/>
+                <input class="form-control" type="text" formControlName="id_af"/>
                 <br />
                 <label for="nombreAdminFlota">Nombre: </label><br />
                 <input class="form-control" type="text" formControlName="nombre"/>
@@ -49,7 +49,7 @@
                 <br /><br />
                 <button
                   type="submit"
-                  [disabled]="!nuevoAF.valid"
+                  [disabled]="!nuevoaf.valid"
                   class="btn btn-outline-primary btn-block btn-lg"
                 >
                   Enviar
@@ -67,11 +67,11 @@
           <strong> Mecanicos</strong>
         </div>
         <div class="card-header">
-          <form (ngSubmit)="nuevoMecanico(mecanico.value)" [formGroup]="mecanico">
+          <form (ngSubmit)="nuevomecanico(mecanico.value)" [formGroup]="mecanico">
             <div class="row">
               <div class="col-md-6">
                 <label for="idMecanico">ID: </label><br />
-                <input class="form-control" type="text" formControlName="id_Mecanico"/>
+                <input class="form-control" type="text" formControlName="id_mecanico"/>
                 <br />
                 <label for="nombreMecanico">Nombre: </label><br />
                 <input class="form-control" type="text" formControlName="nombre"/>
@@ -108,15 +108,16 @@
           <strong> Clientes</strong>
         </div>
         <div class="card-header">
-          <form (ngSubmit)="nuevoCliente(cliente.value)" [formGroup]="cliente">
+          <form (ngSubmit)="nuevocliente(cliente.value)" [formGroup]="cliente">
             <div class="row">
               <div class="col-md-6">
                 <label for="idMecanico">ID: </label><br />
-                <input class="form-control" type="text" formControlName="id_Cliente"/>
+                <input class="form-control" type="text" formControlName="id_cliente"/>
                 <br />
                 <label for="nombreMecanico">Nombre: </label><br />
                 <input class="form-control" type="text" formControlName="nombre"/>
               </div>
+              <br>
               <div class="col-md-6">
                 <button
                   type="submit"
@@ -140,151 +141,107 @@
     style="background-color: #2A206F; font-size: 1rem"
   >
     <div class="card-body">
-      <i class="fa fa-times" aria-hidden="true"></i>
-      <strong> Modificar/Eliminar campos </strong>
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <strong> Registros </strong>
     </div>
   </div>
 </div>
 <br />
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <i class="fa fa-address-book" aria-hidden="true"></i>
-          <strong> Administradores de Flota</strong>
+<!-- <div class="tab-content" id="pills-tabContent"> -->
+  <!-- Detalles de Encuesta "Muestra las encuestas realizadas con la calificación que tienen en cada pregunta" -->
+  <!-- <div class="tab-pane fade" id="pills-encuesta" role="tabpanel" aria-labelledby="pills-encuesta-tab"> -->
+    <div class="card border-success mt-3 mr-3 ml-3 mb-3">
+    <!-- Tabla encuestas Express -->
+    <div class="card border-primary mt-3 ml-3 mr-3">
+        <div class="card-header text-center bg-info text-white">
+            <h5><strong style="font-size: 1.5rem">Clientes</strong></h5>
         </div>
-        <div class="card-header">
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="ID"
-              aria-label="IDadminFB"
-              aria-describedby="busquedaADMFLOT"
-            />
-            <div class="input-group-append">
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                id="busquedaADMFLOT"
-              >
-                Buscar
-              </button>
+            <div class="card-body ">
+                <ngx-datatable
+                    class="material"
+                    [headerHeight]="35"
+                    [columnMode]="'force'"
+                    [rowHeight]="'auto'"
+                    [footerHeight]="30"
+                    [count]="true"
+                    [limit]="5"
+                    [rows]="rows1"
+                >
+                <ngx-datatable-column name="id">
+                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="nombre">
+                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="">
+                  <ng-template ngx-datatable-cell-template let-row="row" let-value="value"><button class="btn btn-danger" type="button"  (click)="eliminarc(row.id)" >Eliminar</button></ng-template>
+              </ngx-datatable-column>
+                </ngx-datatable>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <label for="idAdminFlota">ID: </label><br />
-              <input type="text" />
-              <br />
-              <label for="nombreAdminFlota">Nombre: </label><br />
-              <input type="text" />
-            </div>
-            <div class="col-md-6">
-              <label for="ubicacionAdminFlota">Lugar de Trabajo: </label><br />
-              <input type="text" />
-              <br /><br />
-            </div>
-          </div>
-          <br />
-          <div class="col-md-7 mx-auto">
-            <button class="btn btn-success" type="">Modificar</button>
-            <button class="btn btn-danger" type="">Eliminar</button>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <i class="fa fa-address-book" aria-hidden="true"></i>
-          <strong> Mecanicos</strong>
+    <!-- Tabla encuestas Reparaciones -->
+    <div class="card border-primary mt-3 ml-3 mr-3">
+        <div class="card-header text-center bg-danger text-white">
+            <h5><strong style="font-size: 1.5rem">Administradores Flota</strong></h5>
         </div>
-        <div class="card-header">
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="ID"
-              aria-label="IDadminFB"
-              aria-describedby="busquedaADMFLOT"
-            />
-            <div class="input-group-append">
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                id="busquedaADMFLOT"
-              >
-                Buscar
-              </button>
+            <div class="card-body ">
+                <ngx-datatable
+                    class="material"
+                    [headerHeight]="35"
+                    [columnMode]="'force'"
+                    [rowHeight]="'auto'"
+                    [footerHeight]="30"
+                    [count]="true"
+                    [limit]="5"
+                    [rows]="rows2"
+                >
+                <ngx-datatable-column name="id">
+                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="nombre">
+                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="ubicacion">
+                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="">
+                  <ng-template ngx-datatable-cell-template let-row="row" let-value="value"><button class="btn btn-danger" type="button"  (click)="eliminaraf(row.id)" >Eliminar</button></ng-template>
+              </ngx-datatable-column>
+                </ngx-datatable>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <label for="idMecanico">ID: </label><br />
-              <input type="text" />
-              <br />
-              <label for="nombreMecanico">Nombre: </label><br />
-              <input type="text" />
-            </div>
-            <div class="col-md-6">
-              <label for="ubicacionMecanico">Lugar de Trabajo: </label><br />
-              <input type="text" />
-              <br />
-            </div>
-          </div>
-          <br />
-          <div class="col-md-7 mx-auto">
-            <button class="btn btn-success" type="">Modificar</button>
-            <button class="btn btn-danger" type="">Eliminar</button>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <i class="fa fa-address-book" aria-hidden="true"></i>
-          <strong> Clientes</strong>
+    
+        <!-- Tabla encuestas Tramites -->
+    <div class="card border-primary mt-3 ml-3 mr-3">
+        <div class="card-header text-center bg-success text-white">
+            <h5><strong style="font-size: 1.5rem">Mecánicos</strong></h5>
         </div>
-        <div class="card-header">
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="ID"
-              aria-label="IDadminFB"
-              aria-describedby="busquedaADMFLOT"
-            />
-            <div class="input-group-append">
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                id="busquedaADMFLOT"
-              >
-                Buscar
-              </button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <label for="idMecanico">ID: </label><br />
-              <input type="text" />
-              <br />
-              <label for="nombreMecanico">Nombre: </label><br />
-              <input type="text" />
-            </div>
-            <div class="col-md-6"></div>
-          </div>
-          <br />
-          <div class="col-md-7 mx-auto">
-            <button class="btn btn-success" type="">Modificar</button>
-            <button class="btn btn-danger" type="">Eliminar</button>
-          </div>
+        <div class="card-body ">
+            <ngx-datatable
+                class="material"
+                [headerHeight]="35"
+                [columnMode]="'force'"
+                [rowHeight]="'auto'"
+                [footerHeight]="30"
+                [count]="true"
+                [limit]="5"
+                [rows]="rows3"
+            >
+            <ngx-datatable-column name="id">
+                <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="nombre">
+                <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="ubicacion">
+                <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="">
+              <ng-template ngx-datatable-cell-template let-row="row" let-value="value"><button class="btn btn-danger" type="button"  (click)="eliminarm(row.id)" >Eliminar</button></ng-template>
+          </ngx-datatable-column>
+            </ngx-datatable>
         </div>
-      </div>
     </div>
-  </div>
 </div>
-<br /><br />
+    <!-- </div> -->
+<!-- </div> -->
