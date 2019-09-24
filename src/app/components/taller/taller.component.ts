@@ -7,6 +7,9 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { RegistroCompletoInterface } from 'src/app/Models/Registrocompleto';
 import { resetComponentState, componentRefresh } from '@angular/core/src/render3/instructions';
 import { FormGroup } from '@angular/forms';
+import { LevelaccessService } from 'src/app/services/levelaccess.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { RegistroInterface } from 'src/app/Models/registro';
 
 @Component({
   selector: 'app-taller',
@@ -92,13 +95,77 @@ rows2:any;
 rows3:any;
 rows4:any;
 
+
+public isLogin = false;
+public isLoginAdmin = false;
+public isLoginCallcenter = false;
+public isLoginSuadmin = false;
+public isLoginTaller = false;
+
+public nombreUsuario: string;
+public emailUsuario: string;
+
+public admin = false;
+public taller = false;
+public callcenter = false;
+public suadmin = false;
+
+
+// rol: string;
+userName: string;
+
+usuario: RegistroInterface = { 
+  id: '',
+  nombre: '',
+  correo: '',
+  admin: false,
+  suadmin: false,
+  tipo: ''
+};
+nomUsuario: any;
   constructor(
     private afs: AngularFirestore,
+    public authService: AuthService,
+    private lvlaccess: LevelaccessService,
     public encuestase: EncuestaService) { }
 
   ngOnInit() {
     this.Option( this.value );
     this.getData1();
+
+    this.authService.getAuth().subscribe( user => {
+      if (user) {
+        this.isLogin = true;
+        this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
+//console.log('usuario desde lvl:', info);
+            if(info.suadmin === true){
+              this.isLoginSuadmin = true;
+              this.isLoginAdmin = false;
+              this.isLoginCallcenter = false;
+              this.isLoginTaller = false;
+            } else if (info.admin === true) {
+              this.isLoginAdmin = true;
+              this.isLoginSuadmin = false;
+              this.isLoginCallcenter = false;
+              this.isLoginTaller = false;
+            } else if (info.tipo === 'CallCenter') {
+              this.isLoginCallcenter = true;
+              this.isLoginAdmin = false;
+              this.isLoginTaller = false;
+              this.isLoginSuadmin = false;
+            } else if (info.tipo === 'Taller') {
+              this.isLoginTaller = true;
+              this.isLoginCallcenter = false;
+              this.isLoginAdmin = false;
+              this.isLoginSuadmin = false;
+            } else {
+              console.log('Erro de sistema: Usuario sin Permisos')
+            }
+        });
+      } else {
+        this.isLogin = false;
+      }
+    });
   }
   getData1() {
     //get coll
@@ -136,11 +203,9 @@ rows4:any;
     }
   }
   Window(){
-    var iframe = '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe name="CASANOVA SEVS" src="agregator" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
-
-var win = window.open("CASANOVA SEVS","CASANOVA SEVS","width=800,height=580,toolbar=no,menubar=no,resizable=no");
+    var iframe = '<html><head><title>CASANOVA SEVS</title><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="agregator" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
+var win = window.open("CASANOVA SEVS",'CASANOVA SEVS','width=800,height=580,toolbar=no,menubar=no,resizable=no');
 win.document.write(iframe);
-
    // window.open('agregator','CASANOVA SEVS', 'width=800, height=600, directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,');
   }
   onGuardar({value}: {value: RegistroCompletoInterface}) {

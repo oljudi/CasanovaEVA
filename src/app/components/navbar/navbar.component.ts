@@ -47,7 +47,7 @@ export class NavbarComponent implements OnInit {
 
   // roles de usuario
 
-  usuario: RegistroInterface = {
+  usuario: RegistroInterface = { 
     id: '',
     nombre: '',
     correo: '',

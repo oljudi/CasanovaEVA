@@ -37,7 +37,7 @@
       </form>
     </div><br>
       <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" [routerLink]="['/dashboardt']" routerLinkActive="router-link-active" ><strong>Consultar Reportes</strong></button>
-      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="Window()"><strong> Actualizar clientes/administradores/mecánicos</strong></button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="Window()" *ngIf="isLoginAdmin || isLoginSuadmin" ><strong> Actualizar clientes/administradores/mecánicos</strong></button>
   </div>
   <!-- Llenado completo -->
   <div class="col-md-8">
