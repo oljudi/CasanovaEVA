@@ -123,6 +123,14 @@ rows1:any;
       this.tipo = opt;
     }
   }
+  Window(){
+    var iframe = '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="agregator" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
+
+var win = window.open("CASANOVA SEVS","CASANOVA SEVS","width=800,height=580,toolbar=no,menubar=no,resizable=no");
+win.document.write(iframe);
+
+   // window.open('agregator','CASANOVA SEVS', 'width=800, height=600, directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,');
+  }
   onGuardar({value}: {value: RegistroCompletoInterface}) {
     
 //Folio y tipo de servicio
