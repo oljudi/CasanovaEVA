@@ -15,7 +15,7 @@
                           </div>
                           <input type="text" name="nombre" [(ngModel)]="nombre" [ngModelOptions]="{standalone:true}" class="form-control" placeholder="  Juan Perez Sanchez">
                         </div>
-                        <p><strong>Correo Electronico</strong></p>
+                        <p><strong>Correo Electrónico</strong></p>
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text" style="background-color: #f16821; color: white"><fa-icon [icon]="faEnvelope"></fa-icon></span>
@@ -39,6 +39,17 @@
                               <option>Administrador</option>
                               <option>Taller</option>
                               <option>CallCenter</option>
+                          </select>
+                        </div>
+                        <p><strong>Ubicación</strong></p>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="background-color: #f16821; color: white"><fa-icon [icon]="faMapMarkerAlt"></fa-icon></span>
+                          </div>
+                          <select class="form-control" name="ubicacion" [(ngModel)]="ubicacion" #ubica="ngModel">
+                            <option>Selecciona...</option>
+                            <option>Viga</option>
+                            <option>Centenario</option> 
                           </select>
                         </div>
                       </div>

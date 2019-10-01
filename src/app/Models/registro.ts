@@ -4,5 +4,6 @@ export interface RegistroInterface{
     correo?:string;
     admin?: boolean;
     suadmin?: boolean;
+    ubicacion?:string;
     tipo?: string;
 }

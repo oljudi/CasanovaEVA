@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
 import { FirebaseApp } from 'angularfire2';
 import { auth } from 'firebase';
-import { faUser, faEnvelope, faKey, faSignInAlt, faUserCog } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope, faKey, faSignInAlt, faUserCog, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +18,8 @@ export class RegisterComponent implements OnInit {
   faKey = faKey;
   faSignInAlt = faSignInAlt;
   faUserCog = faUserCog;
+  faMapMarkerAlt =   faMapMarkerAlt;
+
 
   constructor(
     private router: Router,
@@ -26,6 +28,7 @@ export class RegisterComponent implements OnInit {
     public email:string;
     public pass: string;
     public nombre: string;
+    public ubicacion: string;
     public admin: boolean;
     public tipo: string;
     public suadmin: boolean;
@@ -50,6 +53,7 @@ export class RegisterComponent implements OnInit {
     }
     this.suadmin = false;
     value.id = this.email;
+    value.ubicacion = this.ubicacion;
     value.correo = this.email;
     value.tipo = this.tipo;
     value.nombre = this.nombre;

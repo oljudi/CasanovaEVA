@@ -10,6 +10,7 @@ import { FormGroup } from '@angular/forms';
 import { LevelaccessService } from 'src/app/services/levelaccess.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-taller',
@@ -109,7 +110,7 @@ public admin = false;
 public taller = false;
 public callcenter = false;
 public suadmin = false;
-
+public ubi :string;
 
 // rol: string;
 userName: string;
@@ -126,6 +127,7 @@ nomUsuario: any;
   constructor(
     private afs: AngularFirestore,
     public authService: AuthService,
+    public router: Router,
     private lvlaccess: LevelaccessService,
     public encuestase: EncuestaService) { }
 
@@ -139,32 +141,37 @@ nomUsuario: any;
         this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
 //console.log('usuario desde lvl:', info);
             if(info.suadmin === true){
+              this.ubi = info.ubicacion;
               this.isLoginSuadmin = true;
               this.isLoginAdmin = false;
               this.isLoginCallcenter = false;
               this.isLoginTaller = false;
             } else if (info.admin === true) {
+              this.ubi = info.ubicacion;
               this.isLoginAdmin = true;
               this.isLoginSuadmin = false;
               this.isLoginCallcenter = false;
               this.isLoginTaller = false;
             } else if (info.tipo === 'CallCenter') {
+              this.ubi = info.ubicacion;
               this.isLoginCallcenter = true;
               this.isLoginAdmin = false;
               this.isLoginTaller = false;
               this.isLoginSuadmin = false;
             } else if (info.tipo === 'Taller') {
+              this.ubi = info.ubicacion;
               this.isLoginTaller = true;
               this.isLoginCallcenter = false;
               this.isLoginAdmin = false;
               this.isLoginSuadmin = false;
             } else {
-              console.log('Erro de sistema: Usuario sin Permisos')
+              console.log('Error de sistema: Usuario sin Permisos')
             }
         });
       } else {
         this.isLogin = false;
       }
+      
     });
   }
   getData1() {
@@ -297,8 +304,7 @@ win.document.write(iframe);
     value.tipo = this.opcion;
     value.validacion = 'falta_validar';
     value.contestada = false;
-    //console.log(value);
-
+    value.ubicacion = this.ubi;
     this.afs.firestore.doc('Encuestaexes/' + this.name).get()
     .then(docSnapshot => {
       if (docSnapshot.exists === true) {
@@ -341,5 +347,25 @@ win.document.write(iframe);
       }
     });
   }
+
+  goto(){
+    
+      this.authService.getAuth().subscribe( user => {
+        if (user) {
+          this.isLogin = true;
+          this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
+              if(info.ubicacion == 'Viga'){
+                this.router.navigate(['/dashboardt']);
+              } else if (info.ubicacion == 'Centenario') {
+                this.router.navigate(['/dashboardtc']);
+              } else {
+                console.log('Error de sistema: Usuario sin Permisos')
+              }
+          });
+        } else {
+          this.isLogin = false;
+        }
+      });
+    }
+  }
   
-}

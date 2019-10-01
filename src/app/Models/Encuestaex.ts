@@ -19,4 +19,5 @@ export interface EncuestaexInterface{
     tipo?:string;
     contestada?:boolean;
     validacion?: string;
+    ubicacion?: string;
 }

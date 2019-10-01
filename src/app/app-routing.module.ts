@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardtallerComponent } from './components/dashboardtaller/dashboardtaller.component';
 import { DashboardcallcenterComponent } from './components/dashboardcallcenter/dashboardcallcenter.component';
 import { AgregatorComponent } from './extras/agregator/agregator.component';
+import { AdmincComponent } from './components/adminc/adminc.component';
 
 
 
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'encuesta', component: EncuestaComponent},
   { path: 'navbardown', component: NavbardownComponent},
+  { path: 'adminc', component: AdmincComponent},
   { path: '**', component: Page404Component }
 ];
 

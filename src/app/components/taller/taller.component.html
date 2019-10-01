@@ -36,11 +36,11 @@
         <button type="submit" class="btn btn-primary btn-lg btn-block mb-2" style="font-size: 1rem" value="Guardar" ><strong>Ingresar</strong></button>
       </form>
     </div><br>
-      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" [routerLink]="['/dashboardt']" routerLinkActive="router-link-active" ><strong>Consultar Reportes</strong></button>
-      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="Window()" *ngIf="isLoginAdmin || isLoginSuadmin" ><strong> Actualizar clientes/administradores/mecánicos</strong></button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="goto()" routerLinkActive="router-link-active" hidden="true"><strong>Consultar Reportes</strong></button> 
+      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="Window()" *ngIf="isLoginAdmin || isLoginSuadmin" hidden="true" ><strong> Actualizar clientes/administradores/mecánicos</strong></button>
   </div>
   <!-- Llenado completo -->
-  <div class="col-md-8">
+  <div class="col-md-8" hidden="true">
     <div class="card col-md-12 mt-3 text-white text-center form-inline" style="background-color: #1a3263"><strong><h2>Llenado completo</h2></strong></div>
     <div class="card col-md-12 mt-2">
       <form #2formGuardar="ngForm" (ngSubmit)="onGuardar(formGuardar)">

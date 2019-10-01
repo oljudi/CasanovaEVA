@@ -1,0 +1,340 @@
+<app-navbar></app-navbar>
+
+<!-- Pagina de Bienvenida-->
+<div class="card col-md-3 mt-3 text-white" style="background-color: #2a206f"><strong><h2>Bienvenid@: {{nomUsuario}} </h2></strong></div>
+
+<!-- Resumen Encuestas-->
+<div class="card border-success mt-3 mr-3 ml-3">
+    <div class="card-header text-center text-white" style="background-color: #2a206f"><h2><strong>Resumen del Día</strong></h2></div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card border-primary mt-3 ml-3">
+                <div class="card-header text-center">
+                    <h5 class="h5-responsive"><strong>Encuestas</strong></h5>
+                </div>
+                <form>
+                    <div class="card-body text-center">
+                        <ngx-datatable
+                        class="material"
+                        [headerHeight]="35"
+                        [columnMode]="'force'"
+                        [rowHeight]="'auto'"
+                        [footerHeight]="30"
+                        [count]="true"
+                        [limit]="7"
+                        [rows]="rows1"
+                        >
+                        <ngx-datatable-column name="Id">
+                        <ng-template ngx-datatable-cell-template let-value="value">
+                            {{value}}
+                        </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="fecha">
+                        <ng-template ngx-datatable-cell-template let-value="value">
+                            {{value}}
+                        </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Sucursal">
+                            <ng-template ngx-datatable-cell-template let-value="value">
+                            La Viga
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="total">
+                        <ng-template ngx-datatable-cell-template let-value="value">
+                            {{value}} / 100
+                        </ng-template>
+                        </ngx-datatable-column>
+                        </ngx-datatable>
+                    </div>  
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card mt-3">
+                        <div class="card-header text-center text-white" style="background-color: #2a206f">
+                            <h5 class="h5-responsive"><strong>Encuestas Contestadas</strong></h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div id="square" class="card-header text-white text-center" style="background-color: #5AC041">
+                                        <h5 class="h5-responsive"><strong>Encuestas Realizadas</strong></h5>
+                                    </div>
+                                    <div class="card-body text-center faicon" >
+                                        <span class="fa-layers fa-fw fa-6x">
+                                            <fa-icon [icon]="faVoteYea"></fa-icon>
+                                            <span class="fa-layers-counter" style="background:#fd5f00; font-size-adjust: inherit;">{{contadorreal}}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header bg-info text-white text-center ">
+                                        <h5 class="h5-responsive"><strong>Registros Ingresados</strong></h5>
+                                    </div>
+                                    <div class="card-body text-center faicon">
+                                        <span class="fa-layers fa-fw fa-6x">
+                                            <fa-icon [icon]="faBoxes"></fa-icon>
+                                                <span class="fa-layers-counter" style="background:#fd5f00; font-size-adjust: inherit;">{{contadorre + contadorrep + contadortram}}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card mt-3 ml-3 mr-3">
+                        <div class="card-header text-center text-white" style="background-color: #2a206f">
+                            <h5 class="h5-responsive"><strong>Promedio Calificación Sucursal</strong></h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header bg-warning text-white text-center ">
+                                        <h5 class="h5-responsive"><strong>Promedio Actual</strong></h5>
+                                    </div>
+                                    <div class="card-body text-center faicon">
+                                        <span class="fa-layers fa-fw fa-6x">
+                                            <fa-icon [icon]="faStar" style="color: #B7963D"></fa-icon>
+                                            <span class="fa-layers-counter text-center" style="background: #92BA3E; font-size-adjust: inherit;"  >{{prome}}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header text-white text-center" style="background-color: #5AC041 ">
+                                        <h5 class="h5-responsive"><strong>Meta Actual</strong></h5>
+                                    </div>
+                                    <div class="card-body text-center faicon">
+                                        <span class="fa-layers fa-fw fa-6x">
+                                            <fa-icon [icon]="faTrophy" style="color: #B7963D"></fa-icon>
+                                                <span class="fa-layers-counter text-center" style="background:green; font-size-adjust: inherit;">{{metass}}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form #formGuardar="ngForm" (ngSubmit)="metaact(formGuardar)">
+                        <div class="input-group mb-3 mt-3 card-footer">
+                            <input type="number" class="form-control" placeholder="Actualizar meta:" aria-label="Recipient's username" aria-describedby="button-addon2" name="meta"  [(ngModel)]="meta" #metas="ngModel" >
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="submit" id="button-addon2" value="Guardar">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                <p>{{p1}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-muted text-right">Ultima Actualización</div>
+</div>
+
+<!-- Resumen Preguntas -->
+<div class="card border-success mt-3 mr-3 ml-3 mb-5">
+        <div class="card-header text-center text-white" style="background-color: #2a206f"><h2><strong>Resumen Servicios</strong></h2></div>
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="card mt-3 mb-3 ml-3">
+                    <div class="card-header text-center">
+                    <!--Calificaciones de Servicios-->
+                        <h5 class="h5-responsive"><strong>Calificaciones Servicios</strong></h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Express -->
+                        <table class="table table-hover table-bordered table-sm"> 
+                                <thead class="thead-dark">
+                                    <tr class="text-center text-white">
+                                        <th scope="col">Express</th>
+                                        <th scope="col" title="El tiempo que transcurrió para que lo atendieran fue:">P 1</th>
+                                        <th scope="col" title="Después de realizado el diagnóstico del vehículo, ¿se le proporcionó la información detallada del trabajo a realizar y el tiempo estimado de entrega?">P 2</th>
+                                        <th scope="col" title="El tiempo que transcurrió para la entrega de su vehículo fue:">P 3</th>
+                                        <th scope="col" title="¿Cómo calificaría la imagen de nuestras instalaciones?">P 4</th>
+                                        <th scope="col" title="La atención que recibió de nuestro asesor de servicio fue….">P 5</th>
+                                        <th scope="col" title="Considera que la imagen de nuestro asesor de servicio es…">P 6</th>
+                                        <th scope="col" title="Le entregaron su vehículo...">P 7</th>
+                                        <th scope="col" title="La experiencia en general de su visita a Casanova fue…">P 8</th>
+                                        <th scope="col">Calif</th>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success text-center">
+                                        <td></td>
+                                        <td>{{prome1}}</td>
+                                        <td>{{prome2}}</td>
+                                        <td>{{prome3}}</td>
+                                        <td>{{prome4}}</td>
+                                        <td>{{prome5}}</td>
+                                        <td>{{prome6}}</td>
+                                        <td>{{prome7}}</td>
+                                        <td>{{prome8}}</td>
+                                        <td>{{promeex}}</td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                        <!-- Reparaciones -->
+                        <table class="table table-hover table-bordered table-sm"> 
+                            <thead class="thead-dark">
+                                <tr class="text-center text-white">
+                                    <th scope="col">Reparación</th>
+                                    <th scope="col" title="El tiempo que transcurrió para que lo atendieran fue:">P 1</th>
+                                    <th scope="col" title="Durante la recepción ¿Nuestro asesor le preguntó si su vehículo requería de algún servicio adicional a lo previamente solicitado?">P 2</th>
+                                    <th scope="col" title="¿Se cumplió con la fecha promesa de entrega?">P 3</th>
+                                    <th scope="col" title="¿Cómo calificaría la imagen de nuestras instalaciones?">P 4</th>
+                                    <th scope="col" title="La atención que recibió de nuestro asesor de servicio fue….">P 5</th>
+                                    <th scope="col" title="Considera que la imagen de nuestro asesor de servicio es…">P 6</th>
+                                    <th scope="col" title="Le entregaron su vehículo...">P 7</th>
+                                    <th scope="col" title="La experiencia en general de su visita a Casanova fue…">P 8</th>
+                                    <th scope="col">Calif</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-warning text-center">
+                                    <td></td>
+                                    <td>{{promere1}}</td>
+                                    <td>{{promere2}}</td>
+                                    <td>{{promere3}}</td>
+                                    <td>{{promere4}}</td>
+                                    <td>{{promere5}}</td>
+                                    <td>{{promere6}}</td>
+                                    <td>{{promere7}}</td>
+                                    <td>{{promere8}}</td>
+                                    <td>{{promerep}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Trámites -->
+                        <table class="table table-hover table-bordered table-sm"> 
+                            <thead class="thead-dark">
+                                <tr class="text-center text-white" style="background-color: gray">
+                                    <th scope="col" >Trámites</th>
+                                    <th scope="col" title="El tiempo que transcurrió para que lo atendieran fue:">P 1</th>
+                                    <th scope="col" title="¿Se le informó la fecha de la cita para la verificación de su vehículo?">P 2</th>
+                                    <th scope="col" title="¿Se cumplió con la fecha promesa de entrega?">P 3</th>
+                                    <th scope="col" title="¿Cómo calificaría la imagen de nuestras instalaciones?">P 4</th>
+                                    <th scope="col" title="La atención que recibió de nuestro asesor de servicio fue….">P 5</th>
+                                    <th scope="col" title="Considera que la imagen de nuestro asesor de servicio es…">P 6</th>
+                                    <th scope="col" title="Le entregaron su vehículo...">P 7</th>
+                                    <th scope="col" title="La experiencia en general de su visita a Casanova fue…">P 8</th>
+                                    <th scope="col" title="">Calif</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-info text-center">
+                                    <td></td>
+                                    <td>{{prometra1}}</td>
+                                    <td>{{prometra2}}</td>
+                                    <td>{{prometra3}}</td>
+                                    <td>{{prometra4}}</td>
+                                    <td>{{prometra5}}</td>
+                                    <td>{{prometra6}}</td>
+                                    <td>{{prometra7}}</td>
+                                    <td>{{prometra8}}</td>
+                                    <td>{{prometras}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <!-- Bundle de Calificaciones-->
+                <div class="card mt-3">
+                    <div class="row">
+                        <!-- Calificaciones Altas -->
+                        <div class="col-sm-6">
+                            <div class="card text-center">
+                                <div class="card-header text-center text-white" style="background-color: #2a206f; font-size: 1rem"><strong>Calificaciones Altas</strong></div>
+                                    <div class="card text-center">
+                                        <div class="card-header text-white" style="background-color: #2e5a1c">
+                                            <strong style="font-size: 1rem; font-size-adjust: initial">Express</strong>
+                                        </div>
+                                        <div class="card-header text-center faicon" style="background-color: #edf0c7" >
+                                            <span class="fa-layers fa-fw fa-5x">
+                                                <fa-icon [icon]="faThumbsUp" style="color: #4e9525"></fa-icon>
+                                                <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{ins}}</strong></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card text-center">
+                                        <div class="card-header text-white" style="background-color: #2e5a1c">
+                                            <strong style="font-size: 1rem; font-size-adjust: initial">Reparaciones</strong>
+                                        </div>
+                                        <div class="card-header text-center faicon" style="background-color: #edf0c7">
+                                            <span class="fa-layers fa-fw fa-5x">
+                                                <fa-icon [icon]="faThumbsUp" style="color: #4e9525"></fa-icon>
+                                                <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{insre}}</strong></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card text-center">
+                                        <div class="card-header text-white" style="background-color: #2e5a1c">
+                                            <strong style="font-size: 1rem; font-size-adjust: initial">Trámite</strong>
+                                        </div>
+                                        <div class="card-header text-center faicon" style="background-color: #edf0c7">
+                                            <span class="fa-layers fa-fw fa-5x">
+                                                <fa-icon [icon]="faThumbsUp" style="color: #4e9525"></fa-icon>
+                                                <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{instra}}</strong></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- Calificaciones Bajas -->
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header text-center text-white" style="background-color: #2a206f; font-size: 1rem"><strong>Calificación más baja</strong></div>
+                                <div class="card text-center">
+                                    <div class="card-header text-white" style="background-color: #f05a28">
+                                        <strong style="font-size: 1rem; font-size-adjust: initial">Express</strong>
+                                    </div>
+                                    <div class="card-header text-center faicon" style="background-color: #edf0c7">
+                                        <span class="fa-layers fa-fw fa-5x">
+                                            <fa-icon [icon]="faThumbsDown" style="color: #f7931e"></fa-icon>
+                                            <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{ins2}}</strong></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card text-center">
+                                    <div class="card-header text-white" style="background-color: #f05a28">
+                                        <strong style="font-size: 1rem; font-size-adjust: initial">Reparaciones</strong>
+                                    </div>
+                                    <div class="card-header text-center faicon" style="background-color: #edf0c7">
+                                        <span class="fa-layers fa-fw fa-5x">
+                                            <fa-icon [icon]="faThumbsDown" style="color: #f7931e"></fa-icon>
+                                            <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{insre2}}</strong></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card text-center">
+                                    <div class="card-header text-white" style="background-color: #f05a28">
+                                        <strong style="font-size: 1rem; font-size-adjust: initial">Trámites</strong>
+                                    </div>
+                                    <div class="card-header text-center faicon" style="background-color: #edf0c7">
+                                        <span class="fa-layers fa-fw fa-5x">
+                                            <fa-icon [icon]="faThumbsDown" style="color: #f7931e"></fa-icon>
+                                            <span class="fa-layers-counter" style="background: #1a3263; font-size-adjust: inherit;"><strong>{{instra2}}</strong></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted text-right">Ultima Actualización</div>
+    </div>
+
+<div class="card">
+    <app-reports></app-reports>
+</div>
+<!-- Footer -->
+<app-footer></app-footer>

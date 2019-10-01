@@ -81,6 +81,7 @@ constructor(
    this.EncuestareCollection = this.afs.collection('Encuestareps', ref => ref);
    this.EncuestatrCollection = this.afs.collection('Encuestatram', ref => ref);
    this.typeCollection = this.afs.collection('type', ref => ref);
+  
 
    this.ccp1mb = this.afs.collection('Contadores').doc('Pregunta1').collection('MuyBueno/', ref => ref);
    this.ccp1b =  this.afs.collection('Contadores').doc('Pregunta1').collection('Bueno', ref => ref);
@@ -254,6 +255,66 @@ constructor(
    }));
    return this.Encuestaexes;
  }
+ getitemc(): Observable<EncuestaexInterface[]> {
+  this.Encuestaexes = this.typeCollection.snapshotChanges()
+  .pipe(map(changes => {
+    return changes.map(action => {
+      const data = action.payload.doc.id as EncuestaexInterface;
+      // data.id = action.payload.doc.id;
+      return data;
+    });
+  }));
+  return this.Encuestaexes;
+}
+
+ getitemtram(): Observable<EncuestaexInterface[]> {
+  this.Encuestaexes = this.EncuestatrCollection.snapshotChanges()
+  .pipe(map(changes => {
+    return changes.map(action => {
+      const data = action.payload.doc.id as EncuestaexInterface;
+      // data.id = action.payload.doc.id;
+      return data;
+    });
+  }));
+  return this.Encuestaexes;
+}
+getitemrep(): Observable<EncuestaexInterface[]> {
+  this.Encuestaexes = this.EncuestareCollection.snapshotChanges()
+  .pipe(map(changes => {
+    return changes.map(action => {
+      const data = action.payload.doc.id as EncuestaexInterface;
+      // data.id = action.payload.doc.id;
+      return data;
+    });
+  }));
+  return this.Encuestaexes;
+}
+getitemex(): Observable<EncuestaexInterface[]> {
+  this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
+  .pipe(map(changes => {
+    return changes.map(action => {
+      const data = action.payload.doc.id as EncuestaexInterface;
+      // data.id = action.payload.doc.id;
+      return data;
+    });
+  }));
+  return this.Encuestaexes;
+}
+getiEncuestaex(id: string) {
+  this.EncuestaexDoc = this.afs.doc<EncuestaexInterface>('type/${id}');
+  this.Encuestaex = this.EncuestaexDoc.snapshotChanges().pipe(map(action => {
+    if (action.payload.exists === false) {
+      return null;
+    } else {
+      const data = action.payload.data().total as EncuestaexInterface;
+      data.id = action.payload.id;
+      return data;
+    }
+  }));
+  return this.Encuestaex;
+}
+
+
   //___________________________________________________________________ Collection Contadores
  getitemcoll1mb(): Observable<EncuestaexInterface[]> {
    this.Encuestaexes = this.ccp1mb.snapshotChanges()
@@ -750,51 +811,5 @@ getitemcoll5mb(): Observable<EncuestaexInterface[]> {
  }
  //___________________________________________________________________
 
- getitemtram(): Observable<EncuestaexInterface[]> {
-   this.Encuestaexes = this.EncuestatrCollection.snapshotChanges()
-   .pipe(map(changes => {
-     return changes.map(action => {
-       const data = action.payload.doc.id as EncuestaexInterface;
-       // data.id = action.payload.doc.id;
-       return data;
-     });
-   }));
-   return this.Encuestaexes;
- }
- getitemrep(): Observable<EncuestaexInterface[]> {
-   this.Encuestaexes = this.EncuestareCollection.snapshotChanges()
-   .pipe(map(changes => {
-     return changes.map(action => {
-       const data = action.payload.doc.id as EncuestaexInterface;
-       // data.id = action.payload.doc.id;
-       return data;
-     });
-   }));
-   return this.Encuestaexes;
- }
- getitemex(): Observable<EncuestaexInterface[]> {
-   this.Encuestaexes = this.EncuestaexCollection.snapshotChanges()
-   .pipe(map(changes => {
-     return changes.map(action => {
-       const data = action.payload.doc.id as EncuestaexInterface;
-       // data.id = action.payload.doc.id;
-       return data;
-     });
-   }));
-   return this.Encuestaexes;
- }
- getiEncuestaex(id: string) {
-   this.EncuestaexDoc = this.afs.doc<EncuestaexInterface>('type/${id}');
-   this.Encuestaex = this.EncuestaexDoc.snapshotChanges().pipe(map(action => {
-     if (action.payload.exists === false) {
-       return null;
-     } else {
-       const data = action.payload.data().total as EncuestaexInterface;
-       data.id = action.payload.id;
-       return data;
-     }
-   }));
-   return this.Encuestaex;
- }
  
 }

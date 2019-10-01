@@ -56,6 +56,7 @@ import { ExportAsModule } from 'ngx-export-as';
 import { HttpModule } from '@angular/http';
 import { AgregatorComponent } from './extras/agregator/agregator.component';
 import { ModeliComponent } from './Modals/modeli/modeli.component';
+import { AdmincComponent } from './components/adminc/adminc.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { ModeliComponent } from './Modals/modeli/modeli.component';
     DashboardtallerComponent,
     DashboardcallcenterComponent,
     AgregatorComponent,
-    ModeliComponent
+    ModeliComponent,
+    AdmincComponent
   ],
   imports: [
     ChartsModule,

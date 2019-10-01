@@ -8,6 +8,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { RegistroInterface } from 'src/app/Models/registro';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { LevelaccessService } from 'src/app/services/levelaccess.service';
 
 @Component({
   selector: 'app-login',
@@ -25,12 +26,18 @@ export class LoginComponent implements OnInit {
   public correo: string;
   public password: string;
 
+  public isLogin = false;
+  public isLoginAdmin = false;
+  public isLoginCallcenter = false;
+  public isLoginSuadmin = false;
+  public isLoginTaller = false;
 
   constructor(
     public authService: AuthService,
     public router: Router,
     public flashMensaje: FlashMessagesService,
-    public afs: AngularFirestore
+    public afs: AngularFirestore,
+    private lvlaccess: LevelaccessService
 
   ) { }
 user: RegistroInterface = {
@@ -60,18 +67,43 @@ ngOnInit() {
   }
 
   onLoginRedirect( email: string ) {
-      this.router.navigate(['/admin']);
-    // this.afs.collection('Registro').doc( email ).valueChanges().subscribe( data => {
-    //   this.user.admin = data.admin;
-    //   this.user.tipo = data.tipo;
-    //   if( this.user.admin === true ){
-    //     this.router.navigate(['/admin']);
-    //   } else if ( this.user.tipo === 'CallCenter'){
-    //     this.router.navigate(['/dashboardcall']);
-    //   } else if ( this.user.tipo === 'Taller') {
-    //     this.router.navigate(['/taller']);
-    //   }
-    // });
-  }
+      this.authService.getAuth().subscribe( user => {
+        if (user) {
+          this.isLogin = true;
+          this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
+  //console.log('usuario desde lvl:', info);
+              if(info.suadmin === true){
+                this.isLoginSuadmin = true;
+                this.isLoginAdmin = false;
+                this.isLoginCallcenter = false;
+                this.isLoginTaller = false;
+                this.router.navigate(['/admin']);
+              } else if (info.admin === true) {
+                this.isLoginAdmin = true;
+                this.isLoginSuadmin = false;
+                this.isLoginCallcenter = false;
+                this.isLoginTaller = false;
+                this.router.navigate(['/admin']);
+              } else if (info.tipo === 'CallCenter') {
+                this.isLoginCallcenter = true;
+                this.isLoginAdmin = false;
+                this.isLoginTaller = false;
+                this.isLoginSuadmin = false;
+                this.router.navigate(['/dashboardcall']);
+              } else if (info.tipo === 'Taller') {
+                this.isLoginTaller = true;
+                this.isLoginCallcenter = false;
+                this.isLoginAdmin = false;
+                this.isLoginSuadmin = false;
+                this.router.navigate(['/taller']);
+              } else {
+                console.log('Error de sistema: Usuario sin Permisos')
+              }
+          });
+        } else {
+          this.isLogin = false;
+        }
+      });
+    }
 
 }
