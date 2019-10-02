@@ -11,6 +11,6 @@ export class DatatableService {
   ) { }
 
   getDocs() {
-    return this.afs.collection('type').valueChanges();
+    return this.afs.collection('typeALL').valueChanges();
   }
 }

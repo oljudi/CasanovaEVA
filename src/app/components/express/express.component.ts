@@ -151,16 +151,21 @@ totalnot:number;
     value.total = +this.proms;
     this.totalnot = value.total;
 //    this.sendemail();
-    this.contador(value);
-    this.sendemail(value.total);
     
-    if(this.ident.includes('vi') == true){
+    
+    if(this.ident.includes('VI') == true){
       this.encuestaService.updateType(value);
+      this.encuestaService.updateTypeALL(value);
       this.encuestaService.updateEncuestaex(value);
+      this.contador(value);
+    this.sendemail(value.total);
     }
-  else if(this.ident.includes('ce') == true){
+  else if(this.ident.includes('CE') == true){
     this.encuestaService.updateTypeC(value);
+    this.encuestaService.updateTypeALL(value);
     this.encuestaService.updateEncuestaexC(value);
+    this.contadorC(value);
+    this.sendemail(value.total);
 }
 
    
@@ -170,7 +175,97 @@ totalnot:number;
 
 
   }
-  
+  contadorC(s:any){
+    /*
+    s.pc1 = this.model2.p1;
+    s.pc2 = this.model2.p2;
+    s.pc3 = this.model2.p3;
+    s.pc4 = this.model2.p4;
+    s.pc5 = this.model2.p5;
+    s.pc6 = this.model2.p6;
+    s.pc7 = this.model2.p7;
+    s.pc8 = this.model2.p8;*/
+//P1
+    if (this.model2.p1 == 4){
+      this.EncuestaexCollection.doc('Pregunta1C/').collection('MuyBueno').doc(s.id).set(s);
+    }else if (this.model2.p1 == 3){
+      this.EncuestaexCollection.doc('Pregunta1C/').collection('Bueno/').doc(s.id).set(s);
+    }else if (this.model2.p1 == 2){
+      this.EncuestaexCollection.doc('Pregunta1C/').collection('Regular/').doc(s.id).set(s);
+    }else if (this.model2.p1 == 1){
+      this.EncuestaexCollection.doc('Pregunta1C/').collection('Malo/').doc(s.id).set(s);
+    }else if (this.model2.p1 == 0){
+      this.EncuestaexCollection.doc('Pregunta1C/').collection('MuyMalo/').doc(s.id).set(s);
+    }
+//P2
+    if (this.model2.p2 == 1){
+      this.EncuestaexCollection.doc('Pregunta2C/').collection('MuyBueno/').doc(s.id).set(s);
+    }else if (this.model2.p2 == 0){
+      this.EncuestaexCollection.doc('Pregunta2C/').collection('MuyMalo/').doc(s.id).set(s);
+    }
+//P3
+    if (this.model2.p3 == 2){
+      this.EncuestaexCollection.doc('Pregunta3C/').collection('MuyBueno/').doc(s.id).set(s);
+    }else if (this.model2.p3 == 1){
+      this.EncuestaexCollection.doc('Pregunta3C/').collection('Regular/').doc(s.id).set(s);
+    }else if (this.model2.p3 == 0){
+      this.EncuestaexCollection.doc('Pregunta3C/').collection('MuyMalo/').doc(s.id).set(s);
+    }
+//P4
+    if (this.model2.p4 == 4){
+      this.EncuestaexCollection.doc('Pregunta4C/').collection('MuyBueno/').doc(s.id).set(s);
+    }else if (this.model2.p4 == 3){
+      this.EncuestaexCollection.doc('Pregunta4C/').collection('Bueno/').doc(s.id).set(s);
+    }else if (this.model2.p4 == 2){
+      this.EncuestaexCollection.doc('Pregunta4C/').collection('Regular/').doc(s.id).set(s);
+    }else if (this.model2.p4 == 1){
+      this.EncuestaexCollection.doc('Pregunta4C/').collection('Malo/').doc(s.id).set(s);
+    }else if (this.model2.p4 == 0){
+      this.EncuestaexCollection.doc('Pregunta4C/').collection('MuyMalo/').doc(s.id).set(s);
+    }
+//P5
+    if (this.model2.p5 == 4){
+      this.EncuestaexCollection.doc('Pregunta5C/').collection('MuyBueno/').doc(s.id).set(s);
+    }else if (this.model2.p5 == 3){
+      this.EncuestaexCollection.doc('Pregunta5C/').collection('Bueno/').doc(s.id).set(s);
+    }else if (this.model2.p5 == 2){
+      this.EncuestaexCollection.doc('Pregunta5C/').collection('Regular/').doc(s.id).set(s);
+    }else if (this.model2.p5 == 1){
+      this.EncuestaexCollection.doc('Pregunta5C/').collection('Malo/').doc(s.id).set(s);
+    }else if (this.model2.p5 == 0){
+      this.EncuestaexCollection.doc('Pregunta5C/').collection('MuyMalo/').doc(s.id).set(s);
+    }
+//P6
+    if (this.model2.p6 == 4){
+      this.EncuestaexCollection.doc('Pregunta6C/').collection('MuyBueno/').doc(s.id).set(s);
+    }else if (this.model2.p6 == 3){
+      this.EncuestaexCollection.doc('Pregunta6C/').collection('Bueno/').doc(s.id).set(s);
+    }else if (this.model2.p6 == 2){
+      this.EncuestaexCollection.doc('Pregunta6C/').collection('Regular/').doc(s.id).set(s);
+    }else if (this.model2.p6 == 1){
+      this.EncuestaexCollection.doc('Pregunta6C/').collection('Malo/').doc(s.id).set(s);
+    }else if (this.model2.p6 == 0){
+      this.EncuestaexCollection.doc('Pregunta6C/').collection('MuyMalo/').doc(s.id).set(s);
+    }
+//P7
+    if (this.model2.p7 == 1){
+      this.EncuestaexCollection.doc('Pregunta7C/').collection('MuyBueno/').doc(s.id).set(s);
+    }else if (this.model2.p7 == 0){
+      this.EncuestaexCollection.doc('Pregunta7C/').collection('MuyMalo/').doc(s.id).set(s);
+    }
+//P8
+    if (this.model2.p8 == 4){
+      this.EncuestaexCollection.doc('Pregunta8C/').collection('MuyBueno/').doc(s.id).set(s);
+    }else if (this.model2.p8 == 3){
+      this.EncuestaexCollection.doc('Pregunta8C/').collection('Bueno/').doc(s.id).set(s);
+    }else if (this.model2.p8 == 2){
+      this.EncuestaexCollection.doc('Pregunta8C/').collection('Regular/').doc(s.id).set(s);
+    }else if (this.model2.p8 == 1){
+      this.EncuestaexCollection.doc('Pregunta8C/').collection('Malo/').doc(s.id).set(s);
+    }else if (this.model2.p8 == 0){
+      this.EncuestaexCollection.doc('Pregunta8C/').collection('MuyMalo/').doc(s.id).set(s);
+    }
+  }
   contador(s:any){
     /*
     s.pc1 = this.model2.p1;

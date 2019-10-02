@@ -55,7 +55,9 @@ list2 = [];
     public encuestase: EncuestaService,
     private controlService: EncuestaService
   ) {
-    this.listado = this.controlService.getAllEncuestaex();
+  // this.listado = this.controlService.getAllEncuestaex();
+    
+  //  this.listado controlService.getAllEncuestaexC();
     this.dataSource.sort = this.sort;
     const today = new Date();
     this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
@@ -77,7 +79,7 @@ list2 = [];
   }
 
   getData1() {
-    this.afs.collection('type').valueChanges().subscribe((encuesta) => {
+    this.afs.collection('typeALL').valueChanges().subscribe((encuesta) => {
       this.rows1 = encuesta;
     });
     this.listado = this.rows1;
@@ -102,7 +104,7 @@ list2 = [];
     value.validacion = 'Ok';
     value.fechac = formatDate(new Date(), 'dd/MM/yyyy hh:mm:ss a', 'en');
       //console.log (value, this.id);
-    this.encuestase.updateType(value);
+    this.encuestase.updateTypeALL(value);
   }
   getval(id) {
     this.id = id.id;

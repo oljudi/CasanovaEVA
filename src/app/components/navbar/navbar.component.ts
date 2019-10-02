@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
-import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faArchive, faCarCrash, faPeopleCarry, faUserCog, faHeadset } from '@fortawesome/free-solid-svg-icons';
+import { faFemale, faChartLine, faSignOutAlt, faSignInAlt, faHome, faVoteYea, faArchive, faCarCrash, faPeopleCarry, faUserCog, faHeadset, faHouseDamage } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '../../services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   faSignOutAlt = faSignOutAlt;
   faSignInAlt = faSignInAlt;
   faHome = faHome;
+  faHouseDamage = faHouseDamage;
   faVoteYea = faVoteYea;
   faArchive = faArchive;
   faCarCrash = faCarCrash;
@@ -29,6 +30,9 @@ export class NavbarComponent implements OnInit {
 
   public isLogin = false;
   public isLoginAdmin = false;
+
+  public isLoginAdminC = false;
+
   public isLoginCallcenter = false;
   public isLoginSuadmin = false;
   public isLoginTaller = false;
@@ -73,10 +77,18 @@ export class NavbarComponent implements OnInit {
               this.isLoginCallcenter = false;
               this.isLoginTaller = false;
             } else if (info.admin === true) {
-              this.isLoginAdmin = true;
-              this.isLoginSuadmin = false;
-              this.isLoginCallcenter = false;
-              this.isLoginTaller = false;
+              if(info.ubicacion == 'Centenario'){
+                this.isLoginAdminC = true;
+                this.isLoginSuadmin = false;
+                this.isLoginCallcenter = false;
+                this.isLoginTaller = false;
+              }else{
+                this.isLoginAdmin = true;
+                this.isLoginSuadmin = false;
+                this.isLoginCallcenter = false;
+                this.isLoginTaller = false;
+              }
+              
             } else if (info.tipo === 'CallCenter') {
               this.isLoginCallcenter = true;
               this.isLoginAdmin = false;

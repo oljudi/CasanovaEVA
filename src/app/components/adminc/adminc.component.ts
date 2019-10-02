@@ -599,7 +599,7 @@ arras( x: EncuestaexInterface) {
  }
  nombreusuaro(x: string) {
    this.afs.collection('Registro').doc(x).valueChanges().pipe(take(1)).subscribe(res => {this.arrayss(res); } );
-   this.afs.collection('Meta').doc('META').valueChanges().pipe(take(1)).subscribe(res => {this.metad(res); } );
+   this.afs.collection('Meta').doc('METAC').valueChanges().pipe(take(1)).subscribe(res => {this.metad(res); } );
    // this.AuthService.getUser(this.emailUsuario);
  }
  arrayss(x: RegistroInterface): string {
@@ -619,7 +619,7 @@ otroget(){
  vas: any[];
  getData1(): any  {
 
-return  this.encuestaex.getitemall().subscribe(x => {
+return  this.encuestaex.getitemallC().subscribe(x => {
  this.vas = x.filter(x=>x.ubicacion == 'Centenario'); 
  this.rows1 = this.vas;
  console.log(this.rows1)

@@ -57,6 +57,7 @@ import { HttpModule } from '@angular/http';
 import { AgregatorComponent } from './extras/agregator/agregator.component';
 import { ModeliComponent } from './Modals/modeli/modeli.component';
 import { AdmincComponent } from './components/adminc/adminc.component';
+import { ReportsCComponent } from './components/reports-c/reports-c.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { AdmincComponent } from './components/adminc/adminc.component';
     DashboardcallcenterComponent,
     AgregatorComponent,
     ModeliComponent,
-    AdmincComponent
+    AdmincComponent,
+    ReportsCComponent
   ],
   imports: [
     ChartsModule,

@@ -9,6 +9,11 @@
                 </a>
             </li>
             <li class="nav-item" *ngIf="isLogin">
+                <a class="nav-link" routerLinkActive="active-link" routerLink="/adminc">
+                    <fa-icon [icon]="faHouseDamage" class="fa-2x"></fa-icon>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isLogin">
                 <a class="nav-link" routerLinkActive="active-Link" routerLink="/taller">
                     <fa-icon [icon]="faCarCrash" class="fa-2x"></fa-icon>
                     <strong> Taller</strong>
@@ -79,11 +84,52 @@
         </ul>
     </div>
 
+    <div class="collapse navbar-collapse" *ngIf="isLoginAdminC">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngIf="isLogin">
+                <a class="nav-link" routerLinkActive="active-link" routerLink="/adminc">
+                    <fa-icon [icon]="faHome" class="fa-2x"></fa-icon>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isLogin">
+                <a class="nav-link" routerLinkActive="active-Link" routerLink="/taller">
+                    <fa-icon [icon]="faCarCrash" class="fa-2x"></fa-icon>
+                    <strong> Taller</strong>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isLogin">
+                <a class="nav-link" routerLinkActive="active-Link" routerLink="/dashboardcall">
+                    <fa-icon [icon]="faHeadset" class="fa-2x"></fa-icon>
+                    <strong> Call Center</strong>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item" *ngIf="isLogin">
+                <a class="nav-link" routerLinkActive="active-link" routerLink="/home">
+                    <fa-icon [icon]="faVoteYea" class="fa-2x"></fa-icon>
+                    <strong> Ir a encuesta</strong>
+                </a>
+            </li>
+            <li class="navbar-nav nav-item" *ngIf="isLogin" >
+                <a class="nav-link" (click)="onClickLogOut()" routerLinkActive="active-Link" routerLink="/login">
+                    <fa-icon [icon]="faSignOutAlt" class="fa-2x" class="fa-2x"></fa-icon>
+                    <strong >SALIR  </strong>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <div class="collapse navbar-collapse" *ngIf="isLoginCallcenter">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" *ngIf="isLogin">
                 <a class="nav-link" routerLinkActive="active-link" routerLink="/admin">
                     <fa-icon [icon]="faHome" class="fa-2x"></fa-icon>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isLogin">
+                <a class="nav-link" routerLinkActive="active-link" routerLink="/adminc">
+                    <fa-icon [icon]="faHouseDamage" class="fa-2x"></fa-icon>
                 </a>
             </li>
             <li class="nav-item" *ngIf="isLogin">

@@ -271,32 +271,69 @@ win.document.write(iframe);
       if (docSnapshot.exists === true) {
         confirm('Registro ' + nameid + ' guardado');
         value.tipo = 'express';
-       this.encuestase.updateType(value);
-      } else {
+        this.encuestase.updateType(value);
+        this.encuestase.updateTypeALL(value);
+      }
+      else{
         this.afs.firestore.doc('Encuestareps/' + nameid).get()
         .then(docSnapshot => {
           if (docSnapshot.exists === true) {
             confirm('Registro ' + nameid + ' guardado');
             value.tipo = 'reparación';
             this.encuestase.updateType(value);
-          } else {
+            this.encuestase.updateTypeALL(value);
+          }
+          else {
             this.afs.firestore.doc('Encuestatram/' + nameid).get()
             .then(docSnapshot => {
               if (docSnapshot.exists === true) {
                 confirm('Registro ' + nameid+ ' guardado');
                 value.tipo = 'trámite';
                 this.encuestase.updateType(value);
-              } else {
-                 confirm('Registro ' + nameid + ' no existe');
-                
+                this.encuestase.updateTypeALL(value);
+              }
+              else {
+                this.afs.firestore.doc('EncuestaexesC/' + nameid).get()
+                .then(docSnapshot => {
+                  if (docSnapshot.exists === true) {
+                    confirm('Registro ' + nameid+ ' guardado');
+                    value.tipo = 'express';
+                    this.encuestase.updateType(value);
+                    this.encuestase.updateTypeALL(value);
+                  }
+                  else{
+                    this.afs.firestore.doc('EncuestarepsC/' + nameid).get()
+                    .then(docSnapshot => {
+                      if (docSnapshot.exists === true) {
+                        confirm('Registro ' + nameid+ ' guardado');
+                        value.tipo = 'reparación';
+                        this.encuestase.updateType(value);
+                        this.encuestase.updateTypeALL(value);
+                      }
+                      else {
+                        this.afs.firestore.doc('EncuestatramC/' + nameid).get()
+                        .then(docSnapshot => {
+                          if (docSnapshot.exists === true) {
+                            confirm('Registro ' + nameid+ ' guardado');
+                            value.tipo = 'trámite';
+                            this.encuestase.updateType(value);
+                            this.encuestase.updateTypeALL(value);
+                          }
+                          else {
+                            confirm('Registro ' + nameid + ' no existe');
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
               }
             });
           }
         });
       }
     });
-    
-  }
+  }           
   onEncuesta({value}: {value: EncuestaexInterface}) {
   this.name = this.idenc.toUpperCase();
     value.Folio = this.name;
@@ -344,9 +381,8 @@ win.document.write(iframe);
                             if (docSnapshot.exists === true) {
                               confirm('Ya existe el registro ' + this.name);
                             //  this.encuestase.addEncuestare(value);
-                            } else{
-                              if(this.ubi == 'Viga'){
-                                console.log('viga')
+                            } else 
+                                if(this.name.includes('VI') == true){
                                 if (this.opcion === 'express') {
                                   this.encuestase.addEcuescont(value);
                                   this.encuestase.addEncuestaex(value);
@@ -362,9 +398,8 @@ win.document.write(iframe);
                                   this.encuestase.addEncuestatr(value);
                                   confirm('Registro ' + this.name + ' guardado');
                                 }
-                              }
-                              else if(this.ubi == 'Centenario'){
-                                console.log('cent')
+                              } else 
+                              if(this.name.includes('CE') == true){
                                 if (this.opcion === 'express') {
                                   this.encuestase.addEcuescontC(value);
                                   this.encuestase.addEncuestaexC(value);
@@ -381,7 +416,6 @@ win.document.write(iframe);
                                   confirm('Registro ' + this.name + ' guardado');
                                 }
                               }
-                            }
                           });
                           }
                       });

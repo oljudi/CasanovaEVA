@@ -83,7 +83,11 @@ ngOnInit() {
                 this.isLoginSuadmin = false;
                 this.isLoginCallcenter = false;
                 this.isLoginTaller = false;
-                this.router.navigate(['/admin']);
+                if(info.ubicacion == 'Centenario'){
+                  this.router.navigate(['/adminc']);
+                }else{
+                  this.router.navigate(['/admin']);
+                }
               } else if (info.tipo === 'CallCenter') {
                 this.isLoginCallcenter = true;
                 this.isLoginAdmin = false;
