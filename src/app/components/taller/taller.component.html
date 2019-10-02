@@ -36,11 +36,11 @@
         <button type="submit" class="btn btn-primary btn-lg btn-block mb-2" style="font-size: 1rem" value="Guardar" ><strong>Ingresar</strong></button>
       </form>
     </div><br>
-      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="goto()" routerLinkActive="router-link-active" hidden="true"><strong>Consultar Reportes</strong></button> 
-      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="Window()" *ngIf="isLoginAdmin || isLoginSuadmin" hidden="true" ><strong> Actualizar clientes/administradores/mecánicos</strong></button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="goto()" routerLinkActive="router-link-active" ><strong>Consultar Reportes</strong></button> 
+      <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1rem" (click)="Window()" *ngIf="isLoginAdmin || isLoginSuadmin"  ><strong> Actualizar clientes/administradores/mecánicos</strong></button>
   </div>
   <!-- Llenado completo -->
-  <div class="col-md-8" hidden="true">
+  <div class="col-md-8">
     <div class="card col-md-12 mt-3 text-white text-center form-inline" style="background-color: #1a3263"><strong><h2>Llenado completo</h2></strong></div>
     <div class="card col-md-12 mt-2">
       <form #2formGuardar="ngForm" (ngSubmit)="onGuardar(formGuardar)">
@@ -64,8 +64,9 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faUser"></fa-icon></div>
                     </div>
-                      <select class="form-group" id="inlineFormInputGroup"  name="Administrador" class="form-control" placeholder="Administrador de Flota" [(ngModel)]="admonflota" #AdmonFlot="ngModel" >
-                          <option [ngValue]="encuesta"  *ngFor="let encuestase of rows2 ">{{encuestase.nombre}} </option>
+                      <select class="form-group" id="inlineFormInputGroup"  name="admonflota" class="form-control" placeholder="Administrador de Flota" [(ngModel)]="admonflota" #AdmonFlot="ngModel" >
+                        <option >Administrador.... </option>  
+                        <option  *ngFor="let encuestase of rows2 ">{{encuestase.nombre}} </option>
                       </select>                  
                     <!-- <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Administrador de Flota" name="Administrador" [(ngModel)]="admonflota" #AdmonFlot="ngModel"> -->
                   </div>
@@ -74,8 +75,9 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faUser"></fa-icon></div>
                     </div>
-                    <select class="form-control" id="inlineFormInputGroup"  name="Asesor"  placeholder="Asesor" [(ngModel)]="asesor" #Asesores="ngModel" >
-                        <option [ngValue]="encuesta"  *ngFor="let encuestase of rows4 ">{{encuestase.nombre}} </option>
+                    <select class="form-control" id="inlineFormInputGroup"  name="assor"  placeholder="Asesor" [(ngModel)]="asesor" #Asesores="ngModel" >
+                      <option >Asesor..... </option>  
+                      <option  *ngFor="let encuestase of rows4 ">{{encuestase.nombre}} </option>
                     </select> 
                   </div>
               </div>
@@ -128,6 +130,7 @@
                                 <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faGas"></fa-icon></div>
                               </div>
                               <select  class="form-control" id="inlineFormInputGroup"  placeholder="COMBUSTIBLE" name="combustible" [(ngModel)]="combustible" #combustibles="ngModel" >
+                                <option >GAS.... </option>  
                                 <option>8/8</option>
                                 <option>7/8</option>
                                 <option>6/8</option>
@@ -207,7 +210,8 @@
                             <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faUserCheck"></fa-icon></div>
                           </div>
                           <select class="form-control" name="cliente"  placeholder="Cliente" [(ngModel)]="cliente" #Cliente="ngModel" >
-                              <option [ngValue]="encuesta"  *ngFor="let encuestase of rows1 ">{{encuestase.nombre}} </option>
+                            <option >Cliente..... </option>   
+                            <option  *ngFor="let encuestase of rows1 ">{{encuestase.nombre}} </option>
                           </select>   
                          <!--  <select  class="form-control" placeholder="Cliente" name="cliente" [(ngModel)]="cliente" #Cliente="ngModel" >
                             <option>CFE Integra</option>
@@ -290,6 +294,7 @@
                     <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faFileInvoice" ></fa-icon></div>
                   </div>
                   <select  class="form-control" id="inlineFormInputGroup"  placeholder="Estatus" name="Estatus" [(ngModel)]="estatus" #estat="ngModel" >
+                    <option >Estatus... </option>  
                     <option>En Proceso</option>
                     <option>Terminado</option>
                   </select>
@@ -303,8 +308,9 @@
                     <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faUser" ></fa-icon></div>
                   </div>
                   <!-- <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Tecnico" name="Tecnico" [(ngModel)]="tecnico" #tecn="ngModel"> -->                
-                  <select class="form-control" name="Tecnico" id="inlineFormInputGroup"  placeholder="Tecnico" [(ngModel)]="tecnico" #tecn="ngModel" >
-                      <option [ngValue]="encuesta"  *ngFor="let encuestase of rows3 ">{{encuestase.nombre}} </option>
+                  <select class="form-control" name="tecnico" id="inlineFormInputGroup"  placeholder="Tecnico" [(ngModel)]="tecnico" #tecn="ngModel" >
+                    <option >Mecánico.... </option>  
+                    <option  *ngFor="let encuestase of rows3 ">{{encuestase.nombre}} </option>
                   </select>   
                 </div>
               </div>

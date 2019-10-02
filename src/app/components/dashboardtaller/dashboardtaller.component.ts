@@ -11,6 +11,9 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { AngularFirestore} from 'angularfire2/firestore';
 import { EncuestaService } from 'src/app/services/encuesta.service';
 import { DatatableService } from 'src/app/services/datatable.service';
+import { LevelaccessService } from 'src/app/services/levelaccess.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { RegistroInterface } from 'src/app/Models/registro';
 
 
 @Component({
@@ -44,7 +47,7 @@ export class DashboardtallerComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
   displayedColumns = ['Folio Encuesta', 'Fecha Entrada', 'Fecha Salida', 'Placa', 'Servicio', 'Asesor', 'Cliente', 'Calificacion'];
-
+ubi:string;
   expanded: any = {};
   timeout: any;
 
@@ -60,24 +63,57 @@ export class DashboardtallerComponent implements OnInit {
     private afs: AngularFirestore,
     private exportAsService: ExportAsService,
     private controlService: EncuestaService,
-    private _dataService: DatatableService
+    private _dataService: DatatableService,
+    public authService: AuthService,
+    private lvlaccess: LevelaccessService
   ) {
-    this.listado = this.controlService.getAllEncuestaex();
   }
 
  ngOnInit() {
-    return this._dataService.getDocs().subscribe(res => this.dataSource.data = res );
-    this.getData1();
+  this.authService.getAuth().subscribe( user => {
+    if (user) {
+      this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
+//console.log('usuario desde lvl:', info);
+            if(info.ubicacion == 'Centenario'){
+              this.ubi = 'Centenario';
+              this.listado = this.controlService.getAllEncuestaexC();
+              return this._dataService.getDocsC().subscribe(res => this.dataSource.data = res );
+            }
+            else if (info.ubicacion === 'Viga') {
+              this.ubi = 'Viga';
+              this.listado = this.controlService.getAllEncuestaex();
+              return this._dataService.getDocsV().subscribe(res => this.dataSource.data = res );
+          } else {
+            console.log('Error de sistema: Usuario sin Permisos')
+          }
+      });
+    }
+  });
   }
 
-
+ 
   getData1() {
-    this.afs.collection('type').valueChanges().subscribe((encuesta) => {
-      this.rows1 = encuesta;
-    });
-    this.listado = this.rows1;
-    this.list = this.rows1;
-    this.list2 = this.rows1;
+
+if(this.ubi == 'Centenario'){
+  this.afs.collection('typeC').valueChanges().subscribe((encuesta) => {
+    this.rows1 = encuesta;
+  });
+  this.listado = this.rows1;
+  this.list = this.rows1;
+  this.list2 = this.rows1;
+  console.log('cente')
+}
+else if(this.ubi == 'Viga'){
+  this.afs.collection('type').valueChanges().subscribe((encuesta) => {
+    this.rows1 = encuesta;
+  });
+  this.listado = this.rows1;
+  this.list = this.rows1;
+  this.list2 = this.rows1;
+  console.log('viga')
+
+}
+    
   }
 
   onPage(event) {

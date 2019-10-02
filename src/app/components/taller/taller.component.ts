@@ -134,7 +134,7 @@ nomUsuario: any;
   ngOnInit() {
     this.Option( this.value );
     this.getData1();
-
+this.comentarios = ' ';
     this.authService.getAuth().subscribe( user => {
       if (user) {
         this.isLogin = true;
@@ -264,7 +264,6 @@ win.document.write(iframe);
     value.radio = this.radio;
     value.comentarios = this.comentarios;
     
-    //console.log(value); 
     var nameid = this.indenc2.toUpperCase();
     this.afs.firestore.doc('Encuestaexes/' + nameid).get()
     .then(docSnapshot => {
@@ -298,7 +297,7 @@ win.document.write(iframe);
                   if (docSnapshot.exists === true) {
                     confirm('Registro ' + nameid+ ' guardado');
                     value.tipo = 'express';
-                    this.encuestase.updateType(value);
+                    this.encuestase.updateTypeC(value);
                     this.encuestase.updateTypeALL(value);
                   }
                   else{
@@ -307,7 +306,7 @@ win.document.write(iframe);
                       if (docSnapshot.exists === true) {
                         confirm('Registro ' + nameid+ ' guardado');
                         value.tipo = 'reparación';
-                        this.encuestase.updateType(value);
+                        this.encuestase.updateTypeC(value);
                         this.encuestase.updateTypeALL(value);
                       }
                       else {
@@ -316,7 +315,7 @@ win.document.write(iframe);
                           if (docSnapshot.exists === true) {
                             confirm('Registro ' + nameid+ ' guardado');
                             value.tipo = 'trámite';
-                            this.encuestase.updateType(value);
+                            this.encuestase.updateTypeC(value);
                             this.encuestase.updateTypeALL(value);
                           }
                           else {
@@ -442,7 +441,7 @@ win.document.write(iframe);
               if(info.ubicacion == 'Viga'){
                 this.router.navigate(['/dashboardt']);
               } else if (info.ubicacion == 'Centenario') {
-                this.router.navigate(['/dashboardtc']);
+                this.router.navigate(['/dashboardt']);
               } else {
                 console.log('Error de sistema: Usuario sin Permisos')
               }
