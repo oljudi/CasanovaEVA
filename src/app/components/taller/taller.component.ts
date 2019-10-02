@@ -324,23 +324,70 @@ win.document.write(iframe);
               if (docSnapshot.exists === true) {
                 confirm('Ya existe el registro ' + this.name);
               //  this.encuestase.addEncuestare(value);
-              } else {
-                if (this.opcion === 'express') {
-                  this.encuestase.addEcuescont(value);
-                  this.encuestase.addEncuestaex(value);
-                  confirm('Registro ' + this.name + ' guardado');
+              } else{
+                this.afs.firestore.doc('EncuestaexesC/' + this.name).get()
+                  .then(docSnapshot => {
+                    if (docSnapshot.exists === true) {
+                      confirm('Ya existe el registro ' + this.name);
+                  //  this.encuestase.addEncuestaex(value);
+                    } else {
+                      this.afs.firestore.doc('EncuestarepsC/' + this.name).get()
+                      // tslint:disable-next-line:no-shadowed-variable
+                      .then(docSnapshot => {
+                        if (docSnapshot.exists === true) {
+                          confirm('Ya existe el registro ' + this.name);
+                        //  this.encuestase.addEncuestare(value);
+                        } else {
+                          this.afs.firestore.doc('EncuestatramC/' + this.name).get()
+                          // tslint:disable-next-line:no-shadowed-variable
+                          .then(docSnapshot => {
+                            if (docSnapshot.exists === true) {
+                              confirm('Ya existe el registro ' + this.name);
+                            //  this.encuestase.addEncuestare(value);
+                            } else{
+                              if(this.ubi == 'Viga'){
+                                console.log('viga')
+                                if (this.opcion === 'express') {
+                                  this.encuestase.addEcuescont(value);
+                                  this.encuestase.addEncuestaex(value);
+                                  confirm('Registro ' + this.name + ' guardado');
+                                }
+                                if (this.opcion === 'reparación') { 
+                                  this.encuestase.addEcuescont(value);
+                                  this.encuestase.addEncuestare(value);
+                                  confirm('Registro ' + this.name + ' guardado');
+                                }
+                                if (this.opcion === 'trámite') {
+                                  this.encuestase.addEcuescont(value);
+                                  this.encuestase.addEncuestatr(value);
+                                  confirm('Registro ' + this.name + ' guardado');
+                                }
+                              }
+                              else if(this.ubi == 'Centenario'){
+                                console.log('cent')
+                                if (this.opcion === 'express') {
+                                  this.encuestase.addEcuescontC(value);
+                                  this.encuestase.addEncuestaexC(value);
+                                  confirm('Registro ' + this.name + ' guardado');
+                                }
+                                if (this.opcion === 'reparación') { 
+                                  this.encuestase.addEcuescontC(value);
+                                  this.encuestase.addEncuestareC(value);
+                                  confirm('Registro ' + this.name + ' guardado');
+                                }
+                                if (this.opcion === 'trámite') {
+                                  this.encuestase.addEcuescontC(value);
+                                  this.encuestase.addEncuestatrC(value);
+                                  confirm('Registro ' + this.name + ' guardado');
+                                }
+                              }
+                            }
+                          });
+                          }
+                      });
+                      }
+                  });
                 }
-                if (this.opcion === 'reparación') { 
-                  this.encuestase.addEcuescont(value);
-                  this.encuestase.addEncuestare(value);
-                  confirm('Registro ' + this.name + ' guardado');
-                }
-                if (this.opcion === 'trámite') {
-                  this.encuestase.addEcuescont(value);
-                  this.encuestase.addEncuestatr(value);
-                  confirm('Registro ' + this.name + ' guardado');
-                }
-              }
             });
           }
         });
@@ -348,6 +395,10 @@ win.document.write(iframe);
     });
   }
 
+ 
+
+
+      
   goto(){
     
       this.authService.getAuth().subscribe( user => {

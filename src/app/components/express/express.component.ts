@@ -108,7 +108,7 @@ totalnot:number;
    this.mod.fecha = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -154,9 +154,16 @@ totalnot:number;
     this.contador(value);
     this.sendemail(value.total);
     
-    this.encuestaService.updateType(value);
-    this.encuestaService.updateEncuestaex(value);
+    if(this.ident.includes('vi') == true){
+      this.encuestaService.updateType(value);
+      this.encuestaService.updateEncuestaex(value);
+    }
+  else if(this.ident.includes('ce') == true){
+    this.encuestaService.updateTypeC(value);
+    this.encuestaService.updateEncuestaexC(value);
+}
 
+   
 
 
     this.router.navigate(['/home']);
@@ -257,7 +264,7 @@ totalnot:number;
   }
   onChange() {
 
-      this.ident = this.route.snapshot.params['id'];
+      this.ident = this.route.snapshot.params['id']; 
   }
   sendemail(t:number) { 
     console.log('prueba');

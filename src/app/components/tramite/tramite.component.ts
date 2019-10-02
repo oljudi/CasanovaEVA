@@ -158,8 +158,15 @@ export class TramiteComponent implements OnInit {
     this.contador(value);
     this.sendemail(value.total);
 
-    this.encuestaService.updateType(value);
-    this.encuestaService.updateEncuestatram(value);
+    if(this.ident.includes('vi') == true){
+      this.encuestaService.updateType(value);
+      this.encuestaService.updateEncuestatram(value);
+    }
+  else if(this.ident.includes('ce') == true){
+    this.encuestaService.updateTypeC(value);
+    this.encuestaService.updateEncuestatramC(value);
+}
+ 
 
     this.router.navigate(['/home']);
 

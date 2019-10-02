@@ -2,17 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { EncuestaService } from 'src/app/services/encuesta.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { EncuestaexInterface } from 'src/app/Models/Encuestaex';
-import { Observable, Subscriber, observable } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 // tslint:disable-next-line:max-line-length
 import { faArchive, faVoteYea, faBoxes, faStar, faTrophy, faThumbsUp, faThumbsDown, faCar, faCarCrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistroInterface } from 'src/app/Models/registro';
 import { MetaInterface } from 'src/app/Models/Meta';
-import { id } from '@swimlane/ngx-datatable/release/utils';
-import { snapshotChanges } from 'angularfire2/database';
-import { SyncAsync } from '@angular/compiler/src/util';
-import { FormArray } from '@angular/forms';
 
  
 @Component({
@@ -23,23 +19,21 @@ import { FormArray } from '@angular/forms';
 export class AdmincComponent implements OnInit {
   constructor(
    private encuestaex: EncuestaService,
-   private encuestas: EncuestaService,
    private afs: AngularFirestore,
    private authservice: AuthService
  ) {
  
-   this.listadoEncu = encuestas.getAllEncuestaex();
- 
-   this.listadoEncuestaex = this.encuestaex.getAllEncuestaex();
-   let pruebasva = this.encuestaex.getAllEncuestaex();
+ //  this.listadoEncu = encuestas.getAllEncuestaex();
+ //  this.listadoEncuestaex = this.encuestaex.getAllEncuestaex();
+ //  let pruebasva = this.encuestaex.getAllEncuestaex();
    //get all regis
-   this.encuestaex.getitem().subscribe(id => this.list = id as Array<string>);
+   this.encuestaex.getitemc().subscribe(id => this.list = id as Array<string>);
    //get exes
-   this.encuestaex.getitemex().subscribe(id => this.listex = id as Array<string>);
+   this.encuestaex.getitemexc().subscribe(id => this.listex = id as Array<string>);
    //get rep
-   this.encuestaex.getitemrep().subscribe(id => this.listrep = id as Array<string>);
+   this.encuestaex.getitemrepc().subscribe(id => this.listrep = id as Array<string>);
    //get tram
-   this.encuestaex.getitemtram().subscribe(id => this.listtra = id as Array<string>);
+   this.encuestaex.getitemtramc().subscribe(id => this.listtra = id as Array<string>);
 
    this.encuestaex.getitemcoll1mb().subscribe(id => this.listp1mb = id as Array<string>);
  
@@ -94,7 +88,7 @@ export class AdmincComponent implements OnInit {
  faCar = faCar;
  faCarCrash = faCarCrash;
  
- public rows1: any;
+ public rows1: any[];
  colums: any;
  
  
@@ -311,32 +305,34 @@ minter: MetaInterface;
  
  
  cont() {
-   this.afs.collection('Encuestaexes').valueChanges().subscribe(values => (this.contadorre = values.length) as number);
-   this.afs.collection('Encuestareps').valueChanges().subscribe(values => (this.contadorrep = values.length) as number);
-   this.afs.collection('Encuestatram').valueChanges().subscribe(values => (this.contadortram = values.length) as number);
-   this.afs.collection('type').valueChanges().subscribe(values => this.contador = values.length);
+
+
+   this.afs.collection('EncuestaexesC').valueChanges().subscribe(values => (this.contadorre = values.length) as number);
+   this.afs.collection('EncuestarepsC').valueChanges().subscribe(values => (this.contadorrep = values.length) as number);
+   this.afs.collection('EncuestatramC').valueChanges().subscribe(values => (this.contadortram = values.length) as number);
+   this.afs.collection('typeC').valueChanges().subscribe(values => this.contador = values.length);
   // this.encuestaex.getAllEncuestaex().subscribe(id      => this.p1 = id );
   // this.list = this.p1[0] as number;
   // tslint:disable-next-line:max-line-length
   // this.list = this.afs.collection('Encuestaexes').snapshotChanges().pipe(map(action => {return action.map( a => {const idz = a.payload.doc.id; return idz});}));
-   this.afs.collection('type').doc('VI0001').valueChanges().pipe(take(1)).subscribe(res => {this.arras(res); } );
+   this.afs.collection('typeC').doc('VI0001').valueChanges().pipe(take(1)).subscribe(res => {this.arras(res); } );
 }
 arras( x: EncuestaexInterface) {
  for (let i = 0 ; i < this.contador ; i++ ) {
    this.ens = this.list[i] as string;
-   this.afs.collection('type').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res); } );
+   this.afs.collection('typeC').doc(this.ens).valueChanges().pipe(take(1)).subscribe(res => {this.arrass(res); } );
  }
  for (let i = 0 ; i < this.contadorre ; i++ ) {
    this.ens1 = this.listex[i] as string;
-   this.afs.collection('Encuestaexes').doc(this.ens1).valueChanges().pipe(take(1)).subscribe(res => {this.arrass1(res); } );
+   this.afs.collection('EncuestaexesC').doc(this.ens1).valueChanges().pipe(take(1)).subscribe(res => {this.arrass1(res); } );
  }
  for (let i = 0 ; i < this.contadorrep ; i++ ) {
    this.ens2 = this.listrep[i] as string;
-   this.afs.collection('Encuestareps').doc(this.ens2).valueChanges().pipe(take(1)).subscribe(res => {this.arrass2(res); } );
+   this.afs.collection('EncuestarepsC').doc(this.ens2).valueChanges().pipe(take(1)).subscribe(res => {this.arrass2(res); } );
  }
  for (let i = 0 ; i < this.contadortram ; i++ ) {
    this.ens3 = this.listtra[i] as string;
-   this.afs.collection('Encuestatram').doc(this.ens3).valueChanges().pipe(take(1)).subscribe(res => {this.arrass3(res); } );
+   this.afs.collection('EncuestatramC').doc(this.ens3).valueChanges().pipe(take(1)).subscribe(res => {this.arrass3(res); } );
    //console.log(this.listcol.length);
  }
  
@@ -394,7 +390,7 @@ arras( x: EncuestaexInterface) {
          this.mejorpreg = prt[22];
          // console.log(this.mejorpreg, this.peorpreg);
  
-         this.typeCollection =  this.afs.collection('type');
+         this.typeCollection =  this.afs.collection('typeC');
          const querys = this.typeCollection.ref.where('total', '==', this.mejorpreg).get()
          .then(snapshot => {
           snapshot.forEach(doc => {this.casd = doc.id;
@@ -616,50 +612,30 @@ metad(x: MetaInterface) {
  this.metass = x.meta;
 }
 
- getData1(): any {
- /*
-    this.afs.collection('type').valueChanges().subscribe((encuesta) => {
-     this.rows1 = encuesta ;
- console.log(this.rows1)    
-   }); 
-   */
+otroget(){
+    this.rows1 = this.vas;
+    console.log(this.rows1)
+}
+ vas: any[];
+ getData1(): any  {
 
-   ///* 
-   let row123 = [];
-
-   this.afs.collection('type').ref.where("ubicacion","==","Centenario").get()
-     .then(function(querySnapshot) {
-       return Promise.all(querySnapshot.docs.map(dat => {
-         row123.push(dat.data())
-       }))
-})
-.catch(function(error) {
-    console.log("Error getting documents: ", error);
-});
-const obs = Observable.create((row123))
-
-const simpleObservable = new Observable((observer) => {
-    
-  // observable execution
-  observer.next(row123)
-})
-simpleObservable.pipe().subscribe(dat => this.rows1 = dat)
-
-
- console.log(this.rows1)    
-
-//*/
+return  this.encuestaex.getitemall().subscribe(x => {
+ this.vas = x.filter(x=>x.ubicacion == 'Centenario'); 
+ this.rows1 = this.vas;
+ console.log(this.rows1)
+ return this.vas;
+  });
  }
  metaprom(x: MetaInterface) {
    x.meta = this.metass;
    x.Promgen = (this.Promedio1 + this.Promedio2 + this.Promedio3);
-   this.encuestaex.addMeta(x);
+   this.encuestaex.addMetaC(x);
    console.log(x.Promgen);
  }
  
  metaact({value}: {value: MetaInterface}) {
    value.meta = this.meta;
-   this.encuestaex.addMeta(value); 
+   this.encuestaex.addMetaC(value); 
    this.metass = this.meta;
    // window.location.reload();
  }

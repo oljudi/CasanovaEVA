@@ -158,10 +158,15 @@ export class ReparacionComponent implements OnInit {
     this.totalnot = value.total;
     this.contador(value);
     this.sendemail(value.total);
-    
-    this.encuestaService.updateType(value);
-    this.encuestaService.updateEncuestarep(value);
-
+     
+    if(this.ident.includes('vi') == true){
+      this.encuestaService.updateType(value);
+      this.encuestaService.updateEncuestarep(value);
+    }
+  else if(this.ident.includes('ce') == true){
+    this.encuestaService.updateTypeC(value);
+    this.encuestaService.updateEncuestarepC(value);
+  }
     this.router.navigate(['/home']);
 
 
