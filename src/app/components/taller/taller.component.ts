@@ -139,7 +139,7 @@ this.comentarios = ' ';
       if (user) {
         this.isLogin = true;
         this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
-//console.log('usuario desde lvl:', info);
+////console.log('usuario desde lvl:', info);
             if(info.suadmin === true){
               this.ubi = info.ubicacion;
               this.isLoginSuadmin = true;

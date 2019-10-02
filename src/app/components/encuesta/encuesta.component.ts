@@ -44,13 +44,13 @@ GOTO(){
       if (auth) {
         this.isLogin = true;
         this.lvlaccess.getUserData(auth.email).subscribe( (info: RegistroInterface) => {
-          //console.log('usuario desde lvl:', info);
+          ////console.log('usuario desde lvl:', info);
                       if(info.ubicacion == 'Centenario'){
                        this.ubi = 'Centenario';
                       } else if (info.ubicacion == 'Viga') {
                         this.ubi = 'Viga';
                       } else {
-                        console.log('Error de sistema: Usuario sin Permisos')
+                        //console.log('Error de sistema: Usuario sin Permisos')
                       }
                   });
         this.nombreUsuario = auth.displayName;

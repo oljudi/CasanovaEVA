@@ -369,7 +369,7 @@ export class TramiteComponent implements OnInit {
     this.ident = this.route.snapshot.params['id'];
 }
 sendemail(t:number) { 
-  console.log('prueba'+ t);
+  //console.log('prueba'+ t);
 
   if (t <= 50){
   const name = 'Jonathan Huerta';
@@ -402,11 +402,11 @@ sendemail(t:number) {
   params.set('from', 'jonathan.huerta@sevs.com');
   params.set('subject', 'test-email');
   params.set('content', 'Hello World');
-  console.log('enviado');
+  //console.log('enviado');
   return this.http.post(url, params, options)
                   .toPromise()
                   .then( res => {
-                    console.log(res)
+                    //console.log(res)
                   })
                   .catch(err => {
                     console.log(err)

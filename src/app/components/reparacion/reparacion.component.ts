@@ -367,7 +367,7 @@ export class ReparacionComponent implements OnInit {
     this.ident = this.route.snapshot.params['id'];
 }
 sendemail(t:number) { 
-  console.log('prueba');
+  //console.log('prueba');
 
   if (t <= 50){
   const name = 'Jonathan Huerta';
@@ -400,14 +400,14 @@ sendemail(t:number) {
   params.set('from', 'jonathan.huerta@sevs.com');
   params.set('subject', 'test-email');
   params.set('content', 'Hello World');
-  console.log('enviado');
+  //console.log('enviado');
   return this.http.post(url, params, options)
                   .toPromise()
                   .then( res => {
-                    console.log(res)
+                    //console.log(res)
                   })
                   .catch(err => {
-                    console.log(err)
+                    //console.log(err)
                   })
                   
                 
@@ -465,7 +465,7 @@ p10ex(x) {
   }
   //pregunta 10 y 2 son juntas
   //pregunta 3 y 9 son juntas
-  // console.log(x, this.model.p10);
+  // //console.log(x, this.model.p10);
 }
 p9ex(x) {
   if (x === false ) {

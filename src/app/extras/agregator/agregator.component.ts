@@ -75,13 +75,13 @@ export class AgregatorComponent implements OnInit {
         ubicacion: form.ubicacion
       }
       this._apolo.addadministrador( data ).then(() => {
-        console.log('Administrador Flota creado con éxito!');
+        //console.log('Administrador Flota creado con éxito!');
         this.iniciaraf();
       }, (error) => {
-        console.log('ERROR: ', error);
+        //console.log('ERROR: ', error);
       });
     } else {
-      console.log('UPDATE status')
+      //console.log('UPDATE status')
     }
   }
 
@@ -102,13 +102,13 @@ export class AgregatorComponent implements OnInit {
         ubicacion: form.ubicacion
       }
       this._apolo.addmecanico( data ).then(() => {
-        console.log('Mecanico creado con éxito!');
+        //console.log('Mecanico creado con éxito!');
         this.inciarmecanico();
       }, (error) => {
-        console.log('ERROR: ', error);
+        //console.log('ERROR: ', error);
       });
     } else {
-      console.log('UPDATE status');
+      //console.log('UPDATE status');
     }
   }
 
@@ -129,13 +129,13 @@ export class AgregatorComponent implements OnInit {
         ubicacion: form.ubicacion
       }
       this._apolo.addasesor( data ).then(() => {
-        console.log('Asesor creado con éxito!');
+        //console.log('Asesor creado con éxito!');
         this.inciarasesor();
       }, (error) => {
-        console.log('ERROR: ', error);
+        //console.log('ERROR: ', error);
       });
     } else {
-      console.log('UPDATE status');
+      //console.log('UPDATE status');
     }
   }
 
@@ -147,13 +147,13 @@ export class AgregatorComponent implements OnInit {
         nombre: form.nombre
       }
       this._apolo.addcliente( data ).then(() => {
-        console.log('Cliente creado con éxito!');
+        //console.log('Cliente creado con éxito!');
         this.iniciarcliente();
       }, (error) => {
-        console.log('ERROR: ', error);
+        //console.log('ERROR: ', error);
       });
     } else {
-      console.log('UPDATE status');
+      //console.log('UPDATE status');
     }
   }
 

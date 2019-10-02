@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site":"casanovasevs",
     "public": "dist/CasanovaEva",
     "ignore": [
       "firebase.json",
@@ -12,5 +13,11 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "functions": {
+    "predeploy": [
+      "npm --prefix \functions\" run lint"
+    ],
+    "source": "functions"
   }
 }

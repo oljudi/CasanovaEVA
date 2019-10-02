@@ -333,7 +333,7 @@ arras( x: EncuestaexInterface) {
  for (let i = 0 ; i < this.contadortram ; i++ ) {
    this.ens3 = this.listtra[i] as string;
    this.afs.collection('Encuestatram').doc(this.ens3).valueChanges().pipe(take(1)).subscribe(res => {this.arrass3(res); } );
-   //console.log(this.listcol.length);
+   ////console.log(this.listcol.length);
  }
  
 }
@@ -344,8 +344,8 @@ arras( x: EncuestaexInterface) {
        this.sumas = x.total;
     
      this.suma = this.sumas + this.suma;
-     // //console.log(x.total);
-     // //console.log(this.suma);
+     // ////console.log(x.total);
+     // ////console.log(this.suma);
      this.list3 =  this.getcomparadortot(this.sumas);
        const contadortemp = 1
        this.contadorreal = contadortemp + this.contadorreal;
@@ -388,16 +388,16 @@ arras( x: EncuestaexInterface) {
          prt.sort(comparar);
          this.peorpreg = prt[0];
          this.mejorpreg = prt[22];
-         // console.log(this.mejorpreg, this.peorpreg);
+         // //console.log(this.mejorpreg, this.peorpreg);
  
          this.typeCollection =  this.afs.collection('type');
          const querys = this.typeCollection.ref.where('total', '==', this.mejorpreg).get()
          .then(snapshot => {
           snapshot.forEach(doc => {this.casd = doc.id;
-          //  //console.log(doc.id);
+          //  ////console.log(doc.id);
           });
         });
-  // //console.log(this.casd)
+  // ////console.log(this.casd)
    // return this.Encuestaexes;
  
  
@@ -435,8 +435,8 @@ arras( x: EncuestaexInterface) {
      this.promexesp = this.promexes + this.promexesp;
      var tem = 1;
      this.contadorexpress = tem + this.contadorexpress;
-   // //console.log(this.sumaprom);
-   // //console.log(this.sumaspreg);
+   // ////console.log(this.sumaprom);
+   // ////console.log(this.sumaspreg);
      this.prom1(this.sumaprom);
      this.getcomparador(this.promexes);
      return  this.sumaprom, this.sumap2, this.sumap3, this.sumap4 , this.sumap5 , this.sumap6 , this.sumap7, this.sumap8, this.promexesp;
@@ -590,7 +590,7 @@ arras( x: EncuestaexInterface) {
        this.isLogin = true;
        this.emailUsuario = user.email;
       this.nombreusuaro(this.emailUsuario);
-       // //console.log(this.nomUsuario);
+       // ////console.log(this.nomUsuario);
      } else {
        this.isLogin = false;
      }
@@ -604,8 +604,8 @@ arras( x: EncuestaexInterface) {
  }
  arrayss(x: RegistroInterface): string {
    this.nomUsuario = x.nombre;
-//   //console.log(x.nombre);
-//   //console.log(this.nomUsuario);
+//   ////console.log(x.nombre);
+//   ////console.log(this.nomUsuario);
  return this.nomUsuario;
 }
 metad(x: MetaInterface) {
@@ -622,7 +622,7 @@ metad(x: MetaInterface) {
    x.meta = this.metass;
    x.Promgen = (this.Promedio1 + this.Promedio2 + this.Promedio3);
    this.encuestaex.addMeta(x);
-   console.log(x.Promgen);
+   ////console.log(x.Promgen);
  }
  
  metaact({value}: {value: MetaInterface}) {

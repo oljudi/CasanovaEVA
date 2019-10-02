@@ -89,8 +89,8 @@ onEncuesta({value}: {value: EncuestaexInterface}){
     else{
       this.router.navigate(['/'+ this.tipo+'/'+this.name]);
     }
-   ////console.log(this.tipo);
-   ////console.log(this.nomUsuario);
+   //////console.log(this.tipo);
+   //////console.log(this.nomUsuario);
    return this.tipo;
  }
 

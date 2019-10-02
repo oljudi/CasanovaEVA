@@ -362,7 +362,7 @@ totalnot:number;
       this.ident = this.route.snapshot.params['id']; 
   }
   sendemail(t:number) { 
-    console.log('prueba');
+    //console.log('prueba');
 
     if (t <= 50){
     const name = 'Jonathan Huerta';
@@ -395,14 +395,14 @@ totalnot:number;
     params.set('from', 'jonathan.huerta@sevs.com');
     params.set('subject', 'test-email');
     params.set('content', 'Hello World');
-    console.log('enviado');
+    //console.log('enviado');
     return this.http.post(url, params, options)
                     .toPromise()
                     .then( res => {
-                      console.log(res)
+                      //console.log(res)
                     })
                     .catch(err => {
-                      console.log(err)
+                      //console.log(err)
                     })
                     
                   
@@ -418,37 +418,37 @@ p1ex(x) {
 p2ex(x) {
   this.model.p2 = (x * 10) / 1;
   this.model2.p2 = x;
-  // console.log(x);
+  // //console.log(x);
 }
 p3ex(x) {
   this.model.p3 = (x * 10) / 2;
   this.model2.p3 = x;
-  // console.log(x);
+  // //console.log(x);
 }
 p4ex(x) {
   this.model.p4 = (x * 10) / 4;
   this.model2.p4 = x;
-  // console.log(x);
+  // //console.log(x);
 }
 p5ex(x) {
   this.model.p5 = (x * 10) / 4;
   this.model2.p5 = x;
-  // console.log(x);
+  // //console.log(x);
 }
 p6ex(x) {
   this.model.p6 = (x * 10) / 4;
   this.model2.p6 = x;
-  // console.log(x);
+  // //console.log(x);
 }
 p7ex(x) {
   this.model.p7 = (x * 10) / 1;
   this.model2.p7 = x;
-  // console.log(x);
+  // //console.log(x);
 }
 p8ex(x) {
   this.model.p8 = (x * 10) / 4;
   this.model2.p8 = x;
-  // console.log(x);
+  // //console.log(x);
 }
 sum() {
 

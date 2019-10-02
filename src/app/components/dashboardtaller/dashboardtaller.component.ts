@@ -73,7 +73,7 @@ ubi:string;
   this.authService.getAuth().subscribe( user => {
     if (user) {
       this.lvlaccess.getUserData(user.email).subscribe( (info: RegistroInterface) => {
-//console.log('usuario desde lvl:', info);
+////console.log('usuario desde lvl:', info);
             if(info.ubicacion == 'Centenario'){
               this.ubi = 'Centenario';
               this.listado = this.controlService.getAllEncuestaexC();
@@ -84,7 +84,7 @@ ubi:string;
               this.listado = this.controlService.getAllEncuestaex();
               return this._dataService.getDocsV().subscribe(res => this.dataSource.data = res );
           } else {
-            console.log('Error de sistema: Usuario sin Permisos')
+           // //console.log('Error de sistema: Usuario sin Permisos')
           }
       });
     }
@@ -101,7 +101,7 @@ if(this.ubi == 'Centenario'){
   this.listado = this.rows1;
   this.list = this.rows1;
   this.list2 = this.rows1;
-  console.log('cente')
+  //console.log('cente')
 }
 else if(this.ubi == 'Viga'){
   this.afs.collection('type').valueChanges().subscribe((encuesta) => {
@@ -110,7 +110,7 @@ else if(this.ubi == 'Viga'){
   this.listado = this.rows1;
   this.list = this.rows1;
   this.list2 = this.rows1;
-  console.log('viga')
+  //console.log('viga')
 
 }
     
@@ -119,12 +119,12 @@ else if(this.ubi == 'Viga'){
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      //console.log('paged!', event);
+      ////console.log('paged!', event);
     }, 100);
   }
 
   onDetailToggle(event) {
-    //console.log('Detail Toggled', event);
+    ////console.log('Detail Toggled', event);
   }
 
   exportAs(type) {
