@@ -43,7 +43,8 @@ rows1: any[] = [];
 listado:any;
 list = [];
 list2 = [];
-
+fechaent:string;
+fechasal:string;
  // Iconos
   faHeadset = faHeadset;
   faCar = faCar;

@@ -153,7 +153,7 @@ else if(this.ubi == 'Viga'){
       }
     }
   }
-  myFunction2() {
+  myFunction2(event:any) {
     // Declare variables
     let input, filter, table, tr, td, i, txtValue;
     input = document.getElementById('PLACAS');
