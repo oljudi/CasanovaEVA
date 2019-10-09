@@ -13,25 +13,18 @@ export class AgregatorComponent implements OnInit {
   public status = 1;
 
   public nuevoaf = new FormGroup ({
-    id_af: new FormControl('', Validators.required),
-    nombre: new FormControl('', Validators.required),
-    ubicacion: new FormControl('', Validators.required)
+    nombre: new FormControl('', Validators.required)
   });
 
   public mecanico = new FormGroup ({
-    id_mecanico: new FormControl('', Validators.required),
-    nombre: new FormControl('', Validators.required),
-    ubicacion: new FormControl('', Validators.required)
+    nombre: new FormControl('', Validators.required)
   });
 
   public asesor = new FormGroup ({
-    id_asesor: new FormControl('', Validators.required),
-    nombre: new FormControl('', Validators.required),
-    ubicacion: new FormControl('', Validators.required)
+    nombre: new FormControl('', Validators.required)
   });
 
   public cliente = new FormGroup ({
-    id_cliente: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required)
   })
 
@@ -39,6 +32,14 @@ export class AgregatorComponent implements OnInit {
   rows2: any;
   rows3: any;
   rows4: any;
+  len1: number;
+  len2: number;
+  len3: number;
+  len4: number;
+  leng1: number;
+  leng2: number;
+  leng3: number;
+  leng4: number;
 
   constructor(
     private _apolo: ApoloService,
@@ -60,19 +61,19 @@ export class AgregatorComponent implements OnInit {
 
   iniciaraf() {
     this.nuevoaf.setValue({
-      id_af: '',
-      nombre: '',
-      ubicacion: ''
+      nombre: ''
     });
   }
 
   public nuevoAdminFlota(form) {
+
+    this.leng1 = this.len2+1;
+
     if(this.status === 1){
       let data = {
-        id: form.id_af,
-        id_af: form.id_af,
-        nombre: form.nombre,
-        ubicacion: form.ubicacion
+        id: this.leng1,
+        id_af: this.leng1,
+        nombre: form.nombre
       }
       this._apolo.addadministrador( data ).then(() => {
         //console.log('Administrador Flota creado con éxito!');
@@ -87,19 +88,19 @@ export class AgregatorComponent implements OnInit {
 
   inciarmecanico(){
     this.mecanico.setValue({
-      id_mecanico: '',
-      nombre: '',
-      ubicacion: ''
+      nombre: ''
     });
   }
 
   public nuevomecanico(form) {
+
+    this.leng2 = this.len3+1;
+
     if(this.status === 1){
       let data = {
-        id: form.id_mecanico,
-        id_mecanico: form.id_mecanico,
-        nombre: form.nombre,
-        ubicacion: form.ubicacion
+        id: this.leng2,
+        id_mecanico: this.leng2,
+        nombre: form.nombre
       }
       this._apolo.addmecanico( data ).then(() => {
         //console.log('Mecanico creado con éxito!');
@@ -114,20 +115,20 @@ export class AgregatorComponent implements OnInit {
 
   inciarasesor(){
     this.asesor.setValue({
-      id_asesor: '',
-      nombre: '',
-      ubicacion: ''
+      nombre: ''
     });
   }
 
   public nuevoasesor(form) {
+
+    this.leng3 = this.len4+1;
+
     if(this.status === 1){
       let data = {
-        id: form.id_asesor,
-        id_asesor: form.id_asesor,
-        nombre: form.nombre,
-        ubicacion: form.ubicacion
-      }
+        id: this.leng3,
+        id_asesor: this.leng3,
+        nombre: form.nombre
+    }
       this._apolo.addasesor( data ).then(() => {
         //console.log('Asesor creado con éxito!');
         this.inciarasesor();
@@ -140,10 +141,13 @@ export class AgregatorComponent implements OnInit {
   }
 
   public nuevocliente(form) {
+
+    this.leng4 = this.len1+1;
+
     if(this.status === 1) {
       let data = {
-        id: form.id_cliente,
-        id_cliente: form.id_cliente,
+        id: this.leng4,
+        id_cliente: this.leng4,
         nombre: form.nombre
       }
       this._apolo.addcliente( data ).then(() => {
@@ -159,21 +163,20 @@ export class AgregatorComponent implements OnInit {
 
   iniciarcliente(){
     this.cliente.setValue({
-      id_cliente: '',
       nombre: ''
     });
   }
-eliminarm(x: string){
-  this._apolo.deletemecanico(x);
+eliminarm(x: number){
+  this._apolo.deletemecanico(x.toString());
 }
-eliminaraf(x: string){
-  this._apolo.deleteadministrador(x);
+eliminaraf(x: number){
+  this._apolo.deleteadministrador(x.toString());
 }
-eliminarc(x: string){
-  this._apolo.deletecliente(x);
+eliminarc(x: number){
+  this._apolo.deletecliente(x.toString());
 }
-eliminaras(x: string){
-  this._apolo.deleteasesor(x);
+eliminaras(x: number){
+  this._apolo.deleteasesor(x.toString());
 }
 
  
@@ -182,23 +185,35 @@ eliminaras(x: string){
         this.afs.collection('Clientes').valueChanges().subscribe((encuesta) => {
        this.rows1 = encuesta ;
      });
-        }
+     this.afs.collection('Clientes').valueChanges().subscribe((encuesta) => {
+      this.len1 = encuesta.length ;
+    });
+  }
    getData2() {
     //get coll
         this.afs.collection('AdministradoresFlota').valueChanges().subscribe((encuesta) => {
        this.rows2 = encuesta ;
      });
+     this.afs.collection('AdministradoresFlota').valueChanges().subscribe((encuesta) => {
+      this.len2 = encuesta.length ;
+    });
    }
    getData3() {
     //get coll
         this.afs.collection('Mecanicos').valueChanges().subscribe((encuesta) => {
        this.rows3 = encuesta ;
      });
+     this.afs.collection('Mecanicos').valueChanges().subscribe((encuesta) => {
+      this.len3 = encuesta.length ;
+    });
    }
    getData4() {
     //get coll
         this.afs.collection('Asesor').valueChanges().subscribe((encuesta) => {
        this.rows4 = encuesta ;
      });
+     this.afs.collection('Asesor').valueChanges().subscribe((encuesta) => {
+      this.len4 = encuesta.length ;
+    });
    }
 }

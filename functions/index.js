@@ -11,19 +11,19 @@ const gmailEmail = encodeURIComponent(functions.config().gmail.email);
 const gmailPassword = encodeURIComponent(functions.config().gmail.password);
 const mailTransport = nodemailer.createTransport(`smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
 
-/*  
+  
 const mailTransport = nodemailer.createTransport({
     host: "mail.casanovarentacar.mx",
     port: 25,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: "soporteti@casanovarentacar.mx", // generated ethereal user
-      pass: "sist735" // generated ethereal password
+      user: "sevs@casanovarentacar.mx", // generated ethereal user
+      pass: "C4$4n0v@.SEVS2019#" // generated ethereal password
     }
   });
 
 
-*/
+
 
 exports.sendContactMessage = functions.database.ref('/messages/{pushKey}').onWrite(( change ) => {
   const dataAfterChange = change.after.val();

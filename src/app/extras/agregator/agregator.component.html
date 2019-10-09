@@ -33,27 +33,19 @@
           <form (ngSubmit)="nuevoAdminFlota(nuevoaf.value)" [formGroup]="nuevoaf">
             <div class="row">
               <div class="col-md-6">
-                <label for="idAdminFlota">ID: </label><br />
-                <input class="form-control" type="text" formControlName="id_af"/>
-                <br />
                 <label for="nombreAdminFlota">Nombre: </label><br />
                 <input class="form-control" type="text" formControlName="nombre"/>
               </div>
+              <br>
               <div class="col-md-6">
-                <label for="ubicacionAdminFlota">Lugar de Trabajo: </label
-                ><br />
-                <select class="form-control" name="ubicacion" id="ubicacionAdminFlota" formControlName="ubicacion">
-                  <option value="La viga">La viga</option>
-                  <option value="Centenario">Centenario</option>
-                </select>
-                <br /><br />
-                <button
-                  type="submit"
-                  [disabled]="!nuevoaf.valid"
-                  class="btn btn-outline-primary btn-block btn-lg"
-                >
-                  Enviar
-                </button>
+              <button
+              type="submit"
+              [disabled]="!nuevoaf.valid"
+              class="btn btn-outline-primary btn-block btn-lg"
+            >
+              Enviar
+            </button>
+            <br>
               </div>
             </div>
           </form>
@@ -71,24 +63,11 @@
           <form (ngSubmit)="nuevomecanico(mecanico.value)" [formGroup]="mecanico">
             <div class="row">
               <div class="col-md-6">
-                <label for="idMecanico">ID: </label><br />
-                <input class="form-control" type="text" formControlName="id_mecanico"/>
-                <br />
                 <label for="nombreMecanico">Nombre: </label><br />
                 <input class="form-control" type="text" formControlName="nombre"/>
               </div>
+              <br>
               <div class="col-md-6">
-                <label for="ubicacionMecanico">Lugar de Trabajo: </label><br />
-                <select class="form-control" name="ubicacion" id="ubicacionAdminFlota" formControlName="ubicacion">
-                  <option value="La viga">La viga</option>
-                  <option value="Centenario">Centenario</option>
-                  <option value="Tlalnepantla">Tlalnepantla</option>
-                  <option value="Patriotismo">Patriotismo</option>
-                  <option value="Coacalco">Coacalco</option>
-                  <option value="Vallejo">Vallejo</option>
-                  <option value="Chapultepec">Chapultepec</option>
-                </select>
-                <br /><br />
                 <button
                   type="submit"
                   [disabled]="!mecanico.valid"
@@ -97,6 +76,7 @@
                   Enviar
                 </button>
               </div>
+              <br>
             </div>
           </form>
         </div>
@@ -115,25 +95,12 @@
           <form (ngSubmit)="nuevoasesor(asesor.value)" [formGroup]="asesor">
             <div class="row">
               <div class="col-md-6">
-                <label for="idasesor">ID: </label><br />
-                <input class="form-control" type="text" formControlName="id_asesor"/>
-                <br />
                 <label for="nombreasesor">Nombre: </label><br />
                 <input class="form-control" type="text" formControlName="nombre"/>
               </div>
+              <br>
               <div class="col-md-6">
-                <label for="ubicacionasesor">Lugar de Trabajo: </label><br />
-                <select class="form-control" name="ubicacion" id="ubicacionasesor" formControlName="ubicacion">
-                  <option value="La viga">La viga</option>
-                  <option value="Centenario">Centenario</option>
-                  <option value="Tlalnepantla">Tlalnepantla</option>
-                  <option value="Patriotismo">Patriotismo</option>
-                  <option value="Coacalco">Coacalco</option>
-                  <option value="Vallejo">Vallejo</option>
-                  <option value="Chapultepec">Chapultepec</option>
-                </select>
-                <br /><br />
-                <button
+                  <button
                   type="submit"
                   [disabled]="!asesor.valid"
                   class="btn btn-outline-primary btn-lg btn-block"
@@ -141,6 +108,7 @@
                   Enviar
                 </button>
               </div>
+              <br>
             </div>
           </form>
         </div>
@@ -157,9 +125,6 @@
           <form (ngSubmit)="nuevocliente(cliente.value)" [formGroup]="cliente">
             <div class="row">
               <div class="col-md-6">
-                <label for="idCliente">ID: </label><br />
-                <input class="form-control" type="text" formControlName="id_cliente"/>
-                <br />
                 <label for="nombreCliente">Nombre: </label><br />
                 <input class="form-control" type="text" formControlName="nombre"/>
               </div>
@@ -248,9 +213,6 @@
                 <ngx-datatable-column name="nombre">
                     <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="ubicacion">
-                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
-                </ngx-datatable-column>
                 <ngx-datatable-column name="">
                   <ng-template ngx-datatable-cell-template let-row="row" let-value="value"><button class="btn btn-danger" type="button"  (click)="eliminaraf(row.id)" >Eliminar</button></ng-template>
               </ngx-datatable-column>
@@ -280,9 +242,6 @@
             <ngx-datatable-column name="nombre">
                 <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="ubicacion">
-                <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
-            </ngx-datatable-column>
             <ngx-datatable-column name="">
               <ng-template ngx-datatable-cell-template let-row="row" let-value="value"><button class="btn btn-danger" type="button"  (click)="eliminarm(row.id)" >Eliminar</button></ng-template>
           </ngx-datatable-column>
@@ -309,9 +268,6 @@
                     <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="nombre">
-                    <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="ubicacion">
                     <ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="">

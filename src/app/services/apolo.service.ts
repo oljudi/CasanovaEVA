@@ -22,29 +22,29 @@ export class ApoloService {
   }
 //-------------------------------------------------------------------------------------------
   addadministrador(data: AdminFlota) {
-    return this.admFlotaCollection.doc(data.id_af).set(data);
+    return this.admFlotaCollection.doc(data.id_af.toString()).set(data);
   }
   addmecanico(data: Mecanico) {
-    return this.mecanicosCollection.doc(data.id_mecanico).set(data);
+    return this.mecanicosCollection.doc(data.id_mecanico.toString()).set(data);
   }
   addcliente(data: Cliente) {
-    return this.clientesCollection.doc(data.id_cliente).set(data);
+    return this.clientesCollection.doc(data.id_cliente.toString()).set(data);
   }
   addasesor(data: asesor) {
-    return this.asesorCollection.doc(data.id_asesor).set(data);
+    return this.asesorCollection.doc(data.id_asesor.toString()).set(data);
   }
 //-------------------------------------------------------------------------------------------
   updateadministrador(data: AdminFlota) {
-    this.admFlotaCollection.doc(data.id_af).update(data);
+    this.admFlotaCollection.doc(data.id_af.toString()).update(data);
   }
   updatemecanico(data: Mecanico) {
-    this.mecanicosCollection.doc(data.id_mecanico).update(data);
+    this.mecanicosCollection.doc(data.id_mecanico.toString()).update(data);
   }
   updatecliente(data: Cliente) {
-    this.clientesCollection.doc(data.id_cliente).update(data);
+    this.clientesCollection.doc(data.id_cliente.toString()).update(data);
   }
   updateasesor(data: asesor) {
-    this.clientesCollection.doc(data.id_asesor).update(data);
+    this.asesorCollection.doc(data.id_asesor.toString()).update(data);
   }
 //-------------------------------------------------------------------------------------------
   deleteadministrador(data: string) {
@@ -57,7 +57,7 @@ export class ApoloService {
     this.clientesCollection.doc(data).delete();
   }
   deleteasesor(data: string) {
-    this.clientesCollection.doc(data).delete();
+    this.asesorCollection.doc(data).delete();
   }
 
 }
