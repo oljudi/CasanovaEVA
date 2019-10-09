@@ -86,11 +86,14 @@ nocliente: string;
 ccliente: string;
 nucliente: string;
 estatus:string;
+estatustaller:string;
 cliente: string;
 tecnico:string;
 tipo: string;
 comentarios: string;
+verificacion:string;
 Diagnostico:string;
+ingreso:string;
 rows1:any;
 rows2:any;
 rows3:any;
@@ -222,8 +225,8 @@ win.document.write(iframe);
     value.tipo = this.opcion2;
 //Datos de Vehiculo
     value.placa = this.placa.toLocaleUpperCase();
-    value.vehiculo = this.vehiculo;
-    value.marca = this.marca.toLocaleLowerCase();
+    value.vehiculo = this.vehiculo.toLocaleUpperCase();
+    value.marca = this.marca.toLocaleUpperCase();
     value.combustible = this.combustible;
     value.numserie = this.numserie;
     value.kilometraje = this.kilometraje;
@@ -232,7 +235,7 @@ win.document.write(iframe);
     value.NombreCliente = this.nocliente;
     value.CorreoCliente = this.ccliente;
     value.NumeroCliente = this.nucliente;
-    value.cliente = this.cliente;
+    value.cliente = this.cliente.toLocaleUpperCase();
 //Administrador
     value.Administrador = this.admonflota;
     value.asesor = this.asesor;
@@ -243,6 +246,7 @@ win.document.write(iframe);
     value.Solicta = this.solicitud;
     value.Trabajorealizado = this.trabajorea;
     value.Estatus = this.estatus;
+    value.EstatusTaller = this.estatustaller;
     value.Tecnico = this.tecnico;
 //Taller 2da parte
     value.tarjetacirculacion = this.tarjetac;
@@ -263,12 +267,13 @@ win.document.write(iframe);
     value.senal = this.senal;
     value.radio = this.radio;
     value.comentarios = this.comentarios;
-    
+    value.verificacion = this.verificacion;
+    value.ingreso = this.ingreso;
+  
     var nameid = this.indenc2.toUpperCase();
     this.afs.firestore.doc('Encuestaexes/' + nameid).get()
     .then(docSnapshot => {
       if (docSnapshot.exists === true) {
-        confirm('Registro ' + nameid + ' guardado');
         value.tipo = 'express';
         this.encuestase.updateType(value);
         this.encuestase.updateTypeALL(value);
@@ -277,7 +282,6 @@ win.document.write(iframe);
         this.afs.firestore.doc('Encuestareps/' + nameid).get()
         .then(docSnapshot => {
           if (docSnapshot.exists === true) {
-            confirm('Registro ' + nameid + ' guardado');
             value.tipo = 'reparación';
             this.encuestase.updateType(value);
             this.encuestase.updateTypeALL(value);
@@ -286,7 +290,6 @@ win.document.write(iframe);
             this.afs.firestore.doc('Encuestatram/' + nameid).get()
             .then(docSnapshot => {
               if (docSnapshot.exists === true) {
-                confirm('Registro ' + nameid+ ' guardado');
                 value.tipo = 'trámite';
                 this.encuestase.updateType(value);
                 this.encuestase.updateTypeALL(value);
@@ -295,7 +298,6 @@ win.document.write(iframe);
                 this.afs.firestore.doc('EncuestaexesC/' + nameid).get()
                 .then(docSnapshot => {
                   if (docSnapshot.exists === true) {
-                    confirm('Registro ' + nameid+ ' guardado');
                     value.tipo = 'express';
                     this.encuestase.updateTypeC(value);
                     this.encuestase.updateTypeALL(value);
@@ -304,7 +306,6 @@ win.document.write(iframe);
                     this.afs.firestore.doc('EncuestarepsC/' + nameid).get()
                     .then(docSnapshot => {
                       if (docSnapshot.exists === true) {
-                        confirm('Registro ' + nameid+ ' guardado');
                         value.tipo = 'reparación';
                         this.encuestase.updateTypeC(value);
                         this.encuestase.updateTypeALL(value);
@@ -313,7 +314,6 @@ win.document.write(iframe);
                         this.afs.firestore.doc('EncuestatramC/' + nameid).get()
                         .then(docSnapshot => {
                           if (docSnapshot.exists === true) {
-                            confirm('Registro ' + nameid+ ' guardado');
                             value.tipo = 'trámite';
                             this.encuestase.updateTypeC(value);
                             this.encuestase.updateTypeALL(value);

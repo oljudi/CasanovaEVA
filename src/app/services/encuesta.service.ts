@@ -298,7 +298,13 @@ constructor(
   }
   updateTypeALL(Encuestaex: RegistroCompletoInterface) {
     this.EncuestaexDoc = this.afs.doc('typeALL/' + Encuestaex.id);
-    this.EncuestaexDoc.update(Encuestaex);
+    this.EncuestaexDoc.update(Encuestaex).then(function() {
+      confirm('Registro ' + Encuestaex.id + ' guardado');
+  })
+  .catch(function(error) {
+      // The document probably doesn't exist.
+      confirm('No se pudo guardar correctamente '+ error );
+  });  
   }
 //___________________________________________________________________ Add Encuesta
  addEncuestaex(Encuestaex: EncuestaexInterface) {

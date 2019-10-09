@@ -41,10 +41,11 @@ export interface RegistroCompletoInterface{
     Diagnostico?:string;
     Solicta?:string;
     Estatus?:string;
+    EstatusTaller?:string;
     Tecnico?:string;
     Trabajorealizado?:string;
-    
-    
+    verificacion?:string;
+    ingreso?:string;
     comentarios?:string;
 
     //callcenter

@@ -139,6 +139,7 @@
                                 <option>3/8</option>
                                 <option>2/8</option>
                                 <option>1/8</option>
+                                <option>0/8</option>
                               </select>
                             </div>
                           </div>
@@ -209,10 +210,11 @@
                           <div class="input-group-prepend">
                             <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faUserCheck"></fa-icon></div>
                           </div>
-                          <select class="form-control" name="cliente"  placeholder="Cliente" [(ngModel)]="cliente" #Cliente="ngModel" >
+                          <input type="text" class="form-control" id="inlineFormInputGroup" style="text-transform: uppercase; font-size: 1rem" placeholder="Cliente" name="Cliente" [(ngModel)]="cliente" #Cliente="ngModel">
+                        <!--   <select class="form-control" name="cliente"  placeholder="Cliente" [(ngModel)]="cliente" #Cliente="ngModel" >
                             <option >Cliente..... </option>   
                             <option  *ngFor="let encuestase of rows1 ">{{encuestase.nombre}} </option>
-                          </select>   
+                          </select>    -->
                          <!--  <select  class="form-control" placeholder="Cliente" name="cliente" [(ngModel)]="cliente" #Cliente="ngModel" >
                             <option>CFE Integra</option>
                             <option>CFE Viga</option>
@@ -249,7 +251,7 @@
               <!-- Fecha de Salida -->
               <div class="form-group">
                 <label><strong>Fecha Salida</strong></label><br>
-                <div class="input-group mb-2">
+                <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faCar"></fa-icon></div>
                   </div>
@@ -259,7 +261,7 @@
               <!-- Solicitud de Diagnostico-->
               <div class="form-group">
                 <label><strong>Solicitud de Diagnóstico</strong></label><br>
-                <div class="input-group mb-2">
+                <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faNotesMedical" ></fa-icon></div>
                   </div>
@@ -295,8 +297,60 @@
                   </div>
                   <select  class="form-control" id="inlineFormInputGroup"  placeholder="Estatus" name="Estatus" [(ngModel)]="estatus" #estat="ngModel" >
                     <option >Estatus... </option>  
-                    <option>En Proceso</option>
-                    <option>Terminado</option>
+                    <option>Disponible</option>
+                    <option>Licitaciones</option>
+                    <option>Particular</option>
+                    <option>RD Coacalco</option>
+                    <option>RD Chapultepec</option>
+                    <option>RD La Viga</option>
+                    <option>RD Patriotismo</option>
+                    <option>RD Solar</option>
+                    <option>RD Tlalnepantla</option>
+                    <option>RD Tlalpan</option>
+                    <option>RD Trasladista</option>
+                    <option>RD Vallejo</option>
+                    <option>Sr. Joaquin</option>
+                    <option>Sr. Carlos</option>
+                    <option>Utilitario</option>
+                  </select>
+                </div>
+              </div>
+               <!-- Estatus -->
+               <div class="form-group">
+                <label><strong>Estatus de Taller</strong></label><br>                
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faFileInvoice" ></fa-icon></div>
+                  </div>
+                  <select  class="form-control" id="inlineFormInputGroup"  placeholder="Estatus" name="Estatustaller" [(ngModel)]="estatustaller" #estatt="ngModel" >
+                    <option >Estatus... </option>  
+                    <option>Cancelado</option>
+                    <option>Recepción / Recibido</option>
+                    <option>Para / asignar Mecánica</option>
+                    <option>Diagnostico</option>
+                    <option>Presupuesto</option>
+                    <option>Reparación / en taller</option>
+                    <option>Pendiente por refacciones</option>
+                    <option>Reparación / Hojalatería y Pintura</option>
+                    <option>Proceso de Hojalatería</option>
+                    <option>Proceso de Pintura</option>
+                    <option>T o T</option>
+                    <option>Calidad / Revisión / Prueba de manejo</option>
+                    <option>Detallado / Lavado</option>
+                    <option>Terminado /  Patio</option>
+                    <option>Terminado / Patio Lala</option>
+                    <option>Terminado / Resguardo</option>
+                    <option>Verificación</option>
+                    <option>Entrega a Cliente</option>
+                    <option>Entrega a Patriotismo</option>
+                    <option>Entrega a Tlalnepantla</option>
+                    <option>Entrega a Tlalpan</option>
+                    <option>Entrega a Vallejo</option>
+                    <option>Entrega a Coacalco</option>
+                    <option>Entrega a Chapultepec</option>
+                    <option>Entrega a Viga</option>
+                    <option>Pendiente de documentos</option>
+                    <option>Disponible en piso</option>
                   </select>
                 </div>
               </div>
@@ -311,6 +365,24 @@
                   <select class="form-control" name="tecnico" id="inlineFormInputGroup"  placeholder="Tecnico" [(ngModel)]="tecnico" #tecn="ngModel" >
                     <option >Mecánico.... </option>  
                     <option  *ngFor="let encuestase of rows3 ">{{encuestase.nombre}} </option>
+                  </select>   
+                </div>
+              </div>
+              <!-- Ingero -->
+              <div class="form-group">
+                <label><strong>Ingreso</strong></label><br>                
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text" style="color: #f7b633; background-color: #1a3263"><fa-icon [icon]="faUser" ></fa-icon></div>
+                  </div>
+                  <select  class="form-control" id="inlineFormInputGroup"  placeholder="Ingreso" name="ingreso" [(ngModel)]="ingreso" #ingre="ngModel" >
+                    <option >Estatus... </option>  
+                    <option>Chófer</option>                  
+                    <option>Grúa</option>                  
+                    <option>Siniestro</option>                  
+                    <option>Recuperación</option>                  
+                    <option>Trasladista</option>                  
+                    <option>Usuario</option>                  
                   </select>   
                 </div>
               </div>
@@ -379,6 +451,20 @@
                   </div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="kitherramientas" id="optionNoKitH" value="No" [(ngModel)]="kitherram" #kitHs="ngModel">
+                    <label class="form-check-label" for="optionNoKitH" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
+                  </div>
+              </div>
+              <hr style="background-color: #f7b633">
+        
+              <!-- VERIFICACION -->
+              <label class="mt-3" for="inlineFormInputGroup"><strong>Verificación</strong></label>
+              <div class="form-group text-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="verificacion" id="optionSiKitH" value="Si" [(ngModel)]="verificacion" #ver="ngModel">
+                    <label class="form-check-label" for="optionSiKitH" style="font-size: 1rem"><fa-icon [icon]="faYes"></fa-icon><strong></strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="verificacion" id="optionNoKitH" value="No" [(ngModel)]="verificacion" #ver="ngModel">
                     <label class="form-check-label" for="optionNoKitH" style="font-size: 1rem"><fa-icon [icon]="faNo"></fa-icon><strong></strong></label>
                   </div>
               </div>
